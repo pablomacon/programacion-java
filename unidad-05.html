@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unidad 5 · Programación I</title><link rel="icon" href="assets/logo-pm.png"><link rel="stylesheet" href="assets/style.css"></head><body id="top"><header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><img class="brand-pm" src="assets/logo-pm.png" alt="PM"><img src="assets/logo-profe-macon.png" alt="Profe Macón"><span><strong>Programación I</strong><small>1.º BT Informática · DGETP / UTU</small></span></a><nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="index.html#unidades">Unidades</a><a href="unidad-05.html">Unidad 5</a></nav></div></header><main class="lesson"><a class="back" href="index.html#unidades">← Volver a las unidades</a><p class="eyebrow">Programación I · Unidad 05</p><article class="prose"><h1>Unidad 5 — Arreglos y cadenas de caracteres: conservar, recorrer y organizar datos</h1>
+<p><strong>Programación I — 2026</strong><br><strong>Estado:</strong> reconstrucción editorial de la versión definitiva revisada; no transcripción literal.</p>
+<h2 id="seccion-1">1. ¿Por qué arreglos?</h2>
+<p>Con <code>Scanner</code> y un ciclo podemos leer cinco notas y acumularlas, pero al finalizar no conservamos cada nota individual. Cinco variables <code>nota1 ... nota5</code> funcionan con pocos datos, pero no escalan. Un arreglo permite conservar valores del mismo tipo bajo un nombre común.</p>
+<pre><code class="language-java">int[] notas = {7, 5, 8, 6, 9};</code></pre>
+<h2 id="seccion-2">2. Índice, valor y longitud</h2>
+<div data-simulador="indices"></div>
+<div class="table-wrap"><table><thead><tr><th scope="col">Índice</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead><tbody><tr><td>Valor</td><td>7</td><td>5</td><td>8</td><td>6</td><td>9</td></tr></tbody></table></div>
+<p><code>notas[2]</code> vale 8. El <strong>índice</strong> es una posición; no debe confundirse con el <strong>valor</strong> almacenado. La longitud es <code>notas.length</code>, que vale 5. El último índice es <code>length - 1</code>.</p>
+<pre><code class="language-java">int[] numeros = {4, 8, 12, 16};
+int i = 2;
+System.out.println(numeros[i]); // 12
+i = 3;
+System.out.println(numeros[i]); // 16</code></pre>
+<p>Cambió el índice utilizado para consultar; el arreglo no cambió.</p>
+<h2 id="seccion-3">3. Crear y cargar</h2>
+<pre><code class="language-java">int[] notas = new int[5];</code></pre>
+<p>Un arreglo nuevo de enteros contiene inicialmente ceros. La longitud queda fija al crearlo. Carga mediante <code>Scanner</code> y <code>for</code>:</p>
+<pre><code class="language-java">import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int[] notas = new int[5];
+        for (int i = 0; i &lt; notas.length; i++) {
+            System.out.print(&quot;Ingrese la nota &quot; + (i + 1) + &quot;: &quot;);
+            notas[i] = teclado.nextInt();
+        }
+        teclado.close();
+    }
+}</code></pre>
+<p>Mostramos <code>i+1</code> al usuario; almacenamos en <code>notas[i]</code>.</p>
+<h2 id="seccion-4">4. Recorrer y modificar</h2>
+<pre><code class="language-java">int[] numeros = {2, 4, 6};
+for (int i = 0; i &lt; numeros.length; i++) {
+    numeros[i] = numeros[i] + 1;
+}
+// 3, 5, 7</code></pre>
+<p>El ciclo modifica <code>i</code>, y <code>i</code> determina el elemento utilizado. En un recorrido desde cero con <code>i &lt; length</code>, para tres elementos se hacen tres iteraciones y cuatro verificaciones de condición. <code>i &lt;= length</code> intentaría acceder al índice inexistente <code>length</code>.</p>
+<h2 id="seccion-5">5. Procesar: sumar y contar</h2>
+<pre><code class="language-java">int[] notas = {7, 5, 8, 6, 9};
+int suma = 0, aprobados = 0;
+for (int i = 0; i &lt; notas.length; i++) {
+    suma += notas[i];
+    if (notas[i] &gt;= 6) aprobados++;
+}
+double promedio = suma * 1.0 / notas.length;</code></pre>
+<p>Resultados: suma 35, promedio 7, aprobados 4. Inicializar acumuladores y contadores <strong>antes</strong> del recorrido. Comprobar longitud positiva antes de dividir si el arreglo pudiera estar vacío.</p>
+<h2 id="seccion-6">6. Mayor y menor</h2>
+<pre><code class="language-java">int mayor = notas[0];
+for (int i = 1; i &lt; notas.length; i++) {
+    if (notas[i] &gt; mayor) mayor = notas[i];
+}</code></pre>
+<p>Inicializar con el primer elemento, no automáticamente en cero: para <code>{-7,-3,-9}</code> el máximo real es -3. Esta técnica requiere un arreglo no vacío. El menor se obtiene cambiando <code>&gt;</code> por <code>&lt;</code>.</p>
+<h2 id="seccion-7">7. Búsqueda lineal: tres necesidades distintas</h2>
+<div data-simulador="busqueda"></div>
+<p><strong>Existe:</strong> guardar un <code>boolean</code> que cambia a <code>true</code> cuando se encuentra el dato.</p>
+<pre><code class="language-java">boolean encontrado = false;
+for (int i = 0; i &lt; notas.length; i++) {
+    if (notas[i] == 8) encontrado = true;
+}</code></pre>
+<p><strong>Primera posición:</strong> usar <code>-1</code> para representar &#x27;no encontrado&#x27;.</p>
+<pre><code class="language-java">int posicion = -1;
+for (int i = 0; i &lt; notas.length; i++) {
+    if (notas[i] == 8 &amp;&amp; posicion == -1) posicion = i;
+}</code></pre>
+<p><strong>Cantidad de apariciones:</strong> incrementar un contador en <strong>todas</strong> las coincidencias.</p>
+<pre><code class="language-java">int cantidad = 0;
+for (int i = 0; i &lt; notas.length; i++) {
+    if (notas[i] == 8) cantidad++;
+}</code></pre>
+<p>Como ampliación, <code>while (i &lt; notas.length &amp;&amp; !encontrado)</code> permite detenerse en la primera coincidencia. Elegir algoritmo según pregunta, no por receta.</p>
+<h2 id="seccion-8">8. Ordenamiento por burbuja</h2>
+<div data-simulador="burbuja"></div>
+<p>Primero intercambiamos dos valores sin perderlos:</p>
+<pre><code class="language-java">int auxiliar = numeros[i];
+numeros[i] = numeros[i + 1];
+numeros[i + 1] = auxiliar;</code></pre>
+<p>Comparamos vecinos y cambiamos cuando <code>numeros[i] &gt; numeros[i+1]</code>. Una pasada no siempre ordena todo. Para <code>7,5,8,6,9</code>, tras la primera pasada queda <code>5,7,6,8,9</code>; tras la segunda <code>5,6,7,8,9</code>.</p>
+<p><strong>Versión inicial, límite interior fijo:</strong></p>
+<pre><code class="language-java">for (int pasada = 0; pasada &lt; numeros.length - 1; pasada++) {
+    for (int i = 0; i &lt; numeros.length - 1; i++) {
+        if (numeros[i] &gt; numeros[i + 1]) {
+            int aux = numeros[i];
+            numeros[i] = numeros[i + 1];
+            numeros[i + 1] = aux;
+        }
+    }
+}</code></pre>
+<p><strong>Mejora:</strong> el límite interior <code>i &lt; numeros.length - 1 - pasada</code> evita comparar partes ya acomodadas al final. Explicar primero las pasadas y luego los ciclos anidados; no memorizar encabezados. Casos: ascendente, descendente, repetidos y todos iguales.</p>
+<h2 id="seccion-9">9. Cadenas <code>String</code></h2>
+<p>Una cadena no es lo mismo que un arreglo <code>char[]</code>, pero podemos examinar sus posiciones:</p>
+<pre><code class="language-java">String palabra = &quot;JAVA&quot;;
+System.out.println(palabra.length());  // 4
+System.out.println(palabra.charAt(2)); // V</code></pre>
+<p>En arreglos se utiliza <code>.length</code>; en cadenas <code>.length()</code>. Para contar letras:</p>
+<pre><code class="language-java">int cantidadA = 0;
+for (int i = 0; i &lt; palabra.length(); i++) {
+    if (palabra.charAt(i) == &#x27;A&#x27;) cantidadA++;
+}</code></pre>
+<p><code>equals()</code> compara el contenido de cadenas, <code>equalsIgnoreCase()</code> ignora mayúsculas/minúsculas. <code>toUpperCase()</code> produce una nueva cadena; para conservarla: <code>palabra = palabra.toUpperCase();</code>. <code>substring()</code> e <code>indexOf()</code> quedan como referencias complementarias, no como eje.</p>
+<h2 id="seccion-10">10. Problema completo: carga, procesamiento y consulta</h2>
+<p>El registro de cinco notas se divide en tres momentos: cargar mediante <code>Scanner</code>, recorrer para suma/aprobados/máximo y consultar si un valor existe. Recuperamos variables, condiciones, ciclos y arreglos.</p>
+<h3>Pseudocódigo</h3>
+<pre><code class="language-text">CREAR notas[5]
+PARA i desde 0 hasta 4: LEER notas[i]
+suma &lt;- 0; aprobados &lt;- 0; mayor &lt;- notas[0]
+PARA i desde 0 hasta 4:
+    suma &lt;- suma + notas[i]
+    SI notas[i] &gt;= 6: aprobados &lt;- aprobados + 1
+    SI notas[i] &gt; mayor: mayor &lt;- notas[i]
+promedio &lt;- suma * 1.0 / 5
+MOSTRAR promedio, aprobados, mayor
+LEER buscado
+encontrado &lt;- FALSO
+PARA cada nota: SI coincide, encontrado &lt;- VERDADERO
+MOSTRAR resultado de la búsqueda</code></pre>
+<h3>Java integrado</h3>
+<pre><code class="language-java">import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int[] notas = new int[5];
+        for (int i = 0; i &lt; notas.length; i++) {
+            System.out.print(&quot;Nota &quot; + (i + 1) + &quot;: &quot;);
+            notas[i] = teclado.nextInt();
+        }
+        int suma = 0, aprobados = 0, mayor = notas[0];
+        for (int i = 0; i &lt; notas.length; i++) {
+            suma += notas[i];
+            if (notas[i] &gt;= 6) aprobados++;
+            if (notas[i] &gt; mayor) mayor = notas[i];
+        }
+        System.out.println(&quot;Promedio: &quot; + suma * 1.0 / notas.length);
+        System.out.println(&quot;Aprobados: &quot; + aprobados);
+        System.out.println(&quot;Mayor: &quot; + mayor);
+        System.out.print(&quot;Buscar: &quot;);
+        int buscado = teclado.nextInt();
+        boolean encontrado = false;
+        for (int i = 0; i &lt; notas.length; i++) {
+            if (notas[i] == buscado) encontrado = true;
+        }
+        System.out.println(encontrado ? &quot;Encontrado&quot; : &quot;No encontrado&quot;);
+        teclado.close();
+    }
+}</code></pre>
+<h2 id="seccion-11">11. Errores frecuentes</h2>
+<p>Índice fuera de rango; confundir índice con valor; poner <code>&lt;= length</code>; reiniciar acumulador; inicializar máximo en 0 sin considerar negativos; intercambiar valores sin auxiliar; usar <code>length</code> de arreglo como si fuera <code>length()</code> de <code>String</code>; usar <code>==</code> para comparar el contenido de cadenas.</p>
+<h2 id="seccion-12">12. Evaluación de comprensión</h2>
+<p>Predecir salida de accesos por índice; trazar suma; corregir bucle; contar coincidencias; seguir una pasada de burbuja; recorrer <code>String</code>; diseñar un registro de temperaturas.</p>
+<h3>Casos mínimos</h3>
+<div class="table-wrap"><table><thead><tr><th scope="col">Datos</th><th scope="col">Esperado</th></tr></thead><tbody><tr><td>7,5,8,6,9</td><td>promedio 7; aprobados 4; mayor 9</td></tr><tr><td>6,6,6,6,6</td><td>promedio 6; aprobados 5</td></tr><tr><td>1,2,3,4,5</td><td>promedio 3; aprobados 0</td></tr><tr><td>10,9,8,7,6</td><td>promedio 8; mayor 10</td></tr><tr><td>Buscar 8 en 8,5,8,6,8</td><td>3 apariciones</td></tr></tbody></table></div>
+<p><strong>Puente:</strong> los algoritmos para arreglos podrán organizarse en métodos en la Unidad 6.</p></article><nav class="lesson-bottom" aria-label="Navegación de la unidad"><a href="index.html#unidades">← Todas las unidades</a><a href="#top">Volver arriba ↑</a></nav></main><footer><div class="footer-inner"><img src="assets/logo-pm.png" alt="PM"><span><strong>Programación I · 2026</strong><br>Profe Macón · DGETP / UTU</span></div></footer><script src="assets/simuladores.js" defer></script></body></html>
