@@ -1,0 +1,2 @@
+# Mantener los bytes de las fuentes revisadas y sus hashes en cualquier sistema.
+contenido/unidad-*.md -text

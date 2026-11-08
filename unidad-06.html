@@ -1,0 +1,2711 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unidad 6 · Programación I</title><link rel="icon" href="assets/logo-PM-opcional.png"><link rel="stylesheet" href="assets/style.css"></head><body id="top"><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><img src="assets/logo-profe-macon.png" alt="Profe Macón"><span><strong>Programación I</strong><small>1.º BT Informática · DGETP / UTU</small></span></a><nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="index.html#unidades">Unidades</a><span class="current-unit" aria-current="page">Unidad 6</span></nav></div></header><main class="lesson" id="contenido"><a class="back" href="index.html#unidades">← Volver a las unidades</a><p class="eyebrow">Programación I · Unidad 06</p><details class="contents"><summary>Índice de la unidad</summary><nav aria-label="Apartados de la unidad"><ol><li><a href="#seccion-1-una-nueva-dificultad-tenemos-una-solucion-pero-necesitamos-reutilizarla">1. Una nueva dificultad: tenemos una solución, pero necesitamos reutilizarla</a></li><li><a href="#seccion-2-nuestro-primer-metodo-definir-una-tarea-e-invocarla">2. Nuestro primer método: definir una tarea e invocarla</a></li><li><a href="#seccion-3-el-recorrido-de-ejecucion-entre-metodos">3. El recorrido de ejecución entre métodos</a></li><li><a href="#seccion-4-metodos-con-parametros-utilizar-una-solucion-con-datos-diferentes">4. Métodos con parámetros: utilizar una solución con datos diferentes</a></li><li><a href="#seccion-5-metodos-que-devuelven-resultados-return">5. Métodos que devuelven resultados: return</a></li><li><a href="#seccion-6-el-alcance-de-las-variables-donde-existe-cada-dato">6. El alcance de las variables: ¿dónde existe cada dato?</a></li><li><a href="#seccion-7-arreglos-como-argumentos-consultar-y-modificar-datos">7. Arreglos como argumentos: consultar y modificar datos</a></li><li><a href="#seccion-8-disenar-metodos-identificar-responsabilidades">8. Diseñar métodos: identificar responsabilidades</a></li><li><a href="#seccion-9-comprobar-metodos-mediante-casos-de-prueba">9. Comprobar métodos mediante casos de prueba</a></li><li><a href="#seccion-10-errores-frecuentes-al-trabajar-con-metodos">10. Errores frecuentes al trabajar con métodos</a></li><li><a href="#seccion-11-problema-integrador-registro-modular-de-calificaciones">11. Problema integrador: registro modular de calificaciones</a></li><li><a href="#seccion-12-actividades-de-aprendizaje">12. Actividades de aprendizaje</a></li><li><a href="#seccion-13-preparacion-para-la-evaluacion">13. Preparación para la evaluación</a></li><li><a href="#seccion-lo-que-debemos-recordar">Lo que debemos recordar</a></li></ol></nav></details><article class="prose"><h1 id="seccion-unidad-6-metodos-en-java-organizar-y-reutilizar-soluciones"><span id="apartado-1" class="legacy-anchor" aria-hidden="true"></span>Unidad 6. Métodos en Java: organizar y reutilizar soluciones</h1>
+<p><strong>Programación I — 2026</strong><br />
+<strong>1.º Bachillerato Tecnológico en Informática · DGETP / UTU</strong></p>
+<h2 id="seccion-que-aprenderemos-en-esta-unidad"><span id="apartado-2" class="legacy-anchor" aria-hidden="true"></span>¿Qué aprenderemos en esta unidad?</h2>
+<p>En las unidades anteriores aprendimos a construir programas que reciben información, realizan cálculos, toman decisiones y repiten instrucciones.</p>
+<p>También sabemos utilizar arreglos para conservar varios datos, recorrerlos, buscar elementos y obtener resultados.</p>
+<p>Por ejemplo, podemos calcular el promedio de las calificaciones de un grupo.</p>
+<p>Pero imaginemos una nueva situación.</p>
+<p>Necesitamos calcular los promedios de cinco grupos diferentes.</p>
+<p>Ya sabemos construir el algoritmo que calcula un promedio. Sin embargo, ¿debemos escribirlo cinco veces?</p>
+<p>¿Y qué sucedería si descubrimos un error en el cálculo o necesitamos modificarlo? ¿Tendríamos que revisar las cinco copias?</p>
+<p>También aparece otra dificultad: a medida que incorporamos tareas, nuestros programas se vuelven más extensos y resulta más difícil reconocer qué responsabilidad tiene cada conjunto de instrucciones.</p>
+<p>Para resolver estos problemas aprenderemos a utilizar <strong>métodos</strong>.</p>
+<p>Un método reúne instrucciones destinadas a realizar una tarea, tiene un nombre y puede ejecutarse cuando lo necesitamos.</p>
+<p>Durante esta unidad aprenderemos a:</p>
+<ul>
+<li>Reconocer cuándo conviene crear un método.</li>
+<li>Diferenciar organización y reutilización.</li>
+<li>Definir e invocar métodos.</li>
+<li>Seguir el recorrido de ejecución entre <code>main</code> y otros métodos.</li>
+<li>Enviar información mediante parámetros.</li>
+<li>Distinguir parámetros y argumentos.</li>
+<li>Devolver resultados mediante <code>return</code>.</li>
+<li>Diferenciar mostrar un resultado de devolverlo.</li>
+<li>Comprender el alcance de las variables locales.</li>
+<li>Enviar arreglos a los métodos.</li>
+<li>Reconocer cuándo un método puede modificar un arreglo.</li>
+<li>Identificar las responsabilidades de un programa.</li>
+<li>Diseñar métodos pensando qué reciben, qué hacen y qué devuelven.</li>
+<li>Comprobar métodos por separado.</li>
+<li>Organizar un programa completo mediante varias tareas.</li>
+</ul>
+<p>Mantendremos nuestro procedimiento habitual:</p>
+<p><strong>Comprender el problema → pseudocódigo → Java → predicción → ejecución → pruebas → explicación.</strong></p>
+<p>El objetivo no es construir programas con muchos métodos.</p>
+<p><strong>Queremos comprender cuándo necesitamos uno, qué responsabilidad debe tener y cómo se comunica con las otras partes del programa.</strong></p>
+<p><strong>Cómo utilizar este capítulo de forma autónoma.</strong> Cuando encuentres una pregunta de predicción, escribe o piensa tu respuesta <em>antes</em> de revelar la explicación. Si te bloqueas, identifica primero qué datos tienes y qué resultado necesitas; consulta una pista y vuelve a intentarlo. Si ya entendiste el ejemplo, compruébalo con otros datos y explica qué cambiaría. En los ejercicios con soluciones, la página debe mostrar las pistas antes de la resolución completa. Si estudias el Markdown directamente, oculta el párrafo de solución mientras realizas la predicción.</p>
+<hr />
+<h1 id="seccion-1-una-nueva-dificultad-tenemos-una-solucion-pero-necesitamos-reutilizarla"><span id="apartado-3" class="legacy-anchor" aria-hidden="true"></span>1. Una nueva dificultad: tenemos una solución, pero necesitamos reutilizarla</h1>
+<p>En la Unidad 5 resolvimos problemas con arreglos.</p>
+<p>Por ejemplo, podemos calcular el promedio de estas cinco notas:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int[] notas = {7, 5, 8, 6, 9};
+</code></pre>
+<p>Primero sumamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int suma = 0;
+
+for (int i = 0; i &lt; notas.length; i++) {
+    suma += notas[i];
+}
+</code></pre>
+<p>Después calculamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double promedio = suma * 1.0 / notas.length;
+</code></pre>
+<p>El resultado es 7.0.</p>
+<p>El algoritmo funciona correctamente.</p>
+<h2 id="seccion-1-1-que-sucede-si-tenemos-otro-grupo"><span id="apartado-4" class="legacy-anchor" aria-hidden="true"></span>1.1. ¿Qué sucede si tenemos otro grupo?</h2>
+<p>Ahora necesitamos calcular el promedio de:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int[] otroGrupo = {6, 9, 10};
+</code></pre>
+<p>Podríamos repetir el procedimiento:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int sumaOtroGrupo = 0;
+
+for (int i = 0; i &lt; otroGrupo.length; i++) {
+    sumaOtroGrupo += otroGrupo[i];
+}
+
+double promedioOtroGrupo =
+    sumaOtroGrupo * 1.0 / otroGrupo.length;
+</code></pre>
+<p>También funciona.</p>
+<p>Pero comparemos los dos fragmentos.</p>
+<p>¿Estamos resolviendo dos problemas diferentes?</p>
+<p>No exactamente.</p>
+<p>En ambos casos:</p>
+<ol>
+<li>Recorremos un arreglo.</li>
+<li>Sumamos sus elementos.</li>
+<li>Dividimos la suma entre la cantidad de elementos.</li>
+<li>Obtenemos un promedio.</li>
+</ol>
+<p>Lo único que cambia es el arreglo que procesamos.</p>
+<p><strong>Estamos utilizando el mismo algoritmo con datos diferentes.</strong></p>
+<h2 id="seccion-1-2-ahora-tenemos-cinco-grupos"><span id="apartado-5" class="legacy-anchor" aria-hidden="true"></span>1.2. Ahora tenemos cinco grupos</h2>
+<p>Imaginemos que necesitamos procesar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int[] grupoA = {7, 5, 8, 6, 9};
+int[] grupoB = {6, 9, 10};
+int[] grupoC = {4, 7, 8, 9};
+int[] grupoD = {6, 6, 7};
+int[] grupoE = {10, 9, 8, 7, 6};
+</code></pre>
+<p>¿Debemos copiar cinco veces el recorrido y el cálculo?</p>
+<p>Podríamos hacerlo, pero tendríamos cinco versiones del mismo procedimiento.</p>
+<p>Esto presenta varios inconvenientes:</p>
+<ul>
+<li>Repetimos código que realiza la misma tarea.</li>
+<li>Necesitamos modificar varias partes si cambia el procedimiento.</li>
+<li>Podemos cometer errores al copiarlo.</li>
+<li>El programa se vuelve más extenso.</li>
+<li>Resulta más difícil comprobar que todos los grupos se procesan de la misma manera.</li>
+</ul>
+<p>La dificultad no es matemática.</p>
+<p>Ya sabemos calcular un promedio.</p>
+<p>La dificultad consiste en <strong>reutilizar una solución sin escribir nuevamente todo su algoritmo</strong>.</p>
+<h2 id="seccion-1-3-dar-un-nombre-a-una-solucion"><span id="apartado-6" class="legacy-anchor" aria-hidden="true"></span>1.3. Dar un nombre a una solución</h2>
+<p>Imaginemos que pudiéramos reunir el cálculo del promedio en una operación llamada:</p>
+<p><code>calcularPromedio</code></p>
+<p>Después podríamos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double promedioA = calcularPromedio(grupoA);
+double promedioB = calcularPromedio(grupoB);
+double promedioC = calcularPromedio(grupoC);
+</code></pre>
+<p>La misma operación recibiría diferentes arreglos.</p>
+<p>Ya no necesitaríamos copiar el algoritmo para cada grupo.</p>
+<p>Esa es una de las necesidades que resuelven los métodos.</p>
+<h2 id="seccion-1-4-una-segunda-dificultad-organizar-responsabilidades"><span id="apartado-7" class="legacy-anchor" aria-hidden="true"></span>1.4. Una segunda dificultad: organizar responsabilidades</h2>
+<p>Pensemos en otro programa.</p>
+<p>Dentro de <code>main</code> tenemos instrucciones que:</p>
+<ul>
+<li>Muestran un menú.</li>
+<li>Solicitan una opción.</li>
+<li>Leen calificaciones.</li>
+<li>Calculan un promedio.</li>
+<li>Buscan una nota.</li>
+<li>Muestran un informe.</li>
+</ul>
+<p>Aunque el código funcione, puede resultar difícil identificar cada tarea.</p>
+<p>Podemos organizarlo mediante operaciones con nombres claros:</p>
+<p><code>mostrarMenu</code></p>
+<p><code>leerNotas</code></p>
+<p><code>calcularPromedio</code></p>
+<p><code>buscarNota</code></p>
+<p><code>mostrarInforme</code></p>
+<p>Aquí aparece otro beneficio de los métodos.</p>
+<p>No necesitamos repetir una tarea para que tenga sentido separarla.</p>
+<p>A veces queremos simplemente identificar una responsabilidad y facilitar la lectura del programa.</p>
+<h2 id="seccion-1-5-reutilizacion-y-organizacion"><span id="apartado-8" class="legacy-anchor" aria-hidden="true"></span>1.5. Reutilización y organización</h2>
+<p>Debemos distinguir dos ideas.</p>
+<p><strong>Reutilización:</strong> construir una tarea una sola vez y utilizarla con diferentes datos o desde diferentes partes del programa.</p>
+<p><strong>Organización:</strong> separar responsabilidades para que el programa sea más fácil de leer, comprender, comprobar y modificar.</p>
+<p>Un método puede ofrecer ambas ventajas.</p>
+<p>Pero no son exactamente lo mismo.</p>
+<h2 id="seccion-1-6-debemos-crear-un-metodo-para-todo"><span id="apartado-9" class="legacy-anchor" aria-hidden="true"></span>1.6. ¿Debemos crear un método para todo?</h2>
+<p>No.</p>
+<p>Imaginemos este programa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(&quot;Fin&quot;);
+    }
+}
+</code></pre>
+<p>No necesitamos obligatoriamente crear un método <code>mostrarFin</code> para una única instrucción.</p>
+<p>Podríamos hacerlo, pero eso no mejoraría necesariamente el programa.</p>
+<p>En cambio, si encontramos un algoritmo que se repite con distintos datos, o una tarea claramente identificable dentro de un programa más amplio, puede convenir separarla.</p>
+<p><strong>No medimos la calidad de un programa por la cantidad de métodos que contiene.</strong></p>
+<p>Lo importante es que sus responsabilidades estén organizadas de manera comprensible.</p>
+<hr />
+<h1 id="seccion-2-nuestro-primer-metodo-definir-una-tarea-e-invocarla"><span id="apartado-10" class="legacy-anchor" aria-hidden="true"></span>2. Nuestro primer método: definir una tarea e invocarla</h1>
+<p>Comenzaremos con un ejemplo pequeño para comprender la sintaxis.</p>
+<p>Queremos mostrar un saludo.</p>
+<p>Hasta ahora escribíamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola&quot;);
+</code></pre>
+<p>Ahora construiremos un método llamado <code>saludar</code>.</p>
+<h2 id="seccion-2-1-programa-completo"><span id="apartado-11" class="legacy-anchor" aria-hidden="true"></span>2.1. Programa completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void saludar() {
+        System.out.println(&quot;Hola&quot;);
+    }
+
+    public static void main(String[] args) {
+
+        saludar();
+
+        System.out.println(&quot;Fin del programa&quot;);
+    }
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Hola
+Fin del programa
+</code></pre>
+<p>Observa que tenemos dos métodos:</p>
+<p><code>saludar</code></p>
+<p>y:</p>
+<p><code>main</code></p>
+<h2 id="seccion-2-2-donde-comienza-java"><span id="apartado-12" class="legacy-anchor" aria-hidden="true"></span>2.2. ¿Dónde comienza Java?</h2>
+<p>Cuando ejecutamos este programa, Java comienza en <code>main</code>.</p>
+<p>No comienza automáticamente por el primer método escrito en el archivo.</p>
+<p>Dentro de <code>main</code> encuentra:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saludar();
+</code></pre>
+<p>Entonces ejecuta las instrucciones del método <code>saludar</code>.</p>
+<p>Después regresa a <code>main</code> y continúa con:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Fin del programa&quot;);
+</code></pre>
+<p>Por eso la salida comienza con «Hola».</p>
+<h2 id="seccion-2-3-definir-e-invocar-son-acciones-diferentes"><span id="apartado-13" class="legacy-anchor" aria-hidden="true"></span>2.3. Definir e invocar son acciones diferentes</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void saludar() {
+    System.out.println(&quot;Hola&quot;);
+}
+</code></pre>
+<p>Esto es la <strong>definición</strong> del método.</p>
+<p>Describe qué instrucciones debe ejecutar.</p>
+<p>En cambio:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saludar();
+</code></pre>
+<p>Es una <strong>invocación</strong>.</p>
+<p>Solicita que se ejecuten esas instrucciones.</p>
+<p>Si definimos un método, pero nunca lo invocamos, sus instrucciones no se ejecutan por el simple hecho de estar escritas.</p>
+<h2 id="seccion-2-4-invocar-varias-veces"><span id="apartado-14" class="legacy-anchor" aria-hidden="true"></span>2.4. Invocar varias veces</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void saludar() {
+        System.out.println(&quot;Hola&quot;);
+    }
+
+    public static void main(String[] args) {
+
+        saludar();
+        saludar();
+        saludar();
+    }
+}
+</code></pre>
+<p>Salida:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Hola
+Hola
+Hola
+</code></pre>
+<p>Escribimos una sola vez la definición.</p>
+<p>Pero realizamos tres invocaciones.</p>
+<h2 id="seccion-2-5-no-podriamos-utilizar-un-ciclo"><span id="apartado-15" class="legacy-anchor" aria-hidden="true"></span>2.5. ¿No podríamos utilizar un ciclo?</h2>
+<p>Sí.</p>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void saludar() {
+        System.out.println(&quot;Hola&quot;);
+    }
+
+    public static void main(String[] args) {
+
+        for (int i = 1; i &lt;= 3; i++) {
+            saludar();
+        }
+    }
+}
+</code></pre>
+<p>También muestra «Hola» tres veces.</p>
+<p>Pero debemos comprender que un ciclo y un método tienen funciones diferentes.</p>
+<p><strong>El ciclo controla cuántas veces se repiten instrucciones.</strong></p>
+<p><strong>El método identifica una tarea y permite ejecutarla mediante una invocación.</strong></p>
+<p>Ambas herramientas pueden combinarse.</p>
+<h2 id="seccion-2-6-un-metodo-que-representa-una-tarea-mas-completa"><span id="apartado-16" class="legacy-anchor" aria-hidden="true"></span>2.6. Un método que representa una tarea más completa</h2>
+<p>El ejemplo <code>saludar()</code> es útil para comprender la sintaxis.</p>
+<p>Pero todavía no demuestra una gran ventaja organizativa.</p>
+<p>Consideremos un menú:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarMenu() {
+
+    System.out.println(&quot;1. Consultar notas&quot;);
+    System.out.println(&quot;2. Calcular promedio&quot;);
+    System.out.println(&quot;3. Salir&quot;);
+}
+</code></pre>
+<p>Ahora el método reúne varias instrucciones que forman parte de una misma tarea.</p>
+<p>Podemos invocarlo desde <code>main</code>:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarMenu();
+</code></pre>
+<p>El nombre permite reconocer qué acción se realizará.</p>
+<p>Además, si debemos modificar las opciones del menú, sabemos dónde hacerlo.</p>
+<h2 id="seccion-2-7-programa-completo-con-un-menu"><span id="apartado-17" class="legacy-anchor" aria-hidden="true"></span>2.7. Programa completo con un menú</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mostrarMenu() {
+
+        System.out.println(&quot;1. Consultar notas&quot;);
+        System.out.println(&quot;2. Calcular promedio&quot;);
+        System.out.println(&quot;3. Salir&quot;);
+    }
+
+    public static void main(String[] args) {
+
+        mostrarMenu();
+    }
+}
+</code></pre>
+<p>El programa muestra el menú una sola vez.</p>
+<p>Más adelante podremos incorporarlo en un ciclo para repetirlo.</p>
+<h2 id="seccion-2-8-comprender-la-declaracion"><span id="apartado-18" class="legacy-anchor" aria-hidden="true"></span>2.8. Comprender la declaración</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarMenu()
+</code></pre>
+<p>Sus elementos son:</p>
+<p><strong><code>public</code>:</strong> es un modificador de acceso. Más adelante estudiaremos sus posibilidades.</p>
+<p><strong><code>static</code>:</strong> permite utilizar este método desde <code>main</code>, que también es <code>static</code>, sin crear previamente un objeto.</p>
+<p><strong><code>void</code>:</strong> indica que el método no devuelve un valor.</p>
+<p><strong><code>mostrarMenu</code>:</strong> es el nombre que identifica la tarea.</p>
+<p><strong><code>()</code></strong>: contiene el lugar donde se declaran los parámetros. Aquí está vacío porque el método no necesita recibir datos.</p>
+<p>Por ahora utilizaremos métodos <code>public static</code> dentro de la clase <code>Main</code>.</p>
+<p>Esta decisión nos permite concentrarnos en los métodos sin adelantar la programación orientada a objetos.</p>
+<p>No significa que todos los métodos Java deban ser <code>static</code>.</p>
+<h2 id="seccion-2-9-donde-escribimos-los-metodos"><span id="apartado-19" class="legacy-anchor" aria-hidden="true"></span>2.9. ¿Dónde escribimos los métodos?</h2>
+<p>Dentro de la clase, pero fuera de otros métodos.</p>
+<p>Correcto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mostrarMensaje() {
+        System.out.println(&quot;Hola&quot;);
+    }
+
+    public static void main(String[] args) {
+        mostrarMensaje();
+    }
+}
+</code></pre>
+<p>No podemos declarar un método ordinario dentro del cuerpo de <code>main</code>.</p>
+<p>Este es un error frecuente cuando comenzamos.</p>
+<hr />
+<h1 id="seccion-3-el-recorrido-de-ejecucion-entre-metodos"><span id="apartado-20" class="legacy-anchor" aria-hidden="true"></span>3. El recorrido de ejecución entre métodos</h1>
+<p>Una de las principales dificultades de esta unidad consiste en seguir el flujo del programa.</p>
+<p>Hasta ahora, las estructuras condicionales y los ciclos modificaban qué instrucciones se ejecutaban dentro de un mismo método.</p>
+<p>Ahora una invocación puede llevar temporalmente la ejecución a otro método.</p>
+<h2 id="seccion-3-1-un-ejemplo-para-predecir"><span id="apartado-21" class="legacy-anchor" aria-hidden="true"></span>3.1. Un ejemplo para predecir</h2>
+<p>Observa este programa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void primero() {
+        System.out.println(&quot;A&quot;);
+    }
+
+    public static void segundo() {
+        System.out.println(&quot;B&quot;);
+        primero();
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(&quot;C&quot;);
+
+        segundo();
+
+        System.out.println(&quot;D&quot;);
+    }
+}
+</code></pre>
+<p>Antes de continuar, intenta predecir la salida.</p>
+<p>No ejecutes todavía el programa.</p>
+<p>¿Comenzará por A, porque <code>primero</code> aparece antes en el archivo?</p>
+<p>¿O comenzará por C, porque esa es la primera instrucción de <code>main</code>?</p>
+<h2 id="seccion-3-2-seguir-el-recorrido-real"><span id="apartado-22" class="legacy-anchor" aria-hidden="true"></span>3.2. Seguir el recorrido real</h2>
+<p>La ejecución comienza en:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void main(String[] args)
+</code></pre>
+<p>Primero se ejecuta:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">System.out.println(&quot;C&quot;);
+</code></pre>
+<p>Después:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">segundo();
+</code></pre>
+<p>Java pasa al método <code>segundo</code>.</p>
+<p>Allí encuentra:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">System.out.println(&quot;B&quot;);
+</code></pre>
+<p>Después:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">primero();
+</code></pre>
+<p>Java pasa al método <code>primero</code>.</p>
+<p>Muestra A.</p>
+<p>Cuando <code>primero</code> termina, regresa a <code>segundo</code>.</p>
+<p>Como no quedan más instrucciones en <code>segundo</code>, regresa a <code>main</code>.</p>
+<p>Finalmente muestra D.</p>
+<p>La salida completa será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">C
+B
+A
+D
+</code></pre>
+<h2 id="seccion-3-3-invocar-ejecutar-y-regresar"><span id="apartado-23" class="legacy-anchor" aria-hidden="true"></span>3.3. Invocar, ejecutar y regresar</h2>
+<p>Cuando seguimos un programa con métodos debemos reconocer tres acciones:</p>
+<p><strong>Invocar:</strong> solicitar la ejecución de otro método.</p>
+<p><strong>Ejecutar:</strong> realizar las instrucciones del método invocado.</p>
+<p><strong>Regresar:</strong> continuar desde el lugar correspondiente después de terminar la invocación.</p>
+<p>No necesitamos aprender todavía todos los detalles internos de la pila de llamadas.</p>
+<p>Pero sí debemos comprender qué método está ejecutándose y a qué punto regresará.</p>
+<h2 id="seccion-3-4-un-metodo-definido-no-tiene-por-que-ejecutarse"><span id="apartado-24" class="legacy-anchor" aria-hidden="true"></span>3.4. Un método definido no tiene por qué ejecutarse</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mensajeA() {
+        System.out.println(&quot;A&quot;);
+    }
+
+    public static void mensajeB() {
+        System.out.println(&quot;B&quot;);
+    }
+
+    public static void main(String[] args) {
+        mensajeB();
+    }
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">B
+</code></pre>
+<p>El método <code>mensajeA</code> está definido.</p>
+<p>Pero no se invoca.</p>
+<p>Por tanto, no muestra nada.</p>
+<h2 id="seccion-3-5-simulador-de-ejecucion-entre-metodos"><span id="apartado-25" class="legacy-anchor" aria-hidden="true"></span>3.5. Simulador de ejecución entre métodos</h2>
+<div id="u06-flujo-metodos" data-recurso="u06-flujo-metodos"><div data-componente-interactivo="u06-flujo-metodos"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>En el programa, main muestra C y llama a segundo; segundo muestra B y llama a primero, que muestra A. Luego se retorna y main muestra D. Salida: C, B, A, D.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Antes de avanzar cada paso, responde:</p>
+<ol>
+<li>¿Qué método está ejecutándose?</li>
+<li>¿Qué instrucción corresponde ahora?</li>
+<li>¿Se realizará una invocación?</li>
+<li>¿A qué lugar regresaremos?</li>
+<li>¿Qué aparecerá en la consola?</li>
+</ol>
+<h2 id="seccion-3-6-como-comprobamos-que-comprendimos"><span id="apartado-26" class="legacy-anchor" aria-hidden="true"></span>3.6. ¿Cómo comprobamos que comprendimos?</h2>
+<p>Sin ejecutar, debemos poder responder:</p>
+<ul>
+<li>Dónde comienza el programa.</li>
+<li>Qué método se invoca primero.</li>
+<li>Qué instrucciones ejecuta.</li>
+<li>Si invoca otros métodos.</li>
+<li>Dónde continúa después de terminar.</li>
+</ul>
+<p><strong>La posición de un método dentro del archivo no determina cuándo se ejecutará.</strong></p>
+<p>El recorrido depende de las invocaciones.</p>
+<hr />
+<h1 id="seccion-4-metodos-con-parametros-utilizar-una-solucion-con-datos-diferentes"><span id="apartado-27" class="legacy-anchor" aria-hidden="true"></span>4. Métodos con parámetros: utilizar una solución con datos diferentes</h1>
+<p>Hasta ahora construimos métodos que realizan siempre la misma tarea con los mismos datos.</p>
+<p>Pero nuestro problema inicial necesitaba calcular promedios de grupos diferentes.</p>
+<p>Para eso debemos aprender a enviar información a un método.</p>
+<p>Comenzaremos con un ejemplo sencillo.</p>
+<h2 id="seccion-4-1-un-metodo-que-muestra-siempre-el-mismo-saludo"><span id="apartado-28" class="legacy-anchor" aria-hidden="true"></span>4.1. Un método que muestra siempre el mismo saludo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void saludar() {
+    System.out.println(&quot;Hola, Ana&quot;);
+}
+</code></pre>
+<p>Este método siempre muestra el mismo nombre.</p>
+<p>Pero queremos saludar a distintas personas.</p>
+<p>Una solución poco conveniente sería crear:</p>
+<p><code>saludarAna</code></p>
+<p><code>saludarLuis</code></p>
+<p><code>saludarSofia</code></p>
+<p>¿Y si tenemos treinta nombres?</p>
+<p>Estaríamos repitiendo la misma tarea.</p>
+<h2 id="seccion-4-2-introducir-un-parametro"><span id="apartado-29" class="legacy-anchor" aria-hidden="true"></span>4.2. Introducir un parámetro</h2>
+<p>Podemos construir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void saludar(String nombre) {
+    System.out.println(&quot;Hola, &quot; + nombre);
+}
+</code></pre>
+<p>Ahora el método recibe una cadena de caracteres.</p>
+<p>El dato recibido se identifica mediante el parámetro <code>nombre</code>.</p>
+<p>Podemos invocarlo así:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saludar(&quot;Ana&quot;);
+saludar(&quot;Luis&quot;);
+saludar(&quot;Sofía&quot;);
+</code></pre>
+<h2 id="seccion-4-3-programa-completo"><span id="apartado-30" class="legacy-anchor" aria-hidden="true"></span>4.3. Programa completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void saludar(String nombre) {
+        System.out.println(&quot;Hola, &quot; + nombre);
+    }
+
+    public static void main(String[] args) {
+
+        saludar(&quot;Ana&quot;);
+        saludar(&quot;Luis&quot;);
+        saludar(&quot;Sofía&quot;);
+    }
+}
+</code></pre>
+<p>Salida:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Hola, Ana
+Hola, Luis
+Hola, Sofía
+</code></pre>
+<p>La definición del método es única.</p>
+<p>Lo utilizamos con datos diferentes.</p>
+<h2 id="seccion-4-4-parametro-y-argumento"><span id="apartado-31" class="legacy-anchor" aria-hidden="true"></span>4.4. Parámetro y argumento</h2>
+<p>Debemos distinguir dos elementos.</p>
+<p>En la definición:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void saludar(String nombre)
+</code></pre>
+<p><code>nombre</code> es el <strong>parámetro</strong>.</p>
+<p>En la invocación:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saludar(&quot;Ana&quot;);
+</code></pre>
+<p><code>&quot;Ana&quot;</code> es el <strong>argumento</strong>.</p>
+<p>El parámetro indica qué información espera recibir el método.</p>
+<p>El argumento es el dato que enviamos en una invocación concreta.</p>
+<h2 id="seccion-4-5-los-argumentos-tambien-pueden-ser-variables"><span id="apartado-32" class="legacy-anchor" aria-hidden="true"></span>4.5. Los argumentos también pueden ser variables</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">String estudiante = &quot;Lucía&quot;;
+
+saludar(estudiante);
+</code></pre>
+<p>El argumento no tiene que ser un valor escrito directamente entre comillas.</p>
+<p>Podemos enviar el contenido actual de una variable.</p>
+<h2 id="seccion-4-6-el-mismo-metodo-con-una-variable-que-cambia"><span id="apartado-33" class="legacy-anchor" aria-hidden="true"></span>4.6. El mismo método con una variable que cambia</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mostrarDoble(int numero) {
+        System.out.println(numero * 2);
+    }
+
+    public static void main(String[] args) {
+
+        int edad = 16;
+
+        mostrarDoble(edad);
+
+        edad = 20;
+
+        mostrarDoble(edad);
+    }
+}
+</code></pre>
+<p>Antes de ejecutar, predice la salida.</p>
+<details class="respuesta"><summary>Ver explicación</summary><p>En la primera invocación:</p>
+<p><code>edad = 16</code></p>
+<p>Por tanto, el parámetro <code>numero</code> recibe 16.</p>
+<p>El método muestra:</p>
+<p><code>16 × 2 = 32</code></p>
+<p>Después <code>edad</code> cambia a 20.</p>
+<p>En la segunda invocación, <code>numero</code> recibe 20.</p>
+<p>El método muestra:</p>
+<p><code>20 × 2 = 40</code></p>
+<p>La salida es:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">32
+40
+</code></pre>
+</details><div class="respuesta-impresa" aria-hidden="true"><p>En la primera invocación:</p>
+<p><code>edad = 16</code></p>
+<p>Por tanto, el parámetro <code>numero</code> recibe 16.</p>
+<p>El método muestra:</p>
+<p><code>16 × 2 = 32</code></p>
+<p>Después <code>edad</code> cambia a 20.</p>
+<p>En la segunda invocación, <code>numero</code> recibe 20.</p>
+<p>El método muestra:</p>
+<p><code>20 × 2 = 40</code></p>
+<p>La salida es:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">32
+40
+</code></pre>
+</div>
+<h2 id="seccion-4-7-trazado-de-argumentos"><span id="apartado-34" class="legacy-anchor" aria-hidden="true"></span>4.7. Trazado de argumentos</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Invocación</th>
+<th style="text-align:right">Valor de <code>edad</code></th>
+<th style="text-align:right">Valor recibido por <code>numero</code></th>
+<th style="text-align:right">Salida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primera</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">32</td>
+</tr>
+<tr>
+<td>Segunda</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">40</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El método utiliza el valor recibido en cada invocación.</p>
+<p>No conserva una conexión automática con la variable <code>edad</code>.</p>
+<p>Más adelante profundizaremos esta idea al estudiar el alcance de las variables.</p>
+<h2 id="seccion-4-8-dos-parametros"><span id="apartado-35" class="legacy-anchor" aria-hidden="true"></span>4.8. Dos parámetros</h2>
+<p>Supongamos que queremos calcular el total de una compra:</p>
+<p><code>precio × cantidad</code></p>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarTotal(int precio, int cantidad) {
+
+    int total = precio * cantidad;
+
+    System.out.println(total);
+}
+</code></pre>
+<p>Invocación:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarTotal(150, 3);
+</code></pre>
+<p>Salida:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">450
+</code></pre>
+<h2 id="seccion-4-9-el-orden-importa"><span id="apartado-36" class="legacy-anchor" aria-hidden="true"></span>4.9. El orden importa</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarResta(int primero, int segundo) {
+    System.out.println(primero - segundo);
+}
+</code></pre>
+<p>Si invocamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarResta(10, 4);
+</code></pre>
+<p>La salida es 6.</p>
+<p>Pero:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarResta(4, 10);
+</code></pre>
+<p>produce -6.</p>
+<p>Los argumentos se asocian con los parámetros según su orden.</p>
+<h2 id="seccion-4-10-cantidad-y-tipos-de-argumentos"><span id="apartado-37" class="legacy-anchor" aria-hidden="true"></span>4.10. Cantidad y tipos de argumentos</h2>
+<p>Si definimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarTotal(int precio, int cantidad)
+</code></pre>
+<p>El método necesita dos argumentos compatibles.</p>
+<p>Esta invocación es incorrecta:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarTotal(150);
+</code></pre>
+<p>Falta un argumento.</p>
+<p>Los parámetros establecen qué información necesita el método.</p>
+<h2 id="seccion-4-11-disenar-antes-de-escribir"><span id="apartado-38" class="legacy-anchor" aria-hidden="true"></span>4.11. Diseñar antes de escribir</h2>
+<p>Antes de construir un método, conviene responder:</p>
+<p><strong>¿Qué tarea realiza?</strong></p>
+<p><strong>¿Qué información necesita recibir?</strong></p>
+<p>Por ejemplo:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Qué hace?</td>
+<td>Muestra el total de una compra</td>
+</tr>
+<tr>
+<td>¿Qué recibe?</td>
+<td>Precio y cantidad</td>
+</tr>
+<tr>
+<td>¿Qué calcula?</td>
+<td>Precio por cantidad</td>
+</tr>
+<tr>
+<td>¿Cómo se llama?</td>
+<td><code>mostrarTotal</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Este razonamiento debe realizarse antes de escribir la declaración Java.</p>
+<hr />
+<h1 id="seccion-5-metodos-que-devuelven-resultados-return"><span id="apartado-39" class="legacy-anchor" aria-hidden="true"></span>5. Métodos que devuelven resultados: return</h1>
+<p>Hasta ahora nuestros métodos muestran información.</p>
+<p>Pero imaginemos que queremos utilizar un resultado para realizar otro cálculo.</p>
+<p>Esta necesidad nos llevará a <code>return</code>.</p>
+<h2 id="seccion-5-1-un-metodo-que-muestra-el-doble"><span id="apartado-40" class="legacy-anchor" aria-hidden="true"></span>5.1. Un método que muestra el doble</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarDoble(int numero) {
+    System.out.println(numero * 2);
+}
+</code></pre>
+<p>Si invocamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarDoble(5);
+</code></pre>
+<p>El método muestra 10.</p>
+<p>Funciona correctamente.</p>
+<p>Pero ahora queremos calcular:</p>
+<blockquote>
+<p>El doble de cinco más tres.</p>
+</blockquote>
+<p>Necesitamos obtener 13.</p>
+<h2 id="seccion-5-2-un-intento-que-no-funciona"><span id="apartado-41" class="legacy-anchor" aria-hidden="true"></span>5.2. Un intento que no funciona</h2>
+<p>Imaginemos que escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int resultado = mostrarDoble(5) + 3;
+</code></pre>
+<p>El programa no compila.</p>
+<p>¿Por qué?</p>
+<p>Porque <code>mostrarDoble</code> está declarado como <code>void</code>.</p>
+<p>Ese método muestra información, pero no produce un valor que pueda utilizarse en una expresión aritmética.</p>
+<p><strong>Mostrar un resultado no significa devolverlo.</strong></p>
+<p>Esta diferencia obliga a pensar qué necesitamos que haga el método.</p>
+<h2 id="seccion-5-3-construir-un-metodo-que-devuelve"><span id="apartado-42" class="legacy-anchor" aria-hidden="true"></span>5.3. Construir un método que devuelve</h2>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int calcularDoble(int numero) {
+    return numero * 2;
+}
+</code></pre>
+<p>Ahora el método devuelve un entero.</p>
+<p>Si invocamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int resultado = calcularDoble(5) + 3;
+</code></pre>
+<p>El resultado será 13.</p>
+<h2 id="seccion-5-4-programa-completo"><span id="apartado-43" class="legacy-anchor" aria-hidden="true"></span>5.4. Programa completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static int calcularDoble(int numero) {
+        return numero * 2;
+    }
+
+    public static void main(String[] args) {
+
+        int resultado = calcularDoble(5) + 3;
+
+        System.out.println(resultado);
+    }
+}
+</code></pre>
+<p>Salida:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">13
+</code></pre>
+<h2 id="seccion-5-5-seguir-el-calculo"><span id="apartado-44" class="legacy-anchor" aria-hidden="true"></span>5.5. Seguir el cálculo</h2>
+<p>Primero Java evalúa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">calcularDoble(5)
+</code></pre>
+<p>El parámetro <code>numero</code> recibe 5.</p>
+<p>Después calcula:</p>
+<p><code>5 × 2 = 10</code></p>
+<p>La instrucción:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">return numero * 2;
+</code></pre>
+<p>devuelve 10.</p>
+<p>En <code>main</code>, la expresión equivale a:</p>
+<p><code>10 + 3</code></p>
+<p>Por tanto:</p>
+<p><code>resultado = 13</code></p>
+<p>Finalmente se muestra 13.</p>
+<h2 id="seccion-5-6-que-hace-return"><span id="apartado-45" class="legacy-anchor" aria-hidden="true"></span>5.6. ¿Qué hace return?</h2>
+<p>La instrucción <code>return</code> permite devolver un valor al lugar desde el cual se invocó el método.</p>
+<p>También termina esa ejecución del método.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumar(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<p>Si invocamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int total = sumar(3, 5);
+</code></pre>
+<p>El método devuelve 8.</p>
+<p>Ese valor se asigna a <code>total</code>.</p>
+<h2 id="seccion-5-7-el-tipo-de-retorno"><span id="apartado-46" class="legacy-anchor" aria-hidden="true"></span>5.7. El tipo de retorno</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumar(int a, int b)
+</code></pre>
+<p>El tipo <code>int</code> indica que el método devuelve un entero.</p>
+<p>También podemos tener:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static double calcularArea(double base, double altura)
+</code></pre>
+<p>O:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static boolean esAprobatoria(int nota)
+</code></pre>
+<p>O:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static String obtenerMensaje()
+</code></pre>
+<p>El tipo declarado debe ser compatible con el valor devuelto.</p>
+<p>En cambio, <code>void</code> indica que el método no devuelve un valor mediante <code>return</code>.</p>
+<h2 id="seccion-5-8-un-metodo-que-calcula-un-area"><span id="apartado-47" class="legacy-anchor" aria-hidden="true"></span>5.8. Un método que calcula un área</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static double calcularArea(double base, double altura) {
+    return base * altura;
+}
+</code></pre>
+<p>Invocación:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double area = calcularArea(5.0, 3.0);
+</code></pre>
+<p>Resultado:</p>
+<p><code>15.0</code></p>
+<h2 id="seccion-5-9-un-metodo-que-devuelve-boolean"><span id="apartado-48" class="legacy-anchor" aria-hidden="true"></span>5.9. Un método que devuelve boolean</h2>
+<p>En la Unidad 3 utilizamos condiciones que producen verdadero o falso.</p>
+<p>Podemos aprovecharlas dentro de métodos.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static boolean esAprobatoria(int nota) {
+    return nota &gt;= 6;
+}
+</code></pre>
+<p>Si invocamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">boolean resultado = esAprobatoria(8);
+</code></pre>
+<p><code>resultado</code> vale <code>true</code>.</p>
+<p>Si invocamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">boolean resultado = esAprobatoria(5);
+</code></pre>
+<p>El resultado es <code>false</code>.</p>
+<h2 id="seccion-5-10-utilizar-el-resultado-dentro-de-un-if"><span id="apartado-49" class="legacy-anchor" aria-hidden="true"></span>5.10. Utilizar el resultado dentro de un if</h2>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (esAprobatoria(8)) {
+    System.out.println(&quot;Aprobado&quot;);
+}
+</code></pre>
+<p>La invocación devuelve un booleano.</p>
+<p>Ese resultado se utiliza como condición del <code>if</code>.</p>
+<p>No necesitamos guardar previamente el valor en otra variable si no resulta necesario.</p>
+<h2 id="seccion-5-11-siempre-necesitamos-if-para-devolver-boolean"><span id="apartado-50" class="legacy-anchor" aria-hidden="true"></span>5.11. ¿Siempre necesitamos if para devolver boolean?</h2>
+<p>No.</p>
+<p>Podríamos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static boolean esAprobatoria(int nota) {
+
+    if (nota &gt;= 6) {
+        return true;
+    } else {
+        return false;
+    }
+}
+</code></pre>
+<p>Funciona.</p>
+<p>Pero la comparación ya produce un valor booleano.</p>
+<p>Por eso es suficiente:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static boolean esAprobatoria(int nota) {
+    return nota &gt;= 6;
+}
+</code></pre>
+<p>Esta versión resulta más clara para una condición sencilla.</p>
+<h2 id="seccion-5-12-return-siempre-debe-estar-en-la-ultima-linea"><span id="apartado-51" class="legacy-anchor" aria-hidden="true"></span>5.12. ¿Return siempre debe estar en la última línea?</h2>
+<p>No necesariamente.</p>
+<p>Puede aparecer dentro de una estructura condicional.</p>
+<p>Pero un método que declara un tipo de retorno debe proporcionar un resultado compatible en todos los recorridos que puedan terminar normalmente.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int obtenerMayor(int a, int b) {
+
+    int mayor;
+
+    if (a &gt;= b) {
+        mayor = a;
+    } else {
+        mayor = b;
+    }
+
+    return mayor;
+}
+</code></pre>
+<p>Este ejemplo utiliza un único <code>return</code> al final.</p>
+<p>Para nuestros primeros programas preferiremos esta organización cuando resulte clara.</p>
+<p>Más adelante podremos estudiar otras formas válidas.</p>
+<h2 id="seccion-5-13-elegir-entre-void-y-return"><span id="apartado-52" class="legacy-anchor" aria-hidden="true"></span>5.13. Elegir entre void y return</h2>
+<p>Antes de escribir un método, debemos preguntarnos:</p>
+<p><strong>¿La tarea consiste en realizar una acción, como mostrar un menú?</strong></p>
+<p>Un método <code>void</code> puede ser adecuado.</p>
+<p><strong>¿Necesitamos obtener un valor para utilizarlo en otra operación?</strong></p>
+<p>Conviene construir un método con retorno.</p>
+<p>Por ejemplo:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Diseño adecuado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mostrar un título</td>
+<td><code>void</code></td>
+</tr>
+<tr>
+<td>Mostrar un menú</td>
+<td><code>void</code></td>
+</tr>
+<tr>
+<td>Calcular un área</td>
+<td><code>double</code></td>
+</tr>
+<tr>
+<td>Sumar dos enteros</td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td>Determinar si una nota aprueba</td>
+<td><code>boolean</code></td>
+</tr>
+<tr>
+<td>Obtener un mensaje</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>No existe una única decisión válida para todas las tareas.</p>
+<p>Debemos analizar qué necesita el resto del programa.</p>
+<h2 id="seccion-5-14-simulador-de-parametros-y-retorno"><span id="apartado-53" class="legacy-anchor" aria-hidden="true"></span>5.14. Simulador de parámetros y retorno</h2>
+<div id="u06-parametros-retorno" data-recurso="u06-parametros-retorno"><div data-componente-interactivo="u06-parametros-retorno"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>calcularDoble(5) recibe numero = 5 y devuelve 10; main continúa con 10 + 3 y obtiene 13. return devuelve un valor y finaliza el método; void puede mostrar sin devolver un valor utilizable.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Antes de comprobar cada paso, responde:</p>
+<ul>
+<li>¿Qué argumento recibe el método?</li>
+<li>¿Qué valor tiene el parámetro?</li>
+<li>¿Qué cálculo realiza?</li>
+<li>¿Qué devuelve?</li>
+<li>¿Cómo utiliza ese resultado <code>main</code>?</li>
+</ul>
+<hr />
+<h1 id="seccion-6-el-alcance-de-las-variables-donde-existe-cada-dato"><span id="apartado-54" class="legacy-anchor" aria-hidden="true"></span>6. El alcance de las variables: ¿dónde existe cada dato?</h1>
+<p>Ahora tenemos varios métodos.</p>
+<p>Debemos comprender qué ocurre con las variables declaradas dentro de cada uno.</p>
+<p>Para introducir este concepto, comenzaremos por un error.</p>
+<h2 id="seccion-6-1-un-programa-que-no-compila"><span id="apartado-55" class="legacy-anchor" aria-hidden="true"></span>6.1. Un programa que no compila</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void calcular() {
+        int resultado = 10;
+    }
+
+    public static void main(String[] args) {
+
+        calcular();
+
+        System.out.println(resultado);
+    }
+}
+</code></pre>
+<p>El estudiante podría pensar:</p>
+<blockquote>
+<p>Ya ejecuté <code>calcular</code>, por tanto debería poder mostrar <code>resultado</code>.</p>
+</blockquote>
+<p>Pero el programa no compila.</p>
+<p>¿Por qué?</p>
+<p>Porque <code>resultado</code> fue declarado dentro de <code>calcular</code>.</p>
+<p>No existe una variable con ese nombre disponible en el ámbito de <code>main</code>.</p>
+<h2 id="seccion-6-2-variables-locales"><span id="apartado-56" class="legacy-anchor" aria-hidden="true"></span>6.2. Variables locales</h2>
+<p>Una variable declarada dentro de un método es local al ámbito correspondiente.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void calcular() {
+    int resultado = 10;
+}
+</code></pre>
+<p>La variable <code>resultado</code> pertenece al método <code>calcular</code>.</p>
+<p>No puede utilizarse directamente desde cualquier otro método.</p>
+<h2 id="seccion-6-3-resolver-el-problema-mediante-return"><span id="apartado-57" class="legacy-anchor" aria-hidden="true"></span>6.3. Resolver el problema mediante return</h2>
+<p>Si queremos utilizar el resultado desde <code>main</code>, podemos devolverlo.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static int calcular() {
+
+        int resultado = 10;
+
+        return resultado;
+    }
+
+    public static void main(String[] args) {
+
+        int numero = calcular();
+
+        System.out.println(numero);
+    }
+}
+</code></pre>
+<p>Ahora la salida es:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">10
+</code></pre>
+<p>El método devuelve 10.</p>
+<p>Después <code>main</code> guarda ese valor en su propia variable <code>numero</code>.</p>
+<p><strong>No estamos accediendo directamente a la variable local <code>resultado</code>. Estamos recibiendo el valor que el método devuelve.</strong></p>
+<h2 id="seccion-6-4-dos-variables-con-el-mismo-nombre"><span id="apartado-58" class="legacy-anchor" aria-hidden="true"></span>6.4. Dos variables con el mismo nombre</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mostrarNumero() {
+
+        int numero = 10;
+
+        System.out.println(numero);
+    }
+
+    public static void main(String[] args) {
+
+        int numero = 5;
+
+        mostrarNumero();
+
+        System.out.println(numero);
+    }
+}
+</code></pre>
+<p>¿Qué salida esperamos?</p>
+<p>Dentro de <code>mostrarNumero</code>, la variable local <code>numero</code> vale 10.</p>
+<p>Dentro de <code>main</code>, otra variable llamada <code>numero</code> vale 5.</p>
+<p>Salida:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">10
+5
+</code></pre>
+<p>Son variables distintas.</p>
+<p>Tienen el mismo nombre, pero pertenecen a ámbitos diferentes.</p>
+<h2 id="seccion-6-5-los-parametros-tambien-son-locales"><span id="apartado-59" class="legacy-anchor" aria-hidden="true"></span>6.5. Los parámetros también son locales</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarDoble(int numero) {
+    System.out.println(numero * 2);
+}
+</code></pre>
+<p>El parámetro <code>numero</code> se utiliza dentro del método.</p>
+<p>Cuando lo invocamos, recibe el valor enviado.</p>
+<p>No significa que automáticamente exista una variable <code>numero</code> en <code>main</code>.</p>
+<h2 id="seccion-6-6-modificar-un-parametro-int"><span id="apartado-60" class="legacy-anchor" aria-hidden="true"></span>6.6. Modificar un parámetro int</h2>
+<p>Ahora estudiaremos un comportamiento importante.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void aumentar(int numero) {
+
+        numero = numero + 1;
+
+        System.out.println(numero);
+    }
+
+    public static void main(String[] args) {
+
+        int valor = 5;
+
+        aumentar(valor);
+
+        System.out.println(valor);
+    }
+}
+</code></pre>
+<p>Antes de ejecutarlo, predice la salida.</p>
+<details class="respuesta"><summary>Ver explicación</summary><p>Dentro de <code>aumentar</code>, el parámetro recibe 5.</p>
+<p>Después cambia a 6.</p>
+<p>El método muestra 6.</p>
+<p>Pero la variable <code>valor</code> de <code>main</code> sigue valiendo 5.</p>
+<p>Por tanto:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">6
+5
+</code></pre>
+</details><div class="respuesta-impresa" aria-hidden="true"><p>Dentro de <code>aumentar</code>, el parámetro recibe 5.</p>
+<p>Después cambia a 6.</p>
+<p>El método muestra 6.</p>
+<p>Pero la variable <code>valor</code> de <code>main</code> sigue valiendo 5.</p>
+<p>Por tanto:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">6
+5
+</code></pre>
+</div>
+<h2 id="seccion-6-7-por-que-no-cambio-valor"><span id="apartado-61" class="legacy-anchor" aria-hidden="true"></span>6.7. ¿Por qué no cambió valor?</h2>
+<p>Java transmite los argumentos por valor.</p>
+<p>Para un argumento de tipo <code>int</code>, el parámetro recibe una copia del valor entero.</p>
+<p>Cuando modificamos ese parámetro, no modificamos automáticamente la variable original.</p>
+<p>Podemos representarlo así:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th style="text-align:right"><code>valor</code> en main</th>
+<th style="text-align:right"><code>numero</code> en aumentar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Antes de invocar</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>Al invocar</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td>Después de incrementar</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>Al regresar</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">Ya no está en ejecución</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-6-8-como-hacemos-que-main-conserve-el-nuevo-valor"><span id="apartado-62" class="legacy-anchor" aria-hidden="true"></span>6.8. ¿Cómo hacemos que main conserve el nuevo valor?</h2>
+<p>Podemos devolverlo y asignarlo.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static int aumentar(int numero) {
+        return numero + 1;
+    }
+
+    public static void main(String[] args) {
+
+        int valor = 5;
+
+        valor = aumentar(valor);
+
+        System.out.println(valor);
+    }
+}
+</code></pre>
+<p>Ahora muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">6
+</code></pre>
+<p>Porque:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">valor = aumentar(valor);
+</code></pre>
+<p>recibe el resultado y realiza una nueva asignación.</p>
+<h2 id="seccion-6-9-alcance-dentro-de-bloques"><span id="apartado-63" class="legacy-anchor" aria-hidden="true"></span>6.9. Alcance dentro de bloques</h2>
+<p>El alcance también depende de las llaves.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">if (edad &gt;= 18) {
+    int descuento = 10;
+}
+</code></pre>
+<p>La variable local <code>descuento</code> declarada dentro del bloque no está disponible directamente fuera de él.</p>
+<p>Ya utilizamos bloques al estudiar condiciones y ciclos.</p>
+<p>Ahora comprendemos que también delimitan dónde pueden utilizarse determinadas variables.</p>
+<h2 id="seccion-6-10-que-necesitamos-comprender"><span id="apartado-64" class="legacy-anchor" aria-hidden="true"></span>6.10. Qué necesitamos comprender</h2>
+<p>Por ahora es suficiente recordar:</p>
+<ul>
+<li>Las variables locales pertenecen a sus ámbitos.</li>
+<li>Los parámetros son variables locales del método.</li>
+<li>Un método no puede acceder directamente a cualquier variable local de <code>main</code>.</li>
+<li>Podemos enviar información mediante argumentos.</li>
+<li>Podemos recuperar resultados mediante <code>return</code>.</li>
+<li>Modificar un parámetro <code>int</code> no cambia automáticamente la variable enviada.</li>
+</ul>
+<p>Estos conceptos preparan el trabajo con objetos.</p>
+<hr />
+<h1 id="seccion-7-arreglos-como-argumentos-consultar-y-modificar-datos"><span id="apartado-65" class="legacy-anchor" aria-hidden="true"></span>7. Arreglos como argumentos: consultar y modificar datos</h1>
+<p>En la Unidad 5 aprendimos que un arreglo permite conservar varios valores.</p>
+<p>Ahora podemos enviarlo a un método.</p>
+<p>Pero antes necesitamos recuperar una diferencia entre variables primitivas y referencias.</p>
+<h2 id="seccion-7-1-copiar-un-entero"><span id="apartado-66" class="legacy-anchor" aria-hidden="true"></span>7.1. Copiar un entero</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int a = 5;
+int b = a;
+
+b = 100;
+
+System.out.println(a);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">5
+</code></pre>
+<p>La asignación:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int b = a;
+</code></pre>
+<p>copia el valor entero que contiene <code>a</code>.</p>
+<p>Después modificar <code>b</code> no cambia automáticamente <code>a</code>.</p>
+<h2 id="seccion-7-2-dos-referencias-al-mismo-arreglo"><span id="apartado-67" class="legacy-anchor" aria-hidden="true"></span>7.2. Dos referencias al mismo arreglo</h2>
+<p>Ahora considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int[] a = {3, 5, 8};
+
+int[] b = a;
+
+b[0] = 100;
+
+System.out.println(a[0]);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">100
+</code></pre>
+<p>¿Por qué?</p>
+<p>Porque <code>a</code> y <code>b</code> hacen referencia al mismo arreglo.</p>
+<p>No creamos otro arreglo mediante:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int[] b = a;
+</code></pre>
+<p>Simplemente guardamos en <code>b</code> la referencia al arreglo existente.</p>
+<h2 id="seccion-7-3-el-mismo-comportamiento-al-utilizar-metodos"><span id="apartado-68" class="legacy-anchor" aria-hidden="true"></span>7.3. El mismo comportamiento al utilizar métodos</h2>
+<p>Podemos construir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void cambiarPrimero(int[] numeros) {
+        numeros[0] = 100;
+    }
+
+    public static void main(String[] args) {
+
+        int[] datos = {3, 5, 8};
+
+        cambiarPrimero(datos);
+
+        System.out.println(datos[0]);
+    }
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">100
+</code></pre>
+<p>El parámetro <code>numeros</code> recibe una copia de la referencia almacenada en <code>datos</code>.</p>
+<p>Ambas referencias permiten acceder al mismo arreglo.</p>
+<p>Por eso modificar un elemento mediante <code>numeros[0]</code> modifica ese arreglo.</p>
+<h2 id="seccion-7-4-java-sigue-utilizando-paso-por-valor"><span id="apartado-69" class="legacy-anchor" aria-hidden="true"></span>7.4. Java sigue utilizando paso por valor</h2>
+<p>Debemos evitar una conclusión incorrecta.</p>
+<p>No significa que Java pase enteros por valor y arreglos mediante un mecanismo diferente llamado paso por referencia.</p>
+<p><strong>Java pasa todos los argumentos por valor.</strong> La variable parámetro recibe una copia del <strong>valor de referencia</strong>, no una «referencia a la variable del llamador». Por eso cambiar <code>numeros[0]</code> afecta el objeto compartido, mientras que reasignar <code>numeros = new int[3]</code> dentro del método no cambia automáticamente a qué arreglo apunta la variable original de <code>main</code>. Este segundo contraste permite verificar que seguimos hablando de paso por valor.</p>
+<p>La diferencia es qué valor se copia.</p>
+<p>Con <code>int</code>, copiamos el número entero.</p>
+<p>Con un arreglo, copiamos una referencia al arreglo.</p>
+<p>Por eso podemos modificar sus elementos a través de esa referencia.</p>
+<h2 id="seccion-7-5-metodos-que-solamente-consultan-arreglos"><span id="apartado-70" class="legacy-anchor" aria-hidden="true"></span>7.5. Métodos que solamente consultan arreglos</h2>
+<p>No todos los métodos que reciben arreglos deben modificarlos.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarNotas(int[] notas) {
+
+    for (int i = 0; i &lt; notas.length; i++) {
+        System.out.println(notas[i]);
+    }
+}
+</code></pre>
+<p>Este método recorre y muestra los elementos.</p>
+<p>No realiza ninguna asignación sobre las posiciones del arreglo.</p>
+<h2 id="seccion-7-6-programa-completo-para-mostrar-un-arreglo"><span id="apartado-71" class="legacy-anchor" aria-hidden="true"></span>7.6. Programa completo para mostrar un arreglo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mostrarNotas(int[] notas) {
+
+        for (int i = 0; i &lt; notas.length; i++) {
+            System.out.println(notas[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[] calificaciones = {7, 5, 8, 6, 9};
+
+        mostrarNotas(calificaciones);
+    }
+}
+</code></pre>
+<p>Salida:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">7
+5
+8
+6
+9
+</code></pre>
+<h2 id="seccion-7-7-un-metodo-que-devuelve-la-suma"><span id="apartado-72" class="legacy-anchor" aria-hidden="true"></span>7.7. Un método que devuelve la suma</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumarNotas(int[] notas) {
+
+    int suma = 0;
+
+    for (int i = 0; i &lt; notas.length; i++) {
+        suma += notas[i];
+    }
+
+    return suma;
+}
+</code></pre>
+<p>El método recibe el arreglo.</p>
+<p>Recorre sus elementos.</p>
+<p>Conserva la suma en una variable local.</p>
+<p>Finalmente devuelve el resultado.</p>
+<p>No necesita modificar el arreglo.</p>
+<h2 id="seccion-7-8-reutilizar-con-diferentes-arreglos"><span id="apartado-73" class="legacy-anchor" aria-hidden="true"></span>7.8. Reutilizar con diferentes arreglos</h2>
+<p>Podemos tener:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int[] grupoA = {7, 5, 8};
+int[] grupoB = {9, 6, 10, 4};
+</code></pre>
+<p>Y utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int sumaA = sumarNotas(grupoA);
+int sumaB = sumarNotas(grupoB);
+</code></pre>
+<p>Los resultados serán:</p>
+<p><code>sumaA = 20</code></p>
+<p><code>sumaB = 29</code></p>
+<p>No necesitamos escribir dos versiones de <code>sumarNotas</code>.</p>
+<h2 id="seccion-7-9-disenar-la-responsabilidad"><span id="apartado-74" class="legacy-anchor" aria-hidden="true"></span>7.9. Diseñar la responsabilidad</h2>
+<p>Antes de crear un método que recibe un arreglo, debemos preguntar:</p>
+<p><strong>¿Debe solamente consultar los valores?</strong></p>
+<p>O:</p>
+<p><strong>¿Debe modificar alguna posición?</strong></p>
+<p>Por ejemplo:</p>
+<p><code>sumarNotas</code> debería calcular un resultado sin modificar el arreglo.</p>
+<p>En cambio:</p>
+<p><code>cambiarPrimeraNota</code> puede tener como responsabilidad modificar un elemento.</p>
+<p>Es importante que el nombre y la descripción de la tarea permitan reconocer su comportamiento.</p>
+<h2 id="seccion-7-10-simulador-de-alcance-y-referencias"><span id="apartado-75" class="legacy-anchor" aria-hidden="true"></span>7.10. Simulador de alcance y referencias</h2>
+<div id="u06-alcance-referencias" data-recurso="u06-alcance-referencias"><div data-componente-interactivo="u06-alcance-referencias"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Java pasa argumentos por valor. Cambiar un parámetro int no cambia el original; en un arreglo se copia la referencia y un cambio de elemento afecta al mismo arreglo. Reasignar el parámetro no cambia la referencia de main.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Este recurso permitirá comparar los dos comportamientos.</p>
+<p>Antes de avanzar, debemos predecir:</p>
+<ul>
+<li>Qué valor recibe el parámetro.</li>
+<li>Qué instrucción modifica ese valor.</li>
+<li>Qué sucede con la variable original.</li>
+<li>Si hay un arreglo compartido.</li>
+<li>Qué valor se observará al regresar a <code>main</code>.</li>
+</ul>
+<h2 id="seccion-7-11-que-no-necesitamos-estudiar-todavia"><span id="apartado-76" class="legacy-anchor" aria-hidden="true"></span>7.11. Qué no necesitamos estudiar todavía</h2>
+<p>No es necesario aprender ahora todos los detalles de memoria y gestión de objetos en Java.</p>
+<p>Tampoco necesitamos introducir constructores ni clases propias para comprender estos ejemplos.</p>
+<p>El objetivo es reconocer los comportamientos que afectan a nuestros programas.</p>
+<p>En la Unidad 7 profundizaremos en los objetos y las referencias.</p>
+<hr />
+<h1 id="seccion-8-disenar-metodos-identificar-responsabilidades"><span id="apartado-77" class="legacy-anchor" aria-hidden="true"></span>8. Diseñar métodos: identificar responsabilidades</h1>
+<p>Ahora que sabemos definir métodos, enviar argumentos y devolver resultados, necesitamos responder una pregunta fundamental.</p>
+<p><strong>¿Cómo decidimos qué métodos debe tener un programa?</strong></p>
+<p>No basta con dividir el código cada cierta cantidad de líneas.</p>
+<p>Debemos identificar tareas que tengan un propósito claro.</p>
+<h2 id="seccion-8-1-comenzar-por-el-problema"><span id="apartado-78" class="legacy-anchor" aria-hidden="true"></span>8.1. Comenzar por el problema</h2>
+<p>Imaginemos que necesitamos construir un programa para registrar calificaciones.</p>
+<p>Debe:</p>
+<ol>
+<li>Mostrar un título.</li>
+<li>Mostrar las notas.</li>
+<li>Calcular su suma.</li>
+<li>Calcular el promedio.</li>
+<li>Contar aprobados.</li>
+<li>Mostrar un informe.</li>
+</ol>
+<p>Estas son las responsabilidades que identificamos a partir de los requisitos.</p>
+<p>Todavía no escribimos ningún método.</p>
+<p>Primero comprendemos qué tareas existen.</p>
+<h2 id="seccion-8-2-tres-preguntas-para-disenar"><span id="apartado-79" class="legacy-anchor" aria-hidden="true"></span>8.2. Tres preguntas para diseñar</h2>
+<p>Antes de construir un método, responderemos:</p>
+<p><strong>¿Qué recibe?</strong></p>
+<p>¿Qué información necesita para realizar su tarea?</p>
+<p><strong>¿Qué hace?</strong></p>
+<p>¿Qué operación o conjunto de instrucciones debe ejecutar?</p>
+<p><strong>¿Qué devuelve?</strong></p>
+<p>¿Necesitamos recuperar un valor o solamente realizar una acción?</p>
+<p>Por ejemplo:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td><code>sumarNotas</code></td>
+</tr>
+<tr>
+<td>Recibe</td>
+<td>Un arreglo de enteros</td>
+</tr>
+<tr>
+<td>Hace</td>
+<td>Recorre y suma sus elementos</td>
+</tr>
+<tr>
+<td>Devuelve</td>
+<td>Un entero</td>
+</tr>
+<tr>
+<td>Modifica el arreglo</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Con esta información podemos construir la declaración:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumarNotas(int[] notas)
+</code></pre>
+<p>Después escribimos el cuerpo.</p>
+<h2 id="seccion-8-3-disenar-un-metodo-void"><span id="apartado-80" class="legacy-anchor" aria-hidden="true"></span>8.3. Diseñar un método void</h2>
+<p>Ahora necesitamos mostrar las notas.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td><code>mostrarNotas</code></td>
+</tr>
+<tr>
+<td>Recibe</td>
+<td>Un arreglo de enteros</td>
+</tr>
+<tr>
+<td>Hace</td>
+<td>Muestra todos sus elementos</td>
+</tr>
+<tr>
+<td>Devuelve</td>
+<td>Ningún valor</td>
+</tr>
+<tr>
+<td>Modifica el arreglo</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Declaración:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarNotas(int[] notas)
+</code></pre>
+<p>La decisión de utilizar <code>void</code> surge de la responsabilidad del método.</p>
+<h2 id="seccion-8-4-disenar-un-metodo-boolean"><span id="apartado-81" class="legacy-anchor" aria-hidden="true"></span>8.4. Diseñar un método boolean</h2>
+<p>Ahora queremos determinar si una calificación es aprobatoria.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td><code>esAprobatoria</code></td>
+</tr>
+<tr>
+<td>Recibe</td>
+<td>Una nota entera</td>
+</tr>
+<tr>
+<td>Hace</td>
+<td>Comprueba si cumple el criterio</td>
+</tr>
+<tr>
+<td>Devuelve</td>
+<td><code>true</code> o <code>false</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Declaración:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static boolean esAprobatoria(int nota)
+</code></pre>
+<p>Implementación:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static boolean esAprobatoria(int nota) {
+    return nota &gt;= 6;
+}
+</code></pre>
+<h2 id="seccion-8-5-pseudocodigo-antes-de-java"><span id="apartado-82" class="legacy-anchor" aria-hidden="true"></span>8.5. Pseudocódigo antes de Java</h2>
+<p>Podemos representar una función así:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">FUNCION SUMAR_NOTAS(notas)
+
+    suma ← 0
+
+    PARA cada posición válida del arreglo HACER
+        suma ← suma + elemento
+    FIN PARA
+
+    DEVOLVER suma
+
+FIN FUNCION
+</code></pre>
+<p>Después traducimos ese algoritmo a Java.</p>
+<p>El método no reemplaza el razonamiento algorítmico.</p>
+<p>Lo organiza.</p>
+<h2 id="seccion-8-6-la-responsabilidad-de-main"><span id="apartado-83" class="legacy-anchor" aria-hidden="true"></span>8.6. La responsabilidad de main</h2>
+<p><code>main</code> continúa siendo el punto de entrada.</p>
+<p>Puede encargarse de coordinar las tareas:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void main(String[] args) {
+
+    int[] notas = {7, 5, 8, 6, 9};
+
+    mostrarNotas(notas);
+
+    int suma = sumarNotas(notas);
+
+    System.out.println(&quot;Suma: &quot; + suma);
+}
+</code></pre>
+<p>Al leerlo, podemos identificar las acciones principales.</p>
+<p>No necesitamos revisar inmediatamente los detalles de cada recorrido.</p>
+<h2 id="seccion-8-7-un-metodo-debe-tener-una-sola-instruccion"><span id="apartado-84" class="legacy-anchor" aria-hidden="true"></span>8.7. ¿Un método debe tener una sola instrucción?</h2>
+<p>No.</p>
+<p>Un método puede contener:</p>
+<ul>
+<li>Variables.</li>
+<li>Condiciones.</li>
+<li>Ciclos.</li>
+<li>Asignaciones.</li>
+<li>Invocaciones a otros métodos.</li>
+</ul>
+<p>Lo importante es que esas instrucciones colaboren para realizar una responsabilidad principal.</p>
+<h2 id="seccion-8-8-debemos-separar-todo"><span id="apartado-85" class="legacy-anchor" aria-hidden="true"></span>8.8. ¿Debemos separar todo?</h2>
+<p>Tampoco.</p>
+<p>Crear métodos innecesarios puede dificultar la lectura.</p>
+<p>Por ejemplo, un método que solamente ejecuta un <code>println</code> una vez puede no aportar una mejora.</p>
+<p>Debemos preguntarnos:</p>
+<blockquote>
+<p>¿Separar esta tarea facilita comprenderla, comprobarla, modificarla o reutilizarla?</p>
+</blockquote>
+<p>Si la respuesta es afirmativa, probablemente tenga sentido considerar un método.</p>
+<h2 id="seccion-8-9-elegir-nombres-claros"><span id="apartado-86" class="legacy-anchor" aria-hidden="true"></span>8.9. Elegir nombres claros</h2>
+<p>Preferiremos nombres como:</p>
+<p><code>mostrarMenu</code></p>
+<p><code>sumarNotas</code></p>
+<p><code>calcularPromedio</code></p>
+<p><code>contarAprobados</code></p>
+<p><code>buscarNota</code></p>
+<p>En lugar de:</p>
+<p><code>metodo1</code></p>
+<p><code>proceso2</code></p>
+<p><code>hacerAlgo</code></p>
+<p>Un buen nombre permite anticipar la responsabilidad.</p>
+<h2 id="seccion-8-10-actividad-de-diseno-sin-computadora"><span id="apartado-87" class="legacy-anchor" aria-hidden="true"></span>8.10. Actividad de diseño sin computadora</h2>
+<p>Tenemos este fragmento:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int suma = 0;
+
+for (int i = 0; i &lt; notas.length; i++) {
+    suma += notas[i];
+}
+</code></pre>
+<p>Antes de transformarlo en un método, responde:</p>
+<ol>
+<li>¿Qué hace?</li>
+<li>¿Qué información necesita?</li>
+<li>¿Qué resultado produce?</li>
+<li>¿Debe modificar el arreglo?</li>
+<li>¿Qué nombre le pondrías?</li>
+<li>¿Qué tipo de retorno utilizarías?</li>
+</ol>
+<p>Después construye la declaración Java.</p>
+<p>Esta actividad permite comprobar si comprendemos el diseño, no solamente la sintaxis.</p>
+<hr />
+<h1 id="seccion-9-comprobar-metodos-mediante-casos-de-prueba"><span id="apartado-88" class="legacy-anchor" aria-hidden="true"></span>9. Comprobar métodos mediante casos de prueba</h1>
+<p>En las unidades anteriores aprendimos a probar nuestros programas.</p>
+<p>Ahora podemos comprobar tareas más pequeñas.</p>
+<p>Esto nos ayuda a encontrar errores antes de integrar todas las operaciones.</p>
+<h2 id="seccion-9-1-que-recibe-que-hace-y-que-devuelve"><span id="apartado-89" class="legacy-anchor" aria-hidden="true"></span>9.1. Qué recibe, qué hace y qué devuelve</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumar(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<p>Podemos describirlo mediante tres preguntas:</p>
+<p><strong>Recibe:</strong> dos enteros.</p>
+<p><strong>Hace:</strong> calcula su suma.</p>
+<p><strong>Devuelve:</strong> un entero que representa el resultado.</p>
+<p>Esta descripción permite construir casos de prueba.</p>
+<h2 id="seccion-9-2-pruebas-para-sumar"><span id="apartado-90" class="legacy-anchor" aria-hidden="true"></span>9.2. Pruebas para sumar</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Argumentos</th>
+<th style="text-align:right">Resultado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 y 5</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td>0 y 7</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>-2 y 4</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>-3 y -5</td>
+<td style="text-align:right">-8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Podemos comprobarlas desde <code>main</code>.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static int sumar(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(sumar(3, 5));
+        System.out.println(sumar(0, 7));
+        System.out.println(sumar(-2, 4));
+        System.out.println(sumar(-3, -5));
+    }
+}
+</code></pre>
+<p>Salida:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">8
+7
+2
+-8
+</code></pre>
+<h2 id="seccion-9-3-condiciones-necesarias-para-utilizar-un-metodo"><span id="apartado-91" class="legacy-anchor" aria-hidden="true"></span>9.3. Condiciones necesarias para utilizar un método</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static double calcularPromedio(int[] notas)
+</code></pre>
+<p>Para este ejercicio estableceremos que el método se utiliza con un arreglo que contiene al menos una nota.</p>
+<p>Podemos describirlo así:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recibe</td>
+<td>Un arreglo con al menos una nota</td>
+</tr>
+<tr>
+<td>Hace</td>
+<td>Suma los valores y calcula el promedio</td>
+</tr>
+<tr>
+<td>Devuelve</td>
+<td>Un <code>double</code></td>
+</tr>
+<tr>
+<td>No debe hacer</td>
+<td>Modificar las notas</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Esto representa un acuerdo sencillo sobre el funcionamiento del método.</p>
+<p>Podemos llamarlo <strong>contrato de uso</strong>.</p>
+<p>No necesitamos estudiar contratos formales de software.</p>
+<p>Lo importante es reconocer qué necesita la operación y qué resultado esperamos.</p>
+<h2 id="seccion-9-4-el-caso-del-arreglo-vacio"><span id="apartado-92" class="legacy-anchor" aria-hidden="true"></span>9.4. El caso del arreglo vacío</h2>
+<p>Imaginemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int[] notas = new int[0];
+</code></pre>
+<p>Su longitud es cero.</p>
+<p>Si el método calcula:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">return suma * 1.0 / notas.length;
+</code></pre>
+<p>en este caso el resultado de la división de punto flotante será <code>NaN</code>, porque estamos realizando cero dividido entre cero.</p>
+<p><strong>¿Por qué no aparece una <code>ArithmeticException</code>?</strong> Porque la multiplicación por <code>1.0</code> convierte la operación en una división de punto flotante (<code>double</code>). Java sigue las reglas de los números de punto flotante de IEEE 754: <code>0.0 / 0.0</code> produce <code>NaN</code> (<em>Not a Number</em>), mientras que, por ejemplo, <code>5.0 / 0.0</code> produce infinito positivo. En cambio, la división entre enteros <code>0 / 0</code> o <code>5 / 0</code> lanza <code>ArithmeticException</code> cuando se ejecuta. Ninguno de esos resultados convierte en válido el promedio de un arreglo vacío.</p>
+<p><strong>Predicción breve antes de probar:</strong> ¿qué ocurrirá con <code>int a = 0 / 0;</code> y con <code>double b = 0.0 / 0.0;</code>?</p><details class="respuesta"><summary>Ver explicación</summary><p>En el primer caso no hay un resultado entero válido y la operación de división por cero provoca una excepción; en el segundo, <code>b</code> recibe <code>NaN</code>. La decisión pedagógica sigue siendo comprobar que hay al menos un dato antes de calcular el promedio.</p></details><div class="respuesta-impresa" aria-hidden="true"><p>En el primer caso no hay un resultado entero válido y la operación de división por cero provoca una excepción; en el segundo, <code>b</code> recibe <code>NaN</code>. La decisión pedagógica sigue siendo comprobar que hay al menos un dato antes de calcular el promedio.</p></div>
+<p>El promedio de un conjunto sin elementos no está definido.</p>
+<p>Debemos distinguir dos cosas:</p>
+<p><strong>Regla del problema:</strong> no calcular un promedio cuando no hay notas.</p>
+<p><strong>Comportamiento de Java:</strong> la operación con valores de punto flotante puede producir <code>NaN</code>.</p>
+<p>La regla no se cumple automáticamente por haberla escrito como comentario.</p>
+<p>Nuestro programa debe respetarla.</p>
+<p>Por ahora utilizaremos arreglos no vacíos al calcular promedios.</p>
+<p>Como ampliación, podemos diseñar una validación explícita.</p>
+<h2 id="seccion-9-5-probar-metodos-boolean"><span id="apartado-93" class="legacy-anchor" aria-hidden="true"></span>9.5. Probar métodos boolean</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static boolean esAprobatoria(int nota) {
+    return nota &gt;= 6;
+}
+</code></pre>
+<p>Pruebas:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Nota</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">5</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>¿Por qué incluimos 6?</p>
+<p>Porque es el límite exacto del criterio.</p>
+<h2 id="seccion-9-6-probar-metodos-con-arreglos"><span id="apartado-94" class="legacy-anchor" aria-hidden="true"></span>9.6. Probar métodos con arreglos</h2>
+<p>Para:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumarNotas(int[] notas)
+</code></pre>
+<p>Podemos utilizar:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Arreglo</th>
+<th style="text-align:right">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{3,5,8}</code></td>
+<td style="text-align:right">16</td>
+</tr>
+<tr>
+<td><code>{0,0,0}</code></td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td><code>{-2,4,6}</code></td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td><code>{}</code></td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El método de suma sí puede trabajar con un arreglo vacío y devolver cero, porque el acumulador comienza en cero y el recorrido no ejecuta iteraciones.</p>
+<h2 id="seccion-9-7-comprobar-que-no-se-modifican-los-datos"><span id="apartado-95" class="legacy-anchor" aria-hidden="true"></span>9.7. Comprobar que no se modifican los datos</h2>
+<p>Si un método tiene como responsabilidad calcular una suma, no debería alterar las notas.</p>
+<p>Podemos realizar una prueba adicional:</p>
+<ol>
+<li>Preparar un arreglo.</li>
+<li>Invocar el método.</li>
+<li>Comprobar el resultado.</li>
+<li>Volver a mostrar el arreglo.</li>
+<li>Verificar que sus elementos no cambiaron.</li>
+</ol>
+<p>Esta prueba ayuda a comprobar una responsabilidad que no se observa solamente mediante el valor devuelto.</p>
+<h2 id="seccion-9-8-pruebas-individuales-y-de-integracion"><span id="apartado-96" class="legacy-anchor" aria-hidden="true"></span>9.8. Pruebas individuales y de integración</h2>
+<p>Debemos distinguir:</p>
+<p><strong>Prueba de un método:</strong> comprueba que una tarea produce el resultado esperado.</p>
+<p><strong>Prueba del programa completo:</strong> comprueba que los métodos colaboran correctamente.</p>
+<p>Necesitamos ambas.</p>
+<p>Un método puede funcionar bien de manera aislada, pero ser invocado con argumentos incorrectos desde <code>main</code>.</p>
+<p>También puede ocurrir que un método devuelva un valor correcto, pero el programa no lo utilice de la manera prevista.</p>
+<hr />
+<h1 id="seccion-10-errores-frecuentes-al-trabajar-con-metodos"><span id="apartado-97" class="legacy-anchor" aria-hidden="true"></span>10. Errores frecuentes al trabajar con métodos</h1>
+<p>Aprender métodos introduce nuevas posibilidades de error.</p>
+<p>Algunos impiden compilar.</p>
+<p>Otros permiten ejecutar el programa, pero producen resultados incorrectos.</p>
+<p>Debemos aprender a distinguirlos.</p>
+<h2 id="seccion-10-1-definir-sin-invocar"><span id="apartado-98" class="legacy-anchor" aria-hidden="true"></span>10.1. Definir sin invocar</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void saludar() {
+    System.out.println(&quot;Hola&quot;);
+}
+</code></pre>
+<p>Si nunca invocamos <code>saludar()</code>, el mensaje no aparece.</p>
+<p>Definir no significa ejecutar.</p>
+<h2 id="seccion-10-2-declarar-un-metodo-dentro-de-main"><span id="apartado-99" class="legacy-anchor" aria-hidden="true"></span>10.2. Declarar un método dentro de main</h2>
+<p>Incorrecto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void main(String[] args) {
+
+    public static void saludar() {
+        System.out.println(&quot;Hola&quot;);
+    }
+}
+</code></pre>
+<p>Java no permite declarar un método ordinario dentro de otro método.</p>
+<p>Debemos escribirlo dentro de la clase, pero fuera de <code>main</code>.</p>
+<h2 id="seccion-10-3-olvidar-los-parentesis-en-la-invocacion"><span id="apartado-100" class="legacy-anchor" aria-hidden="true"></span>10.3. Olvidar los paréntesis en la invocación</h2>
+<p>Incorrecto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saludar;
+</code></pre>
+<p>Correcto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saludar();
+</code></pre>
+<h2 id="seccion-10-4-enviar-una-cantidad-incorrecta-de-argumentos"><span id="apartado-101" class="legacy-anchor" aria-hidden="true"></span>10.4. Enviar una cantidad incorrecta de argumentos</h2>
+<p>Si tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarTotal(int precio, int cantidad)
+</code></pre>
+<p>Esta invocación no coincide:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarTotal(150);
+</code></pre>
+<p>Falta un argumento.</p>
+<h2 id="seccion-10-5-confundir-el-orden-de-los-argumentos"><span id="apartado-102" class="legacy-anchor" aria-hidden="true"></span>10.5. Confundir el orden de los argumentos</h2>
+<p>Si el método calcula:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int restar(int a, int b) {
+    return a - b;
+}
+</code></pre>
+<p>Entonces:</p>
+<p><code>restar(10, 4)</code> devuelve 6.</p>
+<p>Pero:</p>
+<p><code>restar(4, 10)</code> devuelve -6.</p>
+<h2 id="seccion-10-6-intentar-devolver-un-valor-desde-void"><span id="apartado-103" class="legacy-anchor" aria-hidden="true"></span>10.6. Intentar devolver un valor desde void</h2>
+<p>Incorrecto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void calcularDoble(int numero) {
+    return numero * 2;
+}
+</code></pre>
+<p>El método declara <code>void</code>, pero intenta devolver un entero.</p>
+<p>Debemos cambiar el tipo de retorno si queremos devolver ese resultado.</p>
+<h2 id="seccion-10-7-olvidar-return"><span id="apartado-104" class="legacy-anchor" aria-hidden="true"></span>10.7. Olvidar return</h2>
+<p>Incorrecto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumar(int a, int b) {
+
+    int resultado = a + b;
+}
+</code></pre>
+<p>El método declara un retorno de tipo <code>int</code>, pero no devuelve el resultado.</p>
+<p>Correcto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumar(int a, int b) {
+
+    int resultado = a + b;
+
+    return resultado;
+}
+</code></pre>
+<h2 id="seccion-10-8-confundir-println-y-return"><span id="apartado-105" class="legacy-anchor" aria-hidden="true"></span>10.8. Confundir println y return</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarSuma(int a, int b) {
+    System.out.println(a + b);
+}
+</code></pre>
+<p>El método muestra el resultado.</p>
+<p>No podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int total = mostrarSuma(3, 5);
+</code></pre>
+<p>porque esa invocación no produce un valor entero.</p>
+<p>Si necesitamos utilizarlo en otro cálculo, debemos diseñar un método con retorno.</p>
+<h2 id="seccion-10-9-utilizar-una-variable-local-fuera-de-su-ambito"><span id="apartado-106" class="legacy-anchor" aria-hidden="true"></span>10.9. Utilizar una variable local fuera de su ámbito</h2>
+<p>Si declaramos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void calcular() {
+    int resultado = 10;
+}
+</code></pre>
+<p>No podemos utilizar directamente <code>resultado</code> desde <code>main</code>.</p>
+<p>Debemos transmitir la información de una manera adecuada.</p>
+<h2 id="seccion-10-10-pensar-que-modificar-un-parametro-int-modifica-el-original"><span id="apartado-107" class="legacy-anchor" aria-hidden="true"></span>10.10. Pensar que modificar un parámetro int modifica el original</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void cambiar(int numero) {
+    numero = 100;
+}
+</code></pre>
+<p>Modificar el parámetro no cambia automáticamente la variable original utilizada como argumento.</p>
+<h2 id="seccion-10-11-modificar-un-arreglo-sin-querer"><span id="apartado-108" class="legacy-anchor" aria-hidden="true"></span>10.11. Modificar un arreglo sin querer</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void procesar(int[] numeros) {
+    numeros[0] = 100;
+}
+</code></pre>
+<p>Este método cambia un elemento del arreglo recibido.</p>
+<p>Si solamente queríamos consultar valores, puede representar un error lógico.</p>
+<h2 id="seccion-10-12-calcular-un-promedio-sin-datos"><span id="apartado-109" class="legacy-anchor" aria-hidden="true"></span>10.12. Calcular un promedio sin datos</h2>
+<p>Un arreglo vacío no contiene elementos para promediar.</p>
+<p>Debemos establecer una regla y respetarla antes de realizar la división.</p>
+<h2 id="seccion-10-13-crear-metodos-demasiado-grandes"><span id="apartado-110" class="legacy-anchor" aria-hidden="true"></span>10.13. Crear métodos demasiado grandes</h2>
+<p>Un método que muestra menús, lee datos, calcula, busca y presenta informes puede ser difícil de comprender.</p>
+<p>Conviene identificar tareas que tengan responsabilidades propias.</p>
+<h2 id="seccion-10-14-crear-metodos-innecesarios"><span id="apartado-111" class="legacy-anchor" aria-hidden="true"></span>10.14. Crear métodos innecesarios</h2>
+<p>No toda instrucción necesita convertirse en un método.</p>
+<p>Debemos preguntarnos si la separación mejora la claridad, la reutilización o las pruebas.</p>
+<h2 id="seccion-10-15-elegir-nombres-poco-informativos"><span id="apartado-112" class="legacy-anchor" aria-hidden="true"></span>10.15. Elegir nombres poco informativos</h2>
+<p>Nombres como:</p>
+<p><code>metodo1</code></p>
+<p><code>proceso2</code></p>
+<p><code>hacerAlgo</code></p>
+<p>no explican bien qué tarea se realiza.</p>
+<p>Preferimos:</p>
+<p><code>calcularPromedio</code></p>
+<p><code>contarAprobados</code></p>
+<p><code>mostrarNotas</code></p>
+<h2 id="seccion-10-16-depurar-un-metodo"><span id="apartado-113" class="legacy-anchor" aria-hidden="true"></span>10.16. Depurar un método</h2>
+<p>Cuando algo no funciona, preguntaremos:</p>
+<ol>
+<li>¿El método se invoca?</li>
+<li>¿Qué argumentos recibe?</li>
+<li>¿Qué valores tienen sus parámetros?</li>
+<li>¿Qué instrucciones ejecuta?</li>
+<li>¿Qué variables locales utiliza?</li>
+<li>¿Qué resultado debería producir?</li>
+<li>¿Qué devuelve?</li>
+<li>¿Modifica datos recibidos?</li>
+<li>¿Dónde continúa el programa?</li>
+<li>¿Qué hace <code>main</code> con el resultado?</li>
+</ol>
+<p>Un trazado pequeño suele ayudar más que modificar código sin comprender el problema.</p>
+<hr />
+<h2 id="seccion-10-17-taller-de-refactorizacion-conservar-el-comportamiento-mejorar-la-organizacion"><span id="apartado-114" class="legacy-anchor" aria-hidden="true"></span>10.17. Taller de refactorización: conservar el comportamiento, mejorar la organización</h2>
+<p><strong>Situación inicial.</strong> <code>main</code> contiene un arreglo <code>{7, 5, 8, 6, 9}</code>, un recorrido que suma sus elementos y otro que cuenta aprobados. El programa muestra 35 y 4. Funciona, pero queremos poder usar la misma solución con otro grupo sin copiar ambos recorridos.</p>
+<p><strong>Primera decisión, en papel.</strong> Identifica dos tareas independientes y completa para cada una «recibe / hace / devuelve / modifica el arreglo». No escribas <code>static</code> todavía. ¿Qué resultados necesita recibir <code>main</code>?</p>
+<p><strong>Pista 1.</strong> Una suma y un conteo pueden devolver enteros distintos; ninguno necesita modificar las notas. <strong>Pista 2.</strong> Piensa en <code>sumarNotas(int[] notas)</code> y <code>contarAprobados(int[] notas)</code>, ambos con retorno <code>int</code>.</p>
+<p><strong>Comprobación posterior:</strong> extrae los recorridos a esos dos métodos, invócalos desde <code>main</code> y verifica que siguen mostrando 35 y 4. Después cambia el arreglo por <code>{6, 6, 10}</code>: los resultados deben ser 22 y 3. Si no coinciden, localiza si el problema está en la invocación, la condición del <code>if</code>, la actualización o el valor devuelto.</p>
+<p><strong>Error de comunicación entre métodos:</strong> sustituye temporalmente <code>return suma;</code> por <code>System.out.println(suma);</code> y elimina el tipo <code>int</code> del retorno. ¿Qué pasa si <code>main</code> necesita usar el resultado en otra suma? Explica por qué mostrar no devuelve información.</p>
+<p><strong>Elección de diseño:</strong> no extraigas un método <code>mostrarFin</code> solo por crear otro método. Justifica la división por responsabilidades y reutilización, no por cantidad de líneas.</p>
+<h1 id="seccion-11-problema-integrador-registro-modular-de-calificaciones"><span id="apartado-115" class="legacy-anchor" aria-hidden="true"></span>11. Problema integrador: registro modular de calificaciones</h1>
+<p>Recuperaremos un programa que ya conocemos.</p>
+<p>Tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int[] notas = {7, 5, 8, 6, 9};
+</code></pre>
+<p>Necesitamos mostrar los valores y calcular su suma.</p>
+<p>Después podremos incorporar otras operaciones.</p>
+<p>La novedad no está en el algoritmo de suma.</p>
+<p>La novedad está en <strong>organizarlo mediante métodos</strong>.</p>
+<h2 id="seccion-11-1-version-a-integrador-esencial"><span id="apartado-116" class="legacy-anchor" aria-hidden="true"></span>11.1. Versión A — Integrador esencial</h2>
+<p>El programa debe:</p>
+<ol>
+<li>Crear un arreglo de notas.</li>
+<li>Mostrar sus elementos.</li>
+<li>Calcular la suma.</li>
+<li>Mostrar el resultado.</li>
+</ol>
+<p>Pero las dos tareas principales deberán resolverse mediante métodos.</p>
+<p><code>mostrarNotas</code></p>
+<p><code>sumarNotas</code></p>
+<h2 id="seccion-11-2-disenar-antes-de-programar"><span id="apartado-117" class="legacy-anchor" aria-hidden="true"></span>11.2. Diseñar antes de programar</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Recibe</th>
+<th>Hace</th>
+<th>Devuelve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mostrarNotas</code></td>
+<td>Arreglo de enteros</td>
+<td>Muestra elementos</td>
+<td>Nada (<code>void</code>)</td>
+</tr>
+<tr>
+<td><code>sumarNotas</code></td>
+<td>Arreglo de enteros</td>
+<td>Suma elementos</td>
+<td>Entero</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Estos dos métodos permiten practicar las diferencias fundamentales entre un método que realiza una acción y otro que devuelve un resultado.</p>
+<h2 id="seccion-11-3-pseudocodigo"><span id="apartado-118" class="legacy-anchor" aria-hidden="true"></span>11.3. Pseudocódigo</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    notas ← [7, 5, 8, 6, 9]
+
+    MOSTRAR_NOTAS(notas)
+
+    suma ← SUMAR_NOTAS(notas)
+
+    MOSTRAR suma
+FIN
+</code></pre>
+<p>Procedimiento:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">PROCEDIMIENTO MOSTRAR_NOTAS(notas)
+
+    PARA i DESDE 0 HASTA longitud(notas)-1 HACER
+        MOSTRAR notas[i]
+    FIN PARA
+
+FIN PROCEDIMIENTO
+</code></pre>
+<p>Función:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">FUNCION SUMAR_NOTAS(notas)
+
+    suma ← 0
+
+    PARA i DESDE 0 HASTA longitud(notas)-1 HACER
+        suma ← suma + notas[i]
+    FIN PARA
+
+    DEVOLVER suma
+
+FIN FUNCION
+</code></pre>
+<h2 id="seccion-11-4-programa-java-completo-version-a"><span id="apartado-119" class="legacy-anchor" aria-hidden="true"></span>11.4. Programa Java completo — Versión A</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    // Muestra los elementos del arreglo.
+    public static void mostrarNotas(int[] notas) {
+
+        for (int i = 0; i &lt; notas.length; i++) {
+            System.out.println(&quot;Nota &quot; + (i + 1) + &quot;: &quot; + notas[i]);
+        }
+    }
+
+    // Devuelve la suma de las notas.
+    public static int sumarNotas(int[] notas) {
+
+        int suma = 0;
+
+        for (int i = 0; i &lt; notas.length; i++) {
+            suma += notas[i];
+        }
+
+        return suma;
+    }
+
+    public static void main(String[] args) {
+
+        int[] notas = {7, 5, 8, 6, 9};
+
+        mostrarNotas(notas);
+
+        int total = sumarNotas(notas);
+
+        System.out.println(&quot;Suma: &quot; + total);
+    }
+}
+</code></pre>
+<p>Salida:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Nota 1: 7
+Nota 2: 5
+Nota 3: 8
+Nota 4: 6
+Nota 5: 9
+Suma: 35
+</code></pre>
+<h2 id="seccion-11-5-que-aprendimos-con-la-version-esencial"><span id="apartado-120" class="legacy-anchor" aria-hidden="true"></span>11.5. ¿Qué aprendimos con la versión esencial?</h2>
+<p>El método <code>mostrarNotas</code> recibe un arreglo y muestra sus valores.</p>
+<p>No devuelve un resultado.</p>
+<p>El método <code>sumarNotas</code> recibe un arreglo, calcula una suma y la devuelve.</p>
+<p><code>main</code> coordina las tareas y utiliza el resultado.</p>
+<p>Con solamente dos métodos podemos demostrar los aprendizajes centrales de esta unidad.</p>
+<h2 id="seccion-11-6-version-b-consolidacion"><span id="apartado-121" class="legacy-anchor" aria-hidden="true"></span>11.6. Versión B — Consolidación</h2>
+<p>Ahora incorporaremos:</p>
+<p><code>calcularPromedio</code></p>
+<p><code>contarAprobados</code></p>
+<p>Estos métodos reutilizarán los conceptos de las unidades anteriores.</p>
+<h3 id="seccion-disenar-calcularpromedio"><span id="apartado-122" class="legacy-anchor" aria-hidden="true"></span>Diseñar calcularPromedio</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recibe</td>
+<td>Arreglo no vacío</td>
+</tr>
+<tr>
+<td>Hace</td>
+<td>Calcula el promedio</td>
+</tr>
+<tr>
+<td>Devuelve</td>
+<td><code>double</code></td>
+</tr>
+<tr>
+<td>Modifica el arreglo</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Podemos aprovechar el método <code>sumarNotas</code> ya construido:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static double calcularPromedio(int[] notas) {
+
+    int suma = sumarNotas(notas);
+
+    return suma * 1.0 / notas.length;
+}
+</code></pre>
+<p>Este método tiene como condición de uso que el arreglo no esté vacío.</p>
+<h3 id="seccion-disenar-contaraprobados"><span id="apartado-123" class="legacy-anchor" aria-hidden="true"></span>Diseñar contarAprobados</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int contarAprobados(int[] notas) {
+
+    int aprobados = 0;
+
+    for (int i = 0; i &lt; notas.length; i++) {
+
+        if (notas[i] &gt;= 6) {
+            aprobados++;
+        }
+    }
+
+    return aprobados;
+}
+</code></pre>
+<h2 id="seccion-11-7-programa-completo-version-b"><span id="apartado-124" class="legacy-anchor" aria-hidden="true"></span>11.7. Programa completo — Versión B</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mostrarNotas(int[] notas) {
+
+        for (int i = 0; i &lt; notas.length; i++) {
+            System.out.println(&quot;Nota &quot; + (i + 1) + &quot;: &quot; + notas[i]);
+        }
+    }
+
+    public static int sumarNotas(int[] notas) {
+
+        int suma = 0;
+
+        for (int i = 0; i &lt; notas.length; i++) {
+            suma += notas[i];
+        }
+
+        return suma;
+    }
+
+    // Requiere un arreglo no vacío.
+    public static double calcularPromedio(int[] notas) {
+
+        int suma = sumarNotas(notas);
+
+        return suma * 1.0 / notas.length;
+    }
+
+    public static int contarAprobados(int[] notas) {
+
+        int aprobados = 0;
+
+        for (int i = 0; i &lt; notas.length; i++) {
+
+            if (notas[i] &gt;= 6) {
+                aprobados++;
+            }
+        }
+
+        return aprobados;
+    }
+
+    public static void main(String[] args) {
+
+        int[] notas = {7, 5, 8, 6, 9};
+
+        mostrarNotas(notas);
+
+        int suma = sumarNotas(notas);
+
+        double promedio = calcularPromedio(notas);
+
+        int aprobados = contarAprobados(notas);
+
+        System.out.println(&quot;Suma: &quot; + suma);
+        System.out.println(&quot;Promedio: &quot; + promedio);
+        System.out.println(&quot;Aprobados: &quot; + aprobados);
+    }
+}
+</code></pre>
+<p>La salida final incluye:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Suma: 35
+Promedio: 7.0
+Aprobados: 4
+</code></pre>
+<h2 id="seccion-11-8-por-que-calcularpromedio-invoca-sumarnotas"><span id="apartado-125" class="legacy-anchor" aria-hidden="true"></span>11.8. ¿Por qué calcularPromedio invoca sumarNotas?</h2>
+<p>Porque ya tenemos un método que realiza esa tarea.</p>
+<p>No necesitamos copiar nuevamente el algoritmo de suma.</p>
+<p>Esta es una demostración directa de reutilización.</p>
+<p>También nos permite organizar responsabilidades:</p>
+<p><code>sumarNotas</code> obtiene una suma.</p>
+<p><code>calcularPromedio</code> utiliza esa suma para calcular un promedio.</p>
+<h2 id="seccion-11-9-version-c-ampliacion"><span id="apartado-126" class="legacy-anchor" aria-hidden="true"></span>11.9. Versión C — Ampliación</h2>
+<p>Como desafío adicional, podemos incorporar:</p>
+<ul>
+<li>Un menú repetitivo con <code>do...while</code>.</li>
+<li>Una opción para mostrar las notas.</li>
+<li>Una opción para calcular el promedio.</li>
+<li>Una opción para contar aprobados.</li>
+<li>Una opción para buscar un valor.</li>
+<li>Una opción para salir.</li>
+</ul>
+<p>No debemos incorporar todas estas tareas al mismo tiempo.</p>
+<p>Conviene comenzar por el menú y una operación.</p>
+<p>Después agregar las demás y comprobar cada modificación.</p>
+<p>Esta versión integra los contenidos de las unidades 3, 4, 5 y 6.</p>
+<h2 id="seccion-11-10-casos-de-prueba"><span id="apartado-127" class="legacy-anchor" aria-hidden="true"></span>11.10. Casos de prueba</h2>
+<p>Podemos comprobar los métodos con:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Arreglo</th>
+<th style="text-align:right">Suma</th>
+<th style="text-align:right">Promedio</th>
+<th style="text-align:right">Aprobados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{7,5,8,6,9}</code></td>
+<td style="text-align:right">35</td>
+<td style="text-align:right">7.0</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td><code>{6,6,6}</code></td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">6.0</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td><code>{1,2,3}</code></td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">2.0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td><code>{10}</code></td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">10.0</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><code>{5,7}</code></td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">6.0</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Estos arreglos son no vacíos, por lo que permiten utilizar <code>calcularPromedio</code> según su condición de uso.</p>
+<p>Para <code>sumarNotas</code> y <code>contarAprobados</code> también podemos probar un arreglo vacío.</p>
+<h2 id="seccion-11-11-defensa-individual"><span id="apartado-128" class="legacy-anchor" aria-hidden="true"></span>11.11. Defensa individual</h2>
+<p>Después de construir el programa, cada estudiante deberá poder explicar:</p>
+<ul>
+<li>Qué tarea realiza cada método.</li>
+<li>Qué datos recibe.</li>
+<li>Qué devuelve.</li>
+<li>Cómo se invoca.</li>
+<li>Por qué <code>main</code> puede utilizar los resultados.</li>
+<li>Qué sucedería si cambiamos el arreglo.</li>
+</ul>
+<p>La explicación puede acompañarse con un pequeño trazado en papel.</p>
+<hr />
+<h1 id="seccion-12-actividades-de-aprendizaje"><span id="apartado-129" class="legacy-anchor" aria-hidden="true"></span>12. Actividades de aprendizaje</h1>
+<p>Las actividades están organizadas en cuatro mini-ciclos.</p>
+<p>Cada uno puede terminar en una evidencia concreta.</p>
+<p>No es necesario resolver las 21 actividades como una única tarea extensa.</p>
+<h2 id="seccion-mini-ciclo-1-definir-e-invocar"><span id="apartado-130" class="legacy-anchor" aria-hidden="true"></span>Mini-ciclo 1. Definir e invocar</h2>
+<h3 id="seccion-actividad-a-reconocer-definicion-e-invocacion"><span id="apartado-131" class="legacy-anchor" aria-hidden="true"></span>Actividad A. Reconocer definición e invocación</h3>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void saludar() {
+    System.out.println(&quot;Hola&quot;);
+}
+</code></pre>
+<p>Y:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saludar();
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Cuál es la definición?</li>
+<li>¿Cuál es la invocación?</li>
+<li>¿Qué sucede si definimos el método, pero nunca lo invocamos?</li>
+</ol>
+<h3 id="seccion-actividad-b-predecir-el-recorrido"><span id="apartado-132" class="legacy-anchor" aria-hidden="true"></span>Actividad B. Predecir el recorrido</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mensaje() {
+        System.out.println(&quot;Dos&quot;);
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(&quot;Uno&quot;);
+
+        mensaje();
+
+        System.out.println(&quot;Tres&quot;);
+    }
+}
+</code></pre>
+<p>Predice la salida.</p>
+<p>Explica cuándo Java entra en <code>mensaje</code> y dónde continúa después.</p>
+<h3 id="seccion-actividad-c-construir-un-metodo-void"><span id="apartado-133" class="legacy-anchor" aria-hidden="true"></span>Actividad C. Construir un método void</h3>
+<p>Construye un método llamado <code>mostrarLinea</code> que muestre:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">---------------
+</code></pre>
+<p>Después invócalo tres veces.</p>
+<p>Compara la cantidad de instrucciones escritas con la cantidad de ejecuciones.</p>
+<h3 id="seccion-actividad-d-parametro-y-argumento"><span id="apartado-134" class="legacy-anchor" aria-hidden="true"></span>Actividad D. Parámetro y argumento</h3>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarCuadrado(int numero) {
+    System.out.println(numero * numero);
+}
+</code></pre>
+<p>Invocación:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarCuadrado(4);
+</code></pre>
+<p>Identifica:</p>
+<ul>
+<li>Parámetro.</li>
+<li>Argumento.</li>
+<li>Operación.</li>
+<li>Salida.</li>
+</ul>
+<h3 id="seccion-actividad-e-interpretar-return"><span id="apartado-135" class="legacy-anchor" aria-hidden="true"></span>Actividad E. Interpretar return</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumar(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Qué recibe?</li>
+<li>¿Qué hace?</li>
+<li>¿Qué devuelve?</li>
+<li>¿Qué produce <code>sumar(3, 5)</code>?</li>
+<li>¿Por qué no es lo mismo que mostrar el resultado?</li>
+</ol>
+<h3 id="seccion-actividad-f-prediccion-de-varias-invocaciones"><span id="apartado-136" class="legacy-anchor" aria-hidden="true"></span>Actividad F. Predicción de varias invocaciones</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mostrarDoble(int numero) {
+        System.out.println(numero * 2);
+    }
+
+    public static void main(String[] args) {
+
+        mostrarDoble(3);
+        mostrarDoble(7);
+    }
+}
+</code></pre>
+<p>Predice la salida y explica qué valor recibe el parámetro en cada invocación.</p>
+<hr />
+<h2 id="seccion-mini-ciclo-2-enviar-y-devolver-informacion"><span id="apartado-137" class="legacy-anchor" aria-hidden="true"></span>Mini-ciclo 2. Enviar y devolver información</h2>
+<h3 id="seccion-actividad-g-corregir-argumentos"><span id="apartado-138" class="legacy-anchor" aria-hidden="true"></span>Actividad G. Corregir argumentos</h3>
+<p>Tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarTotal(int precio, int cantidad) {
+    System.out.println(precio * cantidad);
+}
+</code></pre>
+<p>Un estudiante escribe:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrarTotal(150);
+</code></pre>
+<p>¿Por qué no compila?</p>
+<p>Corrige la invocación.</p>
+<h3 id="seccion-actividad-h-mostrar-y-devolver"><span id="apartado-139" class="legacy-anchor" aria-hidden="true"></span>Actividad H. Mostrar y devolver</h3>
+<p>Compara:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarSuma(int a, int b) {
+    System.out.println(a + b);
+}
+</code></pre>
+<p>Con:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int calcularSuma(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<p>¿Cuál utilizarías para guardar el resultado en una variable?</p>
+<p>Justifica.</p>
+<h3 id="seccion-actividad-i-variables-locales"><span id="apartado-140" class="legacy-anchor" aria-hidden="true"></span>Actividad I. Variables locales</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void mostrar() {
+        int numero = 10;
+        System.out.println(numero);
+    }
+
+    public static void main(String[] args) {
+
+        int numero = 5;
+
+        mostrar();
+
+        System.out.println(numero);
+    }
+}
+</code></pre>
+<p>Predice la salida y explica por qué.</p>
+<h3 id="seccion-actividad-j-modificar-un-parametro"><span id="apartado-141" class="legacy-anchor" aria-hidden="true"></span>Actividad J. Modificar un parámetro</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void cambiar(int numero) {
+        numero = 100;
+    }
+
+    public static void main(String[] args) {
+
+        int valor = 5;
+
+        cambiar(valor);
+
+        System.out.println(valor);
+    }
+}
+</code></pre>
+<p>¿Qué muestra?</p>
+<p>Explica qué recibe el parámetro y qué sucede con la variable original.</p>
+<h3 id="seccion-actividad-k-arreglo-como-argumento"><span id="apartado-142" class="legacy-anchor" aria-hidden="true"></span>Actividad K. Arreglo como argumento</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void cambiar(int[] numeros) {
+        numeros[0] = 100;
+    }
+
+    public static void main(String[] args) {
+
+        int[] datos = {3, 5, 8};
+
+        cambiar(datos);
+
+        System.out.println(datos[0]);
+    }
+}
+</code></pre>
+<p>¿Qué muestra?</p>
+<p>Compara el resultado con la actividad J.</p>
+<h3 id="seccion-actividad-l-corregir-un-metodo-con-retorno"><span id="apartado-143" class="legacy-anchor" aria-hidden="true"></span>Actividad L. Corregir un método con retorno</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int calcularDoble(int numero) {
+
+    int doble = numero * 2;
+}
+</code></pre>
+<p>¿Por qué no compila?</p>
+<p>Corrige el método manteniendo su propósito.</p>
+<hr />
+<h2 id="seccion-mini-ciclo-3-metodos-que-procesan-datos"><span id="apartado-144" class="legacy-anchor" aria-hidden="true"></span>Mini-ciclo 3. Métodos que procesan datos</h2>
+<h3 id="seccion-actividad-m-completar-una-suma"><span id="apartado-145" class="legacy-anchor" aria-hidden="true"></span>Actividad M. Completar una suma</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumar(int[] numeros) {
+
+    int suma = 0;
+
+    for (int i = 0; i &lt; __________; i++) {
+        suma += __________;
+    }
+
+    return __________;
+}
+</code></pre>
+<p>Completa los espacios.</p>
+<p>Prueba con:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int[] datos = {3, 5, 8};
+</code></pre>
+<h3 id="seccion-actividad-n-saludo-personalizado"><span id="apartado-146" class="legacy-anchor" aria-hidden="true"></span>Actividad N. Saludo personalizado</h3>
+<p>Construye un método <code>saludar</code> que reciba un nombre y muestre un saludo.</p>
+<p>Invócalo con tres nombres diferentes.</p>
+<p>Escribe antes el pseudocódigo.</p>
+<h3 id="seccion-actividad-o-calcular-un-descuento"><span id="apartado-147" class="legacy-anchor" aria-hidden="true"></span>Actividad O. Calcular un descuento</h3>
+<p>Construye:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static double calcularDescuento(
+    double precio,
+    double porcentaje
+)
+</code></pre>
+<p>Debe devolver el importe del descuento.</p>
+<p>Por ejemplo:</p>
+<p>Precio 1000, porcentaje 10.</p>
+<p>Resultado: 100.</p>
+<p>Después construye otro método que calcule el precio final.</p>
+<p>Explica qué recibe y devuelve cada método.</p>
+<h3 id="seccion-actividad-p-nota-aprobatoria"><span id="apartado-148" class="legacy-anchor" aria-hidden="true"></span>Actividad P. Nota aprobatoria</h3>
+<p>Construye:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static boolean esAprobatoria(int nota)
+</code></pre>
+<p>Debe devolver verdadero cuando la nota sea igual o superior a 6.</p>
+<p>Prueba con 5, 6 y 7.</p>
+<h3 id="seccion-actividad-q-mostrar-un-arreglo"><span id="apartado-149" class="legacy-anchor" aria-hidden="true"></span>Actividad Q. Mostrar un arreglo</h3>
+<p>Construye:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void mostrarNumeros(int[] numeros)
+</code></pre>
+<p>Debe recorrer el arreglo y mostrar sus elementos.</p>
+<p>Prueba con arreglos de diferente longitud.</p>
+<h3 id="seccion-actividad-r-sumar-un-arreglo"><span id="apartado-150" class="legacy-anchor" aria-hidden="true"></span>Actividad R. Sumar un arreglo</h3>
+<p>Construye:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumarNumeros(int[] numeros)
+</code></pre>
+<p>Prueba:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Arreglo</th>
+<th style="text-align:right">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{3,5,8}</code></td>
+<td style="text-align:right">16</td>
+</tr>
+<tr>
+<td><code>{0,0,0}</code></td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td><code>{-2,4,6}</code></td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td><code>{}</code></td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Explica por qué el acumulador comienza en cero.</p>
+<h3 id="seccion-actividad-s-contar-coincidencias"><span id="apartado-151" class="legacy-anchor" aria-hidden="true"></span>Actividad S. Contar coincidencias</h3>
+<p>Construye un método que reciba:</p>
+<ul>
+<li>Un arreglo de enteros.</li>
+<li>Un número buscado.</li>
+</ul>
+<p>Debe devolver cuántas veces aparece.</p>
+<p>Ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int[] datos = {5, 3, 5, 8, 5};
+</code></pre>
+<p>Si buscamos 5, el resultado será 3.</p>
+<p>Explica por qué necesitamos un contador.</p>
+<hr />
+<h2 id="seccion-mini-ciclo-4-organizar-una-solucion-completa"><span id="apartado-152" class="legacy-anchor" aria-hidden="true"></span>Mini-ciclo 4. Organizar una solución completa</h2>
+<h3 id="seccion-actividad-t-registro-modular"><span id="apartado-153" class="legacy-anchor" aria-hidden="true"></span>Actividad T. Registro modular</h3>
+<p>Construye el integrador de la sección 11.</p>
+<p>Primero implementa:</p>
+<p><code>mostrarNotas</code></p>
+<p><code>sumarNotas</code></p>
+<p>Después, si corresponde, incorpora:</p>
+<p><code>calcularPromedio</code></p>
+<p><code>contarAprobados</code></p>
+<p>Entrega:</p>
+<ul>
+<li>Pseudocódigo.</li>
+<li>Programa Java.</li>
+<li>Casos de prueba.</li>
+<li>Explicación individual.</li>
+</ul>
+<h3 id="seccion-actividad-u-cuando-conviene-crear-un-metodo"><span id="apartado-154" class="legacy-anchor" aria-hidden="true"></span>Actividad U. ¿Cuándo conviene crear un método?</h3>
+<p>Analiza estas situaciones.</p>
+<p><strong>Situación 1:</strong> un programa muestra una sola vez «Fin».</p>
+<p>¿Necesitamos crear un método para ello?</p>
+<p><strong>Situación 2:</strong> un programa calcula el promedio de cinco grupos copiando cinco veces el mismo recorrido.</p>
+<p>¿Conviene crear un método?</p>
+<p><strong>Situación 3:</strong> un programa contiene un bloque que lee notas, otro que calcula promedios y otro que presenta resultados.</p>
+<p>¿Qué responsabilidades podrían separarse?</p>
+<p><strong>Situación 4:</strong> un programa contiene una operación sencilla que solamente se utiliza una vez y ya resulta fácil de comprender.</p>
+<p>¿Separarla necesariamente mejora el código?</p>
+<p>Para cada situación:</p>
+<ol>
+<li>Decide si crearías un método.</li>
+<li>Justifica la decisión.</li>
+<li>Si corresponde, propone un nombre.</li>
+<li>Determina qué recibe, qué hace y qué devuelve.</li>
+</ol>
+<p>El objetivo no es responder siempre que sí.</p>
+<p><strong>Queremos aprender a tomar decisiones de diseño.</strong></p>
+<hr />
+<h1 id="seccion-13-preparacion-para-la-evaluacion"><span id="apartado-155" class="legacy-anchor" aria-hidden="true"></span>13. Preparación para la evaluación</h1>
+<p>Al finalizar esta unidad debemos poder comprender programas organizados mediante métodos.</p>
+<p>También debemos construir soluciones sencillas en las que varias tareas colaboren.</p>
+<h2 id="seccion-13-1-aprendizajes-imprescindibles"><span id="apartado-156" class="legacy-anchor" aria-hidden="true"></span>13.1. Aprendizajes imprescindibles</h2>
+<p>Todos debemos poder:</p>
+<ol>
+<li>Reconocer cuándo resulta conveniente crear un método.</li>
+<li>Diferenciar definición e invocación.</li>
+<li>Comprender que la ejecución comienza en <code>main</code>.</li>
+<li>Seguir un recorrido sencillo entre métodos.</li>
+<li>Construir un método <code>void</code>.</li>
+<li>Utilizar parámetros y argumentos.</li>
+<li>Devolver resultados mediante <code>return</code>.</li>
+<li>Distinguir mostrar un valor de devolverlo.</li>
+<li>Comprender el alcance básico de variables locales.</li>
+<li>Enviar un arreglo a un método.</li>
+<li>Construir un método que procese un arreglo.</li>
+<li>Identificar responsabilidades mediante «recibe, hace y devuelve».</li>
+<li>Probar el método y explicar su funcionamiento.</li>
+</ol>
+<h2 id="seccion-13-2-aprendizajes-de-consolidacion"><span id="apartado-157" class="legacy-anchor" aria-hidden="true"></span>13.2. Aprendizajes de consolidación</h2>
+<p>Como profundización podemos:</p>
+<ul>
+<li>Invocar un método desde otro método.</li>
+<li>Diseñar métodos que colaboren entre sí.</li>
+<li>Comparar el paso de enteros y referencias a arreglos.</li>
+<li>Reconocer modificaciones no deseadas de arreglos.</li>
+<li>Construir un programa modular con menú.</li>
+<li>Analizar condiciones de uso y casos especiales.</li>
+<li>Decidir qué tareas merece la pena separar.</li>
+</ul>
+<h2 id="seccion-13-3-criterios-de-logro"><span id="apartado-158" class="legacy-anchor" aria-hidden="true"></span>13.3. Criterios de logro</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Logrado</th>
+<th>En proceso</th>
+<th>Inicial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identifica responsabilidades</td>
+<td>Reconoce tareas coherentes</td>
+<td>Necesita orientación</td>
+<td>No distingue tareas</td>
+</tr>
+<tr>
+<td>Define e invoca</td>
+<td>Construye métodos correctamente</td>
+<td>Presenta errores corregibles</td>
+<td>No logra la estructura</td>
+</tr>
+<tr>
+<td>Utiliza parámetros</td>
+<td>Envía datos adecuados</td>
+<td>Confunde algunos argumentos</td>
+<td>No comprende el intercambio</td>
+</tr>
+<tr>
+<td>Devuelve resultados</td>
+<td>Utiliza tipo y <code>return</code> correctamente</td>
+<td>Confunde mostrar y devolver</td>
+<td>No recupera resultados</td>
+</tr>
+<tr>
+<td>Sigue la ejecución</td>
+<td>Predice recorrido y salida</td>
+<td>Presenta errores parciales</td>
+<td>No reconoce el flujo</td>
+</tr>
+<tr>
+<td>Comprueba la solución</td>
+<td>Realiza pruebas y justifica resultados</td>
+<td>Pruebas incompletas</td>
+<td>No verifica</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-13-4-comprobacion-individual"><span id="apartado-159" class="legacy-anchor" aria-hidden="true"></span>13.4. Comprobación individual</h2>
+<p>Después de una práctica, cada estudiante deberá responder brevemente:</p>
+<p><strong>Pregunta 1.</strong></p>
+<p>¿Cuál es la diferencia entre definir e invocar un método?</p>
+<p><strong>Pregunta 2.</strong></p>
+<p>¿Por qué no podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int resultado = mostrarDoble(5);
+</code></pre>
+<p>si <code>mostrarDoble</code> está declarado como <code>void</code>?</p>
+<p><strong>Pregunta 3.</strong></p>
+<p>¿Qué ocurre con una variable entera de <code>main</code> cuando un método recibe su valor y modifica el parámetro?</p>
+<p>Estas preguntas pueden responderse en papel.</p>
+<h2 id="seccion-13-5-defensa-breve"><span id="apartado-160" class="legacy-anchor" aria-hidden="true"></span>13.5. Defensa breve</h2>
+<p>En aproximadamente un minuto, cada estudiante deberá explicar:</p>
+<ul>
+<li>Qué tarea resolvió.</li>
+<li>Por qué creó un método.</li>
+<li>Qué información recibe.</li>
+<li>Qué hace con ella.</li>
+<li>Qué devuelve, si corresponde.</li>
+<li>Cómo comprobó que funciona.</li>
+</ul>
+<p>También podrá pedirse un cambio pequeño.</p>
+<p>Por ejemplo:</p>
+<blockquote>
+<p>El criterio de aprobación cambia de 6 a 7. ¿Qué método deberías modificar y por qué?</p>
+</blockquote>
+<h2 id="seccion-13-6-trabajo-en-parejas"><span id="apartado-161" class="legacy-anchor" aria-hidden="true"></span>13.6. Trabajo en parejas</h2>
+<p>Durante las actividades de construcción trabajaremos con dos roles:</p>
+<p><strong>Conductor:</strong> escribe el código.</p>
+<p><strong>Navegante:</strong> revisa el algoritmo, anticipa resultados, identifica errores y verifica los requisitos.</p>
+<p>Los roles cambiarán cada 10–15 minutos.</p>
+<p>Cada pareja entregará una solución.</p>
+<p>Cada integrante explicará al menos una parte del programa.</p>
+<p>Si se detecta una diferencia importante en la participación, se realizará una comprobación individual de predicción o corrección.</p>
+<h2 id="seccion-13-7-autoevaluacion"><span id="apartado-162" class="legacy-anchor" aria-hidden="true"></span>13.7. Autoevaluación</h2>
+<p>Marca una opción para cada afirmación.</p>
+<p><strong>Puedo explicar qué recibe, hace y devuelve un método.</strong></p>
+<ul>
+<li>Sí.</li>
+<li>Todavía necesito ayuda.</li>
+</ul>
+<p><strong>Puedo predecir qué sucede cuando <code>main</code> invoca otro método.</strong></p>
+<ul>
+<li>Sí.</li>
+<li>Todavía necesito ayuda.</li>
+</ul>
+<p>Completa:</p>
+<blockquote>
+<p>Lo que más me costó comprender de los métodos fue...</p>
+</blockquote>
+<h2 id="seccion-13-8-evidencia-minima-de-aprendizaje"><span id="apartado-163" class="legacy-anchor" aria-hidden="true"></span>13.8. Evidencia mínima de aprendizaje</h2>
+<p>Para considerar logrados los aprendizajes fundamentales, no será necesario construir un programa con numerosos métodos.</p>
+<p>Será suficiente con que el estudiante pueda:</p>
+<ul>
+<li>Identificar una tarea que conviene separar.</li>
+<li>Construir un método que recibe información.</li>
+<li>Construir un método que devuelve un resultado.</li>
+<li>Invocarlos correctamente desde <code>main</code>.</li>
+<li>Explicar el recorrido.</li>
+<li>Probar los resultados con diferentes datos.</li>
+</ul>
+<p>La complejidad adicional no reemplaza la comprensión.</p>
+<hr />
+<h1 id="seccion-lo-que-debemos-recordar"><span id="apartado-164" class="legacy-anchor" aria-hidden="true"></span>Lo que debemos recordar</h1>
+<p>En esta unidad aprendimos a organizar y reutilizar soluciones mediante métodos.</p>
+<p>Comenzamos con una dificultad concreta.</p>
+<p>Ya sabíamos calcular promedios, sumar arreglos y contar elementos, pero si necesitábamos realizar esas operaciones con distintos grupos podíamos terminar copiando varias veces el mismo algoritmo.</p>
+<p>Para resolverlo aprendimos a definir métodos.</p>
+<p>Comprendimos que un método reúne instrucciones que realizan una tarea y que podemos invocarlo cuando necesitamos ejecutarlas.</p>
+<p>Distinguimos entre definición e invocación.</p>
+<p>Aprendimos que la ejecución comienza en <code>main</code> y que una invocación puede llevar temporalmente el programa a otro método.</p>
+<p>Después incorporamos parámetros y argumentos.</p>
+<p>Gracias a ellos, un método puede trabajar con información diferente en cada invocación.</p>
+<p>Más adelante descubrimos que mostrar un resultado no significa devolverlo.</p>
+<p>Para recuperar valores que podemos utilizar en otras operaciones, aprendimos a utilizar <code>return</code>.</p>
+<p>También estudiamos el alcance de las variables locales.</p>
+<p>Comprendimos que las variables declaradas dentro de un método no están disponibles automáticamente desde otros métodos.</p>
+<p>Después comparamos el comportamiento de valores enteros y referencias a arreglos.</p>
+<p>Aprendimos que Java transmite argumentos por valor y que un método puede modificar los elementos de un arreglo al que tiene acceso mediante una referencia.</p>
+<p>También aprendimos a diseñar métodos respondiendo tres preguntas:</p>
+<p><strong>¿Qué recibe?</strong></p>
+<p><strong>¿Qué hace?</strong></p>
+<p><strong>¿Qué devuelve?</strong></p>
+<p>Estas preguntas nos permiten pensar la responsabilidad antes de escribir la sintaxis.</p>
+<p>Finalmente, reorganizamos el registro de calificaciones de la Unidad 5 mediante métodos.</p>
+<p>La solución matemática no cambió.</p>
+<p>Lo que cambió fue la manera de organizarla.</p>
+<p><strong>Un método no es solamente un bloque de código con un nombre. Es una herramienta para representar una tarea, comunicar información y reutilizar una solución.</strong></p>
+<h2 id="seccion-hacia-la-unidad-7-clases-y-objetos"><span id="apartado-165" class="legacy-anchor" aria-hidden="true"></span>Hacia la Unidad 7: clases y objetos</h2>
+<p>Hasta ahora trabajamos con datos y métodos.</p>
+<p>Sabemos crear variables, arreglos y operaciones que procesan información.</p>
+<p>Pero imaginemos que queremos construir un programa para administrar productos.</p>
+<p>Cada producto tiene:</p>
+<ul>
+<li>Código.</li>
+<li>Nombre.</li>
+<li>Precio.</li>
+<li>Stock.</li>
+</ul>
+<p>Además, sobre cada producto podemos realizar operaciones:</p>
+<ul>
+<li>Consultar sus datos.</li>
+<li>Modificar su precio.</li>
+<li>Agregar unidades.</li>
+<li>Retirar unidades, si hay stock suficiente.</li>
+</ul>
+<p>¿Debemos mantener todos esos datos en variables separadas?</p>
+<p>¿Y si tenemos muchos productos?</p>
+<p>¿Podríamos representar cada producto como una entidad que reúne sus características y las operaciones que le corresponden?</p>
+<p>Estas preguntas nos conducirán a la <strong>programación orientada a objetos</strong>.</p>
+<p>En la Unidad 7 aprenderemos primero a reconocer objetos en un problema real y después a representarlos mediante clases, atributos y métodos.</p>
+<p>Así podremos comprender que los métodos no solamente sirven para organizar tareas generales dentro de <code>Main</code>.</p>
+<p>También pueden representar los comportamientos de los objetos que forman parte de un sistema.</p>
+</article><nav class="lesson-bottom" aria-label="Navegación entre unidades"><a rel="prev" href="unidad-05.html">← Unidad 5: Arreglos y cadenas de caracteres</a><a rel="next" href="unidad-07.html">Unidad 7: Clases y objetos →</a></nav><p class="return-top"><a href="#top">Volver arriba ↑</a></p></main><footer><div class="footer-inner"><img src="assets/logo-PM-opcional.png" alt=""><span><strong>Programación I · 2026</strong><br>Profe Macón · DGETP / UTU</span></div></footer><script defer src="assets/recursos-modelos.js"></script><script defer src="assets/recursos-interactivos.js"></script><script defer src="assets/recursos-3b-modelos.js"></script><script defer src="assets/recursos-3b.js"></script><script defer src="assets/recursos-3c-modelos.js"></script><script defer src="assets/recursos-3c.js"></script></body></html>

@@ -1,0 +1,1269 @@
+{
+  "pages": [
+    {
+      "unit": 1,
+      "title": "Unidad 1 · Programación I",
+      "hosts": [
+        {
+          "id": "u01-bidones-simulador",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u01-programa-cpu-ram",
+          "mounted": true,
+          "fallback": true
+        }
+      ],
+      "images": []
+    },
+    {
+      "unit": 2,
+      "title": "Unidad 2 · Programación I",
+      "hosts": [
+        {
+          "id": "u02-estructura-java",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u02-variables-asignacion",
+          "mounted": true,
+          "fallback": true
+        }
+      ],
+      "images": []
+    },
+    {
+      "unit": 3,
+      "title": "Unidad 3 · Programación I",
+      "hosts": [
+        {
+          "id": "u03-if-else",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u03-else-if",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u03-condiciones-compuestas",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u03-switch",
+          "mounted": true,
+          "fallback": true
+        }
+      ],
+      "images": []
+    },
+    {
+      "unit": 4,
+      "title": "Unidad 4 · Programación I",
+      "hosts": [
+        {
+          "id": "u04-while-trazado",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u04-acumuladores-contadores",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u04-for-esquema",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u04-do-while-esquema",
+          "mounted": true,
+          "fallback": true
+        }
+      ],
+      "images": []
+    },
+    {
+      "unit": 5,
+      "title": "Unidad 5 · Programación I",
+      "hosts": [
+        {
+          "id": "u05-arreglo-indices",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u05-recorrido-arreglo",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u05-busqueda-lineal",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u05-string-vs-array",
+          "mounted": true,
+          "fallback": true
+        }
+      ],
+      "images": []
+    },
+    {
+      "unit": 6,
+      "title": "Unidad 6 · Programación I",
+      "hosts": [
+        {
+          "id": "u06-flujo-metodos",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u06-parametros-retorno",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u06-alcance-referencias",
+          "mounted": true,
+          "fallback": true
+        }
+      ],
+      "images": []
+    },
+    {
+      "unit": 7,
+      "title": "Unidad 7 · Programación I",
+      "hosts": [
+        {
+          "id": "u07-abstraccion-modelado",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u07-clase-instancias",
+          "mounted": true,
+          "fallback": true
+        },
+        {
+          "id": "u07-encapsulamiento",
+          "mounted": true,
+          "fallback": true
+        }
+      ],
+      "images": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "u01-bidones-simulador",
+      "button": "Llenar A",
+      "before": "Bidón A: 0 de 5 litros. Bidón B: 0 de 3 litros. Estado (0, 0). Operaciones efectivas: 0. ",
+      "after": "Bidón A: 5 de 5 litros. Bidón B: 0 de 3 litros. Estado (5, 0). Operaciones efectivas: 1. Llenar A transforma (0, 0) en (5, 0)."
+    },
+    {
+      "id": "u01-programa-cpu-ram",
+      "button": "Siguiente",
+      "before": "Paso 0 de 4. Instrucción: Antes de ejecutar. Memoria: Todavía no hay datos en el modelo. Salida: Sin salida. El programa contiene instrucciones; Java necesita compilación y un entorno de ejecución.",
+      "after": "Paso 1 de 4. Instrucción: Guardar precio = 150. Memoria: precio = 150 Salida: Sin salida. El programa en ejecución conserva este dato temporalmente."
+    },
+    {
+      "id": "u02-estructura-java",
+      "button": "Clase Main",
+      "before": "Selecciona una parte. La estructura del archivo y el recorrido de ejecución no son lo mismo.",
+      "after": "La clase Main contiene el programa; su nombre coincide con Main.java."
+    },
+    {
+      "id": "u02-variables-asignacion",
+      "button": "Siguiente",
+      "before": "Paso 0 de 5. Estado actual: precio: sin declarar; cantidad: sin declarar; total: sin declarar. Todas las variables están sin declarar.",
+      "after": "Paso 1 de 5. Estado actual: precio: 150; cantidad: sin declarar; total: sin declarar. Estado anterior: precio: sin declarar; cantidad: sin declarar; total: sin declarar. Se declara precio con 150."
+    },
+    {
+      "id": "u03-if-else",
+      "button": "Comprobar",
+      "before": "Cambia los datos y predice antes de comprobar.",
+      "after": "1000 >= 800 es verdadero; se ejecuta if y se omite else. Salida: Compra autorizada."
+    },
+    {
+      "id": "u03-else-if",
+      "button": "Comprobar",
+      "before": "Anticipa la rama y comprueba.",
+      "after": "nota >= 9: falso; nota >= 6: verdadero. Rama seleccionada: Aprobado. Tras la primera condición verdadera no se evalúan las siguientes."
+    },
+    {
+      "id": "u03-condiciones-compuestas",
+      "button": "Comprobar",
+      "before": "Selecciona una expresión, anticipa y comprueba.",
+      "after": "puntos >= 10 && vidas > 0. Evaluación de las condiciones en orden: puntos >= 10: falso; vidas > 0: No se evalúa. Resultado: falso. Java omite una condición cuando el resultado ya está determinado."
+    },
+    {
+      "id": "u03-switch",
+      "button": "Comprobar",
+      "before": "Elige una opción y anticipa la salida.",
+      "after": "Expresión opcion = 1. Selecciona case 1. Salida: Consultar saldo. break termina el switch tras el caso seleccionado."
+    },
+    {
+      "id": "u04-while-trazado",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 11. Inicio: numero = 1; salida vacía.",
+      "after": "Paso 0 de 11. Inicio: numero = 1; salida vacía."
+    },
+    {
+      "id": "u04-acumuladores-contadores",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 5. Inicialización: suma = 0 y aprobados = 0.",
+      "after": "Paso 0 de 5. Inicialización: suma = 0 y aprobados = 0."
+    },
+    {
+      "id": "u04-for-esquema",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 17. Inicialización única: i = 1.",
+      "after": "Paso 0 de 17. Inicialización única: i = 1."
+    },
+    {
+      "id": "u04-do-while-esquema",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 4. Inicio: numero = 5.",
+      "after": "Paso 0 de 4. Inicio: numero = 5."
+    },
+    {
+      "id": "u05-arreglo-indices",
+      "button": "Consultar índice",
+      "before": "Consulta un índice antes de modificarlo.",
+      "after": "Índice 2, posición 3, valor 8; length = 5."
+    },
+    {
+      "id": "u05-recorrido-arreglo",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 12. Inicio: length = 5, i = 0.",
+      "after": "Paso 0 de 12. Inicio: length = 5, i = 0."
+    },
+    {
+      "id": "u05-busqueda-lineal",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 6. Inicialización: encontrado = false.",
+      "after": "Paso 0 de 6. Inicialización: encontrado = false."
+    },
+    {
+      "id": "u05-string-vs-array",
+      "button": "Consultar ambos",
+      "before": "Consulta la propiedad length, el método length() y el índice 1.",
+      "after": "numeros.length = 3; palabra.length() = 4. Índice 1, posición 2, valor 5; length = 3. palabra.charAt(1) = 'a'. String es inmutable: palabra[0] = 'L' no compila. toUpperCase() devuelve 'JAVA' y palabra conserva 'Java'."
+    },
+    {
+      "id": "u06-flujo-metodos",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 10. Comienza main; definir un método no lo ejecuta.",
+      "after": "Paso 0 de 10. Comienza main; definir un método no lo ejecuta."
+    },
+    {
+      "id": "u06-parametros-retorno",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 5. main prepara el argumento literal 5.",
+      "after": "Paso 0 de 5. main prepara el argumento literal 5."
+    },
+    {
+      "id": "u06-alcance-referencias",
+      "button": "Aplicar datos y reiniciar",
+      "before": "Paso 0 de 3. main: valor = 5. El parámetro aún no existe.",
+      "after": "Paso 0 de 3. main: valor = 5. El parámetro aún no existe."
+    },
+    {
+      "id": "u07-abstraccion-modelado",
+      "button": "Comparar con una referencia",
+      "before": "Primero formula y justifica tu propuesta; luego puedes compararla.",
+      "after": "Tu propuesta: entidad sin indicar; datos sin indicar; comportamientos sin indicar; fuera sin indicar. Justificación: aún no escrita. Referencia para comparar: Para alquiler, identificador, tipo y disponibilidad pueden ayudar a registrar alquiler y devolución. El mantenimiento puede corresponder a otro servicio. Compara tu propuesta con la finalidad y justifica tanto lo que incluyes como lo que descartas. Puede haber otras soluciones defendibles."
+    },
+    {
+      "id": "u07-clase-instancias",
+      "button": "Crear objeto con new",
+      "before": "Antes de crear, predice cuántos objetos producirán dos instrucciones new.",
+      "after": "new crea un objeto independiente para a."
+    },
+    {
+      "id": "u07-encapsulamiento",
+      "button": "Ejecutar",
+      "before": "Predice qué ocurre si intentas asignar o retirar una cantidad inválida.",
+      "after": "Antes: Cuaderno (código 101, precio 120, stock 15). Condición cantidad > 0: true. Resultado devuelto: true. Después: Cuaderno (código 101, precio 120, stock 20)."
+    }
+  ],
+  "controlSweep": [
+    {
+      "id": "u01-bidones-simulador",
+      "actions": [
+        "llenarA",
+        "llenarB",
+        "vaciarA",
+        "vaciarB",
+        "AB",
+        "BA",
+        "anterior",
+        "reiniciar"
+      ],
+      "status": "Bidón A: 0 de 5 litros. Bidón B: 0 de 3 litros. Estado (0, 0). Operaciones efectivas: 0. Se volvió al estado inicial."
+    },
+    {
+      "id": "u01-programa-cpu-ram",
+      "actions": [
+        "anterior",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 4. Instrucción: Antes de ejecutar. Memoria: Todavía no hay datos en el modelo. Salida: Sin salida. El programa contiene instrucciones; Java necesita compilación y un entorno de ejecución."
+    },
+    {
+      "id": "u02-estructura-java",
+      "actions": [
+        "clase",
+        "main",
+        "llaves",
+        "instrucciones",
+        "orden"
+      ],
+      "status": "La ejecución entra en main y sigue sus instrucciones en orden."
+    },
+    {
+      "id": "u02-variables-asignacion",
+      "actions": [
+        "anterior",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 5. Estado actual: precio: sin declarar; cantidad: sin declarar; total: sin declarar. Todas las variables están sin declarar."
+    },
+    {
+      "id": "u03-if-else",
+      "actions": [
+        "comprobar",
+        "reiniciar"
+      ],
+      "status": "Datos iniciales restaurados. Anticipa la condición."
+    },
+    {
+      "id": "u03-else-if",
+      "actions": [
+        "comprobar",
+        "reiniciar"
+      ],
+      "status": "Datos iniciales restaurados."
+    },
+    {
+      "id": "u03-condiciones-compuestas",
+      "actions": [
+        "comprobar",
+        "reiniciar"
+      ],
+      "status": "Datos iniciales restaurados."
+    },
+    {
+      "id": "u03-switch",
+      "actions": [
+        "comprobar",
+        "reiniciar"
+      ],
+      "status": "Datos iniciales restaurados."
+    },
+    {
+      "id": "u04-while-trazado",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 11. Inicio: numero = 1; salida vacía."
+    },
+    {
+      "id": "u04-acumuladores-contadores",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 5. Inicialización: suma = 0 y aprobados = 0."
+    },
+    {
+      "id": "u04-for-esquema",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 17. Inicialización única: i = 1."
+    },
+    {
+      "id": "u04-do-while-esquema",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 4. Inicio: numero = 5."
+    },
+    {
+      "id": "u05-arreglo-indices",
+      "actions": [
+        "consultar",
+        "modificar",
+        "reiniciar"
+      ],
+      "status": "Arreglo inicial restaurado."
+    },
+    {
+      "id": "u05-recorrido-arreglo",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 12. Inicio: length = 5, i = 0."
+    },
+    {
+      "id": "u05-busqueda-lineal",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 6. Inicialización: encontrado = false."
+    },
+    {
+      "id": "u05-string-vs-array",
+      "actions": [
+        "consultar",
+        "modificar",
+        "mayusculas",
+        "reiniciar"
+      ],
+      "status": "Ejemplo restaurado; palabra conserva \"Java\"."
+    },
+    {
+      "id": "u06-flujo-metodos",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 10. Comienza main; definir un método no lo ejecuta."
+    },
+    {
+      "id": "u06-parametros-retorno",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 5. main prepara el argumento literal 5."
+    },
+    {
+      "id": "u06-alcance-referencias",
+      "actions": [
+        "aplicar",
+        "siguiente",
+        "reiniciar"
+      ],
+      "status": "Paso 0 de 3. main: valor = 5. El parámetro aún no existe."
+    },
+    {
+      "id": "u07-abstraccion-modelado",
+      "actions": [
+        "comparar",
+        "reiniciar"
+      ],
+      "status": "Propuesta reiniciada. No hay una única respuesta obligatoria."
+    },
+    {
+      "id": "u07-clase-instancias",
+      "actions": [
+        "crear",
+        "alias",
+        "ejecutar",
+        "anterior",
+        "reiniciar"
+      ],
+      "status": "Modelo reiniciado: aún no hay objetos."
+    },
+    {
+      "id": "u07-encapsulamiento",
+      "actions": [
+        "ejecutar",
+        "anterior",
+        "reiniciar"
+      ],
+      "status": "Ambos modelos vuelven al estado inicial: precio 120, stock 15."
+    }
+  ],
+  "scenarios": [
+    {
+      "unit": 1,
+      "passed": true
+    },
+    {
+      "unit": 2,
+      "passed": true
+    },
+    {
+      "unit": 3,
+      "passed": true
+    },
+    {
+      "unit": 4,
+      "passed": true
+    },
+    {
+      "unit": 5,
+      "passed": true
+    },
+    {
+      "unit": 6,
+      "passed": true
+    },
+    {
+      "unit": 7,
+      "passed": true
+    }
+  ],
+  "viewport": [
+    {
+      "unit": 1,
+      "requested": 320,
+      "width": 320,
+      "document": 320,
+      "body": 320,
+      "offenders": []
+    },
+    {
+      "unit": 1,
+      "requested": 341,
+      "width": 341,
+      "document": 341,
+      "body": 341,
+      "offenders": []
+    },
+    {
+      "unit": 1,
+      "requested": 375,
+      "width": 375,
+      "document": 375,
+      "body": 375,
+      "offenders": []
+    },
+    {
+      "unit": 1,
+      "requested": 683,
+      "width": 683,
+      "document": 668,
+      "body": 668,
+      "offenders": []
+    },
+    {
+      "unit": 1,
+      "requested": 768,
+      "width": 768,
+      "document": 753,
+      "body": 753,
+      "offenders": []
+    },
+    {
+      "unit": 1,
+      "requested": 1366,
+      "width": 1366,
+      "document": 1351,
+      "body": 1351,
+      "offenders": []
+    },
+    {
+      "unit": 1,
+      "requested": 1440,
+      "width": 1440,
+      "document": 1425,
+      "body": 1425,
+      "offenders": []
+    },
+    {
+      "unit": 1,
+      "requested": 1920,
+      "width": 1920,
+      "document": 1905,
+      "body": 1905,
+      "offenders": []
+    },
+    {
+      "unit": 2,
+      "requested": 320,
+      "width": 320,
+      "document": 320,
+      "body": 320,
+      "offenders": []
+    },
+    {
+      "unit": 2,
+      "requested": 341,
+      "width": 341,
+      "document": 341,
+      "body": 341,
+      "offenders": []
+    },
+    {
+      "unit": 2,
+      "requested": 375,
+      "width": 375,
+      "document": 375,
+      "body": 375,
+      "offenders": []
+    },
+    {
+      "unit": 2,
+      "requested": 683,
+      "width": 683,
+      "document": 668,
+      "body": 668,
+      "offenders": []
+    },
+    {
+      "unit": 2,
+      "requested": 768,
+      "width": 768,
+      "document": 753,
+      "body": 753,
+      "offenders": []
+    },
+    {
+      "unit": 2,
+      "requested": 1366,
+      "width": 1366,
+      "document": 1351,
+      "body": 1351,
+      "offenders": []
+    },
+    {
+      "unit": 2,
+      "requested": 1440,
+      "width": 1440,
+      "document": 1425,
+      "body": 1425,
+      "offenders": []
+    },
+    {
+      "unit": 2,
+      "requested": 1920,
+      "width": 1920,
+      "document": 1905,
+      "body": 1905,
+      "offenders": []
+    },
+    {
+      "unit": 3,
+      "requested": 320,
+      "width": 320,
+      "document": 320,
+      "body": 320,
+      "offenders": []
+    },
+    {
+      "unit": 3,
+      "requested": 341,
+      "width": 341,
+      "document": 341,
+      "body": 341,
+      "offenders": []
+    },
+    {
+      "unit": 3,
+      "requested": 375,
+      "width": 375,
+      "document": 375,
+      "body": 375,
+      "offenders": []
+    },
+    {
+      "unit": 3,
+      "requested": 683,
+      "width": 683,
+      "document": 668,
+      "body": 668,
+      "offenders": []
+    },
+    {
+      "unit": 3,
+      "requested": 768,
+      "width": 768,
+      "document": 753,
+      "body": 753,
+      "offenders": []
+    },
+    {
+      "unit": 3,
+      "requested": 1366,
+      "width": 1366,
+      "document": 1351,
+      "body": 1351,
+      "offenders": []
+    },
+    {
+      "unit": 3,
+      "requested": 1440,
+      "width": 1440,
+      "document": 1425,
+      "body": 1425,
+      "offenders": []
+    },
+    {
+      "unit": 3,
+      "requested": 1920,
+      "width": 1920,
+      "document": 1905,
+      "body": 1905,
+      "offenders": []
+    },
+    {
+      "unit": 4,
+      "requested": 320,
+      "width": 320,
+      "document": 320,
+      "body": 320,
+      "offenders": []
+    },
+    {
+      "unit": 4,
+      "requested": 341,
+      "width": 341,
+      "document": 341,
+      "body": 341,
+      "offenders": []
+    },
+    {
+      "unit": 4,
+      "requested": 375,
+      "width": 375,
+      "document": 375,
+      "body": 375,
+      "offenders": []
+    },
+    {
+      "unit": 4,
+      "requested": 683,
+      "width": 683,
+      "document": 668,
+      "body": 668,
+      "offenders": []
+    },
+    {
+      "unit": 4,
+      "requested": 768,
+      "width": 768,
+      "document": 753,
+      "body": 753,
+      "offenders": []
+    },
+    {
+      "unit": 4,
+      "requested": 1366,
+      "width": 1366,
+      "document": 1351,
+      "body": 1351,
+      "offenders": []
+    },
+    {
+      "unit": 4,
+      "requested": 1440,
+      "width": 1440,
+      "document": 1425,
+      "body": 1425,
+      "offenders": []
+    },
+    {
+      "unit": 4,
+      "requested": 1920,
+      "width": 1920,
+      "document": 1905,
+      "body": 1905,
+      "offenders": []
+    },
+    {
+      "unit": 5,
+      "requested": 320,
+      "width": 320,
+      "document": 320,
+      "body": 320,
+      "offenders": []
+    },
+    {
+      "unit": 5,
+      "requested": 341,
+      "width": 341,
+      "document": 341,
+      "body": 341,
+      "offenders": []
+    },
+    {
+      "unit": 5,
+      "requested": 375,
+      "width": 375,
+      "document": 375,
+      "body": 375,
+      "offenders": []
+    },
+    {
+      "unit": 5,
+      "requested": 683,
+      "width": 683,
+      "document": 668,
+      "body": 668,
+      "offenders": []
+    },
+    {
+      "unit": 5,
+      "requested": 768,
+      "width": 768,
+      "document": 753,
+      "body": 753,
+      "offenders": []
+    },
+    {
+      "unit": 5,
+      "requested": 1366,
+      "width": 1366,
+      "document": 1351,
+      "body": 1351,
+      "offenders": []
+    },
+    {
+      "unit": 5,
+      "requested": 1440,
+      "width": 1440,
+      "document": 1425,
+      "body": 1425,
+      "offenders": []
+    },
+    {
+      "unit": 5,
+      "requested": 1920,
+      "width": 1920,
+      "document": 1905,
+      "body": 1905,
+      "offenders": []
+    },
+    {
+      "unit": 6,
+      "requested": 320,
+      "width": 320,
+      "document": 320,
+      "body": 320,
+      "offenders": []
+    },
+    {
+      "unit": 6,
+      "requested": 341,
+      "width": 341,
+      "document": 341,
+      "body": 341,
+      "offenders": []
+    },
+    {
+      "unit": 6,
+      "requested": 375,
+      "width": 375,
+      "document": 375,
+      "body": 375,
+      "offenders": []
+    },
+    {
+      "unit": 6,
+      "requested": 683,
+      "width": 683,
+      "document": 668,
+      "body": 668,
+      "offenders": []
+    },
+    {
+      "unit": 6,
+      "requested": 768,
+      "width": 768,
+      "document": 753,
+      "body": 753,
+      "offenders": []
+    },
+    {
+      "unit": 6,
+      "requested": 1366,
+      "width": 1366,
+      "document": 1351,
+      "body": 1351,
+      "offenders": []
+    },
+    {
+      "unit": 6,
+      "requested": 1440,
+      "width": 1440,
+      "document": 1425,
+      "body": 1425,
+      "offenders": []
+    },
+    {
+      "unit": 6,
+      "requested": 1920,
+      "width": 1920,
+      "document": 1905,
+      "body": 1905,
+      "offenders": []
+    },
+    {
+      "unit": 7,
+      "requested": 320,
+      "width": 320,
+      "document": 320,
+      "body": 320,
+      "offenders": []
+    },
+    {
+      "unit": 7,
+      "requested": 341,
+      "width": 341,
+      "document": 341,
+      "body": 341,
+      "offenders": []
+    },
+    {
+      "unit": 7,
+      "requested": 375,
+      "width": 375,
+      "document": 375,
+      "body": 375,
+      "offenders": []
+    },
+    {
+      "unit": 7,
+      "requested": 683,
+      "width": 683,
+      "document": 668,
+      "body": 668,
+      "offenders": []
+    },
+    {
+      "unit": 7,
+      "requested": 768,
+      "width": 768,
+      "document": 753,
+      "body": 753,
+      "offenders": []
+    },
+    {
+      "unit": 7,
+      "requested": 1366,
+      "width": 1366,
+      "document": 1351,
+      "body": 1351,
+      "offenders": []
+    },
+    {
+      "unit": 7,
+      "requested": 1440,
+      "width": 1440,
+      "document": 1425,
+      "body": 1425,
+      "offenders": []
+    },
+    {
+      "unit": 7,
+      "requested": 1920,
+      "width": 1920,
+      "document": 1905,
+      "body": 1905,
+      "offenders": []
+    },
+    {
+      "unit": 0,
+      "width": 375,
+      "document": 375,
+      "body": 375
+    },
+    {
+      "unit": 0,
+      "width": 768,
+      "document": 753,
+      "body": 753
+    },
+    {
+      "unit": 0,
+      "width": 1366,
+      "document": 1351,
+      "body": 1351
+    },
+    {
+      "unit": 0,
+      "width": 1440,
+      "document": 1425,
+      "body": 1425
+    },
+    {
+      "unit": 0,
+      "width": 1920,
+      "document": 1905,
+      "body": 1905
+    }
+  ],
+  "accessibility": [
+    {
+      "unit": 1,
+      "unlabelled": [],
+      "emptyButtons": [],
+      "liveRegions": 2
+    },
+    {
+      "unit": 2,
+      "unlabelled": [],
+      "emptyButtons": [],
+      "liveRegions": 2
+    },
+    {
+      "unit": 3,
+      "unlabelled": [],
+      "emptyButtons": [],
+      "liveRegions": 4
+    },
+    {
+      "unit": 4,
+      "unlabelled": [],
+      "emptyButtons": [],
+      "liveRegions": 4
+    },
+    {
+      "unit": 5,
+      "unlabelled": [],
+      "emptyButtons": [],
+      "liveRegions": 4
+    },
+    {
+      "unit": 6,
+      "unlabelled": [],
+      "emptyButtons": [],
+      "liveRegions": 3
+    },
+    {
+      "unit": 7,
+      "unlabelled": [],
+      "emptyButtons": [],
+      "liveRegions": 3
+    }
+  ],
+  "keyboard": [
+    {
+      "element": "<a class=\"skip-link\" href=\"#contenido\">Saltar al contenido</a>",
+      "focusVisible": true
+    },
+    {
+      "summaryOpen": true,
+      "focused": "SUMMARY",
+      "focusVisible": true
+    },
+    {
+      "afterTab": "A",
+      "focusVisible": true
+    },
+    {
+      "afterShiftTab": "SUMMARY",
+      "focusVisible": true
+    },
+    {
+      "afterEnterSummaryOpen": false,
+      "focused": "SUMMARY"
+    }
+  ],
+  "print": [
+    "unidad-1.pdf",
+    "unidad-5.pdf",
+    "unidad-7.pdf"
+  ],
+  "errors": [],
+  "cierreTeclado": [
+    {
+      "unit": 1,
+      "index": {
+        "open": true,
+        "focus": true
+      },
+      "next": "A",
+      "previous": "SUMMARY",
+      "control": {
+        "name": "Llenar A",
+        "focused": true,
+        "visible": true,
+        "before": "Bidón A: 0 de 5 litros. Bidón B: 0 de 3 litros. Estado (0, 0). Operaciones efectivas: 0. ",
+        "after": "Bidón A: 5 de 5 litros. Bidón B: 0 de 3 litros. Estado (5, 0). Operaciones efectivas: 1. Llenar A transforma (0, 0) en (5, 0)."
+      },
+      "answer": null
+    },
+    {
+      "unit": 2,
+      "index": {
+        "open": true,
+        "focus": true
+      },
+      "next": "A",
+      "previous": "SUMMARY",
+      "control": {
+        "name": "Clase Main",
+        "focused": true,
+        "visible": true,
+        "before": "Selecciona una parte. La estructura del archivo y el recorrido de ejecución no son lo mismo.",
+        "after": "La clase Main contiene el programa; su nombre coincide con Main.java."
+      },
+      "answer": null
+    },
+    {
+      "unit": 3,
+      "index": {
+        "open": true,
+        "focus": true
+      },
+      "next": "A",
+      "previous": "SUMMARY",
+      "control": {
+        "name": "Comprobar",
+        "focused": true,
+        "visible": true,
+        "before": "Cambia los datos y predice antes de comprobar.",
+        "after": "1000 >= 800 es verdadero; se ejecuta if y se omite else. Salida: Compra autorizada."
+      },
+      "answer": {
+        "before": false,
+        "focus": true,
+        "after": true,
+        "closed": true
+      }
+    },
+    {
+      "unit": 4,
+      "index": {
+        "open": true,
+        "focus": true
+      },
+      "next": "A",
+      "previous": "SUMMARY",
+      "control": {
+        "name": "Aplicar datos y reiniciar",
+        "focused": true,
+        "visible": true,
+        "before": "Paso 0 de 11. Inicio: numero = 1; salida vacía.",
+        "after": "Paso 0 de 11. Inicio: numero = 1; salida vacía."
+      },
+      "answer": {
+        "before": false,
+        "focus": true,
+        "after": true,
+        "closed": true
+      }
+    },
+    {
+      "unit": 5,
+      "index": {
+        "open": true,
+        "focus": true
+      },
+      "next": "A",
+      "previous": "SUMMARY",
+      "control": {
+        "name": "Consultar índice",
+        "focused": true,
+        "visible": true,
+        "before": "Consulta un índice antes de modificarlo.",
+        "after": "Índice 2, posición 3, valor 8; length = 5."
+      },
+      "answer": {
+        "before": false,
+        "focus": true,
+        "after": true,
+        "closed": true
+      }
+    },
+    {
+      "unit": 6,
+      "index": {
+        "open": true,
+        "focus": true
+      },
+      "next": "A",
+      "previous": "SUMMARY",
+      "control": {
+        "name": "Aplicar datos y reiniciar",
+        "focused": true,
+        "visible": true,
+        "before": "Paso 0 de 10. Comienza main; definir un método no lo ejecuta.",
+        "after": "Paso 0 de 10. Comienza main; definir un método no lo ejecuta."
+      },
+      "answer": {
+        "before": false,
+        "focus": true,
+        "after": true,
+        "closed": true
+      }
+    },
+    {
+      "unit": 7,
+      "index": {
+        "open": true,
+        "focus": true
+      },
+      "next": "A",
+      "previous": "SUMMARY",
+      "control": {
+        "name": "Comparar con una referencia",
+        "focused": true,
+        "visible": true,
+        "before": "Primero formula y justifica tu propuesta; luego puedes compararla.",
+        "after": "Tu propuesta: entidad sin indicar; datos sin indicar; comportamientos sin indicar; fuera sin indicar. Justificación: aún no escrita. Referencia para comparar: Para alquiler, identificador, tipo y disponibilidad pueden ayudar a registrar alquiler y devolución. El mantenimiento puede corresponder a otro servicio. Compara tu propuesta con la finalidad y justifica tanto lo que incluyes como lo que descartas. Puede haber otras soluciones defendibles."
+      },
+      "answer": {
+        "before": false,
+        "focus": true,
+        "after": true,
+        "closed": true
+      }
+    }
+  ],
+  "noJS": [
+    {
+      "unit": 1,
+      "visibleFallback": 2,
+      "hosts": 2
+    },
+    {
+      "unit": 2,
+      "visibleFallback": 2,
+      "hosts": 2
+    },
+    {
+      "unit": 3,
+      "visibleFallback": 4,
+      "hosts": 4
+    },
+    {
+      "unit": 4,
+      "visibleFallback": 4,
+      "hosts": 4
+    },
+    {
+      "unit": 5,
+      "visibleFallback": 4,
+      "hosts": 4
+    },
+    {
+      "unit": 6,
+      "visibleFallback": 3,
+      "hosts": 3
+    },
+    {
+      "unit": 7,
+      "visibleFallback": 3,
+      "hosts": 3
+    }
+  ],
+  "respuestaSinJS": true
+}

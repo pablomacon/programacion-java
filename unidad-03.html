@@ -1,0 +1,2842 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unidad 3 · Programación I</title><link rel="icon" href="assets/logo-PM-opcional.png"><link rel="stylesheet" href="assets/style.css"></head><body id="top"><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><img src="assets/logo-profe-macon.png" alt="Profe Macón"><span><strong>Programación I</strong><small>1.º BT Informática · DGETP / UTU</small></span></a><nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="index.html#unidades">Unidades</a><span class="current-unit" aria-current="page">Unidad 3</span></nav></div></header><main class="lesson" id="contenido"><a class="back" href="index.html#unidades">← Volver a las unidades</a><p class="eyebrow">Programación I · Unidad 03</p><details class="contents"><summary>Índice de la unidad</summary><nav aria-label="Apartados de la unidad"><ol><li><a href="#seccion-1-una-limitacion-de-nuestros-primeros-programas">1. Una limitación de nuestros primeros programas</a></li><li><a href="#seccion-2-la-estructura-if-ejecutar-solamente-cuando-se-cumple-una-condicion">2. La estructura if: ejecutar solamente cuando se cumple una condición</a></li><li><a href="#seccion-3-construir-e-interpretar-condiciones">3. Construir e interpretar condiciones</a></li><li><a href="#seccion-4-dos-alternativas-if-else">4. Dos alternativas: if...else</a></li><li><a href="#seccion-5-mas-de-dos-alternativas-else-if">5. Más de dos alternativas: else if</a></li><li><a href="#seccion-6-construir-condiciones-compuestas">6. Construir condiciones compuestas</a></li><li><a href="#seccion-7-validar-datos-antes-de-tomar-decisiones">7. Validar datos antes de tomar decisiones</a></li><li><a href="#seccion-8-varios-if-independientes-y-alternativas-excluyentes">8. Varios if independientes y alternativas excluyentes</a></li><li><a href="#seccion-9-comparar-cadenas-de-caracteres">9. Comparar cadenas de caracteres</a></li><li><a href="#seccion-10-la-estructura-switch-seleccionar-entre-valores-concretos">10. La estructura switch: seleccionar entre valores concretos</a></li><li><a href="#seccion-11-problema-integrador-auditoria-de-almacenamiento">11. Problema integrador: auditoría de almacenamiento</a></li><li><a href="#seccion-12-errores-frecuentes-comprender-por-que-una-decision-falla">12. Errores frecuentes: comprender por qué una decisión falla</a></li><li><a href="#seccion-13-preparacion-para-la-evaluacion-decidir-explicar-y-comprobar">13. Preparación para la evaluación: decidir, explicar y comprobar</a></li><li><a href="#seccion-lo-que-debemos-recordar">Lo que debemos recordar</a></li></ol></nav></details><article class="prose"><h1 id="seccion-unidad-3-estructuras-condicionales-programas-que-toman-decisiones"><span id="apartado-1" class="legacy-anchor" aria-hidden="true"></span>Unidad 3. Estructuras condicionales: programas que toman decisiones</h1>
+<p><strong>Programación I — 2026</strong><br />
+<strong>1.º Bachillerato Tecnológico en Informática · DGETP / UTU</strong></p>
+<h2 id="seccion-que-aprenderemos-en-esta-unidad"><span id="apartado-2" class="legacy-anchor" aria-hidden="true"></span>¿Qué aprenderemos en esta unidad?</h2>
+<p>En la Unidad 2 aprendimos a transformar algoritmos en programas Java.</p>
+<p>Ya sabemos declarar variables, asignarles valores, realizar operaciones matemáticas, solicitar información mediante <code>Scanner</code> y mostrar resultados en la consola.</p>
+<p>También aprendimos que las instrucciones modifican los valores de las variables cuando se ejecutan, y que podemos seguir esos cambios mediante trazados.</p>
+<p>Pero nuestros programas todavía tienen una limitación importante.</p>
+<p>Imaginemos que una persona desea comprar un producto. Nuestro programa puede solicitar el precio, conocer el saldo disponible y calcular cuánto dinero quedará después de la compra.</p>
+<p>Sin embargo, todavía no sabe <strong>decidir si debe autorizar la operación</strong>.</p>
+<p>Si la persona tiene dinero suficiente, corresponde permitir la compra.</p>
+<p>Si no tiene dinero suficiente, corresponde rechazarla.</p>
+<p>No podemos mostrar siempre el mismo mensaje, porque el resultado depende de los datos recibidos.</p>
+<p>Necesitamos que el programa evalúe una condición y seleccione las instrucciones que corresponden.</p>
+<p>Para resolver esta necesidad aprenderemos a utilizar <strong>estructuras condicionales</strong>.</p>
+<p>En esta unidad estudiaremos:</p>
+<ul>
+<li>Cómo transformar las reglas de un problema en condiciones Java.</li>
+<li>Qué significa que una condición sea verdadera o falsa.</li>
+<li>Cómo utilizar <code>if</code> para ejecutar instrucciones solamente cuando se cumple una condición.</li>
+<li>Cómo utilizar <code>if...else</code> para seleccionar entre dos alternativas.</li>
+<li>Cómo utilizar <code>else if</code> cuando existen varias posibilidades.</li>
+<li>Por qué importa el orden de evaluación.</li>
+<li>Cómo combinar condiciones mediante <code>&amp;&amp;</code>, <code>||</code> y <code>!</code>.</li>
+<li>Cómo validar datos antes de procesarlos.</li>
+<li>Qué diferencia existe entre varios <code>if</code> independientes y una cadena de alternativas.</li>
+<li>Cómo comparar correctamente cadenas de caracteres.</li>
+<li>Cuándo utilizar <code>switch</code>.</li>
+<li>Cómo seguir el recorrido de ejecución y detectar errores lógicos.</li>
+</ul>
+<p>Conservaremos nuestra metodología habitual:</p>
+<p><strong>Comprender el problema → construir el algoritmo → escribir pseudocódigo → implementar Java → predecir → probar → explicar.</strong></p>
+<p>El objetivo no es memorizar estructuras condicionales.</p>
+<p><strong>Queremos comprender cómo transformar las reglas de un problema en decisiones que un programa pueda ejecutar correctamente.</strong></p>
+<p><strong>Cómo utilizar este capítulo de forma autónoma.</strong> Cuando encuentres una pregunta de predicción, escribe o piensa tu respuesta <em>antes</em> de revelar la explicación. Si te bloqueas, identifica primero qué datos tienes y qué resultado necesitas; consulta una pista y vuelve a intentarlo. Si ya entendiste el ejemplo, compruébalo con otros datos y explica qué cambiaría. En los ejercicios con soluciones, la página debe mostrar las pistas antes de la resolución completa. Si estudias el Markdown directamente, oculta el párrafo de solución mientras realizas la predicción.</p>
+<hr />
+<h1 id="seccion-1-una-limitacion-de-nuestros-primeros-programas"><span id="apartado-3" class="legacy-anchor" aria-hidden="true"></span>1. Una limitación de nuestros primeros programas</h1>
+<p>Recordemos el programa de compras que construimos en la unidad anterior.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese el precio: &quot;);
+        double precio = teclado.nextDouble();
+
+        System.out.print(&quot;Ingrese la cantidad: &quot;);
+        int cantidad = teclado.nextInt();
+
+        double total = precio * cantidad;
+
+        System.out.println(&quot;Total: $&quot; + total);
+
+        teclado.close();
+    }
+}
+</code></pre>
+<p>Este programa recibe dos datos, realiza una multiplicación y muestra el resultado.</p>
+<p>Si el precio es $150 y compramos tres unidades:</p>
+<p><code>150 × 3 = 450</code></p>
+<p>El programa muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Total: $450.0
+</code></pre>
+<p>El cálculo es correcto.</p>
+<p>Pero ahora queremos agregar una regla.</p>
+<p>La persona dispone de un saldo determinado y solamente podrá realizar la compra si tiene dinero suficiente.</p>
+<h2 id="seccion-1-1-un-problema-que-todavia-no-sabemos-resolver"><span id="apartado-4" class="legacy-anchor" aria-hidden="true"></span>1.1. Un problema que todavía no sabemos resolver</h2>
+<p>Imaginemos estas situaciones:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Saldo disponible</th>
+<th style="text-align:right">Total de la compra</th>
+<th>¿Debe autorizarse?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">600</td>
+<td style="text-align:right">450</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td style="text-align:right">450</td>
+<td style="text-align:right">450</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td style="text-align:right">400</td>
+<td style="text-align:right">450</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Nuestro programa ya sabe calcular el total.</p>
+<p>También podría calcular la diferencia entre el saldo y el precio.</p>
+<p>Pero todavía no sabe seleccionar el mensaje correcto.</p>
+<p>Podríamos agregar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Compra autorizada&quot;);
+</code></pre>
+<p>El problema es que esa instrucción se ejecutaría siempre que el programa llegara a ella.</p>
+<p>También podríamos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Saldo insuficiente&quot;);
+</code></pre>
+<p>Pero entonces siempre mostraríamos ese mensaje.</p>
+<p>¿Y si colocamos los dos?</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Compra autorizada&quot;);
+System.out.println(&quot;Saldo insuficiente&quot;);
+</code></pre>
+<p>El programa mostraría respuestas contradictorias.</p>
+<p>No necesitamos otra operación matemática.</p>
+<p><strong>Necesitamos decidir qué instrucción corresponde ejecutar según los datos.</strong></p>
+<h2 id="seccion-1-2-expresar-una-decision-en-lenguaje-cotidiano"><span id="apartado-5" class="legacy-anchor" aria-hidden="true"></span>1.2. Expresar una decisión en lenguaje cotidiano</h2>
+<p>Podemos establecer esta regla:</p>
+<blockquote>
+<p>Si el saldo alcanza para pagar la compra, mostrar «Compra autorizada».</p>
+</blockquote>
+<p>Pero hay una expresión que debemos precisar: «alcanza».</p>
+<p>¿Cuándo alcanza el saldo?</p>
+<p>Cuando es mayor o igual al importe de la compra.</p>
+<p>Podemos escribirlo así:</p>
+<p><code>saldo &gt;= total</code></p>
+<p>Esta comparación produce un resultado verdadero o falso.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li><code>600 &gt;= 450</code> es verdadero.</li>
+<li><code>450 &gt;= 450</code> es verdadero.</li>
+<li><code>400 &gt;= 450</code> es falso.</li>
+</ul>
+<p>La igualdad debe estar incluida porque una persona que dispone exactamente del importe necesario puede pagar la compra.</p>
+<h2 id="seccion-1-3-nuestro-primer-pseudocodigo-con-una-condicion"><span id="apartado-6" class="legacy-anchor" aria-hidden="true"></span>1.3. Nuestro primer pseudocódigo con una condición</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER saldo
+    LEER total
+
+    SI saldo &gt;= total ENTONCES
+        MOSTRAR &quot;Compra autorizada&quot;
+    FIN SI
+FIN
+</code></pre>
+<p>Acabamos de introducir una estructura nueva.</p>
+<p>Hasta ahora, nuestros algoritmos ejecutaban las instrucciones una detrás de otra.</p>
+<p>Ahora una instrucción solamente se ejecutará si se cumple una condición.</p>
+<p>La condición está expresada mediante:</p>
+<p><code>saldo &gt;= total</code></p>
+<p>Cuando es verdadera, se muestra el mensaje.</p>
+<p>Cuando es falsa, ese mensaje se omite.</p>
+<h2 id="seccion-1-4-que-hemos-cambiado"><span id="apartado-7" class="legacy-anchor" aria-hidden="true"></span>1.4. ¿Qué hemos cambiado?</h2>
+<p>No hemos cambiado la manera de calcular el total.</p>
+<p>Tampoco hemos cambiado qué significa almacenar información mediante variables.</p>
+<p>Lo que incorporamos es la posibilidad de <strong>controlar el recorrido de ejecución</strong>.</p>
+<p>A partir de ahora, un mismo programa podrá realizar acciones diferentes según los valores que reciba.</p>
+<p>Esta capacidad se denomina selección o ejecución condicional.</p>
+<hr />
+<h1 id="seccion-2-la-estructura-if-ejecutar-solamente-cuando-se-cumple-una-condicion"><span id="apartado-8" class="legacy-anchor" aria-hidden="true"></span>2. La estructura if: ejecutar solamente cuando se cumple una condición</h1>
+<p>En Java utilizamos la palabra reservada <code>if</code> para construir una decisión.</p>
+<p>La palabra inglesa <em>if</em> significa «si».</p>
+<p>Su estructura básica es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (condicion) {
+
+    // Instrucciones que se ejecutan
+    // cuando la condición es verdadera
+
+}
+</code></pre>
+<p>La condición se escribe entre paréntesis.</p>
+<p>Las instrucciones que dependen de ella se colocan dentro de un bloque delimitado por llaves.</p>
+<h2 id="seccion-2-1-nuestro-primer-if"><span id="apartado-9" class="legacy-anchor" aria-hidden="true"></span>2.1. Nuestro primer if</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int saldo = 1000;
+int precio = 800;
+
+if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+}
+</code></pre>
+<p>Java evalúa:</p>
+<p><code>1000 &gt;= 800</code></p>
+<p>El resultado es verdadero.</p>
+<p>Por tanto, ejecuta:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Compra autorizada&quot;);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Compra autorizada
+</code></pre>
+<h2 id="seccion-2-2-que-sucede-si-la-condicion-es-falsa"><span id="apartado-10" class="legacy-anchor" aria-hidden="true"></span>2.2. ¿Qué sucede si la condición es falsa?</h2>
+<p>Cambiemos el saldo.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int saldo = 500;
+int precio = 800;
+
+if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+}
+</code></pre>
+<p>Ahora Java evalúa:</p>
+<p><code>500 &gt;= 800</code></p>
+<p>El resultado es falso.</p>
+<p>Por tanto, no ejecuta la instrucción que está dentro del bloque.</p>
+<p>El mensaje no aparece.</p>
+<h2 id="seccion-2-3-de-la-ejecucion-secuencial-a-la-ejecucion-condicional"><span id="apartado-11" class="legacy-anchor" aria-hidden="true"></span>2.3. De la ejecución secuencial a la ejecución condicional</h2>
+<p>En la Unidad 2 utilizábamos instrucciones como:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Primero&quot;);
+System.out.println(&quot;Segundo&quot;);
+System.out.println(&quot;Tercero&quot;);
+</code></pre>
+<p>Las tres se ejecutaban en orden.</p>
+<p>Ahora podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Primero&quot;);
+
+if (edad &gt;= 18) {
+    System.out.println(&quot;Segundo&quot;);
+}
+
+System.out.println(&quot;Tercero&quot;);
+</code></pre>
+<p>El recorrido depende de <code>edad</code>.</p>
+<p>Si <code>edad</code> vale 20, la salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Primero
+Segundo
+Tercero
+</code></pre>
+<p>Si <code>edad</code> vale 16, la salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Primero
+Tercero
+</code></pre>
+<p><strong>Una condición falsa no detiene el programa: hace que se omita el bloque correspondiente.</strong></p>
+<p>Después, la ejecución continúa con las instrucciones posteriores.</p>
+<h2 id="seccion-2-4-que-significa-verdadero-o-falso"><span id="apartado-12" class="legacy-anchor" aria-hidden="true"></span>2.4. ¿Qué significa verdadero o falso?</h2>
+<p>En la unidad anterior conocimos el tipo <code>boolean</code>.</p>
+<p>Un valor booleano solamente puede ser:</p>
+<p><code>true</code></p>
+<p>o:</p>
+<p><code>false</code></p>
+<p>Una comparación como:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saldo &gt;= precio
+</code></pre>
+<p>produce un resultado booleano.</p>
+<p>Si el saldo alcanza, la expresión es verdadera.</p>
+<p>Si no alcanza, es falsa.</p>
+<p>La estructura <code>if</code> utiliza ese resultado para decidir si ejecuta su bloque.</p>
+<p>También podríamos almacenar una condición:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">boolean puedeComprar = saldo &gt;= precio;
+</code></pre>
+<p>Y después escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (puedeComprar) {
+    System.out.println(&quot;Compra autorizada&quot;);
+}
+</code></pre>
+<p>Para este problema sencillo no necesitamos necesariamente crear la variable <code>puedeComprar</code>.</p>
+<p>Pero el ejemplo permite comprobar que una condición produce un valor booleano.</p>
+<h2 id="seccion-2-5-la-condicion-y-la-accion-cumplen-funciones-diferentes"><span id="apartado-13" class="legacy-anchor" aria-hidden="true"></span>2.5. La condición y la acción cumplen funciones diferentes</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+}
+</code></pre>
+<p>La expresión:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saldo &gt;= precio
+</code></pre>
+<p>no muestra información en la consola.</p>
+<p>Su función es determinar si se cumple una regla.</p>
+<p>La instrucción <code>println</code> es la que muestra el mensaje.</p>
+<p>Pero solamente se ejecuta cuando Java entra en el bloque.</p>
+<p><strong>La condición determina el recorrido. Las instrucciones del bloque realizan las acciones.</strong></p>
+<h2 id="seccion-2-6-las-llaves-delimitan-el-bloque"><span id="apartado-14" class="legacy-anchor" aria-hidden="true"></span>2.6. Las llaves delimitan el bloque</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+    System.out.println(&quot;Puede retirar el producto&quot;);
+}
+
+System.out.println(&quot;Gracias por utilizar el programa&quot;);
+</code></pre>
+<p>Si la condición es verdadera, aparecen los tres mensajes.</p>
+<p>Si es falsa, solamente aparece:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">Gracias por utilizar el programa
+</code></pre>
+<p>La última instrucción se encuentra fuera del bloque.</p>
+<p>Por tanto, no depende de esa condición.</p>
+<p>Esta diferencia es fundamental.</p>
+<p>La indentación facilita la lectura, pero son las llaves las que delimitan el bloque.</p>
+<h2 id="seccion-2-7-programa-completo-con-if"><span id="apartado-15" class="legacy-anchor" aria-hidden="true"></span>2.7. Programa completo con if</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese su saldo: &quot;);
+        int saldo = teclado.nextInt();
+
+        System.out.print(&quot;Ingrese el precio: &quot;);
+        int precio = teclado.nextInt();
+
+        if (saldo &gt;= precio) {
+            System.out.println(&quot;Compra autorizada&quot;);
+        }
+
+        System.out.println(&quot;Fin del programa&quot;);
+
+        teclado.close();
+    }
+}
+</code></pre>
+<p>Probemos dos casos.</p>
+<p><strong>Caso A</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Ingrese su saldo: 1000
+Ingrese el precio: 800
+Compra autorizada
+Fin del programa
+</code></pre>
+<p><strong>Caso B</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Ingrese su saldo: 500
+Ingrese el precio: 800
+Fin del programa
+</code></pre>
+<p>¿Por qué aparece «Fin del programa» en ambos casos?</p>
+<p>Porque esa instrucción está después del bloque <code>if</code>.</p>
+<h2 id="seccion-2-8-trazar-una-condicion"><span id="apartado-16" class="legacy-anchor" aria-hidden="true"></span>2.8. Trazar una condición</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int edad = 16;
+
+if (edad &gt;= 15) {
+    System.out.println(&quot;Puede participar&quot;);
+}
+
+System.out.println(&quot;Consulta finalizada&quot;);
+</code></pre>
+<p>Podemos registrar la ejecución:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Acción</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Guardar <code>edad = 16</code></td>
+<td>Edad vale 16</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Evaluar <code>edad &gt;= 15</code></td>
+<td>Verdadero</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mostrar «Puede participar»</td>
+<td>Se ejecuta</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mostrar «Consulta finalizada»</td>
+<td>Se ejecuta</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ahora cambiemos:</p>
+<p><code>edad = 14</code></p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Acción</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Guardar <code>edad = 14</code></td>
+<td>Edad vale 14</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Evaluar <code>edad &gt;= 15</code></td>
+<td>Falso</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mostrar «Puede participar»</td>
+<td>Se omite</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mostrar «Consulta finalizada»</td>
+<td>Se ejecuta</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Este trazado permite comprender qué instrucciones efectivamente se ejecutan.</p>
+<p>No alcanza con mirar cuáles están escritas en el archivo.</p>
+<hr />
+<h1 id="seccion-3-construir-e-interpretar-condiciones"><span id="apartado-17" class="legacy-anchor" aria-hidden="true"></span>3. Construir e interpretar condiciones</h1>
+<p>Hasta ahora utilizamos condiciones sencillas.</p>
+<p>Pero necesitamos aprender a construirlas correctamente.</p>
+<p>Para eso debemos interpretar cuidadosamente el enunciado del problema.</p>
+<p>No significa lo mismo «más de 15» que «15 o más».</p>
+<p>Tampoco significa lo mismo «menos de 10» que «hasta 10 inclusive».</p>
+<p>Una diferencia pequeña en el lenguaje puede modificar el funcionamiento del programa.</p>
+<h2 id="seccion-3-1-los-operadores-relacionales"><span id="apartado-18" class="legacy-anchor" aria-hidden="true"></span>3.1. Los operadores relacionales</h2>
+<p>Java proporciona operadores para comparar valores.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Significado</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&gt;</code></td>
+<td>Mayor que</td>
+<td><code>edad &gt; 15</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Menor que</td>
+<td><code>nota &lt; 6</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Mayor o igual que</td>
+<td><code>edad &gt;= 18</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Menor o igual que</td>
+<td><code>cantidad &lt;= 10</code></td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>Igual que</td>
+<td><code>opcion == 3</code></td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Distinto de</td>
+<td><code>saldo != 0</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Estas comparaciones producen valores booleanos.</p>
+<h2 id="seccion-3-2-del-enunciado-a-java"><span id="apartado-19" class="legacy-anchor" aria-hidden="true"></span>3.2. Del enunciado a Java</h2>
+<p>Imaginemos que el problema establece:</p>
+<blockquote>
+<p>Un estudiante puede participar si tiene al menos 15 años.</p>
+</blockquote>
+<p>Debemos identificar:</p>
+<p><strong>Dato:</strong> edad.</p>
+<p><strong>Requisito:</strong> tener 15 años o más.</p>
+<p><strong>Condición:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt;= 15
+</code></pre>
+<p>Ahora podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (edad &gt;= 15) {
+    System.out.println(&quot;Puede participar&quot;);
+}
+</code></pre>
+<h2 id="seccion-3-3-de-java-al-lenguaje-cotidiano"><span id="apartado-20" class="legacy-anchor" aria-hidden="true"></span>3.3. De Java al lenguaje cotidiano</h2>
+<p>También debemos realizar el camino inverso.</p>
+<p>Cuando leemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">cantidad &lt;= 10
+</code></pre>
+<p>Necesitamos comprender qué significa.</p>
+<p>Podemos expresarlo así:</p>
+<blockquote>
+<p>La cantidad es como máximo diez.</p>
+</blockquote>
+<p>Cuando leemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">saldo != 0
+</code></pre>
+<p>Podemos explicar:</p>
+<blockquote>
+<p>El saldo es distinto de cero.</p>
+</blockquote>
+<p>Y:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">precio &gt; 100
+</code></pre>
+<p>Significa:</p>
+<blockquote>
+<p>El precio supera cien.</p>
+</blockquote>
+<p>Esta habilidad será importante cuando tengamos que leer programas que no escribimos nosotros.</p>
+<p><strong>Comprender código implica poder explicar qué regla representa cada condición.</strong></p>
+<h2 id="seccion-3-4-mayor-que-y-mayor-o-igual-que"><span id="apartado-21" class="legacy-anchor" aria-hidden="true"></span>3.4. Mayor que y mayor o igual que</h2>
+<p>Compara:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt; 15
+</code></pre>
+<p>Con:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt;= 15
+</code></pre>
+<p>La primera condición exige tener más de 15 años.</p>
+<p>La segunda acepta también exactamente 15 años.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Edad</th>
+<th><code>edad &gt; 15</code></th>
+<th><code>edad &gt;= 15</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">14</td>
+<td>Falso</td>
+<td>Falso</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td>Falso</td>
+<td>Verdadero</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td>Verdadero</td>
+<td>Verdadero</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Si el problema establece «al menos 15 años», necesitamos <code>&gt;=</code>.</p>
+<h2 id="seccion-3-5-menor-que-y-menor-o-igual-que"><span id="apartado-22" class="legacy-anchor" aria-hidden="true"></span>3.5. Menor que y menor o igual que</h2>
+<p>Ahora comparemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">cantidad &lt; 10
+</code></pre>
+<p>Y:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">cantidad &lt;= 10
+</code></pre>
+<p>Si el programa permite comprar hasta diez unidades inclusive, la condición correcta es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">cantidad &lt;= 10
+</code></pre>
+<p>Si permite comprar solamente menos de diez, corresponde:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">cantidad &lt; 10
+</code></pre>
+<h2 id="seccion-3-6-igualdad-y-asignacion-no-son-lo-mismo"><span id="apartado-23" class="legacy-anchor" aria-hidden="true"></span>3.6. Igualdad y asignación no son lo mismo</h2>
+<p>En la Unidad 2 aprendimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">precio = 150;
+</code></pre>
+<p>El signo <code>=</code> realiza una asignación.</p>
+<p>Guarda 150 en <code>precio</code>.</p>
+<p>Pero para comparar valores utilizamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">opcion == 3
+</code></pre>
+<p>El operador <code>==</code> pregunta si ambos valores son iguales.</p>
+<p>Debemos recordar:</p>
+<p><strong><code>=</code> asigna un valor. <code>==</code> compara valores.</strong></p>
+<h2 id="seccion-3-7-la-desigualdad"><span id="apartado-24" class="legacy-anchor" aria-hidden="true"></span>3.7. La desigualdad</h2>
+<p>Utilizamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">!=
+</code></pre>
+<p>Para comprobar que dos valores son distintos.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int opcion = 4;
+
+if (opcion != 3) {
+    System.out.println(&quot;La opción no es tres&quot;);
+}
+</code></pre>
+<p>Como <code>opcion</code> vale 4, la condición es verdadera.</p>
+<h2 id="seccion-3-8-los-valores-limite"><span id="apartado-25" class="legacy-anchor" aria-hidden="true"></span>3.8. Los valores límite</h2>
+<p>Consideremos esta condición:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt;= 18
+</code></pre>
+<p>Si solamente la probamos con 12 y 35 años, probablemente no descubramos ciertos errores.</p>
+<p>Conviene utilizar valores cercanos al límite:</p>
+<ul>
+<li>17: inmediatamente inferior.</li>
+<li>18: el límite exacto.</li>
+<li>19: inmediatamente superior.</li>
+</ul>
+<p>¿Por qué?</p>
+<p>Porque una condición incorrecta como:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt; 18
+</code></pre>
+<p>se comportaría igual con 12 y 35.</p>
+<p>Pero fallaría con 18.</p>
+<p>Los valores límite nos permiten detectar errores que otros datos podrían ocultar.</p>
+<h2 id="seccion-3-9-estrategia-para-construir-condiciones"><span id="apartado-26" class="legacy-anchor" aria-hidden="true"></span>3.9. Estrategia para construir condiciones</h2>
+<p>Antes de escribir una condición:</p>
+<ol>
+<li>Identifica el dato que necesitas comprobar.</li>
+<li>Determina cuál es el requisito.</li>
+<li>Comprueba si el límite está incluido.</li>
+<li>Elige el operador correspondiente.</li>
+<li>Prueba valores inferiores, iguales y superiores al límite cuando sea necesario.</li>
+<li>Explica la condición con tus propias palabras.</li>
+</ol>
+<h2 id="seccion-3-10-actividad-de-lectura"><span id="apartado-27" class="legacy-anchor" aria-hidden="true"></span>3.10. Actividad de lectura</h2>
+<p>Supongamos que:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 8;
+</code></pre>
+<p>Predice el resultado de estas expresiones:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">numero &gt; 8
+numero &gt;= 8
+numero == 8
+numero != 8
+numero &lt; 10
+numero &lt;= 7
+</code></pre>
+<p>Después explica cada una en lenguaje cotidiano.</p>
+<p>No alcanza con responder verdadero o falso.</p>
+<p>Debes poder justificar qué comparación se realiza.</p>
+<hr />
+<h1 id="seccion-4-dos-alternativas-if-else"><span id="apartado-28" class="legacy-anchor" aria-hidden="true"></span>4. Dos alternativas: if...else</h1>
+<p>Volvamos al problema de la compra.</p>
+<p>Nuestro primer programa con <code>if</code> solamente mostraba un mensaje cuando el saldo era suficiente.</p>
+<p>Pero cuando la persona no tenía dinero suficiente, no explicaba lo que había sucedido.</p>
+<p>Ahora necesitamos seleccionar entre dos alternativas.</p>
+<p><strong>Si el saldo alcanza:</strong></p>
+<p>Mostrar «Compra autorizada».</p>
+<p><strong>Si el saldo no alcanza:</strong></p>
+<p>Mostrar «Saldo insuficiente».</p>
+<p>Para resolverlo utilizaremos <code>if...else</code>.</p>
+<h2 id="seccion-4-1-pseudocodigo"><span id="apartado-29" class="legacy-anchor" aria-hidden="true"></span>4.1. Pseudocódigo</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER saldo
+    LEER precio
+
+    SI saldo &gt;= precio ENTONCES
+        MOSTRAR &quot;Compra autorizada&quot;
+    SINO
+        MOSTRAR &quot;Saldo insuficiente&quot;
+    FIN SI
+FIN
+</code></pre>
+<p>La palabra <code>SINO</code> representa la alternativa que corresponde cuando la condición no se cumple.</p>
+<h2 id="seccion-4-2-traduccion-a-java"><span id="apartado-30" class="legacy-anchor" aria-hidden="true"></span>4.2. Traducción a Java</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+} else {
+    System.out.println(&quot;Saldo insuficiente&quot;);
+}
+</code></pre>
+<p>Java evalúa una condición.</p>
+<p>Si es verdadera, ejecuta el bloque del <code>if</code>.</p>
+<p>Si es falsa, ejecuta el bloque del <code>else</code>.</p>
+<p>Después continúa con las instrucciones posteriores a la estructura.</p>
+<h2 id="seccion-4-3-else-tiene-una-condicion-propia"><span id="apartado-31" class="legacy-anchor" aria-hidden="true"></span>4.3. ¿Else tiene una condición propia?</h2>
+<p>No.</p>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">else {
+    System.out.println(&quot;Saldo insuficiente&quot;);
+}
+</code></pre>
+<p>No aparece una expresión entre paréntesis.</p>
+<p><code>else</code> significa que corresponde ejecutar esa alternativa porque la condición del <code>if</code> fue falsa.</p>
+<p>No necesitamos escribir otra comparación.</p>
+<p>Esto ayuda a evitar condiciones repetidas innecesariamente.</p>
+<h2 id="seccion-4-4-diferencia-entre-if-e-if-else"><span id="apartado-32" class="legacy-anchor" aria-hidden="true"></span>4.4. Diferencia entre if e if...else</h2>
+<p>Con un <code>if</code> sencillo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+}
+</code></pre>
+<p>Puede ocurrir que no se ejecute ninguna instrucción del bloque.</p>
+<p>Con:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+} else {
+    System.out.println(&quot;Saldo insuficiente&quot;);
+}
+</code></pre>
+<p>Se ejecutará exactamente uno de los dos bloques.</p>
+<h2 id="seccion-4-5-programa-completo"><span id="apartado-33" class="legacy-anchor" aria-hidden="true"></span>4.5. Programa completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese su saldo: &quot;);
+        int saldo = teclado.nextInt();
+
+        System.out.print(&quot;Ingrese el precio: &quot;);
+        int precio = teclado.nextInt();
+
+        if (saldo &gt;= precio) {
+            System.out.println(&quot;Compra autorizada&quot;);
+        } else {
+            System.out.println(&quot;Saldo insuficiente&quot;);
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<h2 id="seccion-4-6-comprobar-los-limites"><span id="apartado-34" class="legacy-anchor" aria-hidden="true"></span>4.6. Comprobar los límites</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Saldo</th>
+<th style="text-align:right">Precio</th>
+<th>Condición</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1000</td>
+<td style="text-align:right">800</td>
+<td>Verdadera</td>
+<td>Compra autorizada</td>
+</tr>
+<tr>
+<td style="text-align:right">800</td>
+<td style="text-align:right">800</td>
+<td>Verdadera</td>
+<td>Compra autorizada</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">800</td>
+<td>Falsa</td>
+<td>Saldo insuficiente</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El segundo caso es fundamental.</p>
+<p>Cuando el saldo es exactamente igual al precio, la compra debe autorizarse.</p>
+<p>Por eso utilizamos <code>&gt;=</code>.</p>
+<h2 id="seccion-4-7-simulador-de-if-else"><span id="apartado-35" class="legacy-anchor" aria-hidden="true"></span>4.7. Simulador de if...else</h2>
+<div id="u03-if-else" data-recurso="u03-if-else"><div data-componente-interactivo="u03-if-else"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Si saldo &gt;= precio se ejecuta «Compra autorizada»; en caso contrario, «Saldo insuficiente». Con saldo y precio iguales se ejecuta la primera alternativa.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Antes de comprobar cada combinación, intenta anticipar qué mensaje mostrará el programa.</p>
+<p>No cambies solamente el saldo.</p>
+<p>También puedes modificar el precio para comprender que la decisión depende de ambos valores.</p>
+<h2 id="seccion-4-8-una-condicion-puede-controlar-una-asignacion"><span id="apartado-36" class="legacy-anchor" aria-hidden="true"></span>4.8. Una condición puede controlar una asignación</h2>
+<p>Nuestro programa solamente informa si la compra está autorizada.</p>
+<p>Pero ¿qué sucede si queremos descontar el importe del saldo?</p>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (saldo &gt;= precio) {
+    saldo = saldo - precio;
+
+    System.out.println(&quot;Compra autorizada&quot;);
+    System.out.println(&quot;Nuevo saldo: &quot; + saldo);
+} else {
+    System.out.println(&quot;Saldo insuficiente&quot;);
+}
+</code></pre>
+<p>Ahora el saldo cambia solamente cuando la compra se autoriza.</p>
+<p>Si tenemos:</p>
+<p><code>saldo = 1000</code></p>
+<p><code>precio = 800</code></p>
+<p>El nuevo saldo será 200.</p>
+<p>Pero si el saldo es 500, la resta no se ejecuta.</p>
+<p>Aquí recuperamos una idea de la Unidad 2:</p>
+<p><strong>Una variable cambia cuando se ejecuta una asignación. Una condición puede determinar si esa asignación llega a ejecutarse.</strong></p>
+<hr />
+<h1 id="seccion-5-mas-de-dos-alternativas-else-if"><span id="apartado-37" class="legacy-anchor" aria-hidden="true"></span>5. Más de dos alternativas: else if</h1>
+<p>Hasta ahora trabajamos con una o dos posibilidades.</p>
+<p>Pero algunos problemas necesitan seleccionar entre tres o más categorías.</p>
+<p>Imaginemos que queremos clasificar una calificación.</p>
+<p>Para este ejercicio utilizaremos las siguientes reglas:</p>
+<ul>
+<li>Nota igual o superior a 9: «Excelente».</li>
+<li>Nota desde 6 hasta menos de 9: «Aprobado».</li>
+<li>Nota inferior a 6: «Debe mejorar».</li>
+</ul>
+<p>Esta clasificación corresponde al ejercicio y no representa necesariamente una escala institucional general.</p>
+<p>Necesitamos seleccionar una sola categoría.</p>
+<h2 id="seccion-5-1-una-primera-solucion-que-parece-correcta"><span id="apartado-38" class="legacy-anchor" aria-hidden="true"></span>5.1. Una primera solución que parece correcta</h2>
+<p>Un estudiante escribe:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int nota = 10;
+
+if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else if (nota &gt;= 9) {
+    System.out.println(&quot;Excelente&quot;);
+} else {
+    System.out.println(&quot;Debe mejorar&quot;);
+}
+</code></pre>
+<p>Antes de continuar, responde:</p>
+<p><strong>¿Qué mostrará este programa si la nota es 10?</strong></p>
+<p>Podríamos pensar que mostrará «Excelente», porque 10 es mayor que 9.</p>
+<p>Pero debemos seguir las instrucciones realmente ejecutadas.</p>
+<h2 id="seccion-5-2-realizar-el-trazado"><span id="apartado-39" class="legacy-anchor" aria-hidden="true"></span>5.2. Realizar el trazado</h2>
+<p>Primero Java evalúa:</p>
+<p><code>nota &gt;= 6</code></p>
+<p>Como <code>nota</code> vale 10:</p>
+<p><code>10 &gt;= 6</code></p>
+<p>La condición es verdadera.</p>
+<p>Por tanto, Java ejecuta:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Aprobado&quot;);
+</code></pre>
+<p>Después abandona esa cadena de alternativas.</p>
+<p>No evalúa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">nota &gt;= 9
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Aprobado
+</code></pre>
+<p>El programa tiene sintaxis válida.</p>
+<p>Pero el resultado no cumple la clasificación que establecimos.</p>
+<p>Encontramos un <strong>error lógico</strong>.</p>
+<h2 id="seccion-5-3-por-que-ocurrio"><span id="apartado-40" class="legacy-anchor" aria-hidden="true"></span>5.3. ¿Por qué ocurrió?</h2>
+<p>Porque colocamos primero una condición que incluye todas las notas superiores o iguales a 6.</p>
+<p>Eso incluye también 9 y 10.</p>
+<p>Cuando una cadena <code>if...else if</code> encuentra la primera condición verdadera, ejecuta su bloque y no continúa comprobando las alternativas posteriores.</p>
+<p>Por eso importa el orden.</p>
+<h2 id="seccion-5-4-la-solucion-corregida"><span id="apartado-41" class="legacy-anchor" aria-hidden="true"></span>5.4. La solución corregida</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nota &gt;= 9) {
+    System.out.println(&quot;Excelente&quot;);
+} else if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else {
+    System.out.println(&quot;Debe mejorar&quot;);
+}
+</code></pre>
+<p>Ahora Java comprueba primero si la nota pertenece a la categoría superior.</p>
+<p>Si no pertenece, continúa con la siguiente.</p>
+<h2 id="seccion-5-5-que-sucede-con-diferentes-notas"><span id="apartado-42" class="legacy-anchor" aria-hidden="true"></span>5.5. ¿Qué sucede con diferentes notas?</h2>
+<p>Si <code>nota = 10</code>:</p>
+<ul>
+<li><code>nota &gt;= 9</code>: verdadero.</li>
+<li>Se muestra «Excelente».</li>
+<li>No se evalúa <code>nota &gt;= 6</code>.</li>
+</ul>
+<p>Si <code>nota = 8</code>:</p>
+<ul>
+<li><code>nota &gt;= 9</code>: falso.</li>
+<li><code>nota &gt;= 6</code>: verdadero.</li>
+<li>Se muestra «Aprobado».</li>
+</ul>
+<p>Si <code>nota = 4</code>:</p>
+<ul>
+<li><code>nota &gt;= 9</code>: falso.</li>
+<li><code>nota &gt;= 6</code>: falso.</li>
+<li>Se muestra «Debe mejorar».</li>
+</ul>
+<h2 id="seccion-5-6-condicion-falsa-y-condicion-no-evaluada"><span id="apartado-43" class="legacy-anchor" aria-hidden="true"></span>5.6. Condición falsa y condición no evaluada</h2>
+<p>Esta distinción es muy importante.</p>
+<p>Observa:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Nota</th>
+<th><code>nota &gt;= 9</code></th>
+<th><code>nota &gt;= 6</code></th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">4</td>
+<td>Falsa</td>
+<td>Falsa</td>
+<td>Debe mejorar</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td>Falsa</td>
+<td>Verdadera</td>
+<td>Aprobado</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>Falsa</td>
+<td>Verdadera</td>
+<td>Aprobado</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>Verdadera</td>
+<td>No se evalúa</td>
+<td>Excelente</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td>Verdadera</td>
+<td>No se evalúa</td>
+<td>Excelente</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Cuando la nota vale 10, la segunda expresión sería verdadera si la calculáramos por separado.</p>
+<p>Pero Java no llega a evaluarla dentro de esta cadena.</p>
+<p>Por tanto, no debemos representarla como falsa.</p>
+<p><strong>Una condición que no se evaluó no es lo mismo que una condición evaluada cuyo resultado fue falso.</strong></p>
+<h2 id="seccion-5-7-estructura-general-de-else-if"><span id="apartado-44" class="legacy-anchor" aria-hidden="true"></span>5.7. Estructura general de else if</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (condicion1) {
+
+    // Primera alternativa
+
+} else if (condicion2) {
+
+    // Segunda alternativa
+
+} else if (condicion3) {
+
+    // Tercera alternativa
+
+} else {
+
+    // Alternativa restante
+
+}
+</code></pre>
+<p>Java comprueba las condiciones en orden.</p>
+<p>Cuando encuentra la primera verdadera, ejecuta el bloque correspondiente.</p>
+<p>Si ninguna condición anterior fue verdadera y existe un <code>else</code> final, ejecuta ese bloque.</p>
+<p>El <code>else</code> no tiene una condición propia.</p>
+<h2 id="seccion-5-8-comparar-las-tres-estructuras"><span id="apartado-45" class="legacy-anchor" aria-hidden="true"></span>5.8. Comparar las tres estructuras</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Estructura</th>
+<th>Necesidad</th>
+<th>Qué puede ejecutarse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>if</code></td>
+<td>Ejecutar una acción solamente si se cumple un requisito</td>
+<td>El bloque o ninguno</td>
+</tr>
+<tr>
+<td><code>if...else</code></td>
+<td>Elegir entre dos alternativas</td>
+<td>Exactamente un bloque</td>
+</tr>
+<tr>
+<td><code>if...else if...else</code></td>
+<td>Elegir una categoría entre varias</td>
+<td>Exactamente una alternativa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La última característica corresponde a una cadena que incluye <code>else</code> final.</p>
+<p>Si no existe ese <code>else</code>, puede ocurrir que ninguna condición sea verdadera y no se ejecute ningún bloque.</p>
+<h2 id="seccion-5-9-debemos-comprobar-siempre-el-numero-mayor-primero"><span id="apartado-46" class="legacy-anchor" aria-hidden="true"></span>5.9. ¿Debemos comprobar siempre el número mayor primero?</h2>
+<p>No existe una regla universal que obligue a comenzar siempre por el número mayor.</p>
+<p>Lo importante es comprender las categorías.</p>
+<p>En nuestro ejemplo, comenzar por <code>nota &gt;= 9</code> resulta adecuado porque queremos separar primero las calificaciones más altas.</p>
+<p>Pero otros problemas pueden necesitar un orden diferente.</p>
+<p><strong>Debemos construir las condiciones según las reglas del problema, no memorizar un orden fijo.</strong></p>
+<h2 id="seccion-5-10-simulador-de-clasificacion"><span id="apartado-47" class="legacy-anchor" aria-hidden="true"></span>5.10. Simulador de clasificación</h2>
+<div id="u03-else-if" data-recurso="u03-else-if"><div data-componente-interactivo="u03-else-if"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Para el ejemplo, nota &gt;= 9 produce Excelente; si no, nota &gt;= 6 produce Aprobado; en otro caso, Debe mejorar. Después de una condición verdadera, las posteriores no se evalúan.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Antes de probar una nota, responde:</p>
+<ul>
+<li>¿Qué condición se evaluará primero?</li>
+<li>¿Será verdadera o falsa?</li>
+<li>¿Java necesitará comprobar la segunda?</li>
+<li>¿Qué mensaje aparecerá?</li>
+</ul>
+<p>Después compara tu predicción con el resultado.</p>
+<h2 id="seccion-5-11-programa-completo-con-else-if"><span id="apartado-48" class="legacy-anchor" aria-hidden="true"></span>5.11. Programa completo con else if</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese una nota: &quot;);
+        int nota = teclado.nextInt();
+
+        if (nota &gt;= 9) {
+            System.out.println(&quot;Excelente&quot;);
+        } else if (nota &gt;= 6) {
+            System.out.println(&quot;Aprobado&quot;);
+        } else {
+            System.out.println(&quot;Debe mejorar&quot;);
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<p>El programa clasifica la nota según las condiciones establecidas.</p>
+<p>Sin embargo, todavía tiene un problema.</p>
+<p>¿Qué sucede si introducimos 15 o -3?</p>
+<p>¿Esos valores deberían aceptarse como calificaciones?</p>
+<p>Retomaremos esta pregunta al estudiar la validación de datos.</p>
+<hr />
+<h1 id="seccion-6-construir-condiciones-compuestas"><span id="apartado-49" class="legacy-anchor" aria-hidden="true"></span>6. Construir condiciones compuestas</h1>
+<p>Hasta ahora utilizamos condiciones que comparan un valor con otro.</p>
+<p>Pero algunos problemas exigen comprobar varios requisitos.</p>
+<p>Imaginemos un videojuego.</p>
+<p>El jugador solamente puede pasar a una nueva etapa si cumple dos condiciones:</p>
+<ul>
+<li>Tiene al menos diez puntos.</li>
+<li>Conserva por lo menos una vida.</li>
+</ul>
+<p>No alcanza con cumplir una sola.</p>
+<p>Necesitamos comprobar ambas.</p>
+<h2 id="seccion-6-1-primer-problema-se-necesitan-todos-los-requisitos"><span id="apartado-50" class="legacy-anchor" aria-hidden="true"></span>6.1. Primer problema: se necesitan todos los requisitos</h2>
+<p>Partimos del enunciado:</p>
+<blockquote>
+<p>El jugador puede avanzar si tiene al menos diez puntos y conserva alguna vida.</p>
+</blockquote>
+<p>Primero construimos la condición correspondiente a los puntos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">puntos &gt;= 10
+</code></pre>
+<p>Después construimos la condición correspondiente a las vidas:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">vidas &gt; 0
+</code></pre>
+<p>Ahora necesitamos combinarlas.</p>
+<p>Java utiliza el operador:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">&amp;&amp;
+</code></pre>
+<p>Para expresar una operación lógica AND.</p>
+<p>La condición completa será:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">puntos &gt;= 10 &amp;&amp; vidas &gt; 0
+</code></pre>
+<h2 id="seccion-6-2-que-significa"><span id="apartado-51" class="legacy-anchor" aria-hidden="true"></span>6.2. ¿Qué significa &amp;&amp;?</h2>
+<p>El resultado de <code>A &amp;&amp; B</code> es verdadero solamente cuando ambas condiciones son verdaderas.</p>
+<p>Podemos comprobarlo:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Puntos</th>
+<th style="text-align:right">Vidas</th>
+<th>Puntos suficientes</th>
+<th>Conserva vidas</th>
+<th>¿Puede avanzar?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">3</td>
+<td>Verdadero</td>
+<td>Verdadero</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0</td>
+<td>Verdadero</td>
+<td>Falso</td>
+<td>No</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">3</td>
+<td>Falso</td>
+<td>Verdadero</td>
+<td>No</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Falso</td>
+<td>Falso</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Si falta alguno de los requisitos, el jugador no puede avanzar.</p>
+<h2 id="seccion-6-3-implementacion-con"><span id="apartado-52" class="legacy-anchor" aria-hidden="true"></span>6.3. Implementación con &amp;&amp;</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int puntos = 12;
+int vidas = 3;
+
+if (puntos &gt;= 10 &amp;&amp; vidas &gt; 0) {
+    System.out.println(&quot;Acceso permitido&quot;);
+} else {
+    System.out.println(&quot;Acceso denegado&quot;);
+}
+</code></pre>
+<p>Como se cumplen ambas condiciones, se permite el acceso.</p>
+<p>Pero si <code>vidas</code> vale cero, el acceso será denegado.</p>
+<h2 id="seccion-6-4-segundo-problema-alcanza-con-una-alternativa"><span id="apartado-53" class="legacy-anchor" aria-hidden="true"></span>6.4. Segundo problema: alcanza con una alternativa</h2>
+<p>Ahora cambiemos el requisito.</p>
+<p>El jugador puede entrar a una zona especial cuando:</p>
+<ul>
+<li>Tiene al menos diez puntos.</li>
+<li>O posee un permiso especial.</li>
+</ul>
+<p>Esta vez no necesita cumplir las dos condiciones.</p>
+<p>Alcanza con una.</p>
+<p>Para representar esta situación, Java utiliza:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">||
+</code></pre>
+<p>Es el operador lógico OR.</p>
+<h2 id="seccion-6-5-construir-la-condicion-con"><span id="apartado-54" class="legacy-anchor" aria-hidden="true"></span>6.5. Construir la condición con ||</h2>
+<p>Supongamos que tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int puntos = 8;
+boolean permisoEspecial = true;
+</code></pre>
+<p>Queremos comprobar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">puntos &gt;= 10 || permisoEspecial
+</code></pre>
+<p>La primera parte es falsa porque 8 es menor que 10.</p>
+<p>Pero <code>permisoEspecial</code> es verdadero.</p>
+<p>Por tanto, la condición completa es verdadera.</p>
+<h2 id="seccion-6-6-comparar-and-y-or"><span id="apartado-55" class="legacy-anchor" aria-hidden="true"></span>6.6. Comparar AND y OR</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Condición A</th>
+<th>Condición B</th>
+<th><code>A &amp;&amp; B</code></th>
+<th>`A</th>
+<th></th>
+<th>B`</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verdadera</td>
+<td>Verdadera</td>
+<td>Verdadera</td>
+<td>Verdadera</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Verdadera</td>
+<td>Falsa</td>
+<td>Falsa</td>
+<td>Verdadera</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Falsa</td>
+<td>Verdadera</td>
+<td>Falsa</td>
+<td>Verdadera</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Falsa</td>
+<td>Falsa</td>
+<td>Falsa</td>
+<td>Falsa</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Con <code>&amp;&amp;</code>, necesitamos que ambas condiciones sean verdaderas.</p>
+<p>Con <code>||</code>, alcanza con que una sea verdadera.</p>
+<p>Pero no debemos elegir el operador solamente porque en el enunciado aparece la palabra «y» u «o».</p>
+<p>Debemos comprender qué requisitos necesita cumplir realmente el programa.</p>
+<h2 id="seccion-6-7-tercer-problema-agrupar-condiciones"><span id="apartado-56" class="legacy-anchor" aria-hidden="true"></span>6.7. Tercer problema: agrupar condiciones</h2>
+<p>Imaginemos una regla de acceso.</p>
+<p>Puede ingresar:</p>
+<ul>
+<li>Una persona adulta que tenga permiso.</li>
+<li>O una persona administradora.</li>
+</ul>
+<p>Tenemos estas variables:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int edad;
+boolean tienePermiso;
+boolean esAdministrador;
+</code></pre>
+<p>Primero necesitamos expresar:</p>
+<blockquote>
+<p>Ser mayor de edad y tener permiso.</p>
+</blockquote>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">edad &gt;= 18 &amp;&amp; tienePermiso
+</code></pre>
+<p>Después agregamos la alternativa:</p>
+<blockquote>
+<p>O ser administrador.</p>
+</blockquote>
+<p>La condición completa es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">(edad &gt;= 18 &amp;&amp; tienePermiso) || esAdministrador
+</code></pre>
+<p>Los paréntesis ayudan a identificar qué requisitos forman un grupo.</p>
+<h2 id="seccion-6-8-cambiar-los-parentesis-cambia-el-significado"><span id="apartado-57" class="legacy-anchor" aria-hidden="true"></span>6.8. Cambiar los paréntesis cambia el significado</h2>
+<p>Comparemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">(edad &gt;= 18 &amp;&amp; tienePermiso) || esAdministrador
+</code></pre>
+<p>Con:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">edad &gt;= 18 &amp;&amp; (tienePermiso || esAdministrador)
+</code></pre>
+<p>No significan lo mismo.</p>
+<p>En la primera condición, una persona administradora puede ingresar aunque sea menor de 18 años.</p>
+<p>En la segunda, todas las personas necesitan ser mayores de edad, incluso si son administradoras.</p>
+<p>Probemos este caso:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">edad = 16
+tienePermiso = false
+esAdministrador = true
+</code></pre>
+<p><strong>Primera expresión:</strong></p>
+<p><code>(false &amp;&amp; false) || true</code></p>
+<p>Resultado: verdadero.</p>
+<p><strong>Segunda expresión:</strong></p>
+<p><code>false &amp;&amp; (false || true)</code></p>
+<p>Resultado: falso.</p>
+<p>El mismo conjunto de datos produce resultados diferentes porque cambiamos la agrupación.</p>
+<p>Por eso debemos construir las condiciones a partir de la regla del problema.</p>
+<h2 id="seccion-6-9-el-operador-not"><span id="apartado-58" class="legacy-anchor" aria-hidden="true"></span>6.9. El operador NOT: !</h2>
+<p>También podemos negar un valor booleano.</p>
+<p>Para eso utilizamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">!
+</code></pre>
+<p>Supongamos que tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">boolean bloqueado = false;
+</code></pre>
+<p>La expresión:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">!bloqueado
+</code></pre>
+<p>Es verdadera.</p>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (!bloqueado) {
+    System.out.println(&quot;Acceso permitido&quot;);
+}
+</code></pre>
+<p>Esto representa la regla:</p>
+<blockquote>
+<p>Si no está bloqueado, permitir el acceso.</p>
+</blockquote>
+<p>El operador <code>!</code> invierte el valor lógico de la expresión a la que se aplica.</p>
+<h2 id="seccion-6-10-como-evalua-java-las-condiciones-compuestas"><span id="apartado-59" class="legacy-anchor" aria-hidden="true"></span>6.10. ¿Cómo evalúa Java las condiciones compuestas?</h2>
+<p>Hasta ahora analizamos el resultado lógico completo.</p>
+<p>Pero debemos comprender también algo sobre el recorrido de ejecución.</p>
+<p>Java utiliza evaluación de cortocircuito con <code>&amp;&amp;</code> y <code>||</code>.</p>
+<p>Esto significa que no siempre necesita evaluar todas las partes de una expresión.</p>
+<h3 id="seccion-cortocircuito-con"><span id="apartado-60" class="legacy-anchor" aria-hidden="true"></span>Cortocircuito con &amp;&amp;</h3>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">puntos &gt;= 10 &amp;&amp; vidas &gt; 0
+</code></pre>
+<p>Si <code>puntos</code> vale 8, la primera condición es falsa.</p>
+<p>Como <code>&amp;&amp;</code> exige que ambas sean verdaderas, el resultado completo ya será falso.</p>
+<p>Java no necesita evaluar la segunda expresión.</p>
+<h3 id="seccion-cortocircuito-con-2"><span id="apartado-61" class="legacy-anchor" aria-hidden="true"></span>Cortocircuito con ||</h3>
+<p>Ahora considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">puntos &gt;= 10 || permisoEspecial
+</code></pre>
+<p>Si <code>puntos</code> vale 12, la primera condición es verdadera.</p>
+<p>Como <code>||</code> solamente necesita una condición verdadera, Java no evalúa la segunda.</p>
+<h2 id="seccion-6-11-condicion-falsa-y-condicion-no-evaluada"><span id="apartado-62" class="legacy-anchor" aria-hidden="true"></span>6.11. Condición falsa y condición no evaluada</h2>
+<p>Debemos recuperar una distinción que ya encontramos con <code>else if</code>.</p>
+<p>Una condición puede:</p>
+<ul>
+<li>Evaluarse y resultar verdadera.</li>
+<li>Evaluarse y resultar falsa.</li>
+<li>No llegar a evaluarse.</li>
+</ul>
+<p>No debemos confundir estas situaciones.</p>
+<p>Por ejemplo, si tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">puntos &gt;= 10 &amp;&amp; vidas &gt; 0
+</code></pre>
+<p>Y <code>puntos</code> vale 8, la segunda expresión no se evalúa.</p>
+<p>No corresponde marcarla como falsa simplemente porque el resultado completo es falso.</p>
+<p>Este detalle nos ayuda a comprender cómo se ejecuta realmente Java.</p>
+<h2 id="seccion-6-12-simulador-de-condiciones-compuestas"><span id="apartado-63" class="legacy-anchor" aria-hidden="true"></span>6.12. Simulador de condiciones compuestas</h2>
+<div id="u03-condiciones-compuestas" data-recurso="u03-condiciones-compuestas"><div data-componente-interactivo="u03-condiciones-compuestas"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>En puntos &gt;= 10 &amp;&amp; vidas &gt; 0, si la primera condición es falsa no se evalúa la segunda. En puntos &gt;= 10 || permisoEspecial, si la primera es verdadera tampoco se evalúa la segunda. ! invierte un booleano.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Antes de comprobar cada situación:</p>
+<ol>
+<li>Identifica los requisitos.</li>
+<li>Decide si deben cumplirse todos o solamente alguno.</li>
+<li>Predice el resultado.</li>
+<li>Observa qué expresiones se evalúan.</li>
+<li>Explica por qué el programa permite o rechaza el acceso.</li>
+</ol>
+<h2 id="seccion-6-13-elegir-correctamente-el-operador"><span id="apartado-64" class="legacy-anchor" aria-hidden="true"></span>6.13. Elegir correctamente el operador</h2>
+<p>Cuando resolvemos un problema, no debemos comenzar escribiendo <code>&amp;&amp;</code> o <code>||</code> por costumbre.</p>
+<p>Primero debemos preguntarnos:</p>
+<ul>
+<li>¿Necesitamos que se cumplan todos los requisitos?</li>
+<li>¿Alcanza con uno?</li>
+<li>¿Existen grupos de condiciones?</li>
+<li>¿Debemos negar alguna condición?</li>
+<li>¿Qué sucederá con los valores límite?</li>
+</ul>
+<p><strong>Una condición compuesta es una representación lógica de las reglas del problema.</strong></p>
+<hr />
+<h1 id="seccion-7-validar-datos-antes-de-tomar-decisiones"><span id="apartado-65" class="legacy-anchor" aria-hidden="true"></span>7. Validar datos antes de tomar decisiones</h1>
+<p>Volvamos al programa que clasifica calificaciones.</p>
+<p>Habíamos establecido:</p>
+<ul>
+<li>Nota 9 o más: Excelente.</li>
+<li>Nota desde 6 hasta menos de 9: Aprobado.</li>
+<li>Nota menor que 6: Debe mejorar.</li>
+</ul>
+<p>El programa funciona correctamente para notas comprendidas entre 1 y 10.</p>
+<p>Pero ahora vamos a probar valores que no habíamos considerado.</p>
+<h2 id="seccion-7-1-un-programa-que-acepta-datos-incorrectos"><span id="apartado-66" class="legacy-anchor" aria-hidden="true"></span>7.1. Un programa que acepta datos incorrectos</h2>
+<p>Recordemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nota &gt;= 9) {
+    System.out.println(&quot;Excelente&quot;);
+} else if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else {
+    System.out.println(&quot;Debe mejorar&quot;);
+}
+</code></pre>
+<p>¿Qué sucede si introducimos:</p>
+<p><code>nota = 15</code>?</p>
+<p>La primera condición será verdadera.</p>
+<p>El programa mostrará:</p>
+<p><code>Excelente</code></p>
+<p>¿Y si introducimos:</p>
+<p><code>nota = -3</code>?</p>
+<p>Las dos primeras condiciones serán falsas.</p>
+<p>El programa mostrará:</p>
+<p><code>Debe mejorar</code></p>
+<p>Las decisiones se ejecutan según las condiciones escritas.</p>
+<p>Pero los resultados no son adecuados para nuestro problema, porque habíamos establecido un rango de notas válido.</p>
+<p><strong>El error no está en la sintaxis. El programa está clasificando valores que no debería aceptar.</strong></p>
+<h2 id="seccion-7-2-que-significa-validar"><span id="apartado-67" class="legacy-anchor" aria-hidden="true"></span>7.2. ¿Qué significa validar?</h2>
+<p>Validar consiste en comprobar que los datos cumplan los requisitos necesarios antes de utilizarlos.</p>
+<p>En este problema, las notas válidas son los enteros comprendidos entre 1 y 10 inclusive.</p>
+<p>Por tanto, antes de clasificar una nota necesitamos comprobar que respeta ese rango.</p>
+<h2 id="seccion-7-3-construir-una-condicion-de-invalidez"><span id="apartado-68" class="legacy-anchor" aria-hidden="true"></span>7.3. Construir una condición de invalidez</h2>
+<p>Una nota es inválida cuando:</p>
+<ul>
+<li>Es menor que 1.</li>
+<li>O es mayor que 10.</li>
+</ul>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">nota &lt; 1 || nota &gt; 10
+</code></pre>
+<p>Utilizamos <code>||</code> porque alcanza con que ocurra cualquiera de esas situaciones.</p>
+<h2 id="seccion-7-4-un-error-frecuente-con"><span id="apartado-69" class="legacy-anchor" aria-hidden="true"></span>7.4. Un error frecuente con &amp;&amp;</h2>
+<p>Imaginemos que escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">nota &lt; 1 &amp;&amp; nota &gt; 10
+</code></pre>
+<p>¿Qué número entero podría ser simultáneamente menor que 1 y mayor que 10?</p>
+<p>Ninguno.</p>
+<p>Por tanto, esa condición nunca será verdadera para una nota entera.</p>
+<p>No detectaría los valores inválidos.</p>
+<p>La expresión tiene una sintaxis correcta, pero su lógica no representa el problema.</p>
+<h2 id="seccion-7-5-primero-validar-despues-clasificar"><span id="apartado-70" class="legacy-anchor" aria-hidden="true"></span>7.5. Primero validar, después clasificar</h2>
+<p>Ahora podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nota &lt; 1 || nota &gt; 10) {
+    System.out.println(&quot;Nota inválida&quot;);
+} else if (nota &gt;= 9) {
+    System.out.println(&quot;Excelente&quot;);
+} else if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else {
+    System.out.println(&quot;Debe mejorar&quot;);
+}
+</code></pre>
+<p>Primero comprobamos la validez.</p>
+<p>Solamente cuando la nota es válida continuamos con la clasificación.</p>
+<h2 id="seccion-7-6-por-que-importa-el-orden"><span id="apartado-71" class="legacy-anchor" aria-hidden="true"></span>7.6. ¿Por qué importa el orden?</h2>
+<p>Si comprobamos primero:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">nota &gt;= 9
+</code></pre>
+<p>Una nota de 15 será clasificada como Excelente.</p>
+<p>El programa seleccionará esa alternativa antes de llegar a la validación.</p>
+<p>Por tanto, no basta con agregar una condición que detecte errores.</p>
+<p><strong>Debemos colocarla antes de las operaciones que necesitan datos válidos.</strong></p>
+<h2 id="seccion-7-7-programa-completo-con-validacion"><span id="apartado-72" class="legacy-anchor" aria-hidden="true"></span>7.7. Programa completo con validación</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese una nota entre 1 y 10: &quot;);
+        int nota = teclado.nextInt();
+
+        if (nota &lt; 1 || nota &gt; 10) {
+            System.out.println(&quot;Nota inválida&quot;);
+        } else if (nota &gt;= 9) {
+            System.out.println(&quot;Excelente&quot;);
+        } else if (nota &gt;= 6) {
+            System.out.println(&quot;Aprobado&quot;);
+        } else {
+            System.out.println(&quot;Debe mejorar&quot;);
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<h2 id="seccion-7-8-comprobar-los-limites"><span id="apartado-73" class="legacy-anchor" aria-hidden="true"></span>7.8. Comprobar los límites</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Nota</th>
+<th>Resultado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">-1</td>
+<td>Nota inválida</td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>Nota inválida</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td>Debe mejorar</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>Debe mejorar</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td>Aprobado</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>Aprobado</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>Excelente</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td>Excelente</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td>Nota inválida</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Observa que utilizamos:</p>
+<ul>
+<li>Valores fuera del rango.</li>
+<li>El mínimo permitido.</li>
+<li>El máximo permitido.</li>
+<li>Valores cercanos a los límites entre categorías.</li>
+</ul>
+<p>Estos casos ayudan a detectar errores de comparación y de orden.</p>
+<h2 id="seccion-7-9-validacion-de-rango-y-validacion-de-formato"><span id="apartado-74" class="legacy-anchor" aria-hidden="true"></span>7.9. Validación de rango y validación de formato</h2>
+<p>Nuestro programa utiliza:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int nota = teclado.nextInt();
+</code></pre>
+<p>Esto supone que la entrada puede leerse como un entero.</p>
+<p>La condición:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">nota &lt; 1 || nota &gt; 10
+</code></pre>
+<p>comprueba el rango después de realizar la lectura.</p>
+<p>No evita que <code>nextInt()</code> falle si el usuario introduce un texto que no representa un entero válido.</p>
+<p>Por tanto, existen dos problemas diferentes:</p>
+<p><strong>Validación del formato:</strong> comprobar que la entrada puede interpretarse como el tipo esperado.</p>
+<p><strong>Validación del valor:</strong> comprobar que el número pertenece al rango permitido.</p>
+<p>En esta unidad nos concentraremos principalmente en la validación de valores.</p>
+<p>Más adelante podremos estudiar mecanismos adicionales para tratar entradas incorrectas.</p>
+<h2 id="seccion-7-10-validar-no-significa-necesariamente-repetir-la-lectura"><span id="apartado-75" class="legacy-anchor" aria-hidden="true"></span>7.10. Validar no significa necesariamente repetir la lectura</h2>
+<p>Nuestro programa actual muestra «Nota inválida» y termina.</p>
+<p>No vuelve a solicitar el dato.</p>
+<p>Esto es suficiente para practicar una validación sencilla.</p>
+<p>Cuando aprendamos estructuras iterativas, podremos construir programas que repitan la solicitud hasta recibir un valor aceptable.</p>
+<p>Así, la validación se conectará con los contenidos de la Unidad 4.</p>
+<hr />
+<h1 id="seccion-8-varios-if-independientes-y-alternativas-excluyentes"><span id="apartado-76" class="legacy-anchor" aria-hidden="true"></span>8. Varios if independientes y alternativas excluyentes</h1>
+<p>Hasta ahora utilizamos <code>if...else</code> y <code>else if</code> para seleccionar alternativas.</p>
+<p>Pero hay problemas donde necesitamos comprobar varias propiedades que pueden cumplirse al mismo tiempo.</p>
+<p>Imaginemos que queremos analizar un número.</p>
+<p>Necesitamos informar:</p>
+<ul>
+<li>Si es positivo.</li>
+<li>Si es par.</li>
+</ul>
+<p>Un mismo número puede cumplir ambas condiciones.</p>
+<p>Por ejemplo, 8 es positivo y par.</p>
+<h2 id="seccion-8-1-dos-condiciones-independientes"><span id="apartado-77" class="legacy-anchor" aria-hidden="true"></span>8.1. Dos condiciones independientes</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 8;
+
+if (numero &gt; 0) {
+    System.out.println(&quot;Positivo&quot;);
+}
+
+if (numero % 2 == 0) {
+    System.out.println(&quot;Par&quot;);
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Positivo
+Par
+</code></pre>
+<p>¿Por qué aparecen dos mensajes?</p>
+<p>Porque tenemos dos <code>if</code> independientes.</p>
+<p>Java evalúa el primero.</p>
+<p>Después continúa y evalúa el segundo.</p>
+<h2 id="seccion-8-2-que-sucederia-con-else-if"><span id="apartado-78" class="legacy-anchor" aria-hidden="true"></span>8.2. ¿Qué sucedería con else if?</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 8;
+
+if (numero &gt; 0) {
+    System.out.println(&quot;Positivo&quot;);
+} else if (numero % 2 == 0) {
+    System.out.println(&quot;Par&quot;);
+}
+</code></pre>
+<p>La primera condición es verdadera.</p>
+<p>Por tanto, Java muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Positivo
+</code></pre>
+<p>Y no evalúa la segunda.</p>
+<p>El programa no informa que el número es par.</p>
+<p>La estructura no cumple lo que necesitábamos.</p>
+<h2 id="seccion-8-3-cuando-necesitamos-alternativas-excluyentes"><span id="apartado-79" class="legacy-anchor" aria-hidden="true"></span>8.3. ¿Cuándo necesitamos alternativas excluyentes?</h2>
+<p>Imaginemos que queremos clasificar un número como:</p>
+<ul>
+<li>Positivo.</li>
+<li>Negativo.</li>
+<li>Cero.</li>
+</ul>
+<p>Estas categorías son excluyentes para un entero.</p>
+<p>Un número no puede ser simultáneamente positivo y negativo.</p>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (numero &gt; 0) {
+    System.out.println(&quot;Positivo&quot;);
+} else if (numero &lt; 0) {
+    System.out.println(&quot;Negativo&quot;);
+} else {
+    System.out.println(&quot;Cero&quot;);
+}
+</code></pre>
+<p>Aquí corresponde seleccionar una sola categoría.</p>
+<h2 id="seccion-8-4-cuando-necesitamos-varias-comprobaciones"><span id="apartado-80" class="legacy-anchor" aria-hidden="true"></span>8.4. ¿Cuándo necesitamos varias comprobaciones?</h2>
+<p>Imaginemos que queremos informar:</p>
+<ul>
+<li>Si un estudiante tiene asistencia suficiente.</li>
+<li>Si entregó un trabajo.</li>
+</ul>
+<p>Ambas propiedades pueden cumplirse de manera independiente.</p>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (asistencia &gt;= 80) {
+    System.out.println(&quot;Asistencia suficiente&quot;);
+}
+
+if (entregoTrabajo) {
+    System.out.println(&quot;Trabajo entregado&quot;);
+}
+</code></pre>
+<p>En este caso puede aparecer un mensaje, ambos o ninguno.</p>
+<p>Depende de los datos.</p>
+<h2 id="seccion-8-5-elegir-la-estructura-antes-de-programar"><span id="apartado-81" class="legacy-anchor" aria-hidden="true"></span>8.5. Elegir la estructura antes de programar</h2>
+<p>Analiza estos problemas.</p>
+<p><strong>Problema A:</strong> clasificar un número como positivo, negativo o cero.</p>
+<p><strong>Problema B:</strong> informar si un número es positivo y si además es par.</p>
+<p><strong>Problema C:</strong> autorizar o rechazar una compra.</p>
+<p><strong>Problema D:</strong> informar si un estudiante tiene asistencia suficiente y si entregó un trabajo.</p>
+<p>Antes de escribir Java, responde:</p>
+<ol>
+<li>¿Debemos seleccionar una sola alternativa?</li>
+<li>¿Pueden cumplirse varias propiedades simultáneamente?</li>
+<li>¿Conviene utilizar <code>if</code>, <code>if...else</code>, <code>else if</code> o varios <code>if</code>?</li>
+<li>¿Por qué?</li>
+</ol>
+<p>Este análisis evita elegir estructuras simplemente porque conocemos su sintaxis.</p>
+<p><strong>La estructura condicional debe responder a las necesidades del problema.</strong></p>
+<hr />
+<h1 id="seccion-9-comparar-cadenas-de-caracteres"><span id="apartado-82" class="legacy-anchor" aria-hidden="true"></span>9. Comparar cadenas de caracteres</h1>
+<p>Hasta ahora comparamos principalmente valores numéricos.</p>
+<p>Pero también podemos necesitar decisiones basadas en textos.</p>
+<p>Por ejemplo, imaginemos que un videojuego entrega una recompensa especial cuando el rango del jugador es <code>&quot;oro&quot;</code>.</p>
+<p>Podemos almacenar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">String rango = &quot;oro&quot;;
+</code></pre>
+<p>Ahora necesitamos comprobar su contenido.</p>
+<h2 id="seccion-9-1-podemos-utilizar-para-comparar-textos"><span id="apartado-83" class="legacy-anchor" aria-hidden="true"></span>9.1. ¿Podemos utilizar == para comparar textos?</h2>
+<p>En Java, <code>String</code> es una clase.</p>
+<p>Cuando utilizamos <code>==</code> con referencias de objetos, comparamos si ambas referencias señalan el mismo objeto.</p>
+<p>Esto no equivale necesariamente a comprobar que las cadenas contienen las mismas letras.</p>
+<p>Por tanto, para comparar contenidos utilizaremos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">equals()
+</code></pre>
+<h2 id="seccion-9-2-comparar-con-equals"><span id="apartado-84" class="legacy-anchor" aria-hidden="true"></span>9.2. Comparar con equals</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">String rango = &quot;oro&quot;;
+
+if (rango.equals(&quot;oro&quot;)) {
+    System.out.println(&quot;Recompensa disponible&quot;);
+}
+</code></pre>
+<p>Como el contenido coincide, la condición es verdadera.</p>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Recompensa disponible
+</code></pre>
+<h2 id="seccion-9-3-programa-completo-con-scanner"><span id="apartado-85" class="legacy-anchor" aria-hidden="true"></span>9.3. Programa completo con Scanner</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese su rango: &quot;);
+        String rango = teclado.next();
+
+        if (rango.equals(&quot;oro&quot;)) {
+            System.out.println(&quot;Recompensa disponible&quot;);
+        } else {
+            System.out.println(&quot;Sin recompensa especial&quot;);
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<p>Si el usuario introduce <code>oro</code>, recibe la recompensa.</p>
+<p>Si introduce <code>plata</code>, no la recibe.</p>
+<h2 id="seccion-9-4-las-mayusculas-y-minusculas"><span id="apartado-86" class="legacy-anchor" aria-hidden="true"></span>9.4. Las mayúsculas y minúsculas</h2>
+<p>El método <code>equals()</code> distingue las mayúsculas de las minúsculas.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">&quot;oro&quot;.equals(&quot;Oro&quot;)
+</code></pre>
+<p>Es falso.</p>
+<p>Si necesitamos aceptar diferencias de mayúsculas y minúsculas, podemos utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">equalsIgnoreCase()
+</code></pre>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (rango.equalsIgnoreCase(&quot;oro&quot;)) {
+    System.out.println(&quot;Recompensa disponible&quot;);
+}
+</code></pre>
+<h2 id="seccion-9-5-no-confundir-numeros-y-cadenas"><span id="apartado-87" class="legacy-anchor" aria-hidden="true"></span>9.5. No confundir números y cadenas</h2>
+<p>Si tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int opcion = 3;
+</code></pre>
+<p>Podemos utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">opcion == 3
+</code></pre>
+<p>Pero si tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">String opcion = &quot;3&quot;;
+</code></pre>
+<p>Para comparar su contenido utilizamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">opcion.equals(&quot;3&quot;)
+</code></pre>
+<p>Debemos elegir la operación adecuada según el tipo de dato.</p>
+<h2 id="seccion-9-6-ampliacion-referencias-y-null"><span id="apartado-88" class="legacy-anchor" aria-hidden="true"></span>9.6. Ampliación: referencias y null</h2>
+<p>Esta explicación no es necesaria para resolver los ejercicios iniciales, pero permite anticipar un concepto que estudiaremos al trabajar con objetos.</p>
+<p>Una variable <code>String</code> puede contener <code>null</code>, lo que indica que no tiene una referencia a una cadena.</p>
+<p>Si intentamos ejecutar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">rango.equals(&quot;oro&quot;)
+</code></pre>
+<p>cuando <code>rango</code> vale <code>null</code>, se produce un error durante la ejecución.</p>
+<p>Una alternativa es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">&quot;oro&quot;.equals(rango)
+</code></pre>
+<p>Esta expresión puede evaluar la igualdad sin producir ese error si <code>rango</code> es <code>null</code>.</p>
+<p>Por ahora, lo imprescindible es recordar:</p>
+<p><strong>Para comparar el contenido de cadenas, utilizamos <code>equals()</code> o el método adecuado a la comparación que necesitamos.</strong></p>
+<hr />
+<h1 id="seccion-10-la-estructura-switch-seleccionar-entre-valores-concretos"><span id="apartado-89" class="legacy-anchor" aria-hidden="true"></span>10. La estructura switch: seleccionar entre valores concretos</h1>
+<p>Ya conocemos <code>if</code>, <code>if...else</code> y <code>else if</code>.</p>
+<p>Ahora imaginemos que necesitamos seleccionar entre varios valores concretos.</p>
+<p>Por ejemplo, una variable llamada <code>opcion</code> puede contener:</p>
+<p>1, 2 o 3.</p>
+<p>Queremos mostrar un mensaje diferente para cada valor.</p>
+<p>Podríamos utilizar una cadena <code>else if</code>.</p>
+<p>Pero Java también ofrece una estructura llamada <code>switch</code>.</p>
+<h2 id="seccion-10-1-un-primer-ejemplo-sencillo"><span id="apartado-90" class="legacy-anchor" aria-hidden="true"></span>10.1. Un primer ejemplo sencillo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int opcion = 2;
+
+switch (opcion) {
+
+    case 1:
+        System.out.println(&quot;Uno&quot;);
+        break;
+
+    case 2:
+        System.out.println(&quot;Dos&quot;);
+        break;
+
+    default:
+        System.out.println(&quot;Otra opción&quot;);
+}
+</code></pre>
+<p>Antes de continuar, predice la salida.</p>
+<details class="respuesta"><summary>Ver explicación</summary><p>Como <code>opcion</code> vale 2, Java selecciona:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">case 2:
+</code></pre>
+<p>Y muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Dos
+</code></pre>
+<p>Después ejecuta <code>break</code> y sale del <code>switch</code>.</p>
+</details><div class="respuesta-impresa" aria-hidden="true"><p>Como <code>opcion</code> vale 2, Java selecciona:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">case 2:
+</code></pre>
+<p>Y muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Dos
+</code></pre>
+<p>Después ejecuta <code>break</code> y sale del <code>switch</code>.</p>
+</div>
+<h2 id="seccion-10-2-que-hace-switch"><span id="apartado-91" class="legacy-anchor" aria-hidden="true"></span>10.2. ¿Qué hace switch?</h2>
+<p>La estructura <code>switch</code> permite seleccionar un recorrido según el valor de una expresión.</p>
+<p>En este ejemplo, Java examina:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">opcion
+</code></pre>
+<p>Después busca un caso cuyo valor coincida.</p>
+<h2 id="seccion-10-3-los-case"><span id="apartado-92" class="legacy-anchor" aria-hidden="true"></span>10.3. Los case</h2>
+<p>Cada <code>case</code> identifica una posibilidad.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">case 1:
+</code></pre>
+<p>Corresponde al valor 1.</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">case 2:
+</code></pre>
+<p>Corresponde al valor 2.</p>
+<p>Si el valor coincide, Java comienza a ejecutar las instrucciones de ese caso.</p>
+<h2 id="seccion-10-4-el-significado-de-break"><span id="apartado-93" class="legacy-anchor" aria-hidden="true"></span>10.4. El significado de break</h2>
+<p>En el <code>switch</code> tradicional con dos puntos, utilizamos <code>break</code> para terminar la ejecución de la estructura.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">case 2:
+    System.out.println(&quot;Dos&quot;);
+    break;
+</code></pre>
+<p>Cuando Java encuentra <code>break</code>, abandona el <code>switch</code>.</p>
+<p>Así evitamos que continúe ejecutando instrucciones de casos posteriores.</p>
+<h2 id="seccion-10-5-que-sucede-si-olvidamos-break"><span id="apartado-94" class="legacy-anchor" aria-hidden="true"></span>10.5. ¿Qué sucede si olvidamos break?</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int opcion = 2;
+
+switch (opcion) {
+
+    case 1:
+        System.out.println(&quot;Uno&quot;);
+
+    case 2:
+        System.out.println(&quot;Dos&quot;);
+
+    case 3:
+        System.out.println(&quot;Tres&quot;);
+
+    default:
+        System.out.println(&quot;Otro&quot;);
+}
+</code></pre>
+<p>¿Qué mostrará?</p>
+<p>Java comienza desde <code>case 2</code>.</p>
+<p>Muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Dos
+</code></pre>
+<p>Pero no encuentra un <code>break</code>.</p>
+<p>Por tanto, continúa ejecutando las instrucciones siguientes.</p>
+<p>La salida completa será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Dos
+Tres
+Otro
+</code></pre>
+<p>Este comportamiento se llama <em>fall-through</em>.</p>
+<p>No es un error de sintaxis.</p>
+<p>Forma parte del funcionamiento del <code>switch</code> tradicional.</p>
+<p>Puede utilizarse deliberadamente en determinados programas, pero debemos comprender sus consecuencias.</p>
+<h2 id="seccion-10-6-el-caso-default"><span id="apartado-95" class="legacy-anchor" aria-hidden="true"></span>10.6. El caso default</h2>
+<p>La palabra <code>default</code> permite indicar qué hacer cuando no existe un caso que coincida.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">default:
+    System.out.println(&quot;Opción inválida&quot;);
+</code></pre>
+<p>Si el usuario introduce 7 y solamente existen los casos 1, 2 y 3, se ejecutará <code>default</code>.</p>
+<h2 id="seccion-10-7-un-menu-de-opciones"><span id="apartado-96" class="legacy-anchor" aria-hidden="true"></span>10.7. Un menú de opciones</h2>
+<p>Imaginemos que nuestro programa muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">1. Consultar saldo
+2. Realizar depósito
+3. Salir
+</code></pre>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int opcion = 2;
+
+switch (opcion) {
+
+    case 1:
+        System.out.println(&quot;Consultar saldo&quot;);
+        break;
+
+    case 2:
+        System.out.println(&quot;Realizar depósito&quot;);
+        break;
+
+    case 3:
+        System.out.println(&quot;Salir&quot;);
+        break;
+
+    default:
+        System.out.println(&quot;Opción inválida&quot;);
+}
+</code></pre>
+<p>Como la opción vale 2, la salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Realizar depósito
+</code></pre>
+<p>Este programa todavía no realiza realmente un depósito.</p>
+<p>Solamente identifica la alternativa seleccionada y muestra el mensaje correspondiente.</p>
+<h2 id="seccion-10-8-programa-completo-con-scanner"><span id="apartado-97" class="legacy-anchor" aria-hidden="true"></span>10.8. Programa completo con Scanner</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.println(&quot;1. Consultar saldo&quot;);
+        System.out.println(&quot;2. Realizar depósito&quot;);
+        System.out.println(&quot;3. Salir&quot;);
+
+        System.out.print(&quot;Seleccione una opción: &quot;);
+        int opcion = teclado.nextInt();
+
+        switch (opcion) {
+
+            case 1:
+                System.out.println(&quot;Consultar saldo&quot;);
+                break;
+
+            case 2:
+                System.out.println(&quot;Realizar depósito&quot;);
+                break;
+
+            case 3:
+                System.out.println(&quot;Salir&quot;);
+                break;
+
+            default:
+                System.out.println(&quot;Opción inválida&quot;);
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<p>El menú se presenta una sola vez.</p>
+<p>El programa lee una opción, muestra el mensaje correspondiente y termina.</p>
+<p>Más adelante aprenderemos a repetir el menú hasta que el usuario elija salir.</p>
+<h2 id="seccion-10-9-switch-con-flechas"><span id="apartado-98" class="legacy-anchor" aria-hidden="true"></span>10.9. Switch con flechas</h2>
+<p>Java moderno también permite escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">switch (opcion) {
+
+    case 1 -&gt; System.out.println(&quot;Consultar saldo&quot;);
+
+    case 2 -&gt; System.out.println(&quot;Realizar depósito&quot;);
+
+    case 3 -&gt; System.out.println(&quot;Salir&quot;);
+
+    default -&gt; System.out.println(&quot;Opción inválida&quot;);
+}
+</code></pre>
+<p>Esta forma no necesita <code>break</code> para impedir que continúe la ejecución hacia las instrucciones de los otros casos.</p>
+<p>Durante nuestros primeros ejercicios utilizaremos principalmente la forma tradicional para comprender los casos y el flujo de ejecución.</p>
+<p>La forma con flechas quedará como una alternativa que también debemos reconocer.</p>
+<h2 id="seccion-10-10-cuando-utilizar-if-y-cuando-switch"><span id="apartado-99" class="legacy-anchor" aria-hidden="true"></span>10.10. ¿Cuándo utilizar if y cuándo switch?</h2>
+<p><code>if</code> resulta adecuado cuando debemos comprobar:</p>
+<ul>
+<li>Rangos.</li>
+<li>Condiciones compuestas.</li>
+<li>Comparaciones entre diferentes variables.</li>
+<li>Requisitos que no dependen de un único valor concreto.</li>
+</ul>
+<p><code>switch</code> resulta especialmente conveniente cuando seleccionamos entre varios valores concretos de una misma expresión.</p>
+<p>Por ejemplo, un menú de opciones.</p>
+<p>No necesitamos utilizar <code>switch</code> siempre que existan varias alternativas.</p>
+<p>Debemos elegir la estructura que represente mejor las reglas del problema.</p>
+<h2 id="seccion-10-11-simulador-de-switch"><span id="apartado-100" class="legacy-anchor" aria-hidden="true"></span>10.11. Simulador de switch</h2>
+<div id="u03-switch" data-recurso="u03-switch"><div data-componente-interactivo="u03-switch"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>En el menú, 1 consulta saldo, 2 indica depósito, 3 sale y cualquier otro valor ejecuta default. En el switch tradicional, break evita continuar hacia los casos siguientes.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Prueba varias opciones.</p>
+<p>Después compara qué sucede cuando:</p>
+<ul>
+<li>Utilizamos <code>break</code>.</li>
+<li>Eliminamos <code>break</code>.</li>
+<li>Utilizamos la forma con flechas.</li>
+</ul>
+<p>El objetivo es comprender el recorrido de ejecución, no solamente reconocer la sintaxis.</p>
+<hr />
+<h2 id="seccion-10-12-estrategia-general-para-convertir-una-regla-en-una-condicion"><span id="apartado-101" class="legacy-anchor" aria-hidden="true"></span><span id="seccion-10-9-estrategia-general-para-convertir-una-regla-en-una-condicion" class="legacy-anchor" aria-hidden="true"></span>10.12. Estrategia general para convertir una regla en una condición</h2>
+<p>No memorices solamente dónde van los paréntesis de <code>if</code>. Ante un problema nuevo, sigue este recorrido: <strong>(1)</strong> identifica los datos; <strong>(2)</strong> explica con tus palabras cuándo debe ejecutarse cada acción; <strong>(3)</strong> escribe casos que sí cumplen y casos que no; <strong>(4)</strong> selecciona operadores y estructura; <strong>(5)</strong> traza el orden de evaluación; <strong>(6)</strong> prueba el límite exacto y un valor a cada lado.</p>
+<p><strong>Ejercicio sin código guiado.</strong> Una compra obtiene envío gratuito cuando su total es al menos $1500 y el cliente está registrado. Describe primero dos compras que cumplan y dos que no. ¿Qué variables necesitas? ¿Qué condición escribirías? ¿Cambiaría algo si la regla fuera «total de al menos $1500 <em>o</em> cliente registrado»? Justifica el operador antes de escribir Java.</p>
+<p><strong>Pista 1.</strong> La palabra <em>y</em> en este requisito exige que dos condiciones resulten verdaderas; la palabra <em>o</em> permite que alcance una de ellas. <strong>Pista 2.</strong> Prueba el borde <code>total = 1500</code>, tanto con cliente registrado como sin registro.</p>
+<p><strong>Contraste posterior:</strong> para la primera regla sirve <code>total &gt;= 1500 &amp;&amp; registrado</code>; para la segunda, <code>total &gt;= 1500 || registrado</code>. Si se usa <code>boolean registrado</code>, no es necesario escribir <code>registrado == true</code>. Una solución correcta debe producir una sola respuesta coherente y resistir los casos de borde.</p>
+<p><strong>Transferencia:</strong> un usuario solo accede si tiene contraseña correcta <em>y</em> su cuenta no está bloqueada. Escribe la regla en palabras, define las variables booleanas, propone cuatro combinaciones y, recién entonces, formula la condición Java.</p>
+<p><strong>Nota técnica sobre los ejemplos con Scanner.</strong> En esta unidad, <code>teclado.close()</code> aparece al final de programas que terminan inmediatamente. Cerrar un <code>Scanner</code> creado sobre <code>System.in</code> también cierra la entrada estándar; no lo hagas en un método auxiliar si el programa seguirá leyendo. Si varios métodos necesitan entrada, comparte un solo <code>Scanner</code> como argumento.</p>
+<h1 id="seccion-11-problema-integrador-auditoria-de-almacenamiento"><span id="apartado-102" class="legacy-anchor" aria-hidden="true"></span>11. Problema integrador: auditoría de almacenamiento</h1>
+<p>Vamos a resolver un problema relacionado con el trabajo informático.</p>
+<p>Imaginemos que necesitamos analizar el espacio disponible de una unidad de almacenamiento.</p>
+<p>Queremos informar si se encuentra en una situación normal, de alerta o crítica.</p>
+<p>Pero antes debemos comprobar que los datos recibidos sean válidos.</p>
+<p>Este problema nos permitirá integrar:</p>
+<ul>
+<li>Variables.</li>
+<li>Entrada con <code>Scanner</code>.</li>
+<li>Operaciones aritméticas.</li>
+<li>Validación.</li>
+<li>Condiciones compuestas.</li>
+<li>Alternativas mediante <code>else if</code>.</li>
+<li>Casos de prueba.</li>
+<li>Valores límite.</li>
+</ul>
+<h2 id="seccion-11-1-enunciado"><span id="apartado-103" class="legacy-anchor" aria-hidden="true"></span>11.1. Enunciado</h2>
+<p>Un programa debe solicitar:</p>
+<ul>
+<li>Capacidad total de una unidad de almacenamiento.</li>
+<li>Espacio utilizado.</li>
+</ul>
+<p>Ambos valores se expresarán en gigabytes.</p>
+<p>Después debe calcular:</p>
+<ul>
+<li>Espacio libre.</li>
+<li>Porcentaje de espacio libre.</li>
+</ul>
+<p>Finalmente debe clasificar el estado según estas reglas:</p>
+<p><strong>Crítico:</strong> porcentaje libre menor o igual al 10 %.</p>
+<p><strong>Alerta:</strong> porcentaje libre mayor al 10 % y menor o igual al 25 %.</p>
+<p><strong>Normal:</strong> porcentaje libre mayor al 25 %.</p>
+<p>Antes de realizar los cálculos, debemos validar la entrada.</p>
+<h2 id="seccion-11-2-identificar-los-datos"><span id="apartado-104" class="legacy-anchor" aria-hidden="true"></span>11.2. Identificar los datos</h2>
+<p>Necesitamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">double capacidadTotal;
+double espacioUtilizado;
+</code></pre>
+<p>Utilizaremos <code>double</code> porque los valores pueden contener decimales.</p>
+<p>Ambos deben expresarse en la misma unidad.</p>
+<p>No tendría sentido restar una cantidad expresada en gigabytes de otra expresada en megabytes sin realizar antes la conversión correspondiente.</p>
+<h2 id="seccion-11-3-identificar-las-restricciones"><span id="apartado-105" class="legacy-anchor" aria-hidden="true"></span>11.3. Identificar las restricciones</h2>
+<p>La capacidad total debe ser mayor que cero:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">capacidadTotal &gt; 0
+</code></pre>
+<p>El espacio utilizado no puede ser negativo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">espacioUtilizado &gt;= 0
+</code></pre>
+<p>Y no puede superar la capacidad:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">espacioUtilizado &lt;= capacidadTotal
+</code></pre>
+<p>Estas condiciones describen datos válidos.</p>
+<h2 id="seccion-11-4-construir-una-condicion-de-error"><span id="apartado-106" class="legacy-anchor" aria-hidden="true"></span>11.4. Construir una condición de error</h2>
+<p>Los datos son inválidos cuando ocurre alguna de estas situaciones:</p>
+<ul>
+<li>La capacidad total es cero o negativa.</li>
+<li>El espacio utilizado es negativo.</li>
+<li>El espacio utilizado supera la capacidad total.</li>
+</ul>
+<p>La condición será:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">capacidadTotal &lt;= 0 ||
+espacioUtilizado &lt; 0 ||
+espacioUtilizado &gt; capacidadTotal
+</code></pre>
+<p>Utilizamos <code>||</code> porque cualquiera de estas situaciones basta para rechazar los datos.</p>
+<h2 id="seccion-11-5-calcular-el-espacio-libre"><span id="apartado-107" class="legacy-anchor" aria-hidden="true"></span>11.5. Calcular el espacio libre</h2>
+<p>Si los valores son válidos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double espacioLibre =
+    capacidadTotal - espacioUtilizado;
+</code></pre>
+<p>Por ejemplo:</p>
+<p>Capacidad total: 500 GB.</p>
+<p>Espacio utilizado: 400 GB.</p>
+<p>Espacio libre:</p>
+<p><code>500 - 400 = 100 GB</code></p>
+<h2 id="seccion-11-6-calcular-el-porcentaje"><span id="apartado-108" class="legacy-anchor" aria-hidden="true"></span>11.6. Calcular el porcentaje</h2>
+<p>Queremos saber qué parte de la capacidad total está libre.</p>
+<p>Utilizamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double porcentajeLibre =
+    espacioLibre * 100 / capacidadTotal;
+</code></pre>
+<p>Si tenemos 100 GB libres de un total de 500:</p>
+<p><code>100 × 100 / 500 = 20</code></p>
+<p>Por tanto, el porcentaje libre es 20 %.</p>
+<h2 id="seccion-11-7-clasificar-el-almacenamiento"><span id="apartado-109" class="legacy-anchor" aria-hidden="true"></span>11.7. Clasificar el almacenamiento</h2>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (porcentajeLibre &lt;= 10) {
+    System.out.println(&quot;Estado crítico&quot;);
+} else if (porcentajeLibre &lt;= 25) {
+    System.out.println(&quot;Estado de alerta&quot;);
+} else {
+    System.out.println(&quot;Estado normal&quot;);
+}
+</code></pre>
+<p>Observa que no necesitamos repetir en la segunda condición que el porcentaje debe ser mayor que 10.</p>
+<p>Si Java llega al <code>else if</code>, significa que la primera condición fue falsa.</p>
+<p>Por tanto, ya sabemos que el porcentaje no es menor o igual a 10.</p>
+<p>La segunda comparación determina si se encuentra dentro del intervalo de alerta.</p>
+<h2 id="seccion-11-8-pseudocodigo-completo"><span id="apartado-110" class="legacy-anchor" aria-hidden="true"></span>11.8. Pseudocódigo completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER capacidadTotal
+    LEER espacioUtilizado
+
+    SI capacidadTotal &lt;= 0 O
+       espacioUtilizado &lt; 0 O
+       espacioUtilizado &gt; capacidadTotal ENTONCES
+
+        MOSTRAR &quot;Datos inválidos&quot;
+
+    SINO
+
+        espacioLibre ← capacidadTotal - espacioUtilizado
+
+        porcentajeLibre ← espacioLibre * 100 / capacidadTotal
+
+        MOSTRAR porcentajeLibre
+
+        SI porcentajeLibre &lt;= 10 ENTONCES
+            MOSTRAR &quot;Estado crítico&quot;
+
+        SINO SI porcentajeLibre &lt;= 25 ENTONCES
+            MOSTRAR &quot;Estado de alerta&quot;
+
+        SINO
+            MOSTRAR &quot;Estado normal&quot;
+
+        FIN SI
+
+    FIN SI
+FIN
+</code></pre>
+<p>Primero validamos.</p>
+<p>Después calculamos.</p>
+<p>Finalmente clasificamos.</p>
+<p>El orden de las tareas responde a las necesidades del problema.</p>
+<h2 id="seccion-11-9-programa-java-completo"><span id="apartado-111" class="legacy-anchor" aria-hidden="true"></span>11.9. Programa Java completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Capacidad total (GB): &quot;);
+        double capacidadTotal = teclado.nextDouble();
+
+        System.out.print(&quot;Espacio utilizado (GB): &quot;);
+        double espacioUtilizado = teclado.nextDouble();
+
+        // Comprobamos las restricciones.
+        if (capacidadTotal &lt;= 0 ||
+            espacioUtilizado &lt; 0 ||
+            espacioUtilizado &gt; capacidadTotal) {
+
+            System.out.println(&quot;Datos inválidos&quot;);
+
+        } else {
+
+            // Calculamos el espacio disponible.
+            double espacioLibre =
+                capacidadTotal - espacioUtilizado;
+
+            // Calculamos el porcentaje libre.
+            double porcentajeLibre =
+                espacioLibre * 100 / capacidadTotal;
+
+            System.out.println(
+                &quot;Porcentaje libre: &quot; + porcentajeLibre + &quot;%&quot;
+            );
+
+            // Clasificamos el estado.
+            if (porcentajeLibre &lt;= 10) {
+                System.out.println(&quot;Estado crítico&quot;);
+
+            } else if (porcentajeLibre &lt;= 25) {
+                System.out.println(&quot;Estado de alerta&quot;);
+
+            } else {
+                System.out.println(&quot;Estado normal&quot;);
+            }
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<h2 id="seccion-11-10-por-que-validamos-antes-de-calcular"><span id="apartado-112" class="legacy-anchor" aria-hidden="true"></span>11.10. ¿Por qué validamos antes de calcular?</h2>
+<p>Imaginemos que la capacidad total es cero.</p>
+<p>Según las reglas, ese dato no es válido.</p>
+<p>Además, la fórmula del porcentaje utiliza <code>capacidadTotal</code> como divisor.</p>
+<p>No queremos ejecutar ese cálculo cuando los datos incumplen las restricciones.</p>
+<p>Por eso el programa solamente entra en el bloque de procesamiento cuando la validación fue satisfactoria.</p>
+<p>Es importante hacer una precisión técnica.</p>
+<p>En Java, una división de valores <code>double</code> entre cero no se comporta igual que una división entera entre cero.</p>
+<p>Según los valores, puede producir <code>Infinity</code> o <code>NaN</code>.</p>
+<p>No necesitamos profundizar todavía en estos resultados.</p>
+<p>Lo importante para este problema es que <strong>la capacidad cero está prohibida por las reglas y debemos impedir que se utilice para calcular el porcentaje</strong>.</p>
+<h2 id="seccion-11-11-casos-de-prueba"><span id="apartado-113" class="legacy-anchor" aria-hidden="true"></span>11.11. Casos de prueba</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Capacidad</th>
+<th style="text-align:right">Utilizado</th>
+<th style="text-align:right">Libre</th>
+<th style="text-align:right">Porcentaje</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">450</td>
+<td style="text-align:right">50</td>
+<td style="text-align:right">10 %</td>
+<td>Crítico</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">400</td>
+<td style="text-align:right">100</td>
+<td style="text-align:right">20 %</td>
+<td>Alerta</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">375</td>
+<td style="text-align:right">125</td>
+<td style="text-align:right">25 %</td>
+<td>Alerta</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">350</td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">30 %</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">500</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0 %</td>
+<td>Crítico</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">600</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>Datos inválidos</td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>Datos inválidos</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">-10</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>Datos inválidos</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Los casos incluyen:</p>
+<ul>
+<li>Datos válidos.</li>
+<li>Datos inválidos.</li>
+<li>Porcentajes en los límites exactos.</li>
+<li>Estados diferentes.</li>
+</ul>
+<h2 id="seccion-11-12-una-precision-sobre-double"><span id="apartado-114" class="legacy-anchor" aria-hidden="true"></span>11.12. Una precisión sobre double</h2>
+<p>En esta unidad utilizamos <code>double</code> porque trabajamos con cantidades que pueden contener decimales.</p>
+<p>Debemos recordar que los números de punto flotante no siempre representan exactamente todos los valores decimales.</p>
+<p>Por tanto, algunas operaciones pueden producir pequeñas diferencias de precisión.</p>
+<p>Para comprender el algoritmo utilizaremos principalmente casos fáciles de comprobar manualmente.</p>
+<p>En aplicaciones reales pueden necesitarse cuidados adicionales al comparar resultados decimales próximos a ciertos límites.</p>
+<p>No necesitamos incorporar ahora técnicas avanzadas.</p>
+<p>Pero sí debemos reconocer que el resultado calculado depende también de cómo Java representa los datos.</p>
+<h2 id="seccion-11-13-comprobar-el-programa-en-tres-etapas"><span id="apartado-115" class="legacy-anchor" aria-hidden="true"></span>11.13. Comprobar el programa en tres etapas</h2>
+<p><strong>Primero: las restricciones.</strong></p>
+<p>¿El programa rechaza capacidades menores o iguales a cero?</p>
+<p>¿Rechaza espacios utilizados negativos?</p>
+<p>¿Rechaza valores superiores a la capacidad?</p>
+<p><strong>Segundo: los cálculos.</strong></p>
+<p>¿El espacio libre es correcto?</p>
+<p>¿El porcentaje corresponde a los datos?</p>
+<p><strong>Tercero: la clasificación.</strong></p>
+<p>¿Los porcentajes 10 % y 25 % pertenecen a las categorías establecidas?</p>
+<p>¿El programa muestra exactamente un estado?</p>
+<p>Esta estrategia recupera los criterios de verificación de la Unidad 1.</p>
+<h2 id="seccion-11-14-que-ocurre-si-cambian-los-requisitos"><span id="apartado-116" class="legacy-anchor" aria-hidden="true"></span>11.14. ¿Qué ocurre si cambian los requisitos?</h2>
+<p>Imaginemos que ahora el estado Crítico corresponde a un porcentaje libre menor o igual al 15 %.</p>
+<p>¿Qué deberíamos modificar?</p>
+<p>Primero necesitamos redefinir las categorías.</p>
+<p>Después debemos revisar las condiciones.</p>
+<p>No alcanza con cambiar el texto de un mensaje.</p>
+<p>La modificación afecta a las reglas del algoritmo.</p>
+<p>Esta será una actividad de ampliación durante la evaluación.</p>
+<hr />
+<h1 id="seccion-12-errores-frecuentes-comprender-por-que-una-decision-falla"><span id="apartado-117" class="legacy-anchor" aria-hidden="true"></span>12. Errores frecuentes: comprender por qué una decisión falla</h1>
+<p>Las estructuras condicionales permiten construir programas más flexibles.</p>
+<p>Pero también pueden introducir errores difíciles de descubrir si solamente observamos algunas salidas.</p>
+<p>Analizaremos errores de sintaxis y errores lógicos.</p>
+<h2 id="seccion-12-1-confundir-asignacion-con-comparacion"><span id="apartado-118" class="legacy-anchor" aria-hidden="true"></span>12.1. Confundir asignación con comparación</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (opcion = 3) {
+    System.out.println(&quot;Opción tres&quot;);
+}
+</code></pre>
+<p>Si <code>opcion</code> es de tipo <code>int</code>, este código no compila como condición de <code>if</code>.</p>
+<p>La asignación produce un entero, mientras que <code>if</code> necesita una expresión booleanа.</p>
+<p>La comparación correcta es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (opcion == 3) {
+    System.out.println(&quot;Opción tres&quot;);
+}
+</code></pre>
+<h2 id="seccion-12-2-excluir-un-valor-limite"><span id="apartado-119" class="legacy-anchor" aria-hidden="true"></span>12.2. Excluir un valor límite</h2>
+<p>Enunciado:</p>
+<blockquote>
+<p>Permitir el acceso desde los 18 años inclusive.</p>
+</blockquote>
+<p>Incorrecto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt; 18
+</code></pre>
+<p>Correcto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt;= 18
+</code></pre>
+<p>La primera expresión excluye exactamente 18.</p>
+<h2 id="seccion-12-3-ordenar-mal-else-if"><span id="apartado-120" class="legacy-anchor" aria-hidden="true"></span>12.3. Ordenar mal else if</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else if (nota &gt;= 9) {
+    System.out.println(&quot;Excelente&quot;);
+}
+</code></pre>
+<p>Con nota 10, el programa muestra «Aprobado».</p>
+<p>El problema está en el orden de las condiciones.</p>
+<h2 id="seccion-12-4-utilizar-cuando-corresponde"><span id="apartado-121" class="legacy-anchor" aria-hidden="true"></span>12.4. Utilizar &amp;&amp; cuando corresponde ||</h2>
+<p>Para rechazar notas fuera del rango 1–10:</p>
+<p>Incorrecto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">nota &lt; 1 &amp;&amp; nota &gt; 10
+</code></pre>
+<p>Correcto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">nota &lt; 1 || nota &gt; 10
+</code></pre>
+<p>La primera condición no puede cumplirse para ningún entero.</p>
+<h2 id="seccion-12-5-utilizar-else-if-para-propiedades-independientes"><span id="apartado-122" class="legacy-anchor" aria-hidden="true"></span>12.5. Utilizar else if para propiedades independientes</h2>
+<p>Si queremos informar si un número es positivo y si es par, una cadena <code>else if</code> puede impedir que aparezcan ambas propiedades.</p>
+<p>Debemos analizar si necesitamos una sola alternativa o varias comprobaciones.</p>
+<h2 id="seccion-12-6-olvidar-break-en-switch"><span id="apartado-123" class="legacy-anchor" aria-hidden="true"></span>12.6. Olvidar break en switch</h2>
+<p>En el <code>switch</code> tradicional, omitir <code>break</code> puede provocar que se ejecuten instrucciones de casos posteriores.</p>
+<p>No es necesariamente un error de sintaxis.</p>
+<p>Pero puede producir un resultado incorrecto si queríamos seleccionar una sola alternativa.</p>
+<h2 id="seccion-12-7-comparar-cadenas-mediante"><span id="apartado-124" class="legacy-anchor" aria-hidden="true"></span>12.7. Comparar cadenas mediante ==</h2>
+<p>Para comprobar el contenido de cadenas <code>String</code>, debemos utilizar <code>equals()</code> o el método de comparación adecuado.</p>
+<p>El operador <code>==</code> compara referencias de objetos, no garantiza igualdad de contenido.</p>
+<h2 id="seccion-12-8-validar-despues-de-clasificar"><span id="apartado-125" class="legacy-anchor" aria-hidden="true"></span>12.8. Validar después de clasificar</h2>
+<p>Si primero clasificamos una nota y después comprobamos si está entre 1 y 10, podemos mostrar un resultado inadecuado antes de detectar el error.</p>
+<p>Debemos validar antes de procesar los datos que dependen de esa restricción.</p>
+<h2 id="seccion-12-9-confundir-una-condicion-falsa-con-una-no-evaluada"><span id="apartado-126" class="legacy-anchor" aria-hidden="true"></span>12.9. Confundir una condición falsa con una no evaluada</h2>
+<p>En una cadena <code>else if</code>, cuando una condición anterior es verdadera, Java no evalúa las siguientes.</p>
+<p>No debemos afirmar que todas las condiciones posteriores fueron falsas.</p>
+<p>Simplemente no llegaron a evaluarse.</p>
+<h2 id="seccion-12-10-colocar-una-asignacion-fuera-del-bloque"><span id="apartado-127" class="legacy-anchor" aria-hidden="true"></span>12.10. Colocar una asignación fuera del bloque</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+}
+
+saldo = saldo - precio;
+</code></pre>
+<p>La resta está fuera del <code>if</code>.</p>
+<p>Por tanto, se ejecutará aunque el saldo sea insuficiente.</p>
+<p>Si necesitamos descontar solamente las compras autorizadas, la asignación debe estar dentro del bloque.</p>
+<h2 id="seccion-12-11-un-punto-y-coma-despues-del-if"><span id="apartado-128" class="legacy-anchor" aria-hidden="true"></span>12.11. Un punto y coma después del if</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (edad &gt;= 18); {
+    System.out.println(&quot;Mayor de edad&quot;);
+}
+</code></pre>
+<p>A primera vista podría parecer correcto.</p>
+<p>Pero el punto y coma después de la condición termina una sentencia vacía controlada por el <code>if</code>.</p>
+<p>El bloque posterior queda separado de esa condición.</p>
+<p>Por tanto, puede ejecutarse incluso cuando <code>edad</code> vale 16.</p>
+<p>La forma correcta es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (edad &gt;= 18) {
+    System.out.println(&quot;Mayor de edad&quot;);
+}
+</code></pre>
+<p>Este ejemplo demuestra que un símbolo mal ubicado puede cambiar completamente el comportamiento del programa.</p>
+<h2 id="seccion-12-12-dos-if-no-son-lo-mismo-que-if-else"><span id="apartado-129" class="legacy-anchor" aria-hidden="true"></span>12.12. Dos if no son lo mismo que if...else</h2>
+<p>Compara:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+}
+
+if (nota &lt; 6) {
+    System.out.println(&quot;No aprobado&quot;);
+}
+</code></pre>
+<p>Con:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else {
+    System.out.println(&quot;No aprobado&quot;);
+}
+</code></pre>
+<p>Para las notas enteras habituales, ambos fragmentos pueden mostrar el mismo mensaje.</p>
+<p>Pero no funcionan de la misma manera.</p>
+<p>En el primero, Java evalúa dos condiciones independientes.</p>
+<p>En el segundo, evalúa una y selecciona entre dos alternativas.</p>
+<p>La segunda estructura expresa directamente una elección excluyente.</p>
+<p>No debemos afirmar que utilizar dos <code>if</code> sea siempre incorrecto.</p>
+<p>Debemos comprender qué comportamiento queremos representar.</p>
+<h2 id="seccion-12-13-como-depurar-una-condicion"><span id="apartado-130" class="legacy-anchor" aria-hidden="true"></span>12.13. Cómo depurar una condición</h2>
+<p>Cuando el programa no toma la decisión esperada, conviene preguntar:</p>
+<ol>
+<li>¿Qué valores tienen las variables?</li>
+<li>¿Qué regla establece el problema?</li>
+<li>¿Cuál es la condición escrita en Java?</li>
+<li>¿La comparación es verdadera o falsa?</li>
+<li>¿Java llegó realmente a evaluarla?</li>
+<li>¿Qué bloque debería ejecutarse?</li>
+<li>¿Qué bloque se ejecutó?</li>
+<li>¿Las instrucciones están dentro de las llaves correctas?</li>
+<li>¿Probamos los valores límite?</li>
+<li>¿Qué modificación mínima corrige el problema?</li>
+</ol>
+<p>Después debemos volver a ejecutar los casos de prueba.</p>
+<p><strong>Depurar una condición significa comprender qué decisión está tomando el programa y por qué.</strong></p>
+<hr />
+<h1 id="seccion-13-preparacion-para-la-evaluacion-decidir-explicar-y-comprobar"><span id="apartado-131" class="legacy-anchor" aria-hidden="true"></span>13. Preparación para la evaluación: decidir, explicar y comprobar</h1>
+<p>Al finalizar esta unidad debemos poder construir condiciones, pero también leerlas, interpretarlas y explicar qué instrucciones se ejecutan.</p>
+<p>No alcanza con recordar la estructura de <code>if</code>.</p>
+<p>Queremos comprender qué regla representa.</p>
+<p>Las actividades están organizadas en tres niveles.</p>
+<hr />
+<h2 id="seccion-nivel-1-reconocer-y-comprender"><span id="apartado-132" class="legacy-anchor" aria-hidden="true"></span>Nivel 1. Reconocer y comprender</h2>
+<h3 id="seccion-13-1-conceptos-fundamentales"><span id="apartado-133" class="legacy-anchor" aria-hidden="true"></span>13.1. Conceptos fundamentales</h3>
+<p>Explica con tus palabras:</p>
+<ol>
+<li>¿Qué es una estructura condicional?</li>
+<li>¿Qué resultado produce una comparación?</li>
+<li>¿Para qué sirve <code>if</code>?</li>
+<li>¿Qué significa <code>else</code>?</li>
+<li>¿Cuándo necesitamos <code>else if</code>?</li>
+<li>¿Por qué importa el orden de las alternativas?</li>
+<li>¿Qué diferencia existe entre <code>=</code> y <code>==</code>?</li>
+<li>¿Qué significa <code>&amp;&amp;</code>?</li>
+<li>¿Qué significa <code>||</code>?</li>
+<li>¿Para qué utilizamos <code>!</code>?</li>
+<li>¿Por qué debemos comprobar valores límite?</li>
+<li>¿Qué diferencia existe entre varios <code>if</code> y una cadena <code>else if</code>?</li>
+<li>¿Para qué utilizamos <code>switch</code>?</li>
+<li>¿Qué hace <code>break</code>?</li>
+<li>¿Por qué utilizamos <code>equals()</code> con cadenas?</li>
+</ol>
+<p>No respondas solamente mediante definiciones.</p>
+<p>Intenta utilizar ejemplos.</p>
+<h3 id="seccion-13-2-actividad-a-construir-e-interpretar-condiciones"><span id="apartado-134" class="legacy-anchor" aria-hidden="true"></span>13.2. Actividad A: construir e interpretar condiciones</h3>
+<p>Escribe una condición Java para cada enunciado:</p>
+<ol>
+<li>La edad debe ser al menos 15 años.</li>
+<li>El precio debe ser mayor que cero.</li>
+<li>La cantidad puede ser como máximo 20.</li>
+<li>La opción debe ser exactamente 3.</li>
+<li>El saldo debe ser distinto de cero.</li>
+<li>La nota debe ser inferior a 6.</li>
+<li>El número debe ser igual a 10.</li>
+<li>La temperatura debe ser menor o igual a 30.</li>
+</ol>
+<p>Después realiza el camino inverso.</p>
+<p>Explica en palabras:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt;= 18
+nota &lt; 6
+saldo != 0
+cantidad == 5
+precio &gt; 100
+</code></pre>
+<p>Finalmente, elige tres condiciones y propone para cada una un valor que la haga verdadera y otro que la haga falsa.</p>
+<h3 id="seccion-13-3-actividad-b-identificar-valores-limite"><span id="apartado-135" class="legacy-anchor" aria-hidden="true"></span>13.3. Actividad B: identificar valores límite</h3>
+<p>Tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">edad &gt;= 18
+</code></pre>
+<p>Indica si es verdadera o falsa para:</p>
+<ul>
+<li>
+<ol start="17">
+<li></li>
+</ol>
+</li>
+<li>
+<ol start="18">
+<li></li>
+</ol>
+</li>
+<li>
+<ol start="19">
+<li></li>
+</ol>
+</li>
+</ul>
+<p>Después analiza:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">cantidad &lt;= 10
+</code></pre>
+<p>Con:</p>
+<ul>
+<li>
+<ol start="9">
+<li></li>
+</ol>
+</li>
+<li>
+<ol start="10">
+<li></li>
+</ol>
+</li>
+<li>
+<ol start="11">
+<li></li>
+</ol>
+</li>
+</ul>
+<p>Explica por qué necesitamos probar los valores exactos de los límites.</p>
+<h3 id="seccion-13-4-actividad-c-completar-una-estructura"><span id="apartado-136" class="legacy-anchor" aria-hidden="true"></span>13.4. Actividad C: completar una estructura</h3>
+<p>Un estudiante puede participar en una actividad desde los 15 años inclusive.</p>
+<p>Completa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (______________) {
+    System.out.println(&quot;Puede participar&quot;);
+} else {
+    System.out.println(&quot;No puede participar&quot;);
+}
+</code></pre>
+<p>La variable disponible es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int edad;
+</code></pre>
+<p>Supón que ya recibió un valor válido.</p>
+<p>Explica por qué elegiste ese operador.</p>
+<hr />
+<h2 id="seccion-nivel-2-interpretar-predecir-y-corregir"><span id="apartado-137" class="legacy-anchor" aria-hidden="true"></span>Nivel 2. Interpretar, predecir y corregir</h2>
+<h3 id="seccion-13-5-actividad-d-predecir-una-decision"><span id="apartado-138" class="legacy-anchor" aria-hidden="true"></span>13.5. Actividad D: predecir una decisión</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int saldo = 500;
+int precio = 800;
+
+if (saldo &gt;= precio) {
+    System.out.println(&quot;Compra autorizada&quot;);
+} else {
+    System.out.println(&quot;Saldo insuficiente&quot;);
+}
+
+System.out.println(&quot;Fin&quot;);
+</code></pre>
+<p>Sin ejecutar:</p>
+<ol>
+<li>¿Cuál es la condición?</li>
+<li>¿Es verdadera o falsa?</li>
+<li>¿Qué bloque se ejecuta?</li>
+<li>¿Cuál es la salida completa?</li>
+<li>¿Qué cambiaría si el saldo fuera exactamente 800?</li>
+</ol>
+<h3 id="seccion-13-6-actividad-e-seguir-else-if"><span id="apartado-139" class="legacy-anchor" aria-hidden="true"></span>13.6. Actividad E: seguir else if</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int nota = 10;
+
+if (nota &gt;= 9) {
+    System.out.println(&quot;Excelente&quot;);
+} else if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else {
+    System.out.println(&quot;Debe mejorar&quot;);
+}
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Qué condición se evalúa primero?</li>
+<li>¿Cuál es su resultado?</li>
+<li>¿Se evalúa la segunda?</li>
+<li>¿Qué mensaje se muestra?</li>
+<li>¿La segunda condición sería verdadera si se evaluara?</li>
+<li>¿Por qué debemos distinguir una condición falsa de otra no evaluada?</li>
+</ol>
+<h3 id="seccion-13-7-actividad-f-corregir-el-orden"><span id="apartado-140" class="legacy-anchor" aria-hidden="true"></span>13.7. Actividad F: corregir el orden</h3>
+<p>Un estudiante escribió:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else if (nota &gt;= 9) {
+    System.out.println(&quot;Excelente&quot;);
+} else {
+    System.out.println(&quot;Debe mejorar&quot;);
+}
+</code></pre>
+<p>Con nota 10, muestra «Aprobado».</p>
+<p>Explica por qué sucede.</p>
+<p>Después corrige el programa.</p>
+<p>No cambies los mensajes ni las categorías.</p>
+<p>Modifica solamente lo necesario.</p>
+<h3 id="seccion-13-8-actividad-g-condiciones-compuestas"><span id="apartado-141" class="legacy-anchor" aria-hidden="true"></span>13.8. Actividad G: condiciones compuestas</h3>
+<p>Un jugador puede avanzar si tiene al menos diez puntos y conserva alguna vida.</p>
+<p>Escribe la condición.</p>
+<p>Comprueba:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Puntos</th>
+<th style="text-align:right">Vidas</th>
+<th>¿Puede avanzar?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">3</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0</td>
+<td>No</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">3</td>
+<td>No</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>No</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">1</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Explica por qué utilizaste el operador lógico correspondiente.</p>
+<h3 id="seccion-13-9-actividad-h-corregir-una-validacion"><span id="apartado-142" class="legacy-anchor" aria-hidden="true"></span>13.9. Actividad H: corregir una validación</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nota &lt; 1 &amp;&amp; nota &gt; 10) {
+    System.out.println(&quot;Nota inválida&quot;);
+}
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Qué intenta comprobar?</li>
+<li>¿Por qué no funciona?</li>
+<li>¿Qué operador debería utilizar?</li>
+<li>¿Qué sucede con nota -2?</li>
+<li>¿Qué sucede con nota 11?</li>
+<li>¿Qué pruebas realizarías después de corregirla?</li>
+</ol>
+<h3 id="seccion-13-10-actividad-i-propiedades-independientes"><span id="apartado-143" class="legacy-anchor" aria-hidden="true"></span>13.10. Actividad I: propiedades independientes</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 8;
+
+if (numero &gt; 0) {
+    System.out.println(&quot;Positivo&quot;);
+}
+
+if (numero % 2 == 0) {
+    System.out.println(&quot;Par&quot;);
+}
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Cuál es la salida?</li>
+<li>¿Se evalúan ambas condiciones?</li>
+<li>¿Qué sucedería si utilizáramos <code>else if</code>?</li>
+<li>¿Por qué no sería adecuado para este problema?</li>
+</ol>
+<h3 id="seccion-13-11-actividad-j-interpretar-switch"><span id="apartado-144" class="legacy-anchor" aria-hidden="true"></span>13.11. Actividad J: interpretar switch</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int opcion = 2;
+
+switch (opcion) {
+
+    case 1:
+        System.out.println(&quot;Uno&quot;);
+        break;
+
+    case 2:
+        System.out.println(&quot;Dos&quot;);
+        break;
+
+    case 3:
+        System.out.println(&quot;Tres&quot;);
+        break;
+
+    default:
+        System.out.println(&quot;Opción inválida&quot;);
+}
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Qué mensaje aparece?</li>
+<li>¿Qué <code>case</code> coincide?</li>
+<li>¿Qué hace <code>break</code>?</li>
+<li>¿Qué sucedería si <code>opcion</code> valiera 7?</li>
+<li>¿Qué podría ocurrir si elimináramos los <code>break</code>?</li>
+</ol>
+<hr />
+<h2 id="seccion-nivel-3-construir-comprobar-y-justificar"><span id="apartado-145" class="legacy-anchor" aria-hidden="true"></span>Nivel 3. Construir, comprobar y justificar</h2>
+<h3 id="seccion-13-12-actividad-k-autorizar-una-compra"><span id="apartado-146" class="legacy-anchor" aria-hidden="true"></span>13.12. Actividad K: autorizar una compra</h3>
+<p>Una persona quiere comprar un producto.</p>
+<p>El programa debe solicitar:</p>
+<ul>
+<li>Saldo disponible.</li>
+<li>Precio del producto.</li>
+</ul>
+<p>Si el saldo alcanza, debe mostrar «Compra autorizada».</p>
+<p>En caso contrario, debe mostrar «Saldo insuficiente».</p>
+<p>Antes de escribir Java:</p>
+<ol>
+<li>Identifica los datos.</li>
+<li>Escribe la condición.</li>
+<li>Construye el pseudocódigo.</li>
+<li>Determina los resultados posibles.</li>
+</ol>
+<p>Después escribe el programa completo con <code>Scanner</code>.</p>
+<p>Prueba:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Saldo</th>
+<th style="text-align:right">Precio</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1000</td>
+<td style="text-align:right">800</td>
+<td>Autorizada</td>
+</tr>
+<tr>
+<td style="text-align:right">800</td>
+<td style="text-align:right">800</td>
+<td>Autorizada</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">800</td>
+<td>Insuficiente</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Explica por qué incluiste la igualdad.</p>
+<h3 id="seccion-13-13-actividad-l-calcular-un-descuento"><span id="apartado-147" class="legacy-anchor" aria-hidden="true"></span>13.13. Actividad L: calcular un descuento</h3>
+<p>Una tienda ofrece un descuento del 10 % cuando el importe de la compra alcanza $1000.</p>
+<p>El programa debe:</p>
+<ol>
+<li>Solicitar el importe.</li>
+<li>Comprobar si corresponde el descuento.</li>
+<li>Calcular el importe final.</li>
+<li>Mostrar el resultado.</li>
+</ol>
+<p>Escribe primero el pseudocódigo.</p>
+<p>Después construye el programa Java.</p>
+<p>Prueba:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Importe</th>
+<th style="text-align:right">Resultado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">800</td>
+<td style="text-align:right">800</td>
+</tr>
+<tr>
+<td style="text-align:right">1000</td>
+<td style="text-align:right">900</td>
+</tr>
+<tr>
+<td style="text-align:right">1500</td>
+<td style="text-align:right">1350</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Explica qué sucede cuando el importe es exactamente $1000.</p>
+<h3 id="seccion-13-14-actividad-m-clasificar-una-nota"><span id="apartado-148" class="legacy-anchor" aria-hidden="true"></span>13.14. Actividad M: clasificar una nota</h3>
+<p>Construye un programa que solicite una nota entera entre 1 y 10.</p>
+<p>Debe mostrar:</p>
+<ul>
+<li>«Nota inválida» fuera del rango.</li>
+<li>«Excelente» desde 9.</li>
+<li>«Aprobado» desde 6 hasta menos de 9.</li>
+<li>«Debe mejorar» para los demás valores válidos.</li>
+</ul>
+<p>Primero escribe el pseudocódigo.</p>
+<p>Después implementa Java.</p>
+<p>Prueba con:</p>
+<p>0, 1, 5, 6, 8, 9, 10 y 11.</p>
+<p>Explica por qué validaste antes de clasificar.</p>
+<h3 id="seccion-13-15-actividad-n-menu-de-opciones"><span id="apartado-149" class="legacy-anchor" aria-hidden="true"></span>13.15. Actividad N: menú de opciones</h3>
+<p>Construye un programa que muestre:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">1. Consultar información
+2. Mostrar ayuda
+3. Salir
+</code></pre>
+<p>Después debe solicitar una opción y mostrar el mensaje correspondiente.</p>
+<p>Utiliza <code>switch</code>.</p>
+<p>Si se introduce un valor diferente, debe informar que la opción es inválida.</p>
+<p>Este menú solamente se ejecutará una vez.</p>
+<p>No necesitas repetirlo.</p>
+<p>En la Unidad 4 aprenderemos a mantener un menú disponible hasta que el usuario elija salir.</p>
+<h3 id="seccion-13-16-actividad-o-prestamo-de-materiales"><span id="apartado-150" class="legacy-anchor" aria-hidden="true"></span>13.16. Actividad O: préstamo de materiales</h3>
+<p>Un sistema permite retirar un equipo solamente si:</p>
+<ul>
+<li>El estudiante está registrado.</li>
+<li>No tiene préstamos pendientes.</li>
+<li>El equipo está disponible.</li>
+</ul>
+<p>Tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">boolean registrado;
+int prestamosPendientes;
+boolean disponible;
+</code></pre>
+<p>Construye la condición que autoriza el préstamo.</p>
+<p>Después escribe un <code>if...else</code>.</p>
+<p>Prueba:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Registrado</th>
+<th style="text-align:right">Pendientes</th>
+<th>Disponible</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>true</td>
+<td style="text-align:right">0</td>
+<td>true</td>
+<td>Autorizado</td>
+</tr>
+<tr>
+<td>true</td>
+<td style="text-align:right">1</td>
+<td>true</td>
+<td>Rechazado</td>
+</tr>
+<tr>
+<td>false</td>
+<td style="text-align:right">0</td>
+<td>true</td>
+<td>Rechazado</td>
+</tr>
+<tr>
+<td>true</td>
+<td style="text-align:right">0</td>
+<td>false</td>
+<td>Rechazado</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Explica por qué deben cumplirse todos los requisitos.</p>
+<h3 id="seccion-13-17-actividad-p-auditoria-de-almacenamiento"><span id="apartado-151" class="legacy-anchor" aria-hidden="true"></span>13.17. Actividad P: auditoría de almacenamiento</h3>
+<p>Recupera el problema de la sección 11.</p>
+<p>El programa recibe:</p>
+<ul>
+<li>Capacidad total.</li>
+<li>Espacio utilizado.</li>
+</ul>
+<p>Debe calcular el porcentaje libre y clasificar el estado.</p>
+<p>Realiza:</p>
+<ol>
+<li>Identifica las restricciones.</li>
+<li>Construye la condición de datos inválidos.</li>
+<li>Escribe las fórmulas.</li>
+<li>Define las tres categorías.</li>
+<li>Construye el pseudocódigo.</li>
+<li>Implementa el programa.</li>
+<li>Prueba los límites 10 % y 25 %.</li>
+<li>Explica por qué validas antes de calcular.</li>
+</ol>
+<p>Después modifica una regla:</p>
+<blockquote>
+<p>El estado Crítico ahora corresponde a un porcentaje libre menor o igual al 15 %.</p>
+</blockquote>
+<p>Ajusta las condiciones.</p>
+<p>Explica qué cambiaste y por qué.</p>
+<h2 id="seccion-13-18-defensa-breve-de-comprension"><span id="apartado-152" class="legacy-anchor" aria-hidden="true"></span>13.18. Defensa breve de comprensión</h2>
+<p>Después de resolver uno de los ejercicios integradores, prepárate para explicar en aproximadamente un minuto:</p>
+<ul>
+<li>Qué problema resolviste.</li>
+<li>Qué condición utilizaste.</li>
+<li>Por qué elegiste esa estructura.</li>
+<li>Qué sucede en el valor límite.</li>
+<li>Qué caso de prueba demuestra que funciona.</li>
+</ul>
+<p>También debes poder responder una pregunta de modificación:</p>
+<blockquote>
+<p>¿Qué cambiaría en tu algoritmo si modificáramos una de las reglas?</p>
+</blockquote>
+<p>La finalidad es comprobar que comprendes tu solución y no solamente que el programa se ejecuta.</p>
+<hr />
+<h1 id="seccion-lo-que-debemos-recordar"><span id="apartado-153" class="legacy-anchor" aria-hidden="true"></span>Lo que debemos recordar</h1>
+<p>En esta unidad aprendimos a construir programas que seleccionan instrucciones según determinadas condiciones.</p>
+<p>Comenzamos identificando una limitación de los programas secuenciales: podían recibir datos, realizar operaciones y mostrar resultados, pero necesitábamos decidir qué instrucciones correspondía ejecutar.</p>
+<p>Para resolver esa dificultad incorporamos <code>if</code>.</p>
+<p>Aprendimos que una condición produce un resultado booleano y que ese resultado determina si se ejecuta un bloque.</p>
+<p>Después utilizamos <code>if...else</code> para seleccionar entre dos alternativas.</p>
+<p>También estudiamos <code>else if</code>, que permite organizar varias alternativas y seleccionar la primera cuya condición sea verdadera.</p>
+<p>Descubrimos que el orden de las condiciones es fundamental.</p>
+<p>Una condición puede ser verdadera para ciertos datos y, sin embargo, no llegar a evaluarse porque una alternativa anterior ya fue seleccionada.</p>
+<p>Por eso aprendimos a distinguir entre condiciones verdaderas, falsas y no evaluadas.</p>
+<p>Estudiamos los operadores relacionales:</p>
+<p><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>==</code> y <code>!=</code>.</p>
+<p>Aprendimos a traducir requisitos escritos en lenguaje cotidiano a condiciones Java y también a explicar en palabras condiciones que encontramos en un programa.</p>
+<p>Después incorporamos los operadores lógicos:</p>
+<p><code>&amp;&amp;</code>, <code>||</code> y <code>!</code>.</p>
+<p>Con ellos pudimos representar reglas que necesitan varios requisitos, alternativas o negaciones.</p>
+<p>Comprobamos que los paréntesis pueden cambiar el significado de una expresión compuesta y que Java utiliza evaluación de cortocircuito.</p>
+<p>También comprendimos la importancia de validar los datos antes de procesarlos.</p>
+<p>No es lo mismo clasificar una nota que comprobar primero si pertenece al rango permitido.</p>
+<p>Aprendimos a distinguir las alternativas excluyentes de las propiedades independientes.</p>
+<p>Estudiamos la comparación de cadenas mediante <code>equals()</code> y conocimos la estructura <code>switch</code> para seleccionar entre valores concretos.</p>
+<p>El problema integrador de auditoría de almacenamiento nos permitió combinar entrada de datos, validación, cálculos, condiciones y pruebas.</p>
+<p>Pero la idea principal de esta unidad es la siguiente:</p>
+<p><strong>Una estructura condicional no decide por nosotros qué es correcto. Somos nosotros quienes debemos comprender las reglas del problema y expresarlas mediante condiciones adecuadas.</strong></p>
+<p>En la siguiente unidad encontraremos una nueva limitación.</p>
+<p>Ya sabemos ejecutar instrucciones y seleccionar alternativas.</p>
+<p>Pero ¿qué sucede cuando necesitamos repetir una operación muchas veces?</p>
+<p>¿Tendremos que copiar las mismas instrucciones una y otra vez?</p>
+<p>Para resolver ese problema estudiaremos las <strong>estructuras iterativas</strong>.</p>
+<p>Aprenderemos a utilizar ciclos, contadores y acumuladores para construir algoritmos que repiten acciones de manera controlada.</p>
+<p>Las condiciones seguirán siendo fundamentales, porque también nos permitirán determinar cuándo debe continuar o finalizar una repetición.</p>
+</article><nav class="lesson-bottom" aria-label="Navegación entre unidades"><a rel="prev" href="unidad-02.html">← Unidad 2: Nuestros primeros programas en Java</a><a rel="next" href="unidad-04.html">Unidad 4: Estructuras iterativas →</a></nav><p class="return-top"><a href="#top">Volver arriba ↑</a></p></main><footer><div class="footer-inner"><img src="assets/logo-PM-opcional.png" alt=""><span><strong>Programación I · 2026</strong><br>Profe Macón · DGETP / UTU</span></div></footer><script defer src="assets/recursos-modelos.js"></script><script defer src="assets/recursos-interactivos.js"></script></body></html>

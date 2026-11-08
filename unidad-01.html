@@ -1,0 +1,1545 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unidad 1 · Programación I</title><link rel="icon" href="assets/logo-PM-opcional.png"><link rel="stylesheet" href="assets/style.css"></head><body id="top"><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><img src="assets/logo-profe-macon.png" alt="Profe Macón"><span><strong>Programación I</strong><small>1.º BT Informática · DGETP / UTU</small></span></a><nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="index.html#unidades">Unidades</a><span class="current-unit" aria-current="page">Unidad 1</span></nav></div></header><main class="lesson" id="contenido"><a class="back" href="index.html#unidades">← Volver a las unidades</a><p class="eyebrow">Programación I · Unidad 01</p><details class="contents"><summary>Índice de la unidad</summary><nav aria-label="Apartados de la unidad"><ol><li><a href="#seccion-1-antes-de-escribir-codigo-que-significa-resolver-un-problema">1. Antes de escribir código: ¿qué significa resolver un problema?</a></li><li><a href="#seccion-2-el-problema-de-los-bidones">2. El problema de los bidones</a></li><li><a href="#seccion-3-primera-solucion-conseguir-cuatro-litros-en-ocho-operaciones">3. Primera solución: conseguir cuatro litros en ocho operaciones</a></li><li><a href="#seccion-4-segunda-solucion-el-mismo-problema-puede-resolverse-de-otra-manera">4. Segunda solución: el mismo problema puede resolverse de otra manera</a></li><li><a href="#seccion-5-que-es-un-algoritmo">5. ¿Qué es un algoritmo?</a></li><li><a href="#seccion-6-instrucciones-claras-una-persona-puede-interpretar-una-computadora-necesita-precision">6. Instrucciones claras: una persona puede interpretar, una computadora necesita precisión</a></li><li><a href="#seccion-7-comprender-un-problema-datos-objetivo-y-restricciones">7. Comprender un problema: datos, objetivo y restricciones</a></li><li><a href="#seccion-8-representar-el-estado-de-un-problema-y-leer-algoritmos">8. Representar el estado de un problema y leer algoritmos</a></li><li><a href="#seccion-9-representar-algoritmos-mediante-lenguaje-natural">9. Representar algoritmos mediante lenguaje natural</a></li><li><a href="#seccion-10-pseudocodigo-escribir-algoritmos-sin-depender-todavia-de-java">10. Pseudocódigo: escribir algoritmos sin depender todavía de Java</a></li><li><a href="#seccion-11-descomponer-problemas-de-una-tarea-grande-a-varias-tareas-pequenas">11. Descomponer problemas: de una tarea grande a varias tareas pequeñas</a></li><li><a href="#seccion-12-del-algoritmo-al-programa-que-hace-una-computadora">12. Del algoritmo al programa: ¿qué hace una computadora?</a></li><li><a href="#seccion-13-por-que-aprenderemos-java">13. ¿Por qué aprenderemos Java?</a></li><li><a href="#seccion-14-construir-un-algoritmo-no-termina-cuando-encontramos-una-respuesta">14. Construir un algoritmo no termina cuando encontramos una respuesta</a></li><li><a href="#seccion-15-los-errores-tambien-nos-ayudan-a-comprender-los-algoritmos">15. Los errores también nos ayudan a comprender los algoritmos</a></li><li><a href="#seccion-16-preparacion-para-la-evaluacion-demostrar-que-sabemos-pensar-algoritmicamente">16. Preparación para la evaluación: demostrar que sabemos pensar algorítmicamente</a></li><li><a href="#seccion-lo-que-debemos-recordar">Lo que debemos recordar</a></li></ol></nav></details><article class="prose"><h1 id="seccion-unidad-1-pensar-como-programadores-aprender-a-resolver-problemas"><span id="apartado-1" class="legacy-anchor" aria-hidden="true"></span>Unidad 1. Pensar como programadores: aprender a resolver problemas</h1>
+<p><strong>Programación I — 2026</strong><br />
+<strong>1.º Bachillerato Tecnológico en Informática · DGETP / UTU</strong></p>
+<h2 id="seccion-que-aprenderemos-en-esta-unidad"><span id="apartado-2" class="legacy-anchor" aria-hidden="true"></span>¿Qué aprenderemos en esta unidad?</h2>
+<p>Cuando comenzamos a estudiar programación, es natural pensar que nuestra primera tarea será aprender a escribir instrucciones en un lenguaje como Java.</p>
+<p>Sin embargo, conocer las instrucciones de un lenguaje no significa necesariamente saber programar.</p>
+<p>Una persona puede saber cómo se escribe una condición, un ciclo o una operación matemática y, aun así, tener dificultades para resolver un problema nuevo.</p>
+<p>¿Por qué sucede esto?</p>
+<p>Porque programar requiere algo más que conocer instrucciones. Necesitamos comprender el problema, identificar qué información tenemos, determinar qué resultado queremos obtener y construir una secuencia de acciones que nos permita alcanzarlo.</p>
+<p>Esa secuencia constituye un <strong>algoritmo</strong>.</p>
+<p>Durante esta unidad aprenderemos a pensar los problemas desde una perspectiva diferente: no solamente intentaremos encontrar una respuesta, sino que procuraremos describir un procedimiento que otra persona —o una computadora— pueda ejecutar para obtenerla.</p>
+<p>Estudiaremos qué es un algoritmo, cómo se construye, por qué las instrucciones deben ser precisas, cómo representar una solución mediante pseudocódigo y cómo comprobar su funcionamiento.</p>
+<p>También comenzaremos a comprender qué sucede cuando una computadora ejecuta un programa y qué lugar ocupa Java en ese proceso.</p>
+<p>No necesitas tener conocimientos previos de programación. Nuestro punto de partida será una situación que podemos resolver sin escribir una sola línea de código.</p>
+<p><strong>Cómo utilizar este capítulo de forma autónoma.</strong> Cuando encuentres una pregunta de predicción, escribe o piensa tu respuesta <em>antes</em> de revelar la explicación. Si te bloqueas, identifica primero qué datos tienes y qué resultado necesitas; consulta una pista y vuelve a intentarlo. Si ya entendiste el ejemplo, compruébalo con otros datos y explica qué cambiaría. En los ejercicios con soluciones, la página debe mostrar las pistas antes de la resolución completa. Si estudias el Markdown directamente, oculta el párrafo de solución mientras realizas la predicción.</p>
+<hr />
+<h1 id="seccion-1-antes-de-escribir-codigo-que-significa-resolver-un-problema"><span id="apartado-3" class="legacy-anchor" aria-hidden="true"></span>1. Antes de escribir código: ¿qué significa resolver un problema?</h1>
+<p>Todos los días resolvemos problemas.</p>
+<p>Algunos son muy sencillos, como determinar cuánto dinero necesitamos para comprar dos boletos.</p>
+<p>Otros requieren varios pasos: organizar un horario, calcular el promedio de un conjunto de calificaciones o encontrar el camino más conveniente para llegar a un lugar.</p>
+<p>En muchas ocasiones resolvemos estas situaciones casi automáticamente.</p>
+<p>Sabemos qué hacer porque tenemos experiencia y podemos interpretar información que no siempre está expresada de manera completa.</p>
+<p>Por ejemplo, si alguien nos dice:</p>
+<p>«Prepara un vaso de agua».</p>
+<p>Entendemos que debemos buscar un vaso, localizar una fuente de agua, llenar el recipiente y evitar que se desborde.</p>
+<p>La persona no necesita describir cada movimiento.</p>
+<p>Pero imaginemos que debemos explicar el procedimiento a alguien que no puede interpretar nuestras intenciones ni completar instrucciones incompletas.</p>
+<p>Tendríamos que ser mucho más precisos.</p>
+<p>Esto se parece a uno de los principales desafíos de la programación.</p>
+<p><strong>Una computadora no debe adivinar qué queríamos hacer: necesitamos construir instrucciones que expresen correctamente lo que debe ejecutar.</strong></p>
+<h2 id="seccion-1-1-obtener-una-respuesta-no-es-lo-mismo-que-explicar-como-obtenerla"><span id="apartado-4" class="legacy-anchor" aria-hidden="true"></span>1.1. Obtener una respuesta no es lo mismo que explicar cómo obtenerla</h2>
+<p>Consideremos este problema:</p>
+<blockquote>
+<p>Una persona compra tres cuadernos de $85 cada uno. ¿Cuánto debe pagar?</p>
+</blockquote>
+<p>Podemos responder:</p>
+<p>$255.</p>
+<p>Pero también podemos describir cómo llegamos a ese resultado:</p>
+<ol>
+<li>Identificar el precio de un cuaderno.</li>
+<li>Identificar la cantidad comprada.</li>
+<li>Multiplicar el precio por la cantidad.</li>
+<li>Mostrar el importe total.</li>
+</ol>
+<p>Esta segunda respuesta tiene una característica importante: no solamente resuelve una compra concreta.</p>
+<p>También describe un procedimiento que podemos utilizar con otros precios y cantidades.</p>
+<p>Si mañana compramos cinco cuadernos de $90, el procedimiento sigue siendo válido.</p>
+<p>Solo cambian los datos.</p>
+<h2 id="seccion-1-2-resolver-casos-particulares-y-construir-soluciones-generales"><span id="apartado-5" class="legacy-anchor" aria-hidden="true"></span>1.2. Resolver casos particulares y construir soluciones generales</h2>
+<p>Cuando resolvemos un caso particular, encontramos una respuesta para unos datos específicos.</p>
+<p>Cuando construimos un algoritmo, intentamos describir un procedimiento que funcione para los casos que cumplen las condiciones del problema.</p>
+<p>Por ejemplo:</p>
+<p><strong>Caso particular</strong></p>
+<p>Tres cuadernos de $85:</p>
+<p><code>85 × 3 = 255</code></p>
+<p><strong>Procedimiento general</strong></p>
+<ol>
+<li>Obtener el precio.</li>
+<li>Obtener la cantidad.</li>
+<li>Calcular <code>precio × cantidad</code>.</li>
+<li>Informar el resultado.</li>
+</ol>
+<p>Esta diferencia será fundamental durante todo el curso.</p>
+<p>No queremos aprender a construir programas que solamente funcionen con los números que utilizamos durante la explicación.</p>
+<p>Queremos aprender a construir soluciones que puedan utilizar diferentes datos.</p>
+<h2 id="seccion-1-3-pensar-antes-de-actuar"><span id="apartado-6" class="legacy-anchor" aria-hidden="true"></span>1.3. Pensar antes de actuar</h2>
+<p>Una estrategia útil para resolver problemas informáticos es detenerse a responder tres preguntas:</p>
+<ul>
+<li>¿Qué sabemos?</li>
+<li>¿Qué queremos conseguir?</li>
+<li>¿Qué operaciones podemos realizar?</li>
+</ul>
+<p>Estas preguntas parecen sencillas, pero evitan comenzar a escribir instrucciones sin comprender el objetivo.</p>
+<p>A continuación trabajaremos con un problema donde su importancia se vuelve especialmente evidente.</p>
+<hr />
+<h1 id="seccion-2-el-problema-de-los-bidones"><span id="apartado-7" class="legacy-anchor" aria-hidden="true"></span>2. El problema de los bidones</h1>
+<p>Imaginemos que tenemos dos bidones vacíos.</p>
+<p>El primero tiene capacidad para cinco litros.</p>
+<p>El segundo tiene capacidad para tres litros.</p>
+<p>Disponemos de agua suficiente para llenarlos cuantas veces sea necesario.</p>
+<p>Nuestro objetivo consiste en conseguir <strong>exactamente cuatro litros de agua en el bidón de cinco litros</strong>.</p>
+<p>Pero existen restricciones.</p>
+<p>Los bidones no tienen marcas de medición.</p>
+<p>No podemos calcular visualmente un litro o dos litros y detenernos donde queramos.</p>
+<p>Solamente tenemos permitidas determinadas operaciones.</p>
+<div id="u01-bidones-problema" data-recurso="u01-bidones-problema"><figure class="recurso-imagen"><img src="assets/bidones-problema.png" alt="Dos bidones vacíos: A de cinco litros y B de tres, sin marcas. Se pueden llenar, vaciar o trasvasar hasta vaciar el origen o llenar el destino; el objetivo es obtener cuatro litros en A."></figure></div>
+<h2 id="seccion-2-1-las-condiciones-iniciales"><span id="apartado-8" class="legacy-anchor" aria-hidden="true"></span>2.1. Las condiciones iniciales</h2>
+<p>Llamaremos:</p>
+<p><strong>Bidón A:</strong> capacidad máxima de cinco litros.</p>
+<p><strong>Bidón B:</strong> capacidad máxima de tres litros.</p>
+<p>Al comenzar, ambos están vacíos.</p>
+<p>No conocemos el contenido de los bidones mediante marcas de medición, pero podemos determinar ciertas cantidades como consecuencia de las operaciones realizadas.</p>
+<p>Por ejemplo, si llenamos completamente el bidón B, sabemos que contiene tres litros.</p>
+<p>Y si vertemos todo su contenido dentro del bidón A, que estaba vacío, sabemos que A pasa a contener tres litros.</p>
+<h2 id="seccion-2-2-operaciones-permitidas"><span id="apartado-9" class="legacy-anchor" aria-hidden="true"></span>2.2. Operaciones permitidas</h2>
+<p>Solamente podemos:</p>
+<ol>
+<li><strong>Llenar completamente un bidón.</strong> Si decidimos llenarlo, debe alcanzar su capacidad máxima.</li>
+<li><strong>Vaciar completamente un bidón.</strong> No podemos vaciar solamente una parte medida de su contenido.</li>
+<li><strong>Trasvasar agua de un bidón al otro.</strong> El trasvase continúa hasta que el bidón de origen queda vacío o el de destino se llena.</li>
+</ol>
+<p>La tercera regla es especialmente importante.</p>
+<p>No podemos decidir detener el trasvase después de pasar exactamente un litro porque los recipientes no tienen marcas.</p>
+<p>Debemos respetar una de las dos condiciones que permiten saber cuándo detenernos.</p>
+<h2 id="seccion-2-3-que-necesitamos-conseguir"><span id="apartado-10" class="legacy-anchor" aria-hidden="true"></span>2.3. ¿Qué necesitamos conseguir?</h2>
+<p>El objetivo es terminar con cuatro litros en el bidón A.</p>
+<p>No es obligatorio que el bidón B termine vacío, salvo que incorporemos esa condición al problema.</p>
+<p>En las soluciones que estudiaremos encontraremos estados finales diferentes para B.</p>
+<p>Lo fundamental es conseguir exactamente cuatro litros en A.</p>
+<h2 id="seccion-2-4-antes-de-buscar-la-solucion"><span id="apartado-11" class="legacy-anchor" aria-hidden="true"></span>2.4. Antes de buscar la solución</h2>
+<p>Podemos comenzar haciéndonos algunas preguntas:</p>
+<ul>
+<li>¿Cómo podemos conseguir una cantidad que no coincide con la capacidad de ninguno de los recipientes?</li>
+<li>¿Podemos aprovechar el espacio disponible en un bidón para determinar cuánto agua queda en el otro?</li>
+<li>¿Qué operación nos permitiría conservar solamente uno o dos litros?</li>
+<li>¿Necesitamos llenar primero el bidón más grande?</li>
+<li>¿Existirá más de una solución?</li>
+</ul>
+<p>No debemos apresurarnos a escribir instrucciones.</p>
+<p>Primero necesitamos explorar qué ocurre cuando realizamos las operaciones permitidas.</p>
+<h2 id="seccion-2-5-primer-desafio-intenta-resolverlo"><span id="apartado-12" class="legacy-anchor" aria-hidden="true"></span>2.5. Primer desafío: intenta resolverlo</h2>
+<p>Antes de conocer las soluciones, vamos a experimentar.</p>
+<p>Piensa qué harías primero.</p>
+<p>¿Llenarías el bidón de cinco litros o el de tres?</p>
+<p>¿Por qué?</p>
+<p>No necesitas acertar inmediatamente.</p>
+<p>Realiza una operación, observa el resultado y decide cuál podría ser el siguiente paso.</p>
+<p>Si llegas a una situación donde no sabes cómo continuar, no significa que hayas fracasado.</p>
+<p>Significa que necesitas analizar el estado actual del problema y las operaciones que todavía puedes realizar.</p>
+<p><strong>Antes de empezar, escribe o piensa tu predicción: ¿qué bidón llenarías primero y qué esperas conseguir con esa decisión?</strong></p>
+<p>Después utiliza el simulador.</p>
+<div id="u01-bidones-simulador" data-recurso="u01-bidones-simulador"><div data-componente-interactivo="u01-bidones-simulador"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Dos recipientes vacíos, A de 5 litros y B de 3. Llena o vacía por completo y trasvasa hasta llenar el destino o vaciar el origen. Objetivo: 4 litros en A. Predice el estado después de llenar B y pasarlo a A.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<h3 id="seccion-que-debes-observar"><span id="apartado-13" class="legacy-anchor" aria-hidden="true"></span>¿Qué debes observar?</h3>
+<p>Mientras experimentas, presta atención a cuatro cuestiones:</p>
+<ol>
+<li>Qué cantidad contiene cada bidón antes de una operación.</li>
+<li>Qué operación decides realizar.</li>
+<li>Qué cantidad contiene cada bidón después.</li>
+<li>Si el nuevo estado te acerca o te aleja del objetivo.</li>
+</ol>
+<p>No te preocupes todavía por encontrar la solución más corta.</p>
+<p>Intenta conseguir una solución que respete las reglas.</p>
+<p>Después podremos analizarla y compararla con otras.</p>
+<hr />
+<h1 id="seccion-3-primera-solucion-conseguir-cuatro-litros-en-ocho-operaciones"><span id="apartado-14" class="legacy-anchor" aria-hidden="true"></span>3. Primera solución: conseguir cuatro litros en ocho operaciones</h1>
+<p>Vamos a construir una solución en la que comenzamos llenando el bidón B, de tres litros.</p>
+<p>Para representar el contenido de los recipientes, utilizaremos pares de números.</p>
+<p>El primer número indicará cuántos litros contiene A.</p>
+<p>El segundo indicará cuántos litros contiene B.</p>
+<p>Por ejemplo:</p>
+<p><code>(3, 1)</code></p>
+<p>Significa que el bidón A contiene tres litros y el bidón B contiene uno.</p>
+<p>Esta representación nos permitirá registrar qué sucede después de cada operación.</p>
+<h2 id="seccion-3-1-representar-el-problema-mediante-dos-numeros"><span id="apartado-15" class="legacy-anchor" aria-hidden="true"></span>3.1. Representar el problema mediante dos números</h2>
+<p>Observa que ahora podemos describir la situación de los bidones sin necesidad de dibujarlos constantemente.</p>
+<p>Nos alcanza con conocer:</p>
+<p><code>(litros en A, litros en B)</code></p>
+<p>Para este problema no necesitamos registrar el color de los recipientes, el material con el que están fabricados ni el lugar exacto donde están apoyados.</p>
+<p>Necesitamos conocer sus capacidades y el volumen de agua que contiene cada uno.</p>
+<p>Estamos seleccionando la información relevante.</p>
+<p>Esta es una habilidad importante para resolver problemas informáticos: <strong>identificar qué información necesitamos representar y qué información podemos dejar fuera</strong>.</p>
+<p>Más adelante volveremos sobre esta idea cuando aprendamos a identificar entidades y construir objetos.</p>
+<p>Por ahora, utilizaremos los pares numéricos para seguir nuestra solución.</p>
+<h2 id="seccion-3-2-estado-inicial"><span id="apartado-16" class="legacy-anchor" aria-hidden="true"></span>3.2. Estado inicial</h2>
+<p>Los dos bidones están vacíos:</p>
+<p><code>(0, 0)</code></p>
+<p>Nuestro objetivo es llegar a un estado donde A contenga exactamente cuatro litros.</p>
+<h2 id="seccion-3-3-paso-1-llenar-el-bidon-b"><span id="apartado-17" class="legacy-anchor" aria-hidden="true"></span>3.3. Paso 1: llenar el bidón B</h2>
+<p>Llenamos completamente el bidón de tres litros.</p>
+<p>Ahora tenemos:</p>
+<p><code>(0, 3)</code></p>
+<p>El bidón A continúa vacío.</p>
+<h2 id="seccion-3-4-paso-2-pasar-el-agua-de-b-hacia-a"><span id="apartado-18" class="legacy-anchor" aria-hidden="true"></span>3.4. Paso 2: pasar el agua de B hacia A</h2>
+<p>El bidón A está vacío y puede recibir cinco litros.</p>
+<p>Pasamos los tres litros de B hacia A.</p>
+<p>Como B queda vacío antes de que A se llene, detenemos el trasvase.</p>
+<p>Nuevo estado:</p>
+<p><code>(3, 0)</code></p>
+<h2 id="seccion-3-5-paso-3-llenar-nuevamente-b"><span id="apartado-19" class="legacy-anchor" aria-hidden="true"></span>3.5. Paso 3: llenar nuevamente B</h2>
+<p>Llenamos otra vez el bidón de tres litros.</p>
+<p>Ahora tenemos:</p>
+<p><code>(3, 3)</code></p>
+<p>El bidón A contiene tres litros y B contiene otros tres.</p>
+<h2 id="seccion-3-6-antes-del-paso-4-predice-que-sucedera"><span id="apartado-20" class="legacy-anchor" aria-hidden="true"></span>3.6. Antes del paso 4: predice qué sucederá</h2>
+<p>Llegamos a una situación especialmente importante:</p>
+<p><code>(3, 3)</code></p>
+<p>Queremos trasvasar agua de B hacia A.</p>
+<p>Pero todavía no realices mentalmente toda la operación.</p>
+<p>Primero responde:</p>
+<ol>
+<li>¿Cuál es la capacidad máxima de A?</li>
+<li>¿Cuántos litros contiene actualmente?</li>
+<li>¿Cuántos litros le faltan para llenarse?</li>
+<li>¿Cuántos litros contiene B?</li>
+<li>¿Qué condición hará que se detenga el trasvase?</li>
+<li>¿Cuánta agua quedará en B?</li>
+</ol>
+<p>Ahora sí, comprueba el resultado.</p>
+<h2 id="seccion-3-7-paso-4-pasar-agua-de-b-hacia-a"><span id="apartado-21" class="legacy-anchor" aria-hidden="true"></span>3.7. Paso 4: pasar agua de B hacia A</h2>
+<p>El bidón A tiene una capacidad de cinco litros, pero ya contiene tres.</p>
+<p>Por tanto, solamente dispone de espacio para dos litros.</p>
+<p>Comenzamos a trasvasar desde B hacia A.</p>
+<p>Cuando A llega a cinco litros, debemos detenernos.</p>
+<p>Como B tenía tres litros y pasó dos, le queda uno.</p>
+<p>Nuevo estado:</p>
+<p><code>(5, 1)</code></p>
+<p>Aquí aparece el descubrimiento fundamental.</p>
+<p><strong>Hemos conseguido medir indirectamente un litro, sin utilizar marcas en los recipientes.</strong></p>
+<p>No lo medimos observando una escala.</p>
+<p>Lo conseguimos aprovechando el espacio que faltaba para llenar el bidón A.</p>
+<p>Es importante comprender este razonamiento porque explica por qué la solución funciona.</p>
+<p>Si solamente memorizamos la secuencia de pasos, podríamos repetirla sin entender cómo conseguimos el litro que necesitamos.</p>
+<h2 id="seccion-3-8-paso-5-vaciar-a"><span id="apartado-22" class="legacy-anchor" aria-hidden="true"></span>3.8. Paso 5: vaciar A</h2>
+<p>Vaciamos completamente el bidón A.</p>
+<p>El bidón B conserva el litro que tenía.</p>
+<p>Nuevo estado:</p>
+<p><code>(0, 1)</code></p>
+<h2 id="seccion-3-9-paso-6-pasar-el-litro-de-b-hacia-a"><span id="apartado-23" class="legacy-anchor" aria-hidden="true"></span>3.9. Paso 6: pasar el litro de B hacia A</h2>
+<p>Trasvasamos todo el contenido de B hacia A.</p>
+<p>Como B solamente contiene un litro, ese es el volumen que transferimos.</p>
+<p>Nuevo estado:</p>
+<p><code>(1, 0)</code></p>
+<p>Ahora A contiene exactamente un litro.</p>
+<h2 id="seccion-3-10-paso-7-llenar-b"><span id="apartado-24" class="legacy-anchor" aria-hidden="true"></span>3.10. Paso 7: llenar B</h2>
+<p>Volvemos a llenar completamente el bidón B.</p>
+<p>Nuevo estado:</p>
+<p><code>(1, 3)</code></p>
+<p>A contiene un litro.</p>
+<p>B contiene tres litros.</p>
+<h2 id="seccion-3-11-paso-8-pasar-b-hacia-a"><span id="apartado-25" class="legacy-anchor" aria-hidden="true"></span>3.11. Paso 8: pasar B hacia A</h2>
+<p>Trasvasamos los tres litros de B hacia A.</p>
+<p>Como A contenía uno, ahora tendrá cuatro.</p>
+<p>Nuevo estado:</p>
+<p><code>(4, 0)</code></p>
+<p><strong>Objetivo conseguido: tenemos exactamente cuatro litros en el bidón A.</strong></p>
+<h2 id="seccion-3-12-tabla-completa-de-la-solucion"><span id="apartado-26" class="legacy-anchor" aria-hidden="true"></span>3.12. Tabla completa de la solución</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Operación</th>
+<th style="text-align:right">A (5 L)</th>
+<th style="text-align:right">B (3 L)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inicio</td>
+<td>Ambos vacíos</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Llenar B</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pasar B hacia A</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Llenar B</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pasar B hacia A</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Vaciar A</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Pasar B hacia A</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Llenar B</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Pasar B hacia A</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Observa que no necesitamos medir cantidades intermedias mediante marcas.</p>
+<p>Cada operación termina cuando se cumple una de las condiciones permitidas.</p>
+<h2 id="seccion-3-13-por-que-esta-solucion-funciona"><span id="apartado-27" class="legacy-anchor" aria-hidden="true"></span>3.13. ¿Por qué esta solución funciona?</h2>
+<p>Porque aprovechamos dos capacidades diferentes.</p>
+<p>Cuando A contiene tres litros, necesita exactamente dos para llenarse.</p>
+<p>Si transferimos esos dos litros desde B, que estaba lleno con tres, queda un litro en B.</p>
+<p>Después conservamos ese litro en A y le agregamos otros tres.</p>
+<p>La solución no depende de adivinar cuándo detener una operación.</p>
+<p>Depende de ejecutar correctamente una secuencia de acciones cuyos resultados podemos determinar.</p>
+<h2 id="seccion-3-14-podemos-explicar-la-solucion-sin-memorizarla"><span id="apartado-28" class="legacy-anchor" aria-hidden="true"></span>3.14. ¿Podemos explicar la solución sin memorizarla?</h2>
+<p>Imagina que alguien te pregunta por qué necesitamos vaciar A después de obtener el estado <code>(5, 1)</code>.</p>
+<p>Una respuesta como «porque ese es el paso 5» no explica el algoritmo.</p>
+<p>Una respuesta mejor sería:</p>
+<blockquote>
+<p>Necesitamos vaciar A para poder transferirle el litro que conseguimos conservar en B. Después podremos agregarle tres litros más y llegar a cuatro.</p>
+</blockquote>
+<p>Esta explicación demuestra que comprendemos la finalidad de la operación.</p>
+<p><strong>Comprender un algoritmo significa poder explicar por qué realizamos sus instrucciones, no solamente recordar su orden.</strong></p>
+<hr />
+<h1 id="seccion-4-segunda-solucion-el-mismo-problema-puede-resolverse-de-otra-manera"><span id="apartado-29" class="legacy-anchor" aria-hidden="true"></span>4. Segunda solución: el mismo problema puede resolverse de otra manera</h1>
+<p>¿Era obligatorio comenzar llenando el bidón B?</p>
+<p>No.</p>
+<p>También podemos construir una solución comenzando por el bidón A.</p>
+<p>Esto nos permitirá descubrir algo importante: <strong>un mismo problema puede tener diferentes algoritmos correctos</strong>.</p>
+<h2 id="seccion-4-1-primera-operacion-llenar-a"><span id="apartado-30" class="legacy-anchor" aria-hidden="true"></span>4.1. Primera operación: llenar A</h2>
+<p>Partimos de:</p>
+<p><code>(0, 0)</code></p>
+<p>Llenamos el bidón A.</p>
+<p>Nuevo estado:</p>
+<p><code>(5, 0)</code></p>
+<h2 id="seccion-4-2-segunda-operacion-pasar-agua-de-a-hacia-b"><span id="apartado-31" class="legacy-anchor" aria-hidden="true"></span>4.2. Segunda operación: pasar agua de A hacia B</h2>
+<p>El bidón B puede recibir tres litros.</p>
+<p>Trasvasamos agua desde A hasta llenarlo.</p>
+<p>Como A tenía cinco litros, le quedan dos.</p>
+<p>Nuevo estado:</p>
+<p><code>(2, 3)</code></p>
+<h2 id="seccion-4-3-tercera-operacion-vaciar-b"><span id="apartado-32" class="legacy-anchor" aria-hidden="true"></span>4.3. Tercera operación: vaciar B</h2>
+<p>Vaciamos completamente el bidón B.</p>
+<p>Nuevo estado:</p>
+<p><code>(2, 0)</code></p>
+<p>A conserva dos litros.</p>
+<h2 id="seccion-4-4-cuarta-operacion-pasar-a-hacia-b"><span id="apartado-33" class="legacy-anchor" aria-hidden="true"></span>4.4. Cuarta operación: pasar A hacia B</h2>
+<p>Trasvasamos los dos litros de A hacia B.</p>
+<p>Como B tiene capacidad para tres litros, recibe todo el contenido.</p>
+<p>Nuevo estado:</p>
+<p><code>(0, 2)</code></p>
+<p>Ahora sabemos que B contiene exactamente dos litros.</p>
+<h2 id="seccion-4-5-quinta-operacion-llenar-a"><span id="apartado-34" class="legacy-anchor" aria-hidden="true"></span>4.5. Quinta operación: llenar A</h2>
+<p>Llenamos nuevamente el bidón A.</p>
+<p>Nuevo estado:</p>
+<p><code>(5, 2)</code></p>
+<p>A tiene cinco litros.</p>
+<p>B tiene dos y, por tanto, solamente dispone de espacio para uno.</p>
+<h2 id="seccion-4-6-antes-del-ultimo-paso-anticipa-el-resultado"><span id="apartado-35" class="legacy-anchor" aria-hidden="true"></span>4.6. Antes del último paso: anticipa el resultado</h2>
+<p>Tenemos:</p>
+<p><code>(5, 2)</code></p>
+<p>Queremos trasvasar agua desde A hacia B.</p>
+<p>Piensa:</p>
+<ul>
+<li>¿Cuánto espacio libre queda en B?</li>
+<li>¿Cuánto agua puede recibir antes de llenarse?</li>
+<li>¿Cuánto quedará en A después de transferir esa cantidad?</li>
+<li>¿Qué condición detendrá el trasvase?</li>
+</ul>
+<p>Si has comprendido la primera solución, probablemente puedas anticipar el nuevo estado.</p>
+<h2 id="seccion-4-7-sexta-operacion-pasar-agua-de-a-hacia-b"><span id="apartado-36" class="legacy-anchor" aria-hidden="true"></span>4.7. Sexta operación: pasar agua de A hacia B</h2>
+<p>Comenzamos a trasvasar agua desde A hacia B.</p>
+<p>B solamente puede recibir un litro más.</p>
+<p>Cuando B se llena, detenemos la operación.</p>
+<p>A tenía cinco litros y perdió uno.</p>
+<p>Nuevo estado:</p>
+<p><code>(4, 3)</code></p>
+<p>El bidón A contiene exactamente cuatro litros.</p>
+<p><strong>Objetivo conseguido en seis operaciones.</strong></p>
+<h2 id="seccion-4-8-tabla-de-la-segunda-solucion"><span id="apartado-37" class="legacy-anchor" aria-hidden="true"></span>4.8. Tabla de la segunda solución</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Operación</th>
+<th style="text-align:right">A (5 L)</th>
+<th style="text-align:right">B (3 L)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inicio</td>
+<td>Ambos vacíos</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Llenar A</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pasar A hacia B</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Vaciar B</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pasar A hacia B</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Llenar A</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Pasar A hacia B</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-4-9-comparar-los-procedimientos"><span id="apartado-38" class="legacy-anchor" aria-hidden="true"></span>4.9. Comparar los procedimientos</h2>
+<p>Las dos soluciones son correctas.</p>
+<p>La primera necesita ocho operaciones.</p>
+<p>La segunda necesita seis.</p>
+<p>Ambas respetan las restricciones y alcanzan el objetivo.</p>
+<p>Esto nos permite formular una pregunta:</p>
+<p>¿Son todos los algoritmos correctos igual de convenientes?</p>
+<p>No necesariamente.</p>
+<p>Podemos comparar soluciones considerando distintos criterios.</p>
+<p>En este problema, si nos interesa realizar la menor cantidad posible de operaciones, la segunda solución resulta más conveniente que la primera.</p>
+<p>Pero debemos hacer una distinción importante.</p>
+<p><strong>Encontrar una solución mejor que otra no significa necesariamente haber demostrado que es la mejor solución posible.</strong></p>
+<p>Sabemos que seis operaciones son menos que ocho.</p>
+<p>Por tanto, la segunda solución mejora a la primera según ese criterio.</p>
+<p>Pero para afirmar que no existe ninguna solución de cinco operaciones o menos necesitaríamos una justificación adicional.</p>
+<p>Este es un principio que recuperaremos durante el curso:</p>
+<p><strong>Primero necesitamos un algoritmo correcto. Después podemos estudiar cómo mejorarlo y qué criterios utilizaremos para compararlo.</strong></p>
+<h2 id="seccion-4-10-regresa-al-simulador-y-comprueba-las-soluciones"><span id="apartado-39" class="legacy-anchor" aria-hidden="true"></span>4.10. Regresa al simulador y comprueba las soluciones</h2>
+<p>Ahora que conoces ambos procedimientos, puedes volver al simulador de la sección 2.</p>
+<p>Utiliza sus modos guiados para reproducir:</p>
+<ul>
+<li>La solución de ocho operaciones.</li>
+<li>La solución de seis operaciones.</li>
+</ul>
+<p>Antes de avanzar cada paso, intenta predecir el estado resultante.</p>
+<p>Después compara tu predicción con lo que muestra el simulador.</p>
+<p>No necesitas memorizar las dos secuencias.</p>
+<p>Necesitas comprender cómo las operaciones van transformando los estados hasta alcanzar el objetivo.</p>
+<hr />
+<h1 id="seccion-5-que-es-un-algoritmo"><span id="apartado-40" class="legacy-anchor" aria-hidden="true"></span>5. ¿Qué es un algoritmo?</h1>
+<p>Acabamos de resolver un problema siguiendo instrucciones ordenadas.</p>
+<p>En cada paso realizamos una acción definida.</p>
+<p>Además, pudimos determinar el estado de los recipientes después de cada operación.</p>
+<p>Esto nos permite introducir el concepto central de la unidad.</p>
+<p>Un <strong>algoritmo</strong> es un conjunto finito y ordenado de instrucciones precisas que permiten resolver un problema o realizar una tarea.</p>
+<p>Examinemos esta definición.</p>
+<h2 id="seccion-5-1-un-conjunto-de-instrucciones"><span id="apartado-41" class="legacy-anchor" aria-hidden="true"></span>5.1. Un conjunto de instrucciones</h2>
+<p>Un algoritmo indica qué acciones debemos realizar.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>Llenar un bidón.</li>
+<li>Vaciar un bidón.</li>
+<li>Trasvasar agua.</li>
+<li>Sumar dos cantidades.</li>
+<li>Comparar valores.</li>
+<li>Mostrar un resultado.</li>
+</ul>
+<p>Las instrucciones pueden ser muy diferentes según el problema.</p>
+<p>Lo importante es que describan acciones que puedan ejecutarse.</p>
+<h2 id="seccion-5-2-las-instrucciones-deben-estar-ordenadas"><span id="apartado-42" class="legacy-anchor" aria-hidden="true"></span>5.2. Las instrucciones deben estar ordenadas</h2>
+<p>En el problema de los bidones, el orden determina el resultado.</p>
+<p>No podemos ejecutar las ocho instrucciones de la primera solución en cualquier secuencia y esperar conseguir cuatro litros.</p>
+<p>Por ejemplo, vaciar A antes de transferirle agua no produce el mismo efecto que vaciarlo después de haber separado un litro en B.</p>
+<p>El orden de las operaciones forma parte del algoritmo.</p>
+<p>Lo mismo sucede en un programa.</p>
+<p>Si queremos calcular el total de una compra, primero necesitamos conocer los datos y después realizar el cálculo.</p>
+<p>No tendría sentido intentar calcular utilizando información que todavía no hemos obtenido.</p>
+<h2 id="seccion-5-3-las-instrucciones-deben-ser-precisas"><span id="apartado-43" class="legacy-anchor" aria-hidden="true"></span>5.3. Las instrucciones deben ser precisas</h2>
+<p>Una instrucción precisa permite determinar qué acción debemos ejecutar.</p>
+<p>Por ejemplo:</p>
+<p>«Pasa un poco de agua al otro bidón».</p>
+<p>No es suficientemente precisa para nuestro problema.</p>
+<p>¿Qué significa «un poco»?</p>
+<p>¿Cuándo debemos detenernos?</p>
+<p>En cambio:</p>
+<p>«Trasvasa agua del bidón A al B hasta que A quede vacío o B se llene».</p>
+<p>Establece claramente la operación y su condición de finalización.</p>
+<h2 id="seccion-5-4-el-algoritmo-debe-terminar"><span id="apartado-44" class="legacy-anchor" aria-hidden="true"></span>5.4. El algoritmo debe terminar</h2>
+<p>En los problemas que estudiaremos inicialmente, buscamos procedimientos que alcancen su final después de una cantidad finita de pasos.</p>
+<p>En las soluciones de los bidones, podemos contar exactamente las operaciones.</p>
+<p>La primera termina después de ocho acciones.</p>
+<p>La segunda termina después de seis.</p>
+<p>Durante el curso aprenderemos estructuras que permiten repetir instrucciones.</p>
+<p>Cuando trabajemos con ellas, también tendremos que comprobar que el procedimiento puede terminar cuando corresponde.</p>
+<p>Esto no significa que todos los programas informáticos deban cerrarse inmediatamente después de realizar una única operación.</p>
+<p>Por ejemplo, un programa puede permanecer funcionando para recibir nuevas solicitudes.</p>
+<p>Pero cada tarea concreta que debe terminar necesita condiciones de finalización adecuadas.</p>
+<h2 id="seccion-5-5-debe-producir-el-resultado-esperado"><span id="apartado-45" class="legacy-anchor" aria-hidden="true"></span>5.5. Debe producir el resultado esperado</h2>
+<p>No alcanza con ejecutar instrucciones precisas y terminar.</p>
+<p>También necesitamos comprobar que el procedimiento resuelve el problema.</p>
+<p>Podríamos construir una secuencia perfectamente clara que llene y vacíe los bidones diez veces.</p>
+<p>Pero si termina con A vacío, no habrá alcanzado nuestro objetivo.</p>
+<p>La corrección de un algoritmo depende de que cumpla los requisitos del problema.</p>
+<h2 id="seccion-5-6-un-algoritmo-no-necesita-estar-escrito-en-java"><span id="apartado-46" class="legacy-anchor" aria-hidden="true"></span>5.6. Un algoritmo no necesita estar escrito en Java</h2>
+<p>Las soluciones de los bidones son algoritmos, aunque no utilizamos ninguna instrucción de Java.</p>
+<p>Podemos describir algoritmos mediante lenguaje natural, diagramas, pseudocódigo o un lenguaje de programación.</p>
+<p>El algoritmo representa el procedimiento.</p>
+<p>El lenguaje que utilizamos para expresarlo es otra cuestión.</p>
+<p>Esta diferencia es especialmente importante:</p>
+<p><strong>Podemos aprender a pensar algorítmicamente antes de conocer la sintaxis de un lenguaje de programación.</strong></p>
+<hr />
+<h1 id="seccion-6-instrucciones-claras-una-persona-puede-interpretar-una-computadora-necesita-precision"><span id="apartado-47" class="legacy-anchor" aria-hidden="true"></span>6. Instrucciones claras: una persona puede interpretar, una computadora necesita precisión</h1>
+<p>Imaginemos que tenemos que explicar cómo encontrar la calificación mayor entre tres notas.</p>
+<p>Una instrucción demasiado general sería:</p>
+<p>«Mira las notas y elige la mayor».</p>
+<p>Una persona probablemente pueda hacerlo.</p>
+<p>Pero si queremos transformar esa idea en un programa, necesitamos describir las operaciones con mayor precisión.</p>
+<p>Podríamos proponer:</p>
+<ol>
+<li>Obtener la primera calificación.</li>
+<li>Guardarla como la mayor encontrada hasta ese momento.</li>
+<li>Obtener la segunda calificación.</li>
+<li>Compararla con la mayor guardada.</li>
+<li>Si la segunda es mayor, actualizar el valor guardado.</li>
+<li>Obtener la tercera calificación.</li>
+<li>Compararla con la mayor guardada.</li>
+<li>Si la tercera es mayor, actualizar el valor.</li>
+<li>Mostrar la mayor calificación.</li>
+</ol>
+<p>Este procedimiento puede parecer más extenso que la instrucción original.</p>
+<p>Pero tiene una ventaja: cada operación está definida.</p>
+<h2 id="seccion-6-1-la-ambiguedad"><span id="apartado-48" class="legacy-anchor" aria-hidden="true"></span>6.1. La ambigüedad</h2>
+<p>Una instrucción es ambigua cuando admite interpretaciones diferentes y el problema no establece cuál debe utilizarse.</p>
+<p>Por ejemplo:</p>
+<p>«Ordena estos números».</p>
+<p>¿Debemos ordenarlos de menor a mayor o de mayor a menor?</p>
+<p>Si el problema no lo indica y no existe una convención acordada, falta información.</p>
+<p>Otro ejemplo:</p>
+<p>«Muestra las calificaciones buenas».</p>
+<p>¿Qué significa «buenas»?</p>
+<p>¿Son las notas mayores que 6?</p>
+<p>¿Las iguales o superiores a 6?</p>
+<p>¿Las mayores que 8?</p>
+<p>Para construir un algoritmo necesitamos definir el criterio.</p>
+<h2 id="seccion-6-2-la-precision-no-significa-explicar-movimientos-fisicos-irrelevantes"><span id="apartado-49" class="legacy-anchor" aria-hidden="true"></span>6.2. La precisión no significa explicar movimientos físicos irrelevantes</h2>
+<p>No siempre necesitamos describir cada acción con el máximo nivel posible de detalle.</p>
+<p>La precisión depende de las operaciones disponibles.</p>
+<p>En el problema de los bidones aceptamos la instrucción «llenar B» porque habíamos definido que llenar significa llevar el recipiente a su capacidad máxima.</p>
+<p>No necesitamos explicar cómo girar una canilla o cómo sostener el bidón.</p>
+<p>Del mismo modo, cuando programemos en Java podremos utilizar instrucciones y operaciones que el lenguaje ya tiene definidas.</p>
+<p>La idea es construir algoritmos con un nivel de detalle suficiente para que sus pasos sean ejecutables y no ambiguos.</p>
+<h2 id="seccion-6-3-definir-las-reglas-antes-de-actuar"><span id="apartado-50" class="legacy-anchor" aria-hidden="true"></span>6.3. Definir las reglas antes de actuar</h2>
+<p>Volvamos a los bidones.</p>
+<p>Si no hubiéramos establecido la regla del trasvase completo, podríamos haber dicho:</p>
+<p>«Llena A y retira un litro».</p>
+<p>Con esa instrucción resolveríamos el problema inmediatamente.</p>
+<p>Pero estaríamos utilizando una operación que no estaba permitida.</p>
+<p>Por eso comprender las restricciones es tan importante como comprender el objetivo.</p>
+<p><strong>Un algoritmo correcto debe respetar las condiciones del problema, no solamente alcanzar un resultado aparentemente adecuado.</strong></p>
+<hr />
+<h1 id="seccion-7-comprender-un-problema-datos-objetivo-y-restricciones"><span id="apartado-51" class="legacy-anchor" aria-hidden="true"></span>7. Comprender un problema: datos, objetivo y restricciones</h1>
+<p>Antes de construir un algoritmo conviene separar sus componentes.</p>
+<p>Podemos utilizar tres preguntas:</p>
+<p><strong>¿Con qué información contamos?</strong></p>
+<p><strong>¿Qué necesitamos obtener?</strong></p>
+<p><strong>¿Qué condiciones debemos respetar?</strong></p>
+<h2 id="seccion-7-1-aplicacion-al-problema-de-los-bidones"><span id="apartado-52" class="legacy-anchor" aria-hidden="true"></span>7.1. Aplicación al problema de los bidones</h2>
+<p><strong>Datos y recursos disponibles</strong></p>
+<ul>
+<li>Un bidón de cinco litros.</li>
+<li>Un bidón de tres litros.</li>
+<li>Agua suficiente para realizar las operaciones.</li>
+</ul>
+<p><strong>Objetivo</strong></p>
+<ul>
+<li>Conseguir exactamente cuatro litros en A.</li>
+</ul>
+<p><strong>Restricciones</strong></p>
+<ul>
+<li>Los recipientes no tienen marcas de medición.</li>
+<li>Solo podemos llenarlos, vaciarlos o trasvasar hasta vaciar el origen o llenar el destino.</li>
+</ul>
+<p>Cuando distinguimos estos elementos, el problema se vuelve más fácil de analizar.</p>
+<h2 id="seccion-7-2-aplicacion-a-un-problema-informatico"><span id="apartado-53" class="legacy-anchor" aria-hidden="true"></span>7.2. Aplicación a un problema informático</h2>
+<p>Imaginemos un programa que debe calcular el importe de una compra.</p>
+<p><strong>Datos</strong></p>
+<ul>
+<li>Precio de un producto.</li>
+<li>Cantidad comprada.</li>
+</ul>
+<p><strong>Resultado</strong></p>
+<ul>
+<li>Importe total.</li>
+</ul>
+<p><strong>Operación</strong></p>
+<ul>
+<li>Multiplicar precio por cantidad.</li>
+</ul>
+<p><strong>Condiciones</strong></p>
+<ul>
+<li>Debemos establecer qué valores son válidos para el precio y la cantidad.</li>
+</ul>
+<p>Por ejemplo, si una cantidad negativa no tiene sentido en el problema, tendremos que decidir qué debe hacer el programa cuando aparezca ese dato.</p>
+<h2 id="seccion-7-3-datos-de-entrada-y-resultados-de-salida"><span id="apartado-54" class="legacy-anchor" aria-hidden="true"></span>7.3. Datos de entrada y resultados de salida</h2>
+<p>En programación solemos distinguir entre:</p>
+<p><strong>Entrada:</strong> información que recibe un programa.</p>
+<p><strong>Procesamiento:</strong> operaciones que realiza con esa información.</p>
+<p><strong>Salida:</strong> resultados que produce.</p>
+<p>Para una compra:</p>
+<p>Entrada:</p>
+<p><code>precio = 150</code></p>
+<p><code>cantidad = 3</code></p>
+<p>Procesamiento:</p>
+<p><code>150 × 3</code></p>
+<p>Salida:</p>
+<p><code>total = 450</code></p>
+<p>Esta forma de organizar un problema será útil durante todo el curso.</p>
+<p>Sin embargo, no todos los programas consisten en una sola entrada, un único cálculo y una salida.</p>
+<p>Algunos realizan muchas operaciones, conservan información, toman decisiones y repiten procesos.</p>
+<p>El esquema entrada–procesamiento–salida es un punto de partida, no una descripción completa de cualquier sistema informático.</p>
+<h2 id="seccion-7-4-como-se-relacionan-estos-elementos-con-el-algoritmo"><span id="apartado-55" class="legacy-anchor" aria-hidden="true"></span>7.4. ¿Cómo se relacionan estos elementos con el algoritmo?</h2>
+<p>Los datos indican con qué información trabajamos.</p>
+<p>El objetivo determina qué resultado necesitamos conseguir.</p>
+<p>Las restricciones establecen qué operaciones son válidas y cuáles no.</p>
+<p>El algoritmo debe relacionar los tres elementos.</p>
+<p>Podemos comprenderlo mediante el problema de los bidones.</p>
+<p>Si solamente conocemos los datos, sabemos que tenemos recipientes de cinco y tres litros.</p>
+<p>Pero todavía no sabemos qué debemos hacer con ellos.</p>
+<p>Si conocemos el objetivo, sabemos que queremos obtener cuatro litros.</p>
+<p>Pero todavía necesitamos identificar qué operaciones están permitidas.</p>
+<p>Cuando comprendemos los datos, el objetivo y las restricciones, podemos comenzar a construir una solución válida.</p>
+<p>Esto demuestra que <strong>comprender el problema es una parte esencial del trabajo de programación</strong>.</p>
+<hr />
+<h1 id="seccion-8-representar-el-estado-de-un-problema-y-leer-algoritmos"><span id="apartado-56" class="legacy-anchor" aria-hidden="true"></span>8. Representar el estado de un problema y leer algoritmos</h1>
+<p>Cuando resolvimos el problema de los bidones, utilizamos expresiones como:</p>
+<p><code>(3, 1)</code></p>
+<p>Para representar su situación en un momento determinado.</p>
+<p>A esto podemos llamarlo <strong>estado</strong>.</p>
+<p>El estado reúne la información que necesitamos conocer para describir la situación actual del problema.</p>
+<h2 id="seccion-8-1-por-que-es-util-conocer-el-estado"><span id="apartado-57" class="legacy-anchor" aria-hidden="true"></span>8.1. ¿Por qué es útil conocer el estado?</h2>
+<p>Imaginemos que tenemos:</p>
+<p><code>(5, 1)</code></p>
+<p>Sabemos que:</p>
+<ul>
+<li>A contiene cinco litros.</li>
+<li>B contiene un litro.</li>
+</ul>
+<p>Si ejecutamos «vaciar A», podemos predecir el nuevo estado:</p>
+<p><code>(0, 1)</code></p>
+<p>La operación transforma el estado anterior en otro.</p>
+<p>Podemos escribirlo así:</p>
+<p><code>(5, 1) → vaciar A → (0, 1)</code></p>
+<p>Esta representación permite seguir el efecto de las instrucciones.</p>
+<h2 id="seccion-8-2-el-estado-en-problemas-informaticos"><span id="apartado-58" class="legacy-anchor" aria-hidden="true"></span>8.2. El estado en problemas informáticos</h2>
+<p>El mismo concepto aparece cuando trabajamos con variables.</p>
+<p>Imaginemos que un programa tiene:</p>
+<p><code>saldo = 500</code></p>
+<p>Después registra un gasto de $150.</p>
+<p>El nuevo saldo será:</p>
+<p><code>saldo = 350</code></p>
+<p>Podemos describirlo como un cambio de estado.</p>
+<p>El programa conservaba una información y la modificó mediante una operación.</p>
+<p>En la Unidad 2 aprenderemos a representar este comportamiento mediante variables en Java.</p>
+<h2 id="seccion-8-3-estado-y-secuencia-de-operaciones"><span id="apartado-59" class="legacy-anchor" aria-hidden="true"></span>8.3. Estado y secuencia de operaciones</h2>
+<p>Una operación puede producir resultados diferentes dependiendo del estado inicial.</p>
+<p>Por ejemplo, «trasvasar B hacia A» no siempre transfiere tres litros.</p>
+<p>Si B contiene tres litros y A está vacío, se transfieren tres.</p>
+<p>Pero si A contiene cuatro litros, solamente puede recibir uno.</p>
+<p>El resultado depende del contenido actual de ambos recipientes.</p>
+<p>Esta es una idea muy importante para programar:</p>
+<p><strong>No alcanza con saber qué instrucción se ejecuta. También necesitamos conocer los datos sobre los que actúa.</strong></p>
+<h2 id="seccion-8-4-los-trazados"><span id="apartado-60" class="legacy-anchor" aria-hidden="true"></span>8.4. Los trazados</h2>
+<p>Un <strong>trazado</strong> es un registro paso a paso de la ejecución de un algoritmo.</p>
+<p>Nos permite observar:</p>
+<ul>
+<li>Qué instrucción se ejecuta.</li>
+<li>Qué información se utiliza.</li>
+<li>Qué valores cambian.</li>
+<li>Qué estado resulta de la operación.</li>
+</ul>
+<p>Ya realizamos un trazado cuando escribimos la tabla de los bidones.</p>
+<p>Más adelante haremos lo mismo con variables, condiciones, ciclos y arreglos.</p>
+<p>El trazado será una de nuestras herramientas principales para comprender y depurar programas.</p>
+<h2 id="seccion-8-5-aprender-a-leer-un-algoritmo-que-no-escribimos"><span id="apartado-61" class="legacy-anchor" aria-hidden="true"></span>8.5. Aprender a leer un algoritmo que no escribimos</h2>
+<p>Hasta ahora construimos y analizamos soluciones que fuimos desarrollando juntos.</p>
+<p>Pero durante el curso también necesitaremos comprender algoritmos escritos por otras personas.</p>
+<p>Esta habilidad es fundamental.</p>
+<p>No siempre vamos a comenzar desde una hoja en blanco.</p>
+<p>En muchas ocasiones tendremos que leer código existente, comprenderlo, encontrar errores o modificar su comportamiento.</p>
+<p>Para empezar, podemos utilizar una estrategia sencilla.</p>
+<p><strong>Primero:</strong> identificar qué datos utiliza el algoritmo.</p>
+<p><strong>Segundo:</strong> localizar dónde comienza.</p>
+<p><strong>Tercero:</strong> seguir sus instrucciones en orden.</p>
+<p><strong>Cuarto:</strong> registrar los valores que cambian.</p>
+<p><strong>Quinto:</strong> determinar qué resultado produce.</p>
+<p><strong>Sexto:</strong> comprobar si ese resultado cumple el objetivo.</p>
+<h2 id="seccion-8-6-ejemplo-de-lectura"><span id="apartado-62" class="legacy-anchor" aria-hidden="true"></span>8.6. Ejemplo de lectura</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">INICIO
+    numero ← 4
+    numero ← numero + 3
+    numero ← numero * 2
+    MOSTRAR numero
+FIN
+</code></pre>
+<p>No necesitamos ejecutar un programa para comprender qué sucede.</p>
+<p>Podemos realizar un trazado.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Instrucción</th>
+<th style="text-align:right">Valor de <code>numero</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>numero ← 4</code></td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>numero ← numero + 3</code></td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>numero ← numero * 2</code></td>
+<td style="text-align:right">14</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>MOSTRAR numero</code></td>
+<td style="text-align:right">Muestra 14</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El resultado es 14.</p>
+<p>Pero lo importante no es solamente obtener ese número.</p>
+<p>Necesitamos comprender por qué.</p>
+<p>La primera asignación establece el valor inicial.</p>
+<p>La segunda modifica ese valor.</p>
+<p>La tercera utiliza el resultado anterior.</p>
+<p>Finalmente mostramos el valor actualizado.</p>
+<p>Si cambiáramos el orden de las operaciones, podríamos obtener otro resultado.</p>
+<h2 id="seccion-8-7-primero-predecir-despues-comprobar"><span id="apartado-63" class="legacy-anchor" aria-hidden="true"></span>8.7. Primero predecir, después comprobar</h2>
+<p>Cuando utilicemos Visual Studio Code, será fácil ejecutar un programa y observar su salida.</p>
+<p>Sin embargo, si queremos aprender a comprender algoritmos, no deberíamos depender siempre de esa ejecución.</p>
+<p>Conviene seguir este procedimiento:</p>
+<ol>
+<li>Leer el algoritmo.</li>
+<li>Predecir su resultado.</li>
+<li>Realizar un trazado.</li>
+<li>Ejecutarlo cuando sea posible.</li>
+<li>Comparar la salida real con nuestra predicción.</li>
+<li>Explicar cualquier diferencia.</li>
+</ol>
+<p><strong>Leer y explicar algoritmos es tan importante como aprender a escribirlos.</strong></p>
+<hr />
+<h1 id="seccion-9-representar-algoritmos-mediante-lenguaje-natural"><span id="apartado-64" class="legacy-anchor" aria-hidden="true"></span>9. Representar algoritmos mediante lenguaje natural</h1>
+<p>Hasta ahora describimos nuestras soluciones con instrucciones en español.</p>
+<p>Esta es una manera válida de expresar un algoritmo.</p>
+<p>Por ejemplo, para calcular el total de una compra:</p>
+<ol>
+<li>Pedir el precio del producto.</li>
+<li>Pedir la cantidad.</li>
+<li>Multiplicar ambos valores.</li>
+<li>Mostrar el resultado.</li>
+</ol>
+<p>Es una descripción comprensible.</p>
+<p>Pero debemos asegurarnos de que cada instrucción tenga un significado suficientemente claro.</p>
+<h2 id="seccion-9-1-ventajas-del-lenguaje-natural"><span id="apartado-65" class="legacy-anchor" aria-hidden="true"></span>9.1. Ventajas del lenguaje natural</h2>
+<p>Podemos utilizarlo antes de aprender un lenguaje de programación.</p>
+<p>También facilita explicar una solución a otra persona.</p>
+<p>Es especialmente útil para discutir el procedimiento durante las primeras etapas de análisis.</p>
+<h2 id="seccion-9-2-limitaciones-del-lenguaje-natural"><span id="apartado-66" class="legacy-anchor" aria-hidden="true"></span>9.2. Limitaciones del lenguaje natural</h2>
+<p>El español permite expresiones ambiguas.</p>
+<p>Por ejemplo:</p>
+<p>«Si la nota es buena, felicita al estudiante».</p>
+<p>No establece con exactitud qué notas son consideradas buenas.</p>
+<p>Otra dificultad es que las explicaciones pueden volverse muy extensas cuando los algoritmos contienen decisiones o repeticiones.</p>
+<p>Por eso resulta conveniente utilizar una representación más estructurada.</p>
+<h2 id="seccion-9-3-pasar-de-una-explicacion-a-instrucciones-organizadas"><span id="apartado-67" class="legacy-anchor" aria-hidden="true"></span>9.3. Pasar de una explicación a instrucciones organizadas</h2>
+<p>Tomemos este problema:</p>
+<blockquote>
+<p>Una persona quiere comprar tres productos iguales. El programa debe calcular cuánto pagará.</p>
+</blockquote>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">Solicitar el precio del producto.
+Solicitar la cantidad de unidades.
+Calcular el producto del precio por la cantidad.
+Mostrar el importe total.
+</code></pre>
+<p>El procedimiento ya tiene una secuencia definida.</p>
+<p>Pero podemos expresarlo con una estructura todavía más cercana a la programación.</p>
+<p>Para eso utilizaremos pseudocódigo.</p>
+<hr />
+<h1 id="seccion-10-pseudocodigo-escribir-algoritmos-sin-depender-todavia-de-java"><span id="apartado-68" class="legacy-anchor" aria-hidden="true"></span>10. Pseudocódigo: escribir algoritmos sin depender todavía de Java</h1>
+<p>El <strong>pseudocódigo</strong> es una forma de representar algoritmos mediante instrucciones organizadas que se parecen a las de un lenguaje de programación, pero que no necesitan respetar exactamente la sintaxis de uno en particular.</p>
+<p>Nos permite concentrarnos primero en la lógica del procedimiento.</p>
+<p>Después podremos traducir esa solución a Java.</p>
+<h2 id="seccion-10-1-nuestro-primer-pseudocodigo"><span id="apartado-69" class="legacy-anchor" aria-hidden="true"></span>10.1. Nuestro primer pseudocódigo</h2>
+<p>Para el total de una compra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER precio
+    LEER cantidad
+
+    total ← precio * cantidad
+
+    MOSTRAR total
+FIN
+</code></pre>
+<p>Veamos qué representa cada instrucción.</p>
+<p><strong>INICIO:</strong> señala el comienzo del algoritmo.</p>
+<p><strong>LEER precio:</strong> indica que necesitamos obtener el precio.</p>
+<p><strong>LEER cantidad:</strong> indica que necesitamos obtener la cantidad.</p>
+<p><strong>total ← precio * cantidad:</strong> calcula el producto y guarda el resultado.</p>
+<p><strong>MOSTRAR total:</strong> presenta el importe calculado.</p>
+<p><strong>FIN:</strong> señala la finalización del algoritmo.</p>
+<h2 id="seccion-10-2-que-significa-la-flecha"><span id="apartado-70" class="legacy-anchor" aria-hidden="true"></span>10.2. ¿Qué significa la flecha?</h2>
+<p>En el pseudocódigo utilizaremos:</p>
+<p><code>←</code></p>
+<p>Para representar una asignación.</p>
+<p>Por ejemplo:</p>
+<p><code>total ← precio * cantidad</code></p>
+<p>Significa:</p>
+<ol>
+<li>Obtener los valores actuales de <code>precio</code> y <code>cantidad</code>.</li>
+<li>Multiplicarlos.</li>
+<li>Guardar el resultado en <code>total</code>.</li>
+</ol>
+<p>No significa que <code>total</code> sea matemáticamente igual a una expresión para siempre.</p>
+<p>Significa que estamos asignando un valor.</p>
+<p>En Java aprenderemos a expresar esta operación mediante el operador <code>=</code>.</p>
+<h2 id="seccion-10-3-las-variables-en-el-pseudocodigo"><span id="apartado-71" class="legacy-anchor" aria-hidden="true"></span>10.3. Las variables en el pseudocódigo</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">precio ← 150
+cantidad ← 3
+total ← precio * cantidad
+</code></pre>
+<p>Podemos seguir los valores:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Instrucción</th>
+<th style="text-align:right">Precio</th>
+<th style="text-align:right">Cantidad</th>
+<th style="text-align:right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Antes de asignar</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td><code>precio ← 150</code></td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td><code>cantidad ← 3</code></td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td><code>total ← precio * cantidad</code></td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">450</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El resultado final es 450.</p>
+<p>Aquí ya estamos utilizando una idea que será fundamental durante la Unidad 2: guardar información para utilizarla posteriormente.</p>
+<h2 id="seccion-10-4-el-pseudocodigo-tiene-una-unica-sintaxis-universal"><span id="apartado-72" class="legacy-anchor" aria-hidden="true"></span>10.4. ¿El pseudocódigo tiene una única sintaxis universal?</h2>
+<p>No.</p>
+<p>Existen distintas convenciones para escribirlo.</p>
+<p>Podemos encontrar palabras como <code>LEER</code>, <code>ESCRIBIR</code>, <code>MOSTRAR</code>, <code>SI</code>, <code>MIENTRAS</code> o <code>PARA</code>.</p>
+<p>También pueden existir diferencias en la manera de representar asignaciones y bloques.</p>
+<p>Lo importante es establecer una convención clara y mantenerla durante nuestros ejercicios.</p>
+<p>En este curso utilizaremos pseudocódigo legible, con instrucciones ordenadas y nombres que expliquen el propósito de los datos.</p>
+<h2 id="seccion-10-5-del-lenguaje-natural-al-pseudocodigo"><span id="apartado-73" class="legacy-anchor" aria-hidden="true"></span>10.5. Del lenguaje natural al pseudocódigo</h2>
+<p>Comparemos dos representaciones del mismo procedimiento.</p>
+<p><strong>Lenguaje natural</strong></p>
+<p>Primero pedimos el precio del producto.</p>
+<p>Después pedimos la cantidad.</p>
+<p>Multiplicamos ambos valores.</p>
+<p>Finalmente mostramos el importe total.</p>
+<p><strong>Pseudocódigo</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Pseudocódigo" role="region" tabindex="0" aria-label="Pseudocódigo: bloque de código desplazable"><code class="language-text">INICIO
+    LEER precio
+    LEER cantidad
+
+    total ← precio * cantidad
+
+    MOSTRAR total
+FIN
+</code></pre>
+<p>Las dos representaciones describen el mismo algoritmo.</p>
+<p>El pseudocódigo presenta las operaciones de una manera más estructurada.</p>
+<p>Esto nos ayudará cuando los algoritmos comiencen a incluir decisiones y repeticiones.</p>
+<h2 id="seccion-10-6-del-pseudocodigo-a-java"><span id="apartado-74" class="legacy-anchor" aria-hidden="true"></span>10.6. Del pseudocódigo a Java</h2>
+<p>En la próxima unidad aprenderemos a expresar estos procedimientos mediante Java.</p>
+<p>Por ejemplo, una vez que las variables <code>precio</code> y <code>cantidad</code> estén declaradas y tengan valores, podremos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double total = precio * cantidad;
+
+System.out.println(total);
+</code></pre>
+<p>Este fragmento no es todavía un programa completo.</p>
+<p>Necesita formar parte de una estructura Java válida y disponer de los datos correspondientes.</p>
+<p>Lo mostramos solamente para anticipar que una operación expresada en pseudocódigo puede implementarse mediante instrucciones de un lenguaje.</p>
+<p>La relación es:</p>
+<p><strong>Problema → Algoritmo → Representación → Implementación en Java</strong></p>
+<p>No debemos confundir el algoritmo con la sintaxis que utilizamos para escribirlo.</p>
+<h2 id="seccion-10-7-ventajas-de-comenzar-por-pseudocodigo"><span id="apartado-75" class="legacy-anchor" aria-hidden="true"></span>10.7. Ventajas de comenzar por pseudocódigo</h2>
+<p>Cuando escribimos Java, debemos prestar atención a aspectos como:</p>
+<ul>
+<li>Tipos de datos.</li>
+<li>Declaración de variables.</li>
+<li>Paréntesis.</li>
+<li>Llaves.</li>
+<li>Puntos y comas.</li>
+<li>Nombres de instrucciones.</li>
+<li>Estructura de clases y métodos.</li>
+</ul>
+<p>Todo eso es importante.</p>
+<p>Pero durante el análisis inicial puede distraernos del problema principal.</p>
+<p>El pseudocódigo permite resolver primero la pregunta:</p>
+<p><strong>¿Qué tiene que hacer nuestro programa?</strong></p>
+<p>Después abordaremos:</p>
+<p><strong>¿Cómo expresamos esas operaciones correctamente en Java?</strong></p>
+<hr />
+<h1 id="seccion-11-descomponer-problemas-de-una-tarea-grande-a-varias-tareas-pequenas"><span id="apartado-76" class="legacy-anchor" aria-hidden="true"></span>11. Descomponer problemas: de una tarea grande a varias tareas pequeñas</h1>
+<p>Los problemas no siempre se resuelven mediante tres o cuatro instrucciones.</p>
+<p>Imaginemos un programa que debe registrar las calificaciones de un grupo y calcular su promedio.</p>
+<p>Si intentamos pensar en toda la solución al mismo tiempo, podemos pasar por alto operaciones importantes.</p>
+<p>Una estrategia útil es <strong>descomponer el problema</strong>.</p>
+<p>Descomponer consiste en identificar tareas más pequeñas que contribuyen a resolver el problema general.</p>
+<h2 id="seccion-11-1-ejemplo-registro-de-calificaciones"><span id="apartado-77" class="legacy-anchor" aria-hidden="true"></span>11.1. Ejemplo: registro de calificaciones</h2>
+<p>Problema:</p>
+<blockquote>
+<p>Queremos introducir cinco calificaciones y calcular su promedio.</p>
+</blockquote>
+<p>Podemos distinguir:</p>
+<p><strong>Primera tarea:</strong> obtener las cinco calificaciones.</p>
+<p><strong>Segunda tarea:</strong> sumar sus valores.</p>
+<p><strong>Tercera tarea:</strong> dividir la suma entre la cantidad de calificaciones.</p>
+<p><strong>Cuarta tarea:</strong> mostrar el resultado.</p>
+<p>En lugar de pensar en un programa completo, podemos analizar cada tarea.</p>
+<h2 id="seccion-11-2-que-sucede-si-cambia-el-requisito"><span id="apartado-78" class="legacy-anchor" aria-hidden="true"></span>11.2. ¿Qué sucede si cambia el requisito?</h2>
+<p>Imaginemos que ahora necesitamos mostrar también cuántas notas son aprobatorias.</p>
+<p>Debemos agregar una tarea:</p>
+<p><strong>Contar las notas que cumplen el criterio de aprobación.</strong></p>
+<p>Pero aparece una nueva pregunta:</p>
+<p>¿Qué significa aprobar?</p>
+<p>Si establecemos que una nota es aprobatoria cuando es igual o superior a 6, podemos construir una operación de comparación.</p>
+<p>Más adelante aprenderemos a expresarla mediante una estructura condicional.</p>
+<h2 id="seccion-11-3-la-descomposicion-no-elimina-la-necesidad-de-integrar"><span id="apartado-79" class="legacy-anchor" aria-hidden="true"></span>11.3. La descomposición no elimina la necesidad de integrar</h2>
+<p>Resolver tareas pequeñas es útil, pero después debemos comprobar que funcionan juntas.</p>
+<p>Por ejemplo, no podemos calcular correctamente un promedio si olvidamos contar cuántas notas ingresamos.</p>
+<p>Tampoco podemos contar aprobados sin conocer el criterio de aprobación.</p>
+<p>Las tareas de un algoritmo están relacionadas.</p>
+<p>Debemos identificar sus responsabilidades y también las dependencias entre ellas.</p>
+<h2 id="seccion-11-4-la-descomposicion-durante-el-curso"><span id="apartado-80" class="legacy-anchor" aria-hidden="true"></span>11.4. La descomposición durante el curso</h2>
+<p>Recuperaremos este concepto varias veces.</p>
+<p>Cuando aprendamos métodos, podremos organizar tareas diferentes mediante bloques de código con nombres.</p>
+<p>Cuando estudiemos clases y objetos, podremos analizar qué responsabilidades pertenecen a cada entidad.</p>
+<p>Pero esa organización comenzará aquí, al aprender a dividir un problema antes de escribir su solución.</p>
+<hr />
+<h1 id="seccion-12-del-algoritmo-al-programa-que-hace-una-computadora"><span id="apartado-81" class="legacy-anchor" aria-hidden="true"></span>12. Del algoritmo al programa: ¿qué hace una computadora?</h1>
+<p>Ya sabemos que podemos construir algoritmos sin utilizar un lenguaje de programación.</p>
+<p>Pero nuestro objetivo es aprender a desarrollar programas informáticos.</p>
+<p>Necesitamos comprender qué relación existe entre ambos.</p>
+<p>Un <strong>programa informático</strong> es un conjunto de instrucciones expresadas de manera que puedan ser procesadas y ejecutadas dentro de un sistema informático, utilizando los mecanismos y herramientas correspondientes.</p>
+<p>Un algoritmo describe un procedimiento.</p>
+<p>Un programa expresa una solución mediante instrucciones de un lenguaje de programación.</p>
+<h2 id="seccion-12-1-las-instrucciones-necesitan-ser-ejecutadas"><span id="apartado-82" class="legacy-anchor" aria-hidden="true"></span>12.1. Las instrucciones necesitan ser ejecutadas</h2>
+<p>Consideremos nuevamente el cálculo de una compra.</p>
+<p>Nuestro algoritmo establece:</p>
+<ol>
+<li>Leer el precio.</li>
+<li>Leer la cantidad.</li>
+<li>Calcular el total.</li>
+<li>Mostrar el resultado.</li>
+</ol>
+<p>Cuando lo implementemos como programa, necesitaremos instrucciones que permitan realizar cada operación.</p>
+<p>La computadora ejecutará esas instrucciones siguiendo el funcionamiento del programa.</p>
+<h2 id="seccion-12-2-que-papel-cumple-la-cpu"><span id="apartado-83" class="legacy-anchor" aria-hidden="true"></span>12.2. ¿Qué papel cumple la CPU?</h2>
+<p>La <strong>CPU</strong>, o unidad central de procesamiento, es el componente encargado de ejecutar instrucciones de máquina y realizar muchas de las operaciones necesarias para el funcionamiento de la computadora.</p>
+<p>Participa en cálculos, comparaciones y control de la ejecución.</p>
+<p>Por ejemplo, cuando un programa necesita sumar dos números, las operaciones correspondientes terminan siendo realizadas mediante mecanismos de procesamiento de la computadora.</p>
+<p>Sin embargo, una CPU no interpreta directamente cualquier texto escrito en un lenguaje de alto nivel como Java.</p>
+<p>Antes intervienen los mecanismos de compilación y ejecución propios del lenguaje.</p>
+<h2 id="seccion-12-3-que-papel-cumple-la-memoria-ram"><span id="apartado-84" class="legacy-anchor" aria-hidden="true"></span>12.3. ¿Qué papel cumple la memoria RAM?</h2>
+<p>La <strong>memoria RAM</strong> permite conservar temporalmente información que necesitan los programas mientras están funcionando.</p>
+<p>Entre otras cosas, puede contener datos e información utilizada durante la ejecución.</p>
+<p>Por ejemplo, un programa puede necesitar conservar:</p>
+<p><code>precio = 150</code></p>
+<p><code>cantidad = 3</code></p>
+<p><code>total = 450</code></p>
+<p>Estos valores forman parte de la información con la que trabaja.</p>
+<p>Cuando comencemos a utilizar variables, estudiaremos cómo podemos asignar nombres a los datos que necesita nuestro programa.</p>
+<p>No debemos imaginar que cada variable de Java corresponde siempre, de manera directa, a una única casilla física de memoria. La representación real depende de la plataforma y del entorno de ejecución.</p>
+<p>Por ahora, lo importante es comprender la diferencia general entre procesar información y conservar información temporalmente.</p>
+<h2 id="seccion-12-4-programa-procesamiento-y-memoria"><span id="apartado-85" class="legacy-anchor" aria-hidden="true"></span>12.4. Programa, procesamiento y memoria</h2>
+<div id="u01-programa-cpu-ram" data-recurso="u01-programa-cpu-ram"><div data-componente-interactivo="u01-programa-cpu-ram"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Modelo conceptual: programa con instrucciones → procesamiento → datos temporales en RAM → salida. Por ejemplo, precio 150 y cantidad 3 producen total 450. Java necesita compilación y un entorno de ejecución.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>En el esquema distinguiremos:</p>
+<p><strong>Programa:</strong> contiene las instrucciones que expresan la solución.</p>
+<p><strong>CPU:</strong> ejecuta las operaciones de máquina necesarias.</p>
+<p><strong>RAM:</strong> conserva temporalmente información utilizada durante la ejecución.</p>
+<p>Los tres conceptos están relacionados, pero no son equivalentes.</p>
+<h2 id="seccion-12-5-ejemplo-calcular-un-total"><span id="apartado-86" class="legacy-anchor" aria-hidden="true"></span>12.5. Ejemplo: calcular un total</h2>
+<p>Supongamos que un programa trabaja con:</p>
+<p><code>precio = 150</code></p>
+<p><code>cantidad = 3</code></p>
+<p>Debe obtener:</p>
+<p><code>total = 450</code></p>
+<p>Podemos analizar el procedimiento:</p>
+<ol>
+<li>El programa recibe los valores.</li>
+<li>Durante la ejecución, estos valores se representan y conservan como datos del programa.</li>
+<li>Se realiza la multiplicación correspondiente.</li>
+<li>El resultado queda disponible para operaciones posteriores.</li>
+<li>El programa muestra el total solicitado.</li>
+</ol>
+<p>Esta explicación simplifica el funcionamiento de una computadora.</p>
+<p>Más adelante podremos estudiar con mayor profundidad cómo se representan los datos y cómo se ejecutan los programas.</p>
+<p>En esta unidad necesitamos comprender la relación básica entre instrucciones, procesamiento y memoria.</p>
+<hr />
+<h1 id="seccion-13-por-que-aprenderemos-java"><span id="apartado-87" class="legacy-anchor" aria-hidden="true"></span>13. ¿Por qué aprenderemos Java?</h1>
+<p>Hasta ahora utilizamos lenguaje natural y pseudocódigo.</p>
+<p>Son herramientas muy útiles para analizar problemas.</p>
+<p>Sin embargo, para construir un programa ejecutable necesitamos utilizar un lenguaje de programación y las herramientas correspondientes.</p>
+<p>En este curso aprenderemos <strong>Java</strong>.</p>
+<h2 id="seccion-13-1-que-es-un-lenguaje-de-programacion"><span id="apartado-88" class="legacy-anchor" aria-hidden="true"></span>13.1. ¿Qué es un lenguaje de programación?</h2>
+<p>Un lenguaje de programación establece reglas para escribir instrucciones que pueden ser procesadas mediante herramientas informáticas.</p>
+<p>Estas reglas incluyen una sintaxis y un significado para las estructuras del lenguaje.</p>
+<p>Por ejemplo, un lenguaje puede establecer cómo:</p>
+<ul>
+<li>Declarar una variable.</li>
+<li>Realizar una operación matemática.</li>
+<li>Comparar dos valores.</li>
+<li>Repetir instrucciones.</li>
+<li>Organizar tareas mediante métodos.</li>
+</ul>
+<p>Cada lenguaje tiene características propias.</p>
+<p>En nuestro curso utilizaremos Java para aprender a expresar algoritmos mediante programas.</p>
+<h2 id="seccion-13-2-por-que-java"><span id="apartado-89" class="legacy-anchor" aria-hidden="true"></span>13.2. ¿Por qué Java?</h2>
+<p>Java permite trabajar progresivamente con muchos conceptos fundamentales de programación.</p>
+<p>Comenzaremos con programas sencillos que muestran información y realizan operaciones.</p>
+<p>Después incorporaremos variables, condiciones, ciclos y arreglos.</p>
+<p>Más adelante estudiaremos métodos, clases y objetos.</p>
+<p>Esto nos permitirá pasar de algoritmos elementales a programas organizados mediante entidades y comportamientos.</p>
+<h2 id="seccion-13-3-que-sucede-con-un-programa-java"><span id="apartado-90" class="legacy-anchor" aria-hidden="true"></span>13.3. ¿Qué sucede con un programa Java?</h2>
+<p>De forma introductoria, podemos distinguir tres momentos.</p>
+<p><strong>Primero:</strong> escribimos código fuente Java.</p>
+<p>Normalmente lo guardamos en archivos con extensión <code>.java</code>.</p>
+<p><strong>Segundo:</strong> el compilador de Java transforma ese código fuente en bytecode cuando el programa es válido.</p>
+<p><strong>Tercero:</strong> la máquina virtual de Java, JVM, permite ejecutar ese bytecode mediante los mecanismos de la plataforma correspondiente.</p>
+<p>Por tanto, no debemos pensar que la CPU ejecuta directamente las palabras <code>public</code>, <code>class</code> o <code>System.out.println</code> tal como las escribimos.</p>
+<p>Existe un proceso que permite transformar y ejecutar el programa.</p>
+<p>En la siguiente unidad aprenderemos a trabajar con ese proceso desde Visual Studio Code.</p>
+<h2 id="seccion-13-4-es-necesario-comprender-todos-los-detalles-de-la-jvm-ahora"><span id="apartado-91" class="legacy-anchor" aria-hidden="true"></span>13.4. ¿Es necesario comprender todos los detalles de la JVM ahora?</h2>
+<p>No.</p>
+<p>Por ahora necesitamos reconocer que el código fuente Java debe cumplir reglas y que existen herramientas para compilarlo y ejecutarlo.</p>
+<p>Aprenderemos progresivamente cómo escribir programas válidos, reconocer errores y comprobar su funcionamiento.</p>
+<p>Nuestro objetivo inmediato no es estudiar la arquitectura interna de Java.</p>
+<p>Es aprender a utilizarlo para resolver problemas que comprendemos previamente.</p>
+<hr />
+<h1 id="seccion-14-construir-un-algoritmo-no-termina-cuando-encontramos-una-respuesta"><span id="apartado-92" class="legacy-anchor" aria-hidden="true"></span>14. Construir un algoritmo no termina cuando encontramos una respuesta</h1>
+<p>Volvamos a nuestro problema de los bidones.</p>
+<p>Conseguimos cuatro litros.</p>
+<p>¿Eso significa que ya no necesitamos revisar la solución?</p>
+<p>No necesariamente.</p>
+<p>Podemos hacer varias comprobaciones.</p>
+<p>Para organizar la revisión distinguiremos tres cuestiones:</p>
+<ol>
+<li>¿Se respetaron las restricciones?</li>
+<li>¿Cada instrucción produjo el estado esperado?</li>
+<li>¿El resultado final cumple el objetivo?</li>
+</ol>
+<h2 id="seccion-14-1-primera-comprobacion-respetar-las-restricciones"><span id="apartado-93" class="legacy-anchor" aria-hidden="true"></span>14.1. Primera comprobación: respetar las restricciones</h2>
+<p>Debemos comprobar que todas las instrucciones pertenecen al conjunto de acciones permitidas.</p>
+<p>No podríamos aceptar un paso como:</p>
+<p>«Medir un litro y guardarlo».</p>
+<p>Porque no contamos con instrumentos para realizar esa medición.</p>
+<p>En cambio, sí podemos obtener un litro como consecuencia de un trasvase que llena uno de los recipientes.</p>
+<p>Una solución que alcanza cuatro litros utilizando una operación prohibida no es válida para nuestro problema.</p>
+<h2 id="seccion-14-2-segunda-comprobacion-verificar-la-ejecucion"><span id="apartado-94" class="legacy-anchor" aria-hidden="true"></span>14.2. Segunda comprobación: verificar la ejecución</h2>
+<p>Cada operación debe producir el estado que esperamos.</p>
+<p>Por ejemplo, partimos de:</p>
+<p><code>(3, 3)</code></p>
+<p>Trasvasamos B hacia A.</p>
+<p>El nuevo estado debe ser:</p>
+<p><code>(5, 1)</code></p>
+<p>Si alguien escribe que el resultado es <code>(5, 0)</code>, existe un error en el cálculo de las cantidades.</p>
+<p>El procedimiento utiliza una operación permitida, pero representa incorrectamente su resultado.</p>
+<p>También debemos comprobar que cada estado respete las capacidades.</p>
+<p>Nunca podemos tener:</p>
+<p><code>(6, 1)</code></p>
+<p>Porque A solamente admite cinco litros.</p>
+<p>Tampoco:</p>
+<p><code>(2, 4)</code></p>
+<p>Porque B admite tres.</p>
+<h2 id="seccion-14-3-tercera-comprobacion-verificar-el-resultado-final"><span id="apartado-95" class="legacy-anchor" aria-hidden="true"></span>14.3. Tercera comprobación: verificar el resultado final</h2>
+<p>La primera solución termina en:</p>
+<p><code>(4, 0)</code></p>
+<p>La segunda termina en:</p>
+<p><code>(4, 3)</code></p>
+<p>Ambas cumplen el objetivo porque A contiene exactamente cuatro litros.</p>
+<p>La diferencia en el contenido de B no invalida ninguna de las soluciones, ya que el problema no exigía un valor final específico para ese recipiente.</p>
+<h2 id="seccion-14-4-tres-preguntas-tres-tipos-de-problemas"><span id="apartado-96" class="legacy-anchor" aria-hidden="true"></span>14.4. Tres preguntas, tres tipos de problemas</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Qué comprobamos</th>
+<th>Pregunta principal</th>
+<th>Ejemplo de error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Restricciones</td>
+<td>¿Todas las operaciones están permitidas?</td>
+<td>Medir un litro sin disponer de marcas</td>
+</tr>
+<tr>
+<td>Ejecución</td>
+<td>¿Cada operación produce el estado correcto?</td>
+<td>Calcular mal los litros transferidos</td>
+</tr>
+<tr>
+<td>Resultado</td>
+<td>¿El estado final cumple el objetivo?</td>
+<td>Terminar con tres litros en A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Estas comprobaciones están relacionadas, pero no son iguales.</p>
+<p>Una solución puede cumplir dos de ellas y fallar en la tercera.</p>
+<p>Por eso no alcanza con mirar solamente el resultado final.</p>
+<h2 id="seccion-14-5-comprobar-las-condiciones-iniciales"><span id="apartado-97" class="legacy-anchor" aria-hidden="true"></span>14.5. Comprobar las condiciones iniciales</h2>
+<p>Los algoritmos fueron construidos para comenzar con ambos bidones vacíos.</p>
+<p>Si comenzáramos con agua en alguno de ellos, no necesariamente podríamos ejecutar la misma secuencia con iguales resultados.</p>
+<p>Por eso, cuando comprobamos un algoritmo, también debemos considerar sus condiciones iniciales.</p>
+<h2 id="seccion-14-6-probar-diferentes-casos"><span id="apartado-98" class="legacy-anchor" aria-hidden="true"></span>14.6. Probar diferentes casos</h2>
+<p>En programación es habitual que una solución parezca funcionar con un ejemplo, pero falle cuando cambian los datos.</p>
+<p>Consideremos un algoritmo para calcular un promedio.</p>
+<p>Podría funcionar correctamente con las notas:</p>
+<p><code>7, 8, 9</code></p>
+<p>Pero debemos comprobar qué sucede con:</p>
+<p><code>1, 2, 3</code></p>
+<p>O:</p>
+<p><code>6, 6, 6</code></p>
+<p>Y también debemos preguntarnos qué debería hacer si no se proporcionara ninguna calificación.</p>
+<p>No siempre tendremos que programar todos los casos desde el primer intento, pero sí necesitamos aprender a identificarlos.</p>
+<h2 id="seccion-14-7-verificar-no-es-lo-mismo-que-observar-una-salida"><span id="apartado-99" class="legacy-anchor" aria-hidden="true"></span>14.7. Verificar no es lo mismo que observar una salida</h2>
+<p>Que un programa muestre un número no demuestra que el algoritmo sea correcto.</p>
+<p>Necesitamos comparar la salida con el resultado esperado.</p>
+<p>Si un programa muestra un promedio de 8, debemos poder justificar si ese valor corresponde a los datos introducidos.</p>
+<p>Por eso los casos de prueba y los trazados serán herramientas permanentes durante el curso.</p>
+<hr />
+<h1 id="seccion-15-los-errores-tambien-nos-ayudan-a-comprender-los-algoritmos"><span id="apartado-100" class="legacy-anchor" aria-hidden="true"></span>15. Los errores también nos ayudan a comprender los algoritmos</h1>
+<p>Cuando comenzamos a programar, es normal cometer errores.</p>
+<p>Pero debemos aprender a distinguirlos.</p>
+<p>No todos tienen la misma causa.</p>
+<h2 id="seccion-15-1-errores-en-la-comprension-del-problema"><span id="apartado-101" class="legacy-anchor" aria-hidden="true"></span>15.1. Errores en la comprensión del problema</h2>
+<p>Podemos interpretar incorrectamente una condición.</p>
+<p>Por ejemplo, creer que en el problema de los bidones podemos detener cualquier trasvase cuando queramos.</p>
+<p>La solución resultante podría ser incorrecta incluso si las instrucciones estuvieran perfectamente escritas.</p>
+<p>Aquí el problema no está en Java.</p>
+<p>Está en nuestra comprensión de las reglas.</p>
+<h2 id="seccion-15-2-errores-en-el-algoritmo"><span id="apartado-102" class="legacy-anchor" aria-hidden="true"></span>15.2. Errores en el algoritmo</h2>
+<p>También podemos comprender correctamente el problema, pero construir una secuencia equivocada.</p>
+<p>Por ejemplo:</p>
+<ol>
+<li>Llenar B.</li>
+<li>Pasar B hacia A.</li>
+<li>Vaciar A.</li>
+<li>Terminar.</li>
+</ol>
+<p>Estas operaciones son válidas y están bien definidas.</p>
+<p>Pero no conseguimos cuatro litros.</p>
+<p>El algoritmo no resuelve el objetivo.</p>
+<h2 id="seccion-15-3-errores-en-la-expresion-del-programa"><span id="apartado-103" class="legacy-anchor" aria-hidden="true"></span>15.3. Errores en la expresión del programa</h2>
+<p>Cuando escribamos Java, también podremos cometer errores de sintaxis.</p>
+<p>Por ejemplo, olvidar un símbolo obligatorio o escribir incorrectamente una instrucción.</p>
+<p>En esos casos, el compilador puede señalar que el programa no cumple las reglas del lenguaje.</p>
+<h2 id="seccion-15-4-errores-durante-la-ejecucion"><span id="apartado-104" class="legacy-anchor" aria-hidden="true"></span>15.4. Errores durante la ejecución</h2>
+<p>Un programa también puede comenzar a ejecutarse y encontrar una situación que impida continuar normalmente.</p>
+<p>Más adelante veremos ejemplos como intentar acceder a una posición inexistente de un arreglo.</p>
+<h2 id="seccion-15-5-errores-logicos"><span id="apartado-105" class="legacy-anchor" aria-hidden="true"></span>15.5. Errores lógicos</h2>
+<p>En otras ocasiones, el programa compila y se ejecuta, pero produce un resultado incorrecto.</p>
+<p>Por ejemplo, podemos escribir correctamente las instrucciones para multiplicar precio por cantidad, pero utilizar una suma porque confundimos la operación necesaria.</p>
+<p>El programa puede ejecutarse sin errores de sintaxis.</p>
+<p>Sin embargo, no resuelve correctamente el problema.</p>
+<h2 id="seccion-15-6-depurar-significa-investigar"><span id="apartado-106" class="legacy-anchor" aria-hidden="true"></span>15.6. Depurar significa investigar</h2>
+<p>Cuando un programa no funciona como esperamos, necesitamos investigar qué sucede.</p>
+<p>Podemos:</p>
+<ol>
+<li>Revisar el objetivo y las condiciones.</li>
+<li>Leer las instrucciones.</li>
+<li>Seguir la ejecución paso a paso.</li>
+<li>Registrar los cambios de estado.</li>
+<li>Comparar el resultado obtenido con el esperado.</li>
+<li>Identificar dónde comienza la diferencia.</li>
+<li>Corregir la causa y volver a comprobar.</li>
+</ol>
+<p>A este proceso de localizar y corregir errores lo llamamos <strong>depuración</strong>.</p>
+<p>No debemos limitarnos a cambiar instrucciones hasta que el programa parezca funcionar.</p>
+<p><strong>Depurar también exige comprender el algoritmo.</strong></p>
+<hr />
+<h2 id="seccion-15-7-taller-de-transferencia-disenar-el-estado-antes-de-actuar"><span id="apartado-107" class="legacy-anchor" aria-hidden="true"></span><span id="seccion-15-8-taller-de-transferencia-disenar-el-estado-antes-de-actuar" class="legacy-anchor" aria-hidden="true"></span>15.7. Taller de transferencia: diseñar el estado antes de actuar</h2>
+<p><strong>Problema nuevo (sin solución inmediata):</strong> una persona administra dos recipientes de 4 y 7 litros. Quiere saber si puede obtener exactamente 2 litros con las mismas reglas de llenado, vaciado y trasvase. Antes de buscar una secuencia de operaciones, responde: ¿qué variables necesitas para describir completamente una situación?, ¿qué valores nunca serían válidos?, ¿cómo representarías el estado inicial y el objetivo? No copies una solución de los bidones anteriores: primero determina qué partes del modelo cambian y cuáles se mantienen.</p>
+<p><strong>Pista 1, solo si la necesitas.</strong> Una descripción útil del estado debe permitir decidir qué operaciones son posibles desde allí. ¿Basta con conocer el total de agua entre ambos recipientes? Explica qué información faltaría.</p>
+<p><strong>Pista 2.</strong> Prueba a escribir un par ordenado <code>(a, b)</code>, donde <code>a</code> y <code>b</code> son los litros de cada recipiente, e identifica sus límites. Propón y realiza <em>una</em> operación, registra su estado posterior y verifica que respetaste la capacidad de cada recipiente.</p>
+<p><strong>Contraste de razonamiento, después del intento.</strong> Para un estado <code>(a, b)</code>, deben cumplirse <code>0 ≤ a ≤ 4</code> y <code>0 ≤ b ≤ 7</code>. El estado inicial es <code>(0, 0)</code> y el objetivo requiere <code>a == 2</code> o <code>b == 2</code>, según en qué recipiente quieras medir los dos litros. Esas expresiones describen la situación, pero todavía no resuelven el problema: una solución exige una secuencia válida de operaciones. Explora posibilidades, justifica cada cambio de estado y comprueba si tu procedimiento termina.</p>
+<p><strong>Chequeo de transferencia.</strong> Si ahora la meta fuera obtener 3 litros en uno de los recipientes, ¿cambiaría el conjunto de operaciones disponibles o solamente el objetivo? Justifica. Como evidencia, entrega una tabla con al menos cuatro estados consecutivos y una explicación de la operación que permite pasar de uno a otro.</p>
+<p><strong>Recuperación ante bloqueo.</strong> Si no llegas al objetivo, no reinicies inmediatamente: identifica qué estado repetiste, qué operación no aporta información nueva y qué cantidad puedes aislar al llenar uno de los recipientes con agua procedente del otro.</p>
+<h1 id="seccion-16-preparacion-para-la-evaluacion-demostrar-que-sabemos-pensar-algoritmicamente"><span id="apartado-108" class="legacy-anchor" aria-hidden="true"></span>16. Preparación para la evaluación: demostrar que sabemos pensar algorítmicamente</h1>
+<p>En esta primera unidad todavía no necesitamos escribir programas Java completos.</p>
+<p>Pero sí debemos demostrar que comprendemos cómo se construyen y comprueban los algoritmos.</p>
+<p>La evaluación se centrará especialmente en la lectura, la interpretación, la explicación y la construcción de procedimientos sencillos.</p>
+<p>Organizaremos las actividades en tres niveles.</p>
+<p>No representan tres grupos distintos de estudiantes.</p>
+<p>Son etapas de trabajo que permiten avanzar desde la comprensión de conceptos hasta la construcción de soluciones propias.</p>
+<hr />
+<h2 id="seccion-nivel-1-comprender-y-reconocer"><span id="apartado-109" class="legacy-anchor" aria-hidden="true"></span>Nivel 1. Comprender y reconocer</h2>
+<h3 id="seccion-16-1-explicar-conceptos-con-nuestras-palabras"><span id="apartado-110" class="legacy-anchor" aria-hidden="true"></span>16.1. Explicar conceptos con nuestras palabras</h3>
+<p>Debes poder responder:</p>
+<ul>
+<li>¿Qué es un problema desde el punto de vista de la programación?</li>
+<li>¿Qué es un algoritmo?</li>
+<li>¿Por qué importa el orden de las instrucciones?</li>
+<li>¿Qué significa que una instrucción sea precisa?</li>
+<li>¿Por qué debemos conocer las restricciones?</li>
+<li>¿Qué diferencia existe entre encontrar una respuesta y construir un procedimiento?</li>
+<li>¿Qué es el estado de un problema?</li>
+<li>¿Para qué sirve un trazado?</li>
+<li>¿Qué es el pseudocódigo?</li>
+<li>¿Qué diferencia existe entre algoritmo y programa?</li>
+</ul>
+<p>No alcanza con repetir definiciones.</p>
+<p>Debemos ser capaces de explicar estos conceptos utilizando ejemplos.</p>
+<h3 id="seccion-16-2-actividad-a-predecir-un-estado"><span id="apartado-111" class="legacy-anchor" aria-hidden="true"></span>16.2. Actividad A: predecir un estado</h3>
+<p>Tenemos dos bidones:</p>
+<ul>
+<li>A: capacidad de cinco litros.</li>
+<li>B: capacidad de tres litros.</li>
+</ul>
+<p>Estado inicial:</p>
+<p><code>(2, 3)</code></p>
+<p>Ejecutamos:</p>
+<p>«Pasar agua de B hacia A».</p>
+<p>Responde:</p>
+<ol>
+<li>¿Cuánto espacio libre tiene A?</li>
+<li>¿Cuántos litros pasarán desde B?</li>
+<li>¿En qué momento terminará el trasvase?</li>
+<li>¿Cuál será el nuevo estado?</li>
+<li>¿Por qué podemos pasar los tres litros de B en este caso?</li>
+</ol>
+<p><strong>Resultado esperado:</strong> el estado final es <code>(5, 0)</code>, porque A tiene espacio para tres litros y B contiene exactamente esa cantidad.</p>
+<h3 id="seccion-16-3-actividad-b-identificar-una-instruccion-incorrecta"><span id="apartado-112" class="legacy-anchor" aria-hidden="true"></span>16.3. Actividad B: identificar una instrucción incorrecta</h3>
+<p>Un estudiante propone:</p>
+<ol>
+<li>Llenar A.</li>
+<li>Pasar exactamente un litro de A hacia B.</li>
+<li>Terminar.</li>
+</ol>
+<p>Explica qué problema tiene esta solución.</p>
+<p>¿La operación utilizada está permitida?</p>
+<p>¿Consigue cuatro litros en A?</p>
+<p>¿Por qué debemos distinguir entre conseguir el objetivo y respetar las restricciones?</p>
+<hr />
+<h2 id="seccion-nivel-2-interpretar-y-comprobar"><span id="apartado-113" class="legacy-anchor" aria-hidden="true"></span>Nivel 2. Interpretar y comprobar</h2>
+<h3 id="seccion-16-4-actividad-c-seguir-un-algoritmo"><span id="apartado-114" class="legacy-anchor" aria-hidden="true"></span>16.4. Actividad C: seguir un algoritmo</h3>
+<p>Considera el siguiente procedimiento:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">INICIO
+    numero ← 4
+    numero ← numero + 3
+    numero ← numero * 2
+    numero ← numero - 5
+    MOSTRAR numero
+FIN
+</code></pre>
+<p>Antes de responder, realiza un trazado.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Instrucción</th>
+<th>Valor de <code>numero</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>numero ← 4</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>numero ← numero + 3</code></td>
+<td>______</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>numero ← numero * 2</code></td>
+<td>______</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>numero ← numero - 5</code></td>
+<td>______</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Después responde:</p>
+<ul>
+<li>¿Qué valor muestra?</li>
+<li>¿Por qué importa el orden de las operaciones?</li>
+<li>¿Qué cambiaría si la resta se realizara antes de la multiplicación?</li>
+</ul>
+<p>La salida esperada es 9.</p>
+<h3 id="seccion-16-5-actividad-d-comparar-dos-algoritmos"><span id="apartado-115" class="legacy-anchor" aria-hidden="true"></span>16.5. Actividad D: comparar dos algoritmos</h3>
+<p>Revisa las dos soluciones del problema de los bidones.</p>
+<p>La primera necesita ocho operaciones.</p>
+<p>La segunda necesita seis.</p>
+<p>Responde:</p>
+<ol>
+<li>¿Las dos respetan las operaciones permitidas?</li>
+<li>¿Las dos consiguen cuatro litros en A?</li>
+<li>¿Qué diferencia existe entre sus estados finales?</li>
+<li>¿Cuál utiliza menos operaciones?</li>
+<li>¿Podemos afirmar que seis operaciones es la cantidad mínima posible solamente por haber comparado estas dos soluciones?</li>
+<li>¿Por qué una solución más corta no es automáticamente correcta si incumple las restricciones?</li>
+</ol>
+<p>La finalidad es comprender que podemos comparar algoritmos sin confundir eficiencia con corrección.</p>
+<h3 id="seccion-16-6-actividad-e-detectar-un-error-logico"><span id="apartado-116" class="legacy-anchor" aria-hidden="true"></span>16.6. Actividad E: detectar un error lógico</h3>
+<p>Un estudiante propone el siguiente pseudocódigo para calcular el total de una compra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER precio
+    LEER cantidad
+
+    total ← precio + cantidad
+
+    MOSTRAR total
+FIN
+</code></pre>
+<p>El pseudocódigo está ordenado y sus instrucciones son comprensibles.</p>
+<p>Sin embargo, no resuelve correctamente el problema.</p>
+<p>Explica:</p>
+<ul>
+<li>¿Dónde se encuentra el error?</li>
+<li>¿Qué operación debería utilizarse?</li>
+<li>¿El problema se relaciona con la sintaxis o con el algoritmo?</li>
+<li>¿Qué caso de prueba utilizarías para comprobar la corrección?</li>
+</ul>
+<h3 id="seccion-16-7-actividad-f-distinguir-errores-de-diferente-tipo"><span id="apartado-117" class="legacy-anchor" aria-hidden="true"></span>16.7. Actividad F: distinguir errores de diferente tipo</h3>
+<p>Considera tres intentos de resolver el problema de los bidones.</p>
+<p><strong>Procedimiento 1</strong></p>
+<p>Llenar A y retirar exactamente un litro utilizando una marca imaginaria.</p>
+<p><strong>Procedimiento 2</strong></p>
+<p>Partir de <code>(3, 3)</code>, trasvasar B hacia A y afirmar que el resultado es <code>(5, 0)</code>.</p>
+<p><strong>Procedimiento 3</strong></p>
+<p>Llenar A, vaciar A y finalizar.</p>
+<p>Para cada procedimiento responde:</p>
+<ul>
+<li>¿Respeta las operaciones permitidas?</li>
+<li>¿Calcula correctamente el estado?</li>
+<li>¿Cumple el objetivo?</li>
+<li>¿Cuál es el problema principal?</li>
+</ul>
+<p>Explica tus respuestas.</p>
+<hr />
+<h2 id="seccion-nivel-3-construir-y-justificar"><span id="apartado-118" class="legacy-anchor" aria-hidden="true"></span>Nivel 3. Construir y justificar</h2>
+<h3 id="seccion-16-8-actividad-g-construir-pseudocodigo"><span id="apartado-119" class="legacy-anchor" aria-hidden="true"></span>16.8. Actividad G: construir pseudocódigo</h3>
+<p>Una papelería necesita calcular el importe de una compra.</p>
+<p>El programa recibirá:</p>
+<ul>
+<li>Precio de un producto.</li>
+<li>Cantidad comprada.</li>
+</ul>
+<p>Después debe mostrar el total.</p>
+<p>Escribe el pseudocódigo.</p>
+<h4 id="seccion-solucion-modelo"><span id="apartado-120" class="legacy-anchor" aria-hidden="true"></span>Solución modelo</h4>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER precio
+    LEER cantidad
+
+    total ← precio * cantidad
+
+    MOSTRAR total
+FIN
+</code></pre>
+<p>Prueba tu algoritmo con estos valores:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Precio</th>
+<th style="text-align:right">Cantidad</th>
+<th style="text-align:right">Total esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">450</td>
+</tr>
+<tr>
+<td>85</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">170</td>
+</tr>
+<tr>
+<td>40</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">200</td>
+</tr>
+<tr>
+<td>125</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">500</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>¿Tu pseudocódigo sirve para todos esos casos sin modificar sus instrucciones?</p>
+<h3 id="seccion-16-9-actividad-h-distinguir-datos-y-resultados"><span id="apartado-121" class="legacy-anchor" aria-hidden="true"></span>16.9. Actividad H: distinguir datos y resultados</h3>
+<p>Una persona necesita calcular cuánto dinero le queda después de una compra.</p>
+<p>Tiene $800 y realiza una compra por $250.</p>
+<p>Identifica:</p>
+<ul>
+<li>Datos disponibles.</li>
+<li>Resultado que necesitamos obtener.</li>
+<li>Operación necesaria.</li>
+<li>Posibles restricciones del problema.</li>
+</ul>
+<p>Después escribe un pseudocódigo que reciba un saldo y un gasto y muestre el saldo restante.</p>
+<p>No utilices solamente los valores 800 y 250 dentro de la solución general.</p>
+<p>Piensa en un procedimiento que pueda utilizar otros datos.</p>
+<h3 id="seccion-16-10-actividad-i-analizar-un-problema-nuevo"><span id="apartado-122" class="legacy-anchor" aria-hidden="true"></span>16.10. Actividad I: analizar un problema nuevo</h3>
+<p>Una institución quiere calcular cuánto dinero recaudará si un grupo de estudiantes compra entradas para una actividad.</p>
+<p>Conocemos:</p>
+<ul>
+<li>El precio de cada entrada.</li>
+<li>La cantidad de entradas vendidas.</li>
+</ul>
+<p>Pero ahora debemos descontar un gasto fijo de organización.</p>
+<p>Antes de escribir pseudocódigo:</p>
+<ol>
+<li>Identifica los datos de entrada.</li>
+<li>Determina qué resultado queremos mostrar.</li>
+<li>Divide el problema en operaciones más pequeñas.</li>
+<li>Explica en qué orden deben realizarse.</li>
+<li>Escribe el pseudocódigo.</li>
+<li>Comprueba la solución con datos elegidos por ti.</li>
+</ol>
+<p>Este ejercicio integra comprensión, descomposición, secuenciación y comprobación.</p>
+<h3 id="seccion-16-11-actividad-j-integrar-todo-lo-aprendido"><span id="apartado-123" class="legacy-anchor" aria-hidden="true"></span>16.11. Actividad J: integrar todo lo aprendido</h3>
+<p>Un programa debe calcular cuánto dinero le queda a una persona después de comprar varios artículos iguales.</p>
+<p>Recibe:</p>
+<ul>
+<li>Saldo inicial.</li>
+<li>Precio de cada artículo.</li>
+<li>Cantidad comprada.</li>
+</ul>
+<p>Debe calcular el importe total y mostrar el saldo restante.</p>
+<p>Antes de escribir el pseudocódigo, responde:</p>
+<p><strong>Comprensión del problema</strong></p>
+<ul>
+<li>¿Qué datos recibe?</li>
+<li>¿Qué resultado debe mostrar?</li>
+<li>¿Qué operaciones necesita?</li>
+<li>¿Qué restricciones podrían ser importantes?</li>
+</ul>
+<p><strong>Construcción del algoritmo</strong></p>
+<ul>
+<li>¿Qué debe calcular primero?</li>
+<li>¿Qué debe calcular después?</li>
+<li>¿Qué variables necesitaría?</li>
+<li>¿Cuál sería el orden de las instrucciones?</li>
+</ul>
+<p><strong>Comprobación</strong></p>
+<ul>
+<li>Propón dos conjuntos diferentes de datos.</li>
+<li>Calcula manualmente los resultados esperados.</li>
+<li>Comprueba que el pseudocódigo produce esos resultados.</li>
+<li>Explica qué sucedería si el importe de la compra fuera mayor que el saldo disponible y qué regla debería establecer el problema para ese caso.</li>
+</ul>
+<p>Este último ejercicio no depende del problema de los bidones.</p>
+<p>Su objetivo es comprobar que puedes trasladar lo aprendido a una situación diferente.</p>
+<hr />
+<h1 id="seccion-lo-que-debemos-recordar"><span id="apartado-124" class="legacy-anchor" aria-hidden="true"></span>Lo que debemos recordar</h1>
+<p>En esta unidad comenzamos a pensar como programadores.</p>
+<p>Descubrimos que resolver un problema no consiste solamente en encontrar una respuesta.</p>
+<p>También necesitamos comprender cómo obtenerla mediante un procedimiento que podamos explicar y comprobar.</p>
+<p>El problema de los bidones nos permitió experimentar con instrucciones, restricciones, estados y secuencias de operaciones.</p>
+<p>Encontramos dos soluciones diferentes y comprobamos que ambas alcanzaban el objetivo, aunque necesitaban cantidades distintas de pasos.</p>
+<p>Aprendimos que un algoritmo es un conjunto finito y ordenado de instrucciones precisas destinadas a resolver un problema o realizar una tarea.</p>
+<p>También comprendimos que los algoritmos pueden expresarse sin utilizar Java.</p>
+<p>Para representarlos comenzamos a utilizar pseudocódigo, una herramienta que nos permite concentrarnos en la lógica antes de preocuparnos por la sintaxis de un lenguaje.</p>
+<p>Estudiamos la importancia de identificar datos, resultados y restricciones, descomponer los problemas en tareas y seguir los cambios de estado mediante trazados.</p>
+<p>También aprendimos que podemos leer algoritmos escritos por otras personas y predecir su comportamiento antes de ejecutarlos.</p>
+<p>Descubrimos que comprobar una solución implica diferentes tareas: verificar que respeta las restricciones, que sus instrucciones producen los estados esperados y que el resultado final cumple el objetivo.</p>
+<p>Finalmente, comenzamos a reconocer cómo un programa se relaciona con el procesamiento de información y por qué utilizaremos Java durante el curso.</p>
+<p>Todo esto nos prepara para escribir nuestros primeros programas.</p>
+<p>Pero debemos conservar una idea fundamental:</p>
+<p><strong>Programar no significa escribir instrucciones hasta conseguir que algo funcione. Significa comprender un problema, construir un algoritmo, expresarlo correctamente y comprobar que realmente produce el resultado esperado.</strong></p>
+<p>En la siguiente unidad aprenderemos a transformar estas primeras soluciones en programas Java, utilizando variables, operaciones, entrada de datos y salida de información.</p>
+<p>El pseudocódigo seguirá acompañándonos, porque primero necesitamos comprender qué queremos resolver y después decidir cómo escribirlo en Java.</p>
+</article><nav class="lesson-bottom" aria-label="Navegación entre unidades"><span></span><a rel="next" href="unidad-02.html">Unidad 2: Nuestros primeros programas en Java →</a></nav><p class="return-top"><a href="#top">Volver arriba ↑</a></p></main><footer><div class="footer-inner"><img src="assets/logo-PM-opcional.png" alt=""><span><strong>Programación I · 2026</strong><br>Profe Macón · DGETP / UTU</span></div></footer><script defer src="assets/recursos-modelos.js"></script><script defer src="assets/recursos-interactivos.js"></script></body></html>

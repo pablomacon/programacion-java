@@ -1,0 +1,1245 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unidad 7 · Programación I</title><link rel="icon" href="assets/logo-PM-opcional.png"><link rel="stylesheet" href="assets/style.css"></head><body id="top"><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><img src="assets/logo-profe-macon.png" alt="Profe Macón"><span><strong>Programación I</strong><small>1.º BT Informática · DGETP / UTU</small></span></a><nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="index.html#unidades">Unidades</a><span class="current-unit" aria-current="page">Unidad 7</span></nav></div></header><main class="lesson" id="contenido"><a class="back" href="index.html#unidades">← Volver a las unidades</a><p class="eyebrow">Programación I · Unidad 07</p><details class="contents"><summary>Índice de la unidad</summary><nav aria-label="Apartados de la unidad"><ol><li><a href="#seccion-1-una-limitacion-de-las-soluciones-que-conocemos">1. Una limitación de las soluciones que conocemos</a></li><li><a href="#seccion-2-antes-de-escribir-java-observar-abstraer-y-decidir">2. Antes de escribir Java: observar, abstraer y decidir</a></li><li><a href="#seccion-3-clases-objetos-atributos-y-comportamientos">3. Clases, objetos, atributos y comportamientos</a></li><li><a href="#seccion-4-primera-clase-java-del-modelo-al-codigo">4. Primera clase Java: del modelo al código</a></li><li><a href="#seccion-5-crear-objetos-con-new-y-seguir-sus-estados">5. Crear objetos con new y seguir sus estados</a></li><li><a href="#seccion-6-constructores-evitar-olvidar-los-datos-iniciales">6. Constructores: evitar olvidar los datos iniciales</a></li><li><a href="#seccion-7-metodos-de-instancia-que-puede-hacer-un-producto">7. Métodos de instancia: qué puede hacer un producto</a></li><li><a href="#seccion-8-descubrir-el-problema-de-los-estados-invalidos">8. Descubrir el problema de los estados inválidos</a></li><li><a href="#seccion-9-encapsulamiento-basico-proteger-y-operar-sobre-el-estado">9. Encapsulamiento básico: proteger y operar sobre el estado</a></li><li><a href="#seccion-10-validar-la-creacion-decidir-getters-y-setters">10. Validar la creación, decidir getters y setters</a></li><li><a href="#seccion-11-varios-objetos-arreglos-y-relaciones-sencillas">11. Varios objetos, arreglos y relaciones sencillas</a></li><li><a href="#seccion-12-mini-sistema-integrador-productos-con-responsabilidades">12. Mini-sistema integrador: productos con responsabilidades</a></li><li><a href="#seccion-13-errores-tipicos-de-sintaxis-de-ejecucion-y-de-diseno">13. Errores típicos: de sintaxis, de ejecución y de diseño</a></li><li><a href="#seccion-14-actividades-a-w-aprender-con-productos-pequenos">14. Actividades A–W: aprender con productos pequeños</a></li><li><a href="#seccion-15-evaluacion-de-la-unidad-y-cierre-de-programacion-i">15. Evaluación de la unidad y cierre de Programación I</a></li></ol></nav></details><article class="prose"><h1 id="seccion-unidad-7-clases-y-objetos-representar-problemas-del-mundo-real"><span id="apartado-1" class="legacy-anchor" aria-hidden="true"></span>Unidad 7. Clases y objetos: representar problemas del mundo real</h1>
+<p><strong>Programación I — 2026</strong><br />
+<strong>1.º Bachillerato Tecnológico en Informática · DGETP / UTU</strong></p>
+<h2 id="seccion-presentacion-aprender-a-modelar-no-solamente-a-escribir-clases"><span id="apartado-2" class="legacy-anchor" aria-hidden="true"></span>Presentación: aprender a modelar, no solamente a escribir clases</h2>
+<p>Hasta ahora resolvimos problemas con variables, condiciones, ciclos, arreglos y métodos. Esas herramientas siguen siendo necesarias. La novedad de esta unidad consiste en cambiar la pregunta inicial: además de preguntarnos <strong>qué instrucciones debemos ejecutar</strong>, nos preguntaremos <strong>qué entidades intervienen en el problema, qué información necesitamos conservar de cada una y qué responsabilidades les corresponden</strong>.</p>
+<p>Imaginemos una tienda con productos que tienen código, nombre, precio y stock. Podemos usar varias variables o arreglos paralelos, pero ¿cómo mantenemos junta la información de cada producto? ¿Y dónde conviene situar las reglas para agregar o retirar unidades?</p>
+<p>Aprenderemos a construir modelos útiles de esa realidad, convertirlos en clases Java y crear objetos con estados independientes. <strong>Una clase no será la traducción automática de un sustantivo</strong>, y una buena solución no será la que contenga más clases, getters o setters.</p>
+<p><strong>Al finalizar deberás poder:</strong> identificar entidades y justificar su selección; distinguir clases, objetos y referencias; implementar atributos, constructores y métodos de instancia; explicar cómo cambia el estado; introducir <code>private</code> y operaciones validadas cuando el problema lo necesite; probar la solución y defender las decisiones de modelado.</p>
+<p><strong>Método de trabajo:</strong> problema → identificar entidades → seleccionar atributos y responsabilidades → pseudocódigo → Java → predicción → pruebas → explicación. Trabajaremos primero con una clase muy sencilla y luego la evolucionaremos sin adelantar innecesariamente contenidos avanzados.</p>
+<blockquote>
+<p><strong>Convención para los ejemplos.</strong> Cuando aparece <strong>«Programa completo»</strong>, los archivos indicados pueden copiarse en la misma carpeta de VS Code y ejecutarse con Java. Cuando aparece <strong>«Fragmento para analizar»</strong>, ese código depende del contexto que se explica y no debe copiarse aisladamente. Algunos fragmentos tienen errores intencionales claramente señalados.</p>
+</blockquote>
+<p><strong>Cómo utilizar este capítulo de forma autónoma.</strong> Cuando encuentres una pregunta de predicción, escribe o piensa tu respuesta <em>antes</em> de revelar la explicación. Si te bloqueas, identifica primero qué datos tienes y qué resultado necesitas; consulta una pista y vuelve a intentarlo. Si ya entendiste el ejemplo, compruébalo con otros datos y explica qué cambiaría. En los ejercicios con soluciones, la página debe mostrar las pistas antes de la resolución completa. Si estudias el Markdown directamente, oculta el párrafo de solución mientras realizas la predicción.</p>
+<hr />
+<h1 id="seccion-1-una-limitacion-de-las-soluciones-que-conocemos"><span id="apartado-3" class="legacy-anchor" aria-hidden="true"></span>1. Una limitación de las soluciones que conocemos</h1>
+<p>La tienda registra:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Código</th>
+<th>Nombre</th>
+<th style="text-align:right">Precio</th>
+<th style="text-align:right">Stock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">101</td>
+<td>Cuaderno</td>
+<td style="text-align:right">120</td>
+<td style="text-align:right">15</td>
+</tr>
+<tr>
+<td style="text-align:right">102</td>
+<td>Lápiz</td>
+<td style="text-align:right">35</td>
+<td style="text-align:right">40</td>
+</tr>
+<tr>
+<td style="text-align:right">103</td>
+<td>Mochila</td>
+<td style="text-align:right">950</td>
+<td style="text-align:right">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-1-1-primer-intento-muchas-variables"><span id="apartado-4" class="legacy-anchor" aria-hidden="true"></span>1.1. Primer intento: muchas variables</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int codigo1 = 101;
+String nombre1 = &quot;Cuaderno&quot;;
+double precio1 = 120;
+int stock1 = 15;
+
+int codigo2 = 102;
+String nombre2 = &quot;Lápiz&quot;;
+double precio2 = 35;
+int stock2 = 40;
+</code></pre>
+<p>Podemos trabajar así, pero <strong>la relación entre los datos depende de nuestros nombres</strong>. Java no reconoce todavía que <code>codigo1</code>, <code>nombre1</code>, <code>precio1</code> y <code>stock1</code> describen una única entidad.</p>
+<h2 id="seccion-1-2-segundo-intento-arreglos-paralelos"><span id="apartado-5" class="legacy-anchor" aria-hidden="true"></span>1.2. Segundo intento: arreglos paralelos</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int[] codigos = {101, 102, 103};
+String[] nombres = {&quot;Cuaderno&quot;, &quot;Lápiz&quot;, &quot;Mochila&quot;};
+double[] precios = {120, 35, 950};
+int[] stocks = {15, 40, 8};
+</code></pre>
+<p>Ahora el índice 1 relaciona el código 102, el nombre «Lápiz», el precio 35 y el stock 40. Esto <strong>puede funcionar</strong>. Los arreglos no son «malos»: fueron una buena respuesta cuando necesitábamos conservar muchos valores de un mismo tipo.</p>
+<p>Sin embargo, la unidad «producto» está repartida entre cuatro arreglos. Si insertamos información en posiciones diferentes, podemos mezclar datos. Si necesitamos enviar <strong>un producto completo</strong> a otro método, debemos enviar varias piezas y mantener la correspondencia. Si agregamos categoría y descuento, aumentan los arreglos paralelos.</p>
+<h3 id="seccion-experimento-en-papel"><span id="apartado-6" class="legacy-anchor" aria-hidden="true"></span>Experimento en papel</h3>
+<p>Sin cambiar el orden de <code>nombres</code>, imagina que alguien intercambia <code>precios[0]</code> y <code>precios[1]</code>. ¿Qué mostrará un recorrido que imprime nombre y precio con el mismo índice? ¿La computadora detectará automáticamente la asociación incorrecta?</p>
+<p>No: el programa puede compilar y ejecutar, aunque la información quede mal asociada.</p>
+<h2 id="seccion-1-3-la-nueva-necesidad"><span id="apartado-7" class="legacy-anchor" aria-hidden="true"></span>1.3. La nueva necesidad</h2>
+<p>Queremos tratar los datos de cada producto como <strong>una entidad reconocible</strong> y asociarle las operaciones que afectan su propio estado: consultar precio, agregar stock o retirar unidades.</p>
+<p>No abandonaremos arreglos, ciclos ni métodos. Los reutilizaremos: más adelante podremos tener <strong>un arreglo de objetos</strong>.</p>
+<p><strong>Idea central:</strong> el criterio para elegir una representación es lo que necesita resolver el programa, no una supuesta superioridad absoluta de una herramienta.</p>
+<p><strong>Chequeo:</strong> explica por qué un arreglo de diez calificaciones sigue siendo una buena solución y por qué representar productos mediante varios arreglos paralelos puede volverse incómodo.</p>
+<hr />
+<h1 id="seccion-2-antes-de-escribir-java-observar-abstraer-y-decidir"><span id="apartado-8" class="legacy-anchor" aria-hidden="true"></span>2. Antes de escribir Java: observar, abstraer y decidir</h1>
+<p>Un análisis orientado a objetos empieza por comprender una situación. No comienza con <code>public class</code>.</p>
+<h2 id="seccion-2-1-candidatos-a-objetos"><span id="apartado-9" class="legacy-anchor" aria-hidden="true"></span>2.1. Candidatos a objetos</h2>
+<p>Una biblioteca registra libros, lectores y préstamos. Estos nombres sugieren posibles entidades. Pero no todo sustantivo del enunciado necesita una clase.</p>
+<p>En «un estudiante consulta un libro desde una computadora», quizá necesitemos representar <code>Estudiante</code> y <code>Libro</code>. La computadora podría no formar parte del sistema; «disponibilidad» podría ser un atributo o un resultado, no necesariamente una entidad independiente.</p>
+<p>Para decidir, pregunta:</p>
+<ol>
+<li>¿Qué necesita hacer el programa?</li>
+<li>¿De qué entidades debemos conservar información individual?</li>
+<li>¿Qué características son necesarias para esas tareas?</li>
+<li>¿Qué comportamientos o reglas corresponden principalmente a cada entidad?</li>
+<li>¿Qué elementos podemos dejar fuera de esta versión?</li>
+</ol>
+<h2 id="seccion-2-2-abstraccion-un-mismo-objeto-real-dos-modelos-diferentes"><span id="apartado-10" class="legacy-anchor" aria-hidden="true"></span>2.2. Abstracción: un mismo objeto real, dos modelos diferentes</h2>
+<p><strong>Situación A: alquiler de bicicletas.</strong> Interesan el identificador, el tipo, la disponibilidad y si está alquilada. Podríamos necesitar operaciones como <code>alquilar</code> y <code>devolver</code>.</p>
+<p><strong>Situación B: mantenimiento de bicicletas.</strong> Interesan kilómetros recorridos, estado de frenos y fecha de revisión. Podríamos necesitar <code>registrarRevision</code> o <code>marcarReparacionPendiente</code>.</p>
+<p>No significa que existan «dos bicicletas reales». Significa que <strong>el propósito determina qué aspectos de la realidad incluimos en el modelo</strong>. Ninguno necesita contener todo lo que sabemos sobre una bicicleta.</p>
+<h3 id="seccion-actividad-guiada-dos-estudiantes-posibles"><span id="apartado-11" class="legacy-anchor" aria-hidden="true"></span>Actividad guiada: dos estudiantes posibles</h3>
+<p>Diseña en papel un modelo <code>Estudiante</code> para <strong>calificaciones</strong> y otro para <strong>préstamos de biblioteca</strong>. Para cada caso indica tres atributos relevantes y dos que dejarías fuera. Compara: ¿qué información aparece en ambos?, ¿cuál solamente tiene sentido en uno? Justifica tu selección.</p>
+<h2 id="seccion-2-3-la-abstraccion-continuara-durante-toda-la-unidad"><span id="apartado-12" class="legacy-anchor" aria-hidden="true"></span>2.3. La abstracción continuará durante toda la unidad</h2>
+<p>Volveremos a identificar entidades <strong>en tres momentos</strong>:</p>
+<ul>
+<li><strong>Antes de Java:</strong> proponer qué representar sin conocer todavía la sintaxis.</li>
+<li><strong>Durante la construcción:</strong> revisar si cada atributo y método responde al problema; corregir modelos poco coherentes.</li>
+<li><strong>Después de aprender las clases:</strong> recibir una situación nueva sin clases predefinidas y diseñar una solución.</li>
+</ul>
+<p>Así evitamos que el modelado se reduzca a una actividad introductoria desconectada del código.</p>
+<h2 id="seccion-2-4-un-error-de-diseno-para-discutir"><span id="apartado-13" class="legacy-anchor" aria-hidden="true"></span>2.4. Un error de diseño para discutir</h2>
+<p>Un supuesto sistema de biblioteca propone:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">LIBRO
+Atributos: titulo, autor, paginas, sueldoBibliotecario,
+           contrasenaAdministrador
+Métodos: mostrarLibro, calcularSueldos,
+         registrarTodosLosUsuarios, prestarLibro
+</code></pre>
+<p>¿Qué responsabilidades parecen pertenecer a un libro? ¿Cuáles necesitarían otra entidad o sistema? ¿Qué dejarías fuera de un programa que solamente permite consultar libros?</p>
+<p>No busques simplemente «sustantivos». <strong>Argumenta en función de los requisitos.</strong></p>
+<h2 id="seccion-2-5-recurso-interactivo-construir-un-modelo-antes-de-ver-codigo"><span id="apartado-14" class="legacy-anchor" aria-hidden="true"></span>2.5. Recurso interactivo: construir un modelo antes de ver código</h2>
+<div id="u07-abstraccion-modelado" data-recurso="u07-abstraccion-modelado"><div data-componente-interactivo="u07-abstraccion-modelado"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>La finalidad determina qué datos representar. Para alquiler de bicicletas pueden importar identificador y disponibilidad; para mantenimiento, kilómetros y estado de frenos. Propón comportamientos y justifica qué dejas fuera.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p><strong>Antes de continuar:</strong> explica en una o dos frases qué significa abstraer. Una respuesta adecuada debería mencionar el <strong>propósito del programa</strong>.</p>
+<hr />
+<h1 id="seccion-3-clases-objetos-atributos-y-comportamientos"><span id="apartado-15" class="legacy-anchor" aria-hidden="true"></span>3. Clases, objetos, atributos y comportamientos</h1>
+<p>Imagina los productos:</p>
+<ul>
+<li>Código 101, «Cuaderno», precio 120, stock 15.</li>
+<li>Código 102, «Lápiz», precio 35, stock 40.</li>
+<li>Código 103, «Mochila», precio 950, stock 8.</li>
+</ul>
+<p>Todos comparten una <strong>estructura de información</strong>. Cada uno conserva <strong>valores diferentes</strong>.</p>
+<h2 id="seccion-3-1-clase-la-definicion-comun"><span id="apartado-16" class="legacy-anchor" aria-hidden="true"></span>3.1. Clase: la definición común</h2>
+<p>Una clase describe un tipo de entidad dentro del programa. Puede declarar atributos, métodos y constructores. Para este problema, una clase <code>Producto</code> podría tener:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">PRODUCTO
+Datos: codigo, nombre, precio, stock
+Posibles operaciones: mostrarInformacion, agregarStock, retirarStock
+</code></pre>
+<p>Esta descripción no crea tres productos. Solamente expresa qué queremos que los productos representados puedan contener y hacer.</p>
+<h2 id="seccion-3-2-objeto-una-instancia-concreta"><span id="apartado-17" class="legacy-anchor" aria-hidden="true"></span>3.2. Objeto: una instancia concreta</h2>
+<p>Cada producto creado a partir de <code>Producto</code> será un <strong>objeto</strong>. El cuaderno y el lápiz son instancias distintas, aunque ambos respondan a la misma clase.</p>
+<p>Los <strong>atributos de instancia</strong> conservan el estado de cada objeto. Los <strong>métodos de instancia</strong> describen operaciones que podemos solicitarle a ese objeto.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta para nuestro ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Qué clase propia?</td>
+<td><code>Producto</code></td>
+</tr>
+<tr>
+<td>¿Cuántos productos concretos?</td>
+<td>Los que necesite el programa</td>
+</tr>
+<tr>
+<td>¿Los objetos comparten la estructura?</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>¿Comparten necesariamente los valores?</td>
+<td>No</td>
+</tr>
+<tr>
+<td>¿Modificar uno cambia automáticamente los demás?</td>
+<td>No, si son instancias distintas</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-3-3-estado-independiente-y-referencias-compartidas"><span id="apartado-18" class="legacy-anchor" aria-hidden="true"></span>3.3. Estado independiente y referencias compartidas</h2>
+<p>Más adelante crearemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Producto a = new Producto(101, &quot;Cuaderno&quot;, 120, 15);
+Producto b = new Producto(102, &quot;Lápiz&quot;, 35, 40);
+</code></pre>
+<p>Las dos apariciones de <code>new</code> crean dos objetos diferentes. Pero:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">Producto c = a;
+</code></pre>
+<p>no crea otro objeto. <code>c</code> recibe la misma referencia que <code>a</code>. Si una operación modifica el objeto referenciado por <code>c</code>, el cambio también se observa desde <code>a</code>.</p>
+<p><strong>No confundas cantidad de variables de referencia con cantidad de objetos.</strong> Este asunto se retomará con código ejecutable en la sección 5.</p>
+<h2 id="seccion-3-4-recurso-clase-e-instancias"><span id="apartado-19" class="legacy-anchor" aria-hidden="true"></span>3.4. Recurso: clase e instancias</h2>
+<div id="u07-clase-instancias" data-recurso="u07-clase-instancias"><div data-componente-interactivo="u07-clase-instancias"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Producto define código, nombre, precio y stock. Dos expresiones new crean objetos independientes; c = a copia una referencia, por lo que c y a observan el mismo objeto.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p><strong>Pregunta individual:</strong> en un programa con la clase <code>Producto</code>, dos expresiones <code>new Producto(...)</code> y la asignación <code>Producto c = a</code>, ¿cuántos objetos se crearon? Justifica sin ejecutar.</p>
+<hr />
+<h1 id="seccion-4-primera-clase-java-del-modelo-al-codigo"><span id="apartado-20" class="legacy-anchor" aria-hidden="true"></span>4. Primera clase Java: del modelo al código</h1>
+<p>No comenzaremos con encapsulamiento completo, validaciones avanzadas ni excepciones. Primero comprenderemos la estructura básica.</p>
+<h2 id="seccion-4-1-proyecto-simple-en-vs-code"><span id="apartado-21" class="legacy-anchor" aria-hidden="true"></span>4.1. Proyecto simple en VS Code</h2>
+<p>Crea una carpeta, por ejemplo <code>TiendaInicial</code>, con dos archivos en el mismo directorio:</p>
+<ul>
+<li><code>Producto.java</code></li>
+<li><code>Main.java</code></li>
+</ul>
+<p>Por ahora no utilizaremos paquetes, Maven ni frameworks. La extensión opcional <strong>Java Extension Pack</strong> puede facilitar la ejecución.</p>
+<h2 id="seccion-4-2-archivo-producto-java"><span id="apartado-22" class="legacy-anchor" aria-hidden="true"></span>4.2. Archivo Producto.java</h2>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">public class Producto {
+    int codigo;
+    String nombre;
+    double precio;
+    int stock;
+}
+</code></pre>
+<p>Los atributos representan lo que decidimos conservar de un producto. <strong>Todavía no hemos creado ningún producto.</strong></p>
+<p>Estos atributos están escritos <strong>sin modificador de acceso</strong>. En Java eso significa <em>acceso de paquete</em> (no <code>public</code>). <code>Main</code>, ubicado en el mismo paquete, podrá consultarlos y modificarlos directamente en este primer ejercicio. Más adelante los haremos privados.</p>
+<h2 id="seccion-4-3-archivo-main-java-primera-creacion-y-consulta"><span id="apartado-23" class="legacy-anchor" aria-hidden="true"></span>4.3. Archivo Main.java: primera creación y consulta</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto producto = new Producto();
+        producto.codigo = 101;
+        producto.nombre = &quot;Cuaderno&quot;;
+        producto.precio = 120;
+        producto.stock = 15;
+
+        System.out.println(producto.nombre);
+        System.out.println(producto.stock);
+    }
+}
+</code></pre>
+<p><strong>Salida esperada:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Salida esperada"><code class="language-text">Cuaderno
+15
+</code></pre>
+<h2 id="seccion-4-4-que-observamos-y-que-nos-falta-resolver"><span id="apartado-24" class="legacy-anchor" aria-hidden="true"></span>4.4. Qué observamos y qué nos falta resolver</h2>
+<p>El punto <code>.</code> permite seleccionar un atributo de ese objeto: <code>producto.nombre</code>. En esta primera versión, podemos asignar valores directamente.</p>
+<p>Pero podemos olvidarnos de completar un atributo o establecer valores absurdos. <strong>Esta clase es provisional y deliberadamente sencilla</strong>: su finalidad es comprender los objetos, no garantizar todavía todas las reglas de la tienda.</p>
+<p><strong>Predicción:</strong> si creas otro <code>Producto</code> con <code>new</code>, ¿tendrá automáticamente el nombre «Cuaderno»?</p><details class="respuesta"><summary>Ver explicación</summary><p>No: tendrá su propio estado inicial, hasta que le asignemos datos.</p></details><div class="respuesta-impresa" aria-hidden="true"><p>No: tendrá su propio estado inicial, hasta que le asignemos datos.</p></div>
+<hr />
+<h1 id="seccion-5-crear-objetos-con-new-y-seguir-sus-estados"><span id="apartado-25" class="legacy-anchor" aria-hidden="true"></span>5. Crear objetos con new y seguir sus estados</h1>
+<p>La instrucción:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Producto producto = new Producto();
+</code></pre>
+<p>contiene dos aspectos distintos: <code>new Producto()</code> construye un objeto y <code>producto</code> es una variable que conserva una referencia a él. No debemos imaginar que la variable contiene físicamente todos los atributos.</p>
+<h2 id="seccion-5-1-dos-objetos-distintos"><span id="apartado-26" class="legacy-anchor" aria-hidden="true"></span>5.1. Dos objetos distintos</h2>
+<p><strong>Programa completo</strong> con el <code>Producto.java</code> de la sección 4:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto cuaderno = new Producto();
+        cuaderno.nombre = &quot;Cuaderno&quot;;
+        cuaderno.stock = 15;
+
+        Producto lapiz = new Producto();
+        lapiz.nombre = &quot;Lápiz&quot;;
+        lapiz.stock = 40;
+
+        cuaderno.stock = 10;
+
+        System.out.println(cuaderno.stock);
+        System.out.println(lapiz.stock);
+    }
+}
+</code></pre>
+<p>La salida será <code>10</code> y <code>40</code> en líneas distintas. Modificar uno no altera el otro.</p>
+<h2 id="seccion-5-2-dos-referencias-a-un-mismo-objeto"><span id="apartado-27" class="legacy-anchor" aria-hidden="true"></span>5.2. Dos referencias a un mismo objeto</h2>
+<p><strong>Otro Main.java</strong>, con el mismo <code>Producto.java</code>:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto a = new Producto();
+        a.stock = 15;
+
+        Producto b = a; // No crea otro objeto.
+        b.stock = 25;
+
+        System.out.println(a.stock);
+        System.out.println(b.stock);
+    }
+}
+</code></pre>
+<p>Ambas líneas muestran <code>25</code>. El único <code>new</code> creó un solo objeto, compartido por dos referencias.</p>
+<h2 id="seccion-5-3-trazado-comparativo"><span id="apartado-28" class="legacy-anchor" aria-hidden="true"></span>5.3. Trazado comparativo</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Instrucción</th>
+<th>Objeto referido por <code>a</code></th>
+<th>Objeto referido por <code>b</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Producto a = new Producto()</code></td>
+<td>Objeto 1</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>a.stock = 15</code></td>
+<td>Objeto 1, stock 15</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>Producto b = a</code></td>
+<td>Objeto 1</td>
+<td>Objeto 1</td>
+</tr>
+<tr>
+<td><code>b.stock = 25</code></td>
+<td>Objeto 1, stock 25</td>
+<td>Objeto 1, stock 25</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Aquí recuperamos el aprendizaje de referencias de las unidades 5 y 6. No necesitamos estudiar todavía mecanismos internos de memoria.</p>
+<p><strong>Chequeo de comprensión:</strong> explica por qué «dos nombres de variables» no significa necesariamente «dos objetos».</p>
+<hr />
+<h1 id="seccion-6-constructores-evitar-olvidar-los-datos-iniciales"><span id="apartado-29" class="legacy-anchor" aria-hidden="true"></span>6. Constructores: evitar olvidar los datos iniciales</h1>
+<p>Con el diseño inicial, podemos hacer esto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Producto producto = new Producto();
+producto.nombre = &quot;Cuaderno&quot;;
+producto.precio = 120;
+// Olvidamos el código y el stock.
+</code></pre>
+<p>La clase existe, pero no hemos completado la información prevista. ¿Podemos solicitar todos los datos al momento de crear el objeto?</p>
+<h2 id="seccion-6-1-primer-constructor-con-parametros"><span id="apartado-30" class="legacy-anchor" aria-hidden="true"></span>6.1. Primer constructor con parámetros</h2>
+<p><strong>Sustituye Producto.java por esta versión:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Producto {
+    int codigo;
+    String nombre;
+    double precio;
+    int stock;
+
+    public Producto(int codigo, String nombre,
+                    double precio, int stock) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+}
+</code></pre>
+<p>Un constructor tiene el mismo nombre que la clase y <strong>no declara tipo de retorno</strong> (ni siquiera <code>void</code>). Los parámetros reciben los datos de creación. <code>this.codigo</code> representa el atributo del objeto actual y <code>codigo</code> es el parámetro local.</p>
+<h2 id="seccion-6-2-crear-dos-objetos-completos"><span id="apartado-31" class="legacy-anchor" aria-hidden="true"></span>6.2. Crear dos objetos completos</h2>
+<p><strong>Main.java:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto cuaderno = new Producto(101, &quot;Cuaderno&quot;, 120, 15);
+        Producto lapiz = new Producto(102, &quot;Lápiz&quot;, 35, 40);
+
+        System.out.println(cuaderno.nombre);
+        System.out.println(lapiz.nombre);
+    }
+}
+</code></pre>
+<p>Salida: «Cuaderno» y «Lápiz».</p>
+<p>El constructor reemplaza cuatro asignaciones posteriores, pero todavía <strong>no verifica que los valores sean adecuados</strong>. Esa es una limitación que trataremos en las secciones 8–10.</p>
+<h2 id="seccion-6-3-una-precision-sobre-el-constructor-sin-argumentos"><span id="apartado-32" class="legacy-anchor" aria-hidden="true"></span>6.3. Una precisión sobre el constructor sin argumentos</h2>
+<p>Mientras una clase no declara ningún constructor, Java proporciona uno predeterminado sin argumentos. Cuando declaramos únicamente este constructor de cuatro parámetros, <code>new Producto()</code> deja de ser válido a menos que también escribamos explícitamente otro constructor sin argumentos.</p>
+<p><strong>Ejercicio de predicción:</strong> identifica por qué <code>new Producto(101, &quot;Cuaderno&quot;, 120)</code> no coincide con el constructor que escribimos.</p><details class="respuesta"><summary>Ver explicación</summary><p>Le falta el cuarto argumento, <code>stock</code>.</p></details><div class="respuesta-impresa" aria-hidden="true"><p>Le falta el cuarto argumento, <code>stock</code>.</p></div>
+<hr />
+<h1 id="seccion-7-metodos-de-instancia-que-puede-hacer-un-producto"><span id="apartado-33" class="legacy-anchor" aria-hidden="true"></span>7. Métodos de instancia: qué puede hacer un producto</h1>
+<p>En la Unidad 6 escribimos métodos <code>static</code> en <code>Main</code>. Ahora podemos definir <strong>comportamientos asociados a cada objeto</strong>.</p>
+<h2 id="seccion-7-1-una-responsabilidad-cercana-a-los-datos"><span id="apartado-34" class="legacy-anchor" aria-hidden="true"></span>7.1. Una responsabilidad cercana a los datos</h2>
+<p>Un producto conoce sus propios atributos. Un método para mostrarlos puede utilizar directamente ese estado.</p>
+<p><strong>Producto.java completo:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Producto {
+    int codigo;
+    String nombre;
+    double precio;
+    int stock;
+
+    public Producto(int codigo, String nombre,
+                    double precio, int stock) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    public void mostrarInformacion() {
+        System.out.println(&quot;Código: &quot; + codigo);
+        System.out.println(&quot;Nombre: &quot; + nombre);
+        System.out.println(&quot;Precio: &quot; + precio);
+        System.out.println(&quot;Stock: &quot; + stock);
+    }
+}
+</code></pre>
+<p><strong>Main.java completo:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto cuaderno = new Producto(101, &quot;Cuaderno&quot;, 120, 15);
+        Producto lapiz = new Producto(102, &quot;Lápiz&quot;, 35, 40);
+
+        cuaderno.mostrarInformacion();
+        lapiz.mostrarInformacion();
+    }
+}
+</code></pre>
+<p>La misma definición <code>mostrarInformacion()</code> trabaja primero con el estado del cuaderno y luego con el del lápiz. <strong>El objeto que aparece antes del punto determina sobre qué instancia se ejecuta el método.</strong></p>
+<h2 id="seccion-7-2-diferenciar-metodos-de-instancia-y-static"><span id="apartado-35" class="legacy-anchor" aria-hidden="true"></span>7.2. Diferenciar métodos de instancia y static</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static int sumar(int a, int b) { return a + b; }
+</code></pre>
+<p>Esta declaración de la Unidad 6 describe un método estático que recibe sus operandos. En <code>Main</code> lo invocábamos sin crear un objeto de esa clase.</p>
+<p>En cambio:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public void mostrarInformacion() { ... }
+</code></pre>
+<p>es un método de instancia. Desde <code>main</code> lo invocamos sobre un objeto, por ejemplo <code>cuaderno.mostrarInformacion()</code>. Puede consultar el estado de <strong>esa instancia</strong>.</p>
+<p><strong>Pregunta decisiva:</strong> si ambos objetos comparten la definición del método, ¿por qué muestran información distinta? Porque sus <strong>atributos de instancia tienen valores distintos</strong>.</p>
+<h2 id="seccion-7-3-a-que-entidad-corresponde-cada-responsabilidad"><span id="apartado-36" class="legacy-anchor" aria-hidden="true"></span>7.3. ¿A qué entidad corresponde cada responsabilidad?</h2>
+<p>Antes de convertir una acción en método, preguntemos qué información necesita y a quién corresponde principalmente.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Operación</th>
+<th>Ubicación razonable para este problema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consultar precio propio</td>
+<td><code>Producto</code></td>
+</tr>
+<tr>
+<td>Agregar o retirar su stock</td>
+<td><code>Producto</code></td>
+</tr>
+<tr>
+<td>Buscar entre cien productos</td>
+<td>Inventario o gestor</td>
+</tr>
+<tr>
+<td>Mostrar menú principal</td>
+<td><code>Main</code> o interfaz</td>
+</tr>
+<tr>
+<td>Calcular recaudación de toda la tienda</td>
+<td>Sistema de ventas</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>No es una regla universal. En un ejemplo pequeño, <code>Producto.mostrarInformacion()</code> ayuda a aprender métodos de instancia. En un sistema mayor quizá separaríamos presentación y modelo. <strong>Lo que importa es justificar el reparto de responsabilidades.</strong></p>
+<h2 id="seccion-7-4-pregunta-para-discutir-sin-java"><span id="apartado-37" class="legacy-anchor" aria-hidden="true"></span>7.4. Pregunta para discutir sin Java</h2>
+<p>¿Tendría sentido agregar a <code>Producto</code> un método <code>registrarTodosLosEmpleados()</code>? ¿Qué entidad tendría que conocer para cumplir esa tarea? Propón un lugar más razonable o explica por qué la tarea queda fuera del sistema actual.</p>
+<hr />
+<h1 id="seccion-8-descubrir-el-problema-de-los-estados-invalidos"><span id="apartado-38" class="legacy-anchor" aria-hidden="true"></span>8. Descubrir el problema de los estados inválidos</h1>
+<p>La clase inicial permite modificar atributos directamente desde <code>Main</code>:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">cuaderno.precio = -500;
+cuaderno.stock = -20;
+</code></pre>
+<p>El programa puede compilar, pero esos valores violan las reglas que decidimos para una tienda. El tipo <code>int</code> admite números negativos; no sabe por sí mismo que el stock debería ser no negativo.</p>
+<h2 id="seccion-8-1-una-regla-de-negocio"><span id="apartado-39" class="legacy-anchor" aria-hidden="true"></span>8.1. Una regla de negocio</h2>
+<p>Para nuestro ejemplo adoptamos:</p>
+<ul>
+<li>Un producto tiene código positivo, nombre no vacío, precio no negativo y stock no negativo.</li>
+<li>Solo se agregan unidades en cantidades positivas.</li>
+<li>Solo se retiran cantidades positivas que no superen el stock disponible.</li>
+<li>Una operación rechazada <strong>no modifica</strong> los datos del producto.</li>
+</ul>
+<p>Estas reglas provienen de los requisitos del problema, no de la sintaxis de Java.</p>
+<h2 id="seccion-8-2-primera-reaccion-validar-desde-main"><span id="apartado-40" class="legacy-anchor" aria-hidden="true"></span>8.2. Primera reacción: validar desde Main</h2>
+<p><strong>Fragmento para analizar:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Fragmento Java" role="region" tabindex="0" aria-label="Fragmento Java: bloque de código desplazable"><code class="language-java">if (nuevoPrecio &gt;= 0) {
+    cuaderno.precio = nuevoPrecio;
+}
+</code></pre>
+<p>Esta comprobación ayuda, pero ¿qué sucede si otro método modifica el producto y olvida validarlo? La regla queda dispersa. Queremos que <strong>la propia clase controle las operaciones que afectan su estado</strong>.</p>
+<h2 id="seccion-8-3-una-diferencia-que-nunca-debemos-perder"><span id="apartado-41" class="legacy-anchor" aria-hidden="true"></span>8.3. Una diferencia que nunca debemos perder</h2>
+<p><strong>Control de acceso:</strong> decide desde dónde podemos leer o modificar directamente ciertos miembros.<br />
+<strong>Validación:</strong> comprueba si un valor o una operación cumple reglas del problema.<br />
+<strong>Encapsulamiento:</strong> organiza datos y operaciones, estableciendo una forma coherente de interactuar con el objeto.</p>
+<p>Escribir <code>private</code> <strong>no</strong> hace que un número negativo deje de ser negativo. Primero limitaremos la modificación directa; después aprenderemos a validar cambios y creación.</p>
+<h2 id="seccion-8-4-el-error-intencional"><span id="apartado-42" class="legacy-anchor" aria-hidden="true"></span>8.4. El error intencional</h2>
+<p>Observa este constructor, con atributos privados:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public Producto(int codigo, String nombre,
+                double precio, int stock) {
+    this.codigo = codigo;
+    this.nombre = nombre;
+    this.precio = precio;
+    this.stock = stock;
+}
+</code></pre>
+<p>¿Impedirá crear <code>new Producto(101, &quot;Cuaderno&quot;, -500, -20)</code>? <strong>No.</strong> Aunque los atributos sean privados, el constructor mostrado no valida. Esta comprobación será parte esencial de nuestra discusión.</p>
+<p><strong>Salida de clase en papel:</strong> define con tus palabras por qué «atributo privado» y «atributo válido» no significan lo mismo.</p>
+<hr />
+<h1 id="seccion-9-encapsulamiento-basico-proteger-y-operar-sobre-el-estado"><span id="apartado-43" class="legacy-anchor" aria-hidden="true"></span>9. Encapsulamiento básico: proteger y operar sobre el estado</h1>
+<p>Empezaremos por la versión <strong>esencial</strong>, usando datos iniciales válidos y métodos que no acepten operaciones inválidas. Su constructor todavía <strong>no garantiza por sí solo</strong> que todos los argumentos iniciales sean correctos; la siguiente sección resolverá esa limitación.</p>
+<h2 id="seccion-9-1-clase-producto-version-esencial"><span id="apartado-44" class="legacy-anchor" aria-hidden="true"></span>9.1. Clase Producto: versión esencial</h2>
+<p><strong>Producto.java completo — versión A:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Producto {
+    private int codigo;
+    private String nombre;
+    private double precio;
+    private int stock;
+
+    // En esta primera versión usamos datos iniciales válidos.
+    public Producto(int codigo, String nombre,
+                    double precio, int stock) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public boolean cambiarPrecio(double nuevoPrecio) {
+        boolean realizado = false;
+        if (nuevoPrecio &gt;= 0) {
+            precio = nuevoPrecio;
+            realizado = true;
+        }
+        return realizado;
+    }
+
+    public boolean agregarStock(int cantidad) {
+        boolean realizado = false;
+        if (cantidad &gt; 0) {
+            stock = stock + cantidad;
+            realizado = true;
+        }
+        return realizado;
+    }
+
+    public boolean retirarStock(int cantidad) {
+        boolean realizado = false;
+        if (cantidad &gt; 0 &amp;&amp; cantidad &lt;= stock) {
+            stock = stock - cantidad;
+            realizado = true;
+        }
+        return realizado;
+    }
+
+    public void mostrarInformacion() {
+        System.out.println(&quot;Código: &quot; + codigo);
+        System.out.println(&quot;Nombre: &quot; + nombre);
+        System.out.println(&quot;Precio: &quot; + precio);
+        System.out.println(&quot;Stock: &quot; + stock);
+    }
+}
+</code></pre>
+<p><strong>Main.java completo para probarla:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto cuaderno = new Producto(101, &quot;Cuaderno&quot;, 120, 15);
+
+        boolean pudoAgregar = cuaderno.agregarStock(5);
+        boolean pudoRetirar = cuaderno.retirarStock(3);
+        boolean retiroInvalido = cuaderno.retirarStock(30);
+
+        System.out.println(&quot;Agregado: &quot; + pudoAgregar);
+        System.out.println(&quot;Retirado: &quot; + pudoRetirar);
+        System.out.println(&quot;Retiro de 30: &quot; + retiroInvalido);
+        System.out.println(&quot;Stock final: &quot; + cuaderno.getStock());
+    }
+}
+</code></pre>
+<p><strong>Salida:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Agregado: true
+Retirado: true
+Retiro de 30: false
+Stock final: 17
+</code></pre>
+<p>El stock empieza en 15, aumenta a 20 y baja a 17. El retiro de 30 se rechaza: el objeto conserva 17.</p>
+<h2 id="seccion-9-2-por-que-boolean"><span id="apartado-45" class="legacy-anchor" aria-hidden="true"></span>9.2. ¿Por qué boolean?</h2>
+<p><code>retirarStock</code> necesita comunicar si realizó la operación. Devolver <code>true</code> o <code>false</code> permite que <code>Main</code> decida qué mensaje mostrar, sin que <code>Producto</code> necesite controlar toda la interacción con el usuario.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">boolean retirado = cuaderno.retirarStock(4);
+if (retirado) {
+    System.out.println(&quot;Operación realizada&quot;);
+} else {
+    System.out.println(&quot;Operación rechazada&quot;);
+}
+</code></pre>
+<p><strong>Fragmento para analizar:</strong> requiere que exista un objeto <code>cuaderno</code>.</p>
+<h2 id="seccion-9-3-limites-conscientes-de-la-version-a"><span id="apartado-46" class="legacy-anchor" aria-hidden="true"></span>9.3. Límites conscientes de la versión A</h2>
+<p>Es una implementación didáctica, no un sistema comercial robusto. La versión A:</p>
+<ul>
+<li><strong>supone</strong> que los valores enviados al constructor ya son válidos;</li>
+<li>no contempla todos los valores especiales posibles de <code>double</code>;</li>
+<li>no protege todavía contra desbordamiento si el stock se acerca al máximo de <code>int</code>;</li>
+<li>no impide que otro producto tenga el mismo código.</li>
+</ul>
+<p>No la presentaremos como garantía completa de invariantes. Su objetivo es aprender <strong>atributos privados + métodos de instancia que comprueban una regla sencilla antes de modificar datos</strong>.</p>
+<h2 id="seccion-9-4-predecir-antes-de-ejecutar"><span id="apartado-47" class="legacy-anchor" aria-hidden="true"></span>9.4. Predecir antes de ejecutar</h2>
+<p>Stock inicial 12. ¿Cuál será el estado tras <code>agregarStock(5)</code>, <code>retirarStock(8)</code> y <code>retirarStock(20)</code>? Escribe el valor y el booleano devuelto en cada paso.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Operación</th>
+<th>Resultado esperado</th>
+<th style="text-align:right">Stock después</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inicio</td>
+<td>—</td>
+<td style="text-align:right">12</td>
+</tr>
+<tr>
+<td><code>agregarStock(5)</code></td>
+<td><code>true</code></td>
+<td style="text-align:right">17</td>
+</tr>
+<tr>
+<td><code>retirarStock(8)</code></td>
+<td><code>true</code></td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td><code>retirarStock(20)</code></td>
+<td><code>false</code></td>
+<td style="text-align:right">9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<h1 id="seccion-10-validar-la-creacion-decidir-getters-y-setters"><span id="apartado-48" class="legacy-anchor" aria-hidden="true"></span>10. Validar la creación, decidir getters y setters</h1>
+<p>Nuestra versión A controla ciertas modificaciones posteriores, pero el constructor todavía puede recibir datos incorrectos. <strong>El aprendizaje siguiente no consiste en agregar métodos por costumbre, sino en decidir cómo proteger las reglas desde el comienzo.</strong></p>
+<h2 id="seccion-10-1-tres-niveles-deliberadamente-distintos"><span id="apartado-49" class="legacy-anchor" aria-hidden="true"></span>10.1. Tres niveles deliberadamente distintos</h2>
+<p><strong>A — Esencial:</strong> clase con atributos privados, constructor usando argumentos válidos, getters necesarios y operaciones de stock validadas. Conocer y explicar sus límites.</p>
+<p><strong>B — Consolidación:</strong> además, el constructor verifica datos iniciales. Si no cumplen las reglas, rechaza la creación. La clase deja de depender solamente de que <code>Main</code> recuerde validar primero.</p>
+<p><strong>C — Robustez adicional:</strong> tratar valores excepcionales de <code>double</code>, desbordamiento de <code>int</code> y otros casos técnicos. No será requisito mínimo para comprender POO.</p>
+<h2 id="seccion-10-2-como-rechazar-una-creacion-invalida"><span id="apartado-50" class="legacy-anchor" aria-hidden="true"></span>10.2. Cómo rechazar una creación inválida</h2>
+<p>Para una versión B con validación interna podemos utilizar la excepción estándar <code>IllegalArgumentException</code>. No desarrollaremos un sistema de captura de excepciones ni excepciones personalizadas; solo reconoceremos que un constructor puede <strong>rechazar argumentos inválidos</strong>.</p>
+<p><strong>Producto.java completo — versión B:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Producto {
+    private int codigo;
+    private String nombre;
+    private double precio;
+    private int stock;
+
+    public Producto(int codigo, String nombre,
+                    double precio, int stock) {
+        if (codigo &lt;= 0 || nombre == null ||
+            nombre.trim().isEmpty() || precio &lt; 0 || stock &lt; 0) {
+            throw new IllegalArgumentException(&quot;Datos iniciales inválidos&quot;);
+        }
+
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public boolean cambiarPrecio(double nuevoPrecio) {
+        boolean realizado = false;
+        if (nuevoPrecio &gt;= 0) {
+            precio = nuevoPrecio;
+            realizado = true;
+        }
+        return realizado;
+    }
+
+    public boolean agregarStock(int cantidad) {
+        boolean realizado = false;
+        if (cantidad &gt; 0) {
+            stock += cantidad;
+            realizado = true;
+        }
+        return realizado;
+    }
+
+    public boolean retirarStock(int cantidad) {
+        boolean realizado = false;
+        if (cantidad &gt; 0 &amp;&amp; cantidad &lt;= stock) {
+            stock -= cantidad;
+            realizado = true;
+        }
+        return realizado;
+    }
+
+    public void mostrarInformacion() {
+        System.out.println(&quot;Código: &quot; + codigo);
+        System.out.println(&quot;Nombre: &quot; + nombre);
+        System.out.println(&quot;Precio: &quot; + precio);
+        System.out.println(&quot;Stock: &quot; + stock);
+    }
+}
+</code></pre>
+<p>Esta versión mejora el control de creación <strong>para los valores ordinarios previstos en el ejercicio</strong>. No resuelve aún todos los posibles problemas numéricos: por ejemplo, <code>NaN</code> puede escapar a la comparación <code>precio &lt; 0</code>, y la suma de enteros puede desbordarse. Por eso reservamos el término <strong>robustez completa</strong> para una ampliación; no prometemos una garantía que la implementación no cumple.</p>
+<p><strong>Main.java para una prueba de creación válida:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto lapiz = new Producto(102, &quot;Lápiz&quot;, 35, 40);
+        lapiz.mostrarInformacion();
+    }
+}
+</code></pre>
+<h3 id="seccion-que-sucede-con-datos-invalidos"><span id="apartado-51" class="legacy-anchor" aria-hidden="true"></span>¿Qué sucede con datos inválidos?</h3>
+<p><strong>Error intencional para analizar, no para dejar en la versión final:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Producto invalido = new Producto(103, &quot;Mochila&quot;, -10, 8);
+</code></pre>
+<p>El constructor lanza <code>IllegalArgumentException</code> y <strong>no completa la creación</strong> de un objeto con esos argumentos. En esta unidad no será necesario capturar esa excepción; el objetivo es reconocer que el constructor puede proteger las condiciones de creación.</p>
+<h2 id="seccion-10-3-getters-consultar-no-es-modificar"><span id="apartado-52" class="legacy-anchor" aria-hidden="true"></span>10.3. Getters: consultar no es modificar</h2>
+<p><code>getStock()</code> devuelve la cantidad actual, pero no ofrece acceso para asignar directamente al atributo privado. Un getter tiene sentido cuando otra parte del programa <strong>necesita consultar</strong> ese dato.</p>
+<h2 id="seccion-10-4-setters-no-generarlos-automaticamente"><span id="apartado-53" class="legacy-anchor" aria-hidden="true"></span>10.4. Setters: no generarlos automáticamente</h2>
+<p>¿Debemos ofrecer <code>setCodigo</code>? Si el código identifica al producto y no debe cambiar durante su vida, <strong>no</strong>. ¿Debemos ofrecer un <code>setStock</code> que reemplace cualquier cantidad? Para nuestra tienda resultan más expresivas las operaciones <code>agregarStock</code> y <code>retirarStock</code>, que validan cantidades concretas.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Consulta posible</th>
+<th>Cambio permitido en este modelo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codigo</code></td>
+<td><code>getCodigo()</code></td>
+<td>No se modifica luego de crear</td>
+</tr>
+<tr>
+<td><code>nombre</code></td>
+<td><code>getNombre()</code></td>
+<td>No es requisito de esta versión</td>
+</tr>
+<tr>
+<td><code>precio</code></td>
+<td><code>getPrecio()</code></td>
+<td><code>cambiarPrecio(...)</code> con validación</td>
+</tr>
+<tr>
+<td><code>stock</code></td>
+<td><code>getStock()</code></td>
+<td><code>agregarStock(...)</code> y <code>retirarStock(...)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Un getter o setter no es obligatorio por el solo hecho de existir un atributo.</strong> El acceso debe surgir de las funciones reales del programa.</p>
+<h2 id="seccion-10-5-version-c-robustez-tecnica-lectura-opcional"><span id="apartado-54" class="legacy-anchor" aria-hidden="true"></span>10.5. Versión C: robustez técnica (lectura opcional)</h2>
+<p>En sistemas reales hay detalles adicionales. <code>double</code> puede almacenar <code>NaN</code> o infinito; para dinero real también tiene límites de precisión y normalmente se elegiría una representación decimal apropiada. <code>int</code> puede desbordarse si sumamos cantidades demasiado grandes. Podemos reforzar operaciones así:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (nuevoPrecio &gt;= 0 &amp;&amp; Double.isFinite(nuevoPrecio)) {
+    precio = nuevoPrecio;
+}
+</code></pre>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (cantidad &gt; 0 &amp;&amp; stock &lt;= Integer.MAX_VALUE - cantidad) {
+    stock += cantidad;
+}
+</code></pre>
+<p>Estos son <strong>fragmentos para analizar</strong>, no un nuevo programa completo. Si los utilizamos, también habría que aplicar coherentemente las verificaciones en el constructor y en los demás métodos. No los exigiremos en la versión esencial.</p>
+<p>La unicidad global de códigos tampoco se logra validando un objeto aislado: comprobar que no exista otro producto con el mismo código requiere conocer <strong>el conjunto de productos</strong>, responsabilidad razonable del inventario o gestor.</p>
+<h2 id="seccion-10-6-simulador-operaciones-y-estados-validos"><span id="apartado-55" class="legacy-anchor" aria-hidden="true"></span>10.6. Simulador: operaciones y estados válidos</h2>
+<div id="u07-encapsulamiento" data-recurso="u07-encapsulamiento"><div data-componente-interactivo="u07-encapsulamiento"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Un Producto con stock 15 acepta agregarStock(5) y queda en 20; desde el estado inicial, retirarStock(20) se rechaza y conserva 15. private limita el acceso; las operaciones y el constructor necesitan validar sus reglas.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<h2 id="seccion-10-7-mini-defensa"><span id="apartado-56" class="legacy-anchor" aria-hidden="true"></span>10.7. Mini-defensa</h2>
+<p>¿Por qué <code>private</code> no valida por sí solo un precio? ¿Por qué preferimos <code>retirarStock(3)</code> a permitir <code>producto.stock = 12</code> desde cualquier parte? ¿Qué condición debe comprobarse al construir un objeto y cuál al retirar unidades?</p>
+<hr />
+<h1 id="seccion-11-varios-objetos-arreglos-y-relaciones-sencillas"><span id="apartado-57" class="legacy-anchor" aria-hidden="true"></span>11. Varios objetos, arreglos y relaciones sencillas</h1>
+<p>Ya sabemos que las clases permiten crear muchos objetos. Los arreglos de la Unidad 5 también pueden conservar <strong>referencias a objetos</strong>.</p>
+<h2 id="seccion-11-1-reservar-posiciones-no-crea-los-productos"><span id="apartado-58" class="legacy-anchor" aria-hidden="true"></span>11.1. Reservar posiciones no crea los productos</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Producto[] productos = new Producto[3];
+</code></pre>
+<p>Esta instrucción crea un arreglo con tres posiciones, pero todavía <strong>no crea objetos <code>Producto</code></strong> en ellas. Sus valores iniciales son <code>null</code>.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Momento</th>
+<th><code>productos[0]</code></th>
+<th><code>productos[1]</code></th>
+<th><code>productos[2]</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crear arreglo</td>
+<td><code>null</code></td>
+<td><code>null</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td>Crear producto 101</td>
+<td>Referencia a 101</td>
+<td><code>null</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td>Crear producto 102</td>
+<td>Referencia a 101</td>
+<td>Referencia a 102</td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td>Crear producto 103</td>
+<td>Referencia a 101</td>
+<td>Referencia a 102</td>
+<td>Referencia a 103</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Intentar ejecutar <code>productos[1].mostrarInformacion()</code> cuando todavía es <code>null</code> produce una <code>NullPointerException</code>. No necesitamos estudiar ahora cómo capturarla, pero sí entender <strong>por qué sucede</strong>.</p>
+<h2 id="seccion-11-2-programa-completo-de-recorrido"><span id="apartado-59" class="legacy-anchor" aria-hidden="true"></span>11.2. Programa completo de recorrido</h2>
+<p>Utiliza la clase <code>Producto</code> de la sección 10 (versión A o B) y este <code>Main.java</code>:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto[] productos = new Producto[3];
+
+        productos[0] = new Producto(101, &quot;Cuaderno&quot;, 120, 15);
+        productos[1] = new Producto(102, &quot;Lápiz&quot;, 35, 40);
+        productos[2] = new Producto(103, &quot;Mochila&quot;, 950, 8);
+
+        for (int i = 0; i &lt; productos.length; i++) {
+            productos[i].mostrarInformacion();
+        }
+    }
+}
+</code></pre>
+<p>El ciclo recorre <strong>referencias</strong> y, en cada posición ocupada, invoca el método del objeto correspondiente. Las herramientas anteriores siguen formando parte de la solución.</p>
+<h2 id="seccion-11-3-relaciones-sencillas-sin-sobrecargar-la-unidad"><span id="apartado-60" class="legacy-anchor" aria-hidden="true"></span>11.3. Relaciones sencillas sin sobrecargar la unidad</h2>
+<p>En una biblioteca, un <code>Prestamo</code> puede necesitar conocer qué <code>Libro</code> está asociado con él. Podemos representar conceptualmente:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">LIBRO
+  codigo
+  titulo
+
+PRESTAMO
+  numero
+  libro: referencia a Libro
+</code></pre>
+<p>Una relación entre objetos surge porque <strong>el problema la necesita</strong>. Por ahora basta con identificarla y explicarla; no exigiremos construir un sistema completo de préstamos con varias clases relacionadas.</p>
+<h2 id="seccion-11-4-quien-busca-un-producto-entre-muchos"><span id="apartado-61" class="legacy-anchor" aria-hidden="true"></span>11.4. ¿Quién busca un producto entre muchos?</h2>
+<p>La operación de revisar un conjunto de productos no tiene por qué pertenecer a cada producto individual. Un inventario podría conservar y recorrer varios objetos; en nuestro ejemplo introductorio también podemos hacer una búsqueda sencilla en <code>Main</code>.</p>
+<p>Si el sistema exige <strong>códigos únicos</strong>, la comprobación debe realizarse en el contexto que conoce a todos los productos. Un solo objeto <code>Producto</code> no puede verificar por sí mismo que ninguno de los demás repita su código.</p>
+<p><strong>Checkpoint:</strong> explica por qué <code>new Producto[3]</code> y tres expresiones <code>new Producto(...)</code> realizan tareas distintas.</p>
+<hr />
+<h1 id="seccion-12-mini-sistema-integrador-productos-con-responsabilidades"><span id="apartado-62" class="legacy-anchor" aria-hidden="true"></span>12. Mini-sistema integrador: productos con responsabilidades</h1>
+<p>El proyecto final de esta unidad será pequeño, cerrable y de consola. La novedad que evaluaremos no es la cantidad de opciones del menú, sino <strong>la calidad del modelo y la comprensión de su funcionamiento</strong>.</p>
+<h2 id="seccion-12-1-primero-modelar"><span id="apartado-63" class="legacy-anchor" aria-hidden="true"></span>12.1. Primero modelar</h2>
+<p>Situación: una tienda administra productos. Cada producto tiene código, nombre, precio y stock. Queremos consultarlo, sumar unidades y retirarlas cuando corresponda.</p>
+<p>Antes de escribir Java responde:</p>
+<ul>
+<li><strong>Entidad:</strong> ¿qué representa cada objeto?</li>
+<li><strong>Atributos:</strong> ¿qué información necesita conservar?</li>
+<li><strong>Comportamientos:</strong> ¿qué operaciones afectan su propio estado?</li>
+<li><strong>Reglas:</strong> ¿qué cambios son válidos y cuáles deben rechazarse?</li>
+<li><strong>Otras responsabilidades:</strong> ¿qué tareas corresponden al programa principal y no al producto?</li>
+</ul>
+<h2 id="seccion-12-2-version-a-esencial"><span id="apartado-64" class="legacy-anchor" aria-hidden="true"></span>12.2. Versión A: esencial</h2>
+<p><strong>Producto:</strong> clase <code>Producto</code> con cuatro atributos, un constructor, un método <code>mostrarInformacion</code> y <strong>dos objetos</strong> creados desde <code>Main</code>. Debe poder demostrarse que modificar el stock de un objeto no cambia el otro.</p>
+<p>Esta versión verifica abstracción, clase e instancia, constructor, estado independiente y método de instancia. Es la evidencia mínima de este bloque.</p>
+<h3 id="seccion-pseudocodigo-a"><span id="apartado-65" class="legacy-anchor" aria-hidden="true"></span>Pseudocódigo A</h3>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">CLASE Producto
+    ATRIBUTOS: codigo, nombre, precio, stock
+    CONSTRUCTOR(datos): asignar datos a atributos
+    METODO mostrarInformacion:
+        mostrar los cuatro atributos
+FIN CLASE
+
+INICIO
+    CREAR cuaderno con sus datos
+    CREAR lapiz con sus datos
+    MOSTRAR información de cuaderno
+    MOSTRAR información de lapiz
+FIN
+</code></pre>
+<h3 id="seccion-java-completo-a-producto-java"><span id="apartado-66" class="legacy-anchor" aria-hidden="true"></span>Java completo A — Producto.java</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Producto {
+    int codigo;
+    String nombre;
+    double precio;
+    int stock;
+
+    public Producto(int codigo, String nombre,
+                    double precio, int stock) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    public void mostrarInformacion() {
+        System.out.println(codigo + &quot; - &quot; + nombre);
+        System.out.println(&quot;Precio: &quot; + precio);
+        System.out.println(&quot;Stock: &quot; + stock);
+    }
+}
+</code></pre>
+<h3 id="seccion-java-completo-a-main-java"><span id="apartado-67" class="legacy-anchor" aria-hidden="true"></span>Java completo A — Main.java</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto cuaderno = new Producto(101, &quot;Cuaderno&quot;, 120, 15);
+        Producto lapiz = new Producto(102, &quot;Lápiz&quot;, 35, 40);
+
+        cuaderno.mostrarInformacion();
+        lapiz.mostrarInformacion();
+
+        // En esta versión inicial el acceso es de paquete.
+        cuaderno.stock = 10;
+        System.out.println(&quot;Cuaderno: &quot; + cuaderno.stock);
+        System.out.println(&quot;Lápiz: &quot; + lapiz.stock);
+    }
+}
+</code></pre>
+<p>Las últimas líneas deben mostrar <code>10</code> para el cuaderno y <code>40</code> para el lápiz. Antes de avanzar, cada estudiante explica por qué.</p>
+<h2 id="seccion-12-3-version-b-consolidacion"><span id="apartado-68" class="legacy-anchor" aria-hidden="true"></span>12.3. Versión B: consolidación</h2>
+<p>Sustituye <code>Producto.java</code> por la versión de la sección 9 (o de la sección 10 para agregar validación inicial). Los atributos son privados y los cambios deben realizarse mediante operaciones controladas.</p>
+<p><strong>Main.java completo B:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Producto cuaderno = new Producto(101, &quot;Cuaderno&quot;, 120, 15);
+        Producto lapiz = new Producto(102, &quot;Lápiz&quot;, 35, 40);
+
+        boolean agregado = cuaderno.agregarStock(5);
+        boolean retirado = cuaderno.retirarStock(3);
+        boolean imposible = lapiz.retirarStock(100);
+
+        System.out.println(&quot;Agregado: &quot; + agregado);
+        System.out.println(&quot;Retirado: &quot; + retirado);
+        System.out.println(&quot;Retiro imposible: &quot; + imposible);
+        System.out.println(&quot;Stock cuaderno: &quot; + cuaderno.getStock());
+        System.out.println(&quot;Stock lápiz: &quot; + lapiz.getStock());
+    }
+}
+</code></pre>
+<p><strong>Salida esperada:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Salida esperada"><code class="language-text">Agregado: true
+Retirado: true
+Retiro imposible: false
+Stock cuaderno: 17
+Stock lápiz: 40
+</code></pre>
+<p>La operación rechazada no modifica el stock del lápiz. La independencia de los objetos se mantiene.</p>
+<h2 id="seccion-12-4-version-c-ampliacion"><span id="apartado-69" class="legacy-anchor" aria-hidden="true"></span>12.4. Versión C: ampliación</h2>
+<p>Agregar un arreglo de productos y un pequeño menú de consola con <code>do...while</code> y <code>Scanner</code>. Opciones posibles: mostrar productos, buscar por código, agregar stock, retirar stock y salir.</p>
+<p>Antes de construir el menú, pregunta qué parte conoce el conjunto de productos y qué parte conoce el stock de cada producto. No conviertas la clase <code>Producto</code> en responsable de todo el sistema.</p>
+<p>No se requieren archivos, interfaces gráficas, bases de datos, herencia ni colecciones dinámicas.</p>
+<h2 id="seccion-12-5-casos-de-prueba-de-operaciones-reiniciar-estado-en-cada-caso"><span id="apartado-70" class="legacy-anchor" aria-hidden="true"></span>12.5. Casos de prueba de operaciones (reiniciar estado en cada caso)</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Estado inicial</th>
+<th>Operación</th>
+<th>Resultado</th>
+<th>Estado final</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock 15</td>
+<td>Agregar 5</td>
+<td><code>true</code></td>
+<td>20</td>
+</tr>
+<tr>
+<td>Stock 15</td>
+<td>Retirar 3</td>
+<td><code>true</code></td>
+<td>12</td>
+</tr>
+<tr>
+<td>Stock 15</td>
+<td>Retirar 20</td>
+<td><code>false</code></td>
+<td>15</td>
+</tr>
+<tr>
+<td>Stock 15</td>
+<td>Retirar 0</td>
+<td><code>false</code></td>
+<td>15</td>
+</tr>
+<tr>
+<td>Stock 15</td>
+<td>Retirar -2</td>
+<td><code>false</code></td>
+<td>15</td>
+</tr>
+<tr>
+<td>Precio 120</td>
+<td>Cambiar a 150</td>
+<td><code>true</code></td>
+<td>150</td>
+</tr>
+<tr>
+<td>Precio 120</td>
+<td>Cambiar a -20</td>
+<td><code>false</code></td>
+<td>120</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Los casos son <strong>independientes</strong>. No ejecutes las operaciones una detrás de otra esperando que el estado se reinicie automáticamente.</p>
+<h2 id="seccion-12-6-cambio-de-requisito-y-defensa"><span id="apartado-71" class="legacy-anchor" aria-hidden="true"></span>12.6. Cambio de requisito y defensa</h2>
+<p>El comercio decide que <strong>deben quedar al menos dos unidades</strong> después de cada retiro. ¿Dónde corresponde implementar la nueva regla? ¿Qué condición cambiarías en <code>retirarStock</code>? ¿Qué casos probarías?</p>
+<p>Como la nueva condición debe dejar dos unidades disponibles, en este modelo con stock no negativo necesitamos comprobar que la cantidad sea positiva y no supere <code>stock - 2</code>, pero cuidando que <code>stock</code> sea al menos 2:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">if (cantidad &gt; 0 &amp;&amp; stock &gt;= 2 &amp;&amp; cantidad &lt;= stock - 2) {
+    stock -= cantidad;
+    realizado = true;
+}
+</code></pre>
+<p><strong>Fragmento para analizar:</strong> corresponde al cuerpo de <code>retirarStock</code>; no es un programa autónomo. El estudiante debe explicar por qué la regla se implementa allí y no solamente en un mensaje de <code>Main</code>.</p>
+<hr />
+<h1 id="seccion-13-errores-tipicos-de-sintaxis-de-ejecucion-y-de-diseno"><span id="apartado-72" class="legacy-anchor" aria-hidden="true"></span>13. Errores típicos: de sintaxis, de ejecución y de diseño</h1>
+<p>Debemos aprender a <strong>leer, predecir y corregir</strong> errores, no solamente a copiar soluciones.</p>
+<h2 id="seccion-13-1-confundir-definicion-de-clase-y-objeto-creado"><span id="apartado-73" class="legacy-anchor" aria-hidden="true"></span>13.1. Confundir definición de clase y objeto creado</h2>
+<p>Definir <code>public class Producto { ... }</code> no crea automáticamente tres productos. Para obtener cada instancia utilizamos una construcción adecuada como <code>new Producto(...)</code>.</p>
+<h2 id="seccion-13-2-olvidar-new"><span id="apartado-74" class="legacy-anchor" aria-hidden="true"></span>13.2. Olvidar new</h2>
+<p><strong>Fragmento incorrecto:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java · ejemplo incorrecto" role="region" tabindex="0" aria-label="Java · ejemplo incorrecto: bloque de código desplazable"><code class="language-java">Producto producto;
+producto.mostrarInformacion();
+</code></pre>
+<p>La variable local todavía no recibió una referencia. Java detecta que se intenta utilizar una variable local no inicializada. Antes de invocar un método hay que crear o asignar un objeto válido.</p>
+<h2 id="seccion-13-3-confundir-dos-instancias-con-dos-referencias"><span id="apartado-75" class="legacy-anchor" aria-hidden="true"></span>13.3. Confundir dos instancias con dos referencias</h2>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">Producto b = a;
+</code></pre>
+<p>no crea un segundo producto. Si queremos otro objeto, normalmente utilizamos otra invocación de <code>new</code> con los datos pertinentes.</p>
+<h2 id="seccion-13-4-utilizar-un-constructor-que-no-existe"><span id="apartado-76" class="legacy-anchor" aria-hidden="true"></span>13.4. Utilizar un constructor que no existe</h2>
+<p>Si el único constructor recibe cuatro argumentos, <code>new Producto()</code> deja de ser una forma válida de creación. Debemos proporcionar los cuatro argumentos o declarar otro constructor adecuado.</p>
+<h2 id="seccion-13-5-poner-void-en-el-constructor"><span id="apartado-77" class="legacy-anchor" aria-hidden="true"></span>13.5. Poner void en el constructor</h2>
+<p><strong>Incorrecto:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public void Producto(int codigo) { ... }
+</code></pre>
+<p>Esto declara un método, no un constructor. Un constructor <strong>no</strong> declara tipo de retorno.</p>
+<h2 id="seccion-13-6-confundir-atributos-y-parametros"><span id="apartado-78" class="legacy-anchor" aria-hidden="true"></span>13.6. Confundir atributos y parámetros</h2>
+<p>En <code>this.stock = stock;</code>, a la izquierda tenemos el atributo del objeto y a la derecha el parámetro del constructor. Si escribimos solamente <code>stock = stock;</code> con ambos nombres iguales, no inicializaremos el atributo como pretendemos.</p>
+<h2 id="seccion-13-7-acceder-a-atributos-privados-desde-main"><span id="apartado-79" class="legacy-anchor" aria-hidden="true"></span>13.7. Acceder a atributos privados desde Main</h2>
+<p>Con <code>private int stock</code>, una instrucción externa como <code>producto.stock = -2</code> no compila. Debe utilizarse una operación pública permitida por el diseño.</p>
+<h2 id="seccion-13-8-confundir-privacidad-y-validacion"><span id="apartado-80" class="legacy-anchor" aria-hidden="true"></span>13.8. Confundir privacidad y validación</h2>
+<p>Un constructor que asigna <code>stock = -2</code> puede crear un estado inválido <strong>aunque el atributo sea privado</strong>. Necesitamos verificar las reglas en los puntos de modificación pertinentes, incluida la creación.</p>
+<h2 id="seccion-13-9-setters-que-anulan-las-reglas"><span id="apartado-81" class="legacy-anchor" aria-hidden="true"></span>13.9. Setters que anulan las reglas</h2>
+<p>Un <code>setStock(int valor)</code> que acepta cualquier número puede anular el sentido de <code>agregarStock</code> o <code>retirarStock</code>. Pregunta qué modificaciones necesita realmente el programa.</p>
+<h2 id="seccion-13-10-ignorar-el-resultado-de-una-operacion"><span id="apartado-82" class="legacy-anchor" aria-hidden="true"></span>13.10. Ignorar el resultado de una operación</h2>
+<p>Si <code>retirarStock</code> devuelve <code>false</code>, el retiro fue rechazado y el stock no cambió. Un mensaje de «Operación realizada» sin comprobar ese resultado sería engañoso.</p>
+<h2 id="seccion-13-11-confundir-metodos-static-y-de-instancia"><span id="apartado-83" class="legacy-anchor" aria-hidden="true"></span>13.11. Confundir métodos static y de instancia</h2>
+<p>En nuestros ejemplos, <code>main</code> es estático. <code>mostrarInformacion</code> pertenece a un objeto concreto y se invoca, por ejemplo, mediante <code>cuaderno.mostrarInformacion()</code>.</p>
+<h2 id="seccion-13-12-creer-que-cada-variable-significa-un-objeto-distinto"><span id="apartado-84" class="legacy-anchor" aria-hidden="true"></span>13.12. Creer que cada variable significa un objeto distinto</h2>
+<p>Las referencias pueden apuntar al mismo objeto. Debes seguir las instrucciones <code>new</code> y asignaciones, no contar solamente nombres.</p>
+<h2 id="seccion-13-13-reservar-un-arreglo-y-olvidar-crear-sus-objetos"><span id="apartado-85" class="legacy-anchor" aria-hidden="true"></span>13.13. Reservar un arreglo y olvidar crear sus objetos</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Producto[] productos = new Producto[3];
+</code></pre>
+<p>crea posiciones con <code>null</code>; no crea automáticamente tres productos. Invocar un método a través de una posición aún nula produce un error de ejecución.</p>
+<h2 id="seccion-13-14-crear-una-clase-para-cada-sustantivo"><span id="apartado-86" class="legacy-anchor" aria-hidden="true"></span>13.14. Crear una clase para cada sustantivo</h2>
+<p>En «el estudiante consulta un libro desde una computadora», la computadora podría quedar fuera del sistema y la consulta podría ser una operación. <strong>Modelar exige seleccionar según la finalidad.</strong></p>
+<h2 id="seccion-13-15-entregar-demasiadas-responsabilidades-a-una-clase"><span id="apartado-87" class="legacy-anchor" aria-hidden="true"></span>13.15. Entregar demasiadas responsabilidades a una clase</h2>
+<p>Una clase <code>Libro</code> que calcula salarios, administra usuarios y controla todos los préstamos podría estar mezclando funciones ajenas a su entidad. Debemos justificar quién necesita esos datos y quién debe realizar cada operación.</p>
+<h2 id="seccion-13-16-creer-que-un-objeto-controla-informacion-global-que-no-conoce"><span id="apartado-88" class="legacy-anchor" aria-hidden="true"></span>13.16. Creer que un objeto controla información global que no conoce</h2>
+<p>Un producto no puede garantizar por sí mismo que no exista otro producto con el mismo código si no conoce el conjunto de productos. Esa regla corresponde razonablemente al inventario o gestor.</p>
+<h2 id="seccion-13-17-elegir-atributos-irrelevantes"><span id="apartado-89" class="legacy-anchor" aria-hidden="true"></span>13.17. Elegir atributos irrelevantes</h2>
+<p>Registrar el peso de cada tornillo de una bicicleta en un sistema de alquiler sencillo añade complejidad sin responder a un requisito. Una clase representa una <strong>abstracción orientada a un propósito</strong>, no la realidad completa.</p>
+<h2 id="seccion-13-18-depurar-el-diseno-y-no-solo-el-codigo"><span id="apartado-90" class="legacy-anchor" aria-hidden="true"></span>13.18. Depurar el diseño y no solo el código</h2>
+<p>Si el programa compila pero resulta difícil de modificar, pregunta:</p>
+<ol>
+<li>¿Qué entidades necesita representar realmente?</li>
+<li>¿Qué atributos son relevantes para los requisitos?</li>
+<li>¿A quién corresponde cada operación?</li>
+<li>¿Qué reglas deben proteger el estado?</li>
+<li>¿Dos variables refieren a una misma instancia?</li>
+<li>¿La clase está asumiendo responsabilidades de todo el sistema?</li>
+<li>¿Qué cambio pequeño permitiría mejorar el modelo?</li>
+</ol>
+<p><strong>Actividad breve:</strong> explica por qué la clase <code>Libro</code> con <code>calcularSueldos()</code> y <code>registrarTodosLosUsuarios()</code> puede ser un error de diseño aunque esos métodos compilen.</p>
+<hr />
+<h2 id="seccion-13-19-laboratorio-guiado-de-modelado-sin-clase-predeterminada"><span id="apartado-91" class="legacy-anchor" aria-hidden="true"></span><span id="seccion-13-18-laboratorio-guiado-de-modelado-sin-clase-predeterminada" class="legacy-anchor" aria-hidden="true"></span>13.19. Laboratorio guiado de modelado sin clase predeterminada</h2>
+<p><strong>Situación nueva.</strong> Una institución quiere registrar el préstamo de equipos portátiles. Cada equipo tiene un identificador y puede estar disponible o prestado. Se necesita registrar el préstamo y la devolución. No se pide todavía un sistema de usuarios, multas o archivos.</p>
+<p><strong>Primera etapa — decisión, sin Java.</strong> Propón qué entidad merece una clase y qué atributos necesita. Describe dos comportamientos y dos estados válidos. Explica qué aspectos deliberadamente dejas fuera. No conviertas automáticamente cada sustantivo en clase.</p>
+<p><strong>Pista 1.</strong> Pregunta qué información necesita conservar el programa <em>entre operaciones</em>. <strong>Pista 2.</strong> Un objeto <code>Equipo</code> podría conservar <code>codigo</code> y <code>prestado</code>, y ofrecer <code>prestar()</code> y <code>devolver()</code>; decide si esas operaciones deben informar éxito o fracaso.</p>
+<p><strong>Segunda etapa — modelo contrastable.</strong> Es razonable proponer <code>Equipo(codigo, prestado)</code>; estado inicial disponible; <code>prestar()</code> solo cambia a prestado si estaba disponible; <code>devolver()</code> solo cambia a disponible si estaba prestado. Este es un ejemplo posible, no la única solución válida. Si tu modelo incorpora otras entidades, justifica qué requisito las hace necesarias.</p>
+<p><strong>Tercera etapa — Java.</strong> Crea <code>Equipo.java</code> y <code>Main.java</code>. Construye dos objetos y demuestra que prestar uno no modifica el otro. Introduce una operación inválida y comprueba que el objeto conserva su estado. La evidencia no consiste solamente en compilar: explica qué condición protegió el estado.</p>
+<p><strong>Cambio de requisito, primero en papel:</strong> ahora cada equipo registra el número de veces que fue prestado. ¿Es un atributo o una clase? ¿Qué operación debe actualizarlo y cuándo? Ajusta el modelo antes de modificar código; comprueba que un intento fallido de préstamo no incremente el contador.</p>
+<p><strong>Error de diseño para corregir:</strong> una clase <code>Equipo</code> contiene <code>contrasenaDirector</code>, <code>calcularSalarios()</code> y <code>mostrarMenuGeneral()</code>. Determina qué responsabilidades no corresponden principalmente al equipo y por qué, aunque Java permitiera escribir esos métodos allí.</p>
+<p><strong>Defensa individual (90 segundos):</strong> muestra tu modelo, justifica un atributo descartado, explica el estado independiente de dos objetos y predice el resultado de un préstamo rechazado. Si lo hiciste en pareja, intercambia conductor y navegante cada 10–15 minutos; cada integrante explica una parte y presenta una prueba.</p>
+<h2 id="seccion-13-20-pistas-y-soluciones-en-capas-para-las-actividades-a-w"><span id="apartado-92" class="legacy-anchor" aria-hidden="true"></span><span id="seccion-13-19-pistas-y-soluciones-en-capas-para-las-actividades-a-w" class="legacy-anchor" aria-hidden="true"></span>13.20. Pistas y soluciones en capas para las actividades A–W</h2>
+<p>Cuando una actividad pida «diseña una clase», la página debe ofrecer tres niveles, inicialmente ocultos: <strong>pista de entidad</strong> («¿qué necesita representar el sistema?»), <strong>pista de responsabilidad</strong> («¿qué cambios pertenecen al objeto y cuáles a la aplicación?») y <strong>modelo contrastable</strong> (atributos, operaciones, reglas y una justificación). La solución Java completa se muestra solamente después de realizar un intento. En ejercicios de varios objetos, la solución debe incluir siempre un trazado de estados y al menos una prueba donde una operación sea rechazada.</p>
+<p>No calificaremos mejor una solución solo por tener más clases. Un modelo sencillo que cubre los requisitos y puede explicarse vale más que una estructura compleja copiada sin comprenderla.</p>
+<h1 id="seccion-14-actividades-a-w-aprender-con-productos-pequenos"><span id="apartado-93" class="legacy-anchor" aria-hidden="true"></span>14. Actividades A–W: aprender con productos pequeños</h1>
+<p>Las <strong>23 actividades</strong> se mantienen como banco de prácticas. No son una lista que todos deban completar de corrido. Las organizamos en cuatro mini-ciclos de dos a cuatro clases, cada uno con evidencia cerrable.</p>
+<h2 id="seccion-mini-ciclo-1-observar-seleccionar-y-justificar-a-d"><span id="apartado-94" class="legacy-anchor" aria-hidden="true"></span>Mini-ciclo 1. Observar, seleccionar y justificar (A–D)</h2>
+<h3 id="seccion-actividad-a-encontrar-entidades"><span id="apartado-95" class="legacy-anchor" aria-hidden="true"></span>Actividad A. Encontrar entidades</h3>
+<p>Una biblioteca escolar registra libros, lectores y préstamos. Cada libro tiene código y título; cada lector tiene identificación y nombre; el préstamo relaciona un libro con un lector. Propón entidades relevantes, dos atributos de cada una y una responsabilidad. Justifica si «disponibilidad» necesita ser una clase o podría ser un dato o resultado.</p>
+<h3 id="seccion-actividad-b-dos-modelos-de-la-misma-realidad"><span id="apartado-96" class="legacy-anchor" aria-hidden="true"></span>Actividad B. Dos modelos de la misma realidad</h3>
+<p>Diseña en papel los datos relevantes de una bicicleta para un sistema <strong>de alquiler</strong> y otro <strong>de mantenimiento</strong>. Elige al menos tres atributos por caso y excluye dos datos que no sean relevantes. Explica por qué los modelos difieren. <strong>No se escribe Java</strong>.</p>
+<h3 id="seccion-actividad-c-clase-frente-a-objetos"><span id="apartado-97" class="legacy-anchor" aria-hidden="true"></span>Actividad C. Clase frente a objetos</h3>
+<p>Para la clase <code>Estudiante</code>, consideramos a Ana (101), Luis (102) y Sofía (103). Señala clase, instancias, atributos comunes en estructura y valores particulares. ¿Qué cambia si dos variables guardan referencias al mismo estudiante?</p>
+<h3 id="seccion-actividad-d-distinguir-datos-operaciones-y-otras-responsabilidades"><span id="apartado-98" class="legacy-anchor" aria-hidden="true"></span>Actividad D. Distinguir datos, operaciones y otras responsabilidades</h3>
+<p>En una tienda aparecen <code>codigo</code>, <code>precio</code>, <code>nombre</code>, <code>stock</code>, «agregar unidades», «retirar unidades», «calcular la recaudación total» y «mostrar menú». Clasifica cada elemento como dato o acción y propone a quién corresponde cada operación. No asignes todo automáticamente a <code>Producto</code>.</p>
+<p><strong>Evidencia del mini-ciclo:</strong> una ficha de modelado con entidad, propósito, atributos, comportamientos y una decisión justificada de exclusión.</p>
+<h2 id="seccion-mini-ciclo-2-de-la-clase-al-objeto-e-j"><span id="apartado-99" class="legacy-anchor" aria-hidden="true"></span>Mini-ciclo 2. De la clase al objeto (E–J)</h2>
+<h3 id="seccion-actividad-e-primera-clase"><span id="apartado-100" class="legacy-anchor" aria-hidden="true"></span>Actividad E. Primera clase</h3>
+<p>Construye <code>Libro</code> con código entero, título, autor y cantidad de páginas. En esta primera versión utiliza atributos de acceso de paquete para practicar la estructura. Escribe <code>Libro.java</code>.</p>
+<h3 id="seccion-actividad-f-crear-dos-libros"><span id="apartado-101" class="legacy-anchor" aria-hidden="true"></span>Actividad F. Crear dos libros</h3>
+<p>En <code>Main.java</code>, crea dos objetos diferentes con <code>new</code>. Asigna valores y muestra sus títulos. Comprueba qué sucede si modificas solo uno de ellos.</p>
+<h3 id="seccion-actividad-g-introducir-un-constructor"><span id="apartado-102" class="legacy-anchor" aria-hidden="true"></span>Actividad G. Introducir un constructor</h3>
+<p>Reescribe <code>Libro</code> para que los cuatro datos se reciban al crear el objeto. Antes de programar, explica qué problema resuelve respecto de las asignaciones separadas.</p>
+<h3 id="seccion-actividad-h-agregar-un-comportamiento"><span id="apartado-103" class="legacy-anchor" aria-hidden="true"></span>Actividad H. Agregar un comportamiento</h3>
+<p>Define <code>mostrarInformacion()</code> como método de instancia de <code>Libro</code>. Invócalo sobre ambos objetos. Predice qué datos mostrará cada invocación.</p>
+<h3 id="seccion-actividad-i-predecir-independencia"><span id="apartado-104" class="legacy-anchor" aria-hidden="true"></span>Actividad I. Predecir independencia</h3>
+<p>Un programa crea dos productos con stocks 10 y 20; después modifica solamente el primero. Realiza un trazado con ambos objetos y explica por qué el segundo conserva su valor.</p>
+<h3 id="seccion-actividad-j-detectar-referencias-compartidas"><span id="apartado-105" class="legacy-anchor" aria-hidden="true"></span>Actividad J. Detectar referencias compartidas</h3>
+<p>Analiza con la clase <code>Producto</code> de las secciones 9 o 10:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Producto a = new Producto(101, &quot;Cuaderno&quot;, 120, 15);
+Producto b = a;
+b.agregarStock(5);
+System.out.println(a.getStock());
+</code></pre>
+<p>Predice la salida. ¿Cuántos objetos se crearon? ¿Cambiaría la respuesta si <code>b</code> se hubiera creado con otra expresión <code>new</code>?</p>
+<p><strong>Evidencia del mini-ciclo:</strong> <code>Libro.java</code> y <code>Main.java</code>, con dos objetos y explicación individual de un estado.</p>
+<h2 id="seccion-mini-ciclo-3-proteger-el-estado-y-razonar-operaciones-k-o"><span id="apartado-106" class="legacy-anchor" aria-hidden="true"></span>Mini-ciclo 3. Proteger el estado y razonar operaciones (K–O)</h2>
+<h3 id="seccion-actividad-k-detectar-una-regla-violada"><span id="apartado-107" class="legacy-anchor" aria-hidden="true"></span>Actividad K. Detectar una regla violada</h3>
+<p>En una clase inicial, el código externo ejecuta <code>producto.stock = -50</code>. Explica por qué es inválido según el problema. Distingue el papel del modificador de acceso y el de la validación.</p>
+<h3 id="seccion-actividad-l-agregar-stock"><span id="apartado-108" class="legacy-anchor" aria-hidden="true"></span>Actividad L. Agregar stock</h3>
+<p>Implementa <code>agregarStock(int cantidad)</code> con retorno booleano. Acepta solamente cantidades positivas. Prueba 5, 0 y -3. Registra resultado y estado anterior/posterior.</p>
+<h3 id="seccion-actividad-m-retirar-stock"><span id="apartado-109" class="legacy-anchor" aria-hidden="true"></span>Actividad M. Retirar stock</h3>
+<p>Implementa <code>retirarStock(int cantidad)</code> que rechace cero, negativos y retiros superiores al disponible. Parte de un stock 10 y prueba 3, 10, 11 y -1 <strong>reiniciando el estado para cada caso</strong>.</p>
+<h3 id="seccion-actividad-n-decidir-que-consultar-y-que-modificar"><span id="apartado-110" class="legacy-anchor" aria-hidden="true"></span>Actividad N. Decidir qué consultar y qué modificar</h3>
+<p>Para <code>Producto</code>, elige qué getters necesita un programa que consulta código, precio y stock. Justifica por qué no necesariamente corresponde ofrecer <code>setCodigo</code> ni <code>setStock</code>. Propón una operación con nombre significativo para modificar stock.</p>
+<h3 id="seccion-actividad-o-prediccion-de-operaciones-consecutivas"><span id="apartado-111" class="legacy-anchor" aria-hidden="true"></span>Actividad O. Predicción de operaciones consecutivas</h3>
+<p>Un producto comienza con stock 12. Se ejecutan <code>agregarStock(5)</code>, <code>retirarStock(8)</code> y <code>retirarStock(20)</code>. Completa una tabla con booleano devuelto y stock después de cada paso. Explica por qué el último rechazo no altera el objeto.</p>
+<p><strong>Evidencia del mini-ciclo:</strong> clase con atributos privados y operaciones controladas más tabla de pruebas válidas e inválidas.</p>
+<h2 id="seccion-mini-ciclo-4-transferir-el-modelo-a-un-problema-nuevo-p-w"><span id="apartado-112" class="legacy-anchor" aria-hidden="true"></span>Mini-ciclo 4. Transferir el modelo a un problema nuevo (P–W)</h2>
+<h3 id="seccion-actividad-p-modelar-una-cuenta-sin-java"><span id="apartado-113" class="legacy-anchor" aria-hidden="true"></span>Actividad P. Modelar una cuenta sin Java</h3>
+<p>Una cuenta tiene número, titular y saldo. Puede consultar saldo, depositar importes positivos y retirar si existe saldo suficiente. Identifica entidad, atributos, comportamientos y reglas. ¿Qué datos deben protegerse? ¿Quién verificaría la unicidad de números de cuenta si hubiera muchas?</p>
+<h3 id="seccion-actividad-q-construir-cuenta"><span id="apartado-114" class="legacy-anchor" aria-hidden="true"></span>Actividad Q. Construir Cuenta</h3>
+<p>Implementa <code>Cuenta</code> con atributos privados, constructor, consulta de saldo, depósito y retiro. Rechaza cero, negativos y retiros que excedan el saldo. Prueba las operaciones. Para este ejercicio utiliza importes sencillos con <code>double</code>; no se exige resolver todavía problemas de precisión monetaria.</p>
+<h3 id="seccion-actividad-r-modelo-de-vehiculo"><span id="apartado-115" class="legacy-anchor" aria-hidden="true"></span>Actividad R. Modelo de vehículo</h3>
+<p>Una carrera registra vehículos con identificador, nombre y velocidad actual. Pueden acelerar, frenar y consultar velocidad. Propón reglas para impedir velocidad negativa; implementa una clase simple. No utilices herencia.</p>
+<h3 id="seccion-actividad-s-arreglo-de-productos"><span id="apartado-116" class="legacy-anchor" aria-hidden="true"></span>Actividad S. Arreglo de productos</h3>
+<p>Crea tres objetos <code>Producto</code>, guárdalos en un arreglo y recórrelo. Cambia solamente el stock del segundo. Predice el estado de los tres antes de ejecutar.</p>
+<h3 id="seccion-actividad-t-mini-sistema-de-inventario"><span id="apartado-117" class="legacy-anchor" aria-hidden="true"></span>Actividad T. Mini-sistema de inventario</h3>
+<p>Desarrolla el integrador en una de sus versiones: A (crear y consultar), B (operaciones y validación) o C (arreglo, búsqueda y menú). Entrega modelo, código, pruebas y defensa.</p>
+<h3 id="seccion-actividad-u-un-problema-sin-clases-indicadas"><span id="apartado-118" class="legacy-anchor" aria-hidden="true"></span>Actividad U. Un problema sin clases indicadas</h3>
+<p>Un torneo necesita registrar equipos y jugadores. Cada equipo tiene nombre e identificador; cada jugador tiene nombre y número de camiseta, y pertenece a un equipo. Debe poder consultarse quiénes integran cada equipo. <strong>No escribas Java</strong>. Propón entidades, atributos, comportamientos y relaciones. Señala al menos una decisión discutible y justifica tu elección.</p>
+<h3 id="seccion-actividad-v-transformar-variables-independientes"><span id="apartado-119" class="legacy-anchor" aria-hidden="true"></span>Actividad V. Transformar variables independientes</h3>
+<p>Recibe un programa con <code>codigo1</code>, <code>nombre1</code>, <code>precio1</code>, <code>stock1</code>, <code>codigo2</code>, etc. Construye un modelo <code>Producto</code>, crea dos objetos, traslada un comportamiento pertinente y verifica que las salidas principales se mantienen. Explica qué mejoró y qué sigue siendo discutible.</p>
+<h3 id="seccion-actividad-w-defensa-de-un-diseno"><span id="apartado-120" class="legacy-anchor" aria-hidden="true"></span>Actividad W. Defensa de un diseño</h3>
+<p>Prepara una explicación de 90 segundos de una clase que hayas creado: entidad, finalidad, atributos incluidos y descartados, comportamientos, reglas, estado inicial y prueba. Responde un cambio de requisito propuesto por el docente.</p>
+<p><strong>Evidencia del mini-ciclo:</strong> mini-sistema pequeño y defensa individual obligatoria. Las actividades U y W comprueban que el estudiante sabe <strong>modelar</strong>, no solamente reproducir código.</p>
+<hr />
+<h1 id="seccion-15-evaluacion-de-la-unidad-y-cierre-de-programacion-i"><span id="apartado-121" class="legacy-anchor" aria-hidden="true"></span>15. Evaluación de la unidad y cierre de Programación I</h1>
+<h2 id="seccion-15-1-aprendizajes-esenciales"><span id="apartado-122" class="legacy-anchor" aria-hidden="true"></span>15.1. Aprendizajes esenciales</h2>
+<p>Para considerar alcanzada la base de POO, cada estudiante debería poder:</p>
+<ol>
+<li>Identificar una entidad relevante según el problema y justificar qué información conservar.</li>
+<li>Distinguir clase, objeto, atributo y comportamiento.</li>
+<li>Crear una clase sencilla y dos instancias distintas.</li>
+<li>Explicar cómo se ejecuta un constructor y qué datos recibe.</li>
+<li>Invocar un método de instancia y relacionarlo con el estado correcto.</li>
+<li>Predecir si dos variables apuntan a objetos distintos o al mismo objeto.</li>
+<li>Explicar por qué conviene proteger algunos atributos.</li>
+<li>Implementar al menos una operación que valide antes de modificar el estado.</li>
+<li>Probar una operación aceptada y una rechazada.</li>
+<li>Defender una decisión de abstracción y adaptarse a un cambio pequeño.</li>
+</ol>
+<h2 id="seccion-15-2-consolidacion-y-ampliacion"><span id="apartado-123" class="legacy-anchor" aria-hidden="true"></span>15.2. Consolidación y ampliación</h2>
+<p>Como profundización: constructor que valida datos iniciales, getters seleccionados por propósito, arreglos de objetos, búsqueda por código y relaciones sencillas entre clases. Como ampliación adicional: casos especiales numéricos y excepciones. No son requisitos mínimos: <strong>herencia, polimorfismo, colecciones dinámicas, interfaces gráficas ni archivos</strong>.</p>
+<h2 id="seccion-15-3-rubrica-corta-de-observacion"><span id="apartado-124" class="legacy-anchor" aria-hidden="true"></span>15.3. Rúbrica corta de observación</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Logrado</th>
+<th>En proceso</th>
+<th>Inicial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Abstracción</td>
+<td>Selecciona y justifica entidades y atributos relevantes</td>
+<td>Necesita preguntas para justificar</td>
+<td>Copia clases sin relacionarlas con el problema</td>
+</tr>
+<tr>
+<td>Clase/objeto</td>
+<td>Distingue definición, instancias y estados</td>
+<td>Confunde alguna referencia o estado</td>
+<td>No diferencia clase de objeto</td>
+</tr>
+<tr>
+<td>Construcción Java</td>
+<td>Crea objetos, constructor y método coherentes</td>
+<td>Requiere correcciones guiadas</td>
+<td>No logra una estructura funcional</td>
+</tr>
+<tr>
+<td>Responsabilidades y reglas</td>
+<td>Sitúa una operación razonablemente y valida su cambio</td>
+<td>Reglas o decisiones incompletas</td>
+<td>Permite cambios inválidos sin detectarlos</td>
+</tr>
+<tr>
+<td>Pruebas y defensa</td>
+<td>Predice, prueba y explica decisiones</td>
+<td>Explicación o pruebas parciales</td>
+<td>No justifica ni comprueba el comportamiento</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-15-4-producto-final-pequeno-grupal-y-cerrable"><span id="apartado-125" class="legacy-anchor" aria-hidden="true"></span>15.4. Producto final: pequeño, grupal y cerrable</h2>
+<p>El integrador podrá ser de productos, cuenta, libros o vehículos. Se desarrollará en aproximadamente <strong>dos o tres clases</strong> según el grupo. Cada pareja o equipo entrega <strong>una solución</strong>, con pseudocódigo/modelo, código y pruebas.</p>
+<p>El programa debe tener al menos una clase propia, atributos, constructor, creación de objetos, un método de instancia y una regla de validación. La versión mínima <strong>no</strong> necesita menú ni varias clases. La versión ampliada puede incorporar un arreglo de objetos.</p>
+<h2 id="seccion-15-5-defensa-individual-obligatoria"><span id="apartado-126" class="legacy-anchor" aria-hidden="true"></span>15.5. Defensa individual obligatoria</h2>
+<p>Cada estudiante deberá:</p>
+<ul>
+<li>Explicar qué entidad representó y por qué.</li>
+<li>Justificar dos atributos, uno incluido y uno descartado.</li>
+<li>Explicar un método y su condición de validación.</li>
+<li>Predecir un cambio de estado sobre un objeto concreto.</li>
+<li>Realizar un cambio pequeño en vivo o en papel, como modificar un criterio de retiro.</li>
+</ul>
+<p>Para verificar comprensión y evitar entregas copiadas pueden utilizarse: explicación de 90 segundos, predicción de salida, completar huecos, corregir un bug, cambiar un requisito o trazado de objetos en papel.</p>
+<h2 id="seccion-15-6-tres-preguntas-de-salida"><span id="apartado-127" class="legacy-anchor" aria-hidden="true"></span>15.6. Tres preguntas de salida</h2>
+<p><strong>1. Clase frente a objeto.</strong> En <code>Producto a = new Producto(...); Producto b = new Producto(...);</code>, ¿cuántas instancias se crean? ¿Qué cambia si escribimos <code>Producto c = a</code>?</p>
+<p><strong>2. Regla de estado.</strong> Si un producto tiene stock 8, ¿qué debe suceder al solicitar <code>retirarStock(12)</code>? Explica qué dato debe conservarse.</p>
+<p><strong>3. Abstracción.</strong> Para un sistema de biblioteca escolar que solo busca libros por título, ¿necesitamos representar el salario del bibliotecario en la clase <code>Libro</code>? Justifica según la finalidad.</p>
+<h2 id="seccion-15-7-pair-programming-y-comprobacion-individual"><span id="apartado-128" class="legacy-anchor" aria-hidden="true"></span>15.7. Pair programming y comprobación individual</h2>
+<p>Roles: <strong>Conductor</strong> (teclea) y <strong>Navegante</strong> (predice, lee, comprueba), con intercambio cada 10–15 minutos. Una entrega por pareja, un minuto de explicación por estudiante. Checklist rápido: turnos efectivos, comunicación, pruebas, intercambio de roles. Si se observa asimetría, aplicar un checkpoint individual: predecir estado, completar un método o explicar una decisión de modelado.</p>
+<h2 id="seccion-15-8-autoevaluacion"><span id="apartado-129" class="legacy-anchor" aria-hidden="true"></span>15.8. Autoevaluación</h2>
+<p>Marca <strong>Sí / Todavía necesito ayuda</strong>:</p>
+<ul>
+<li>Puedo explicar la diferencia entre una clase y dos objetos de esa clase.</li>
+<li>Puedo justificar por qué un atributo debe quedar protegido y cómo se modifica válidamente.</li>
+</ul>
+<p><strong>Reflexión breve:</strong> «La decisión de diseño que más tuve que pensar fue… porque…».</p>
+<h2 id="seccion-15-9-cierre-del-recorrido-anual"><span id="apartado-130" class="legacy-anchor" aria-hidden="true"></span>15.9. Cierre del recorrido anual</h2>
+<p>En Programación I aprendimos a analizar problemas, diseñar algoritmos, utilizar variables, condiciones y ciclos, conservar datos en arreglos y organizar procedimientos mediante métodos. Ahora incorporamos la capacidad de <strong>modelar entidades</strong> y asignarles datos y responsabilidades.</p>
+<p>Los objetos no reemplazan las herramientas anteriores: se construyen con ellas. Una buena solución comienza por comprender qué necesita el problema y termina con una prueba que demuestre que el programa hace lo esperado. La defensa individual debe mostrar que el estudiante <strong>entiende y puede modificar</strong> su programa.</p>
+<hr />
+</article><nav class="lesson-bottom" aria-label="Navegación entre unidades"><a rel="prev" href="unidad-06.html">← Unidad 6: Métodos en Java</a><span></span></nav><p class="return-top"><a href="#top">Volver arriba ↑</a></p></main><footer><div class="footer-inner"><img src="assets/logo-PM-opcional.png" alt=""><span><strong>Programación I · 2026</strong><br>Profe Macón · DGETP / UTU</span></div></footer><script defer src="assets/recursos-modelos.js"></script><script defer src="assets/recursos-interactivos.js"></script><script defer src="assets/recursos-3b-modelos.js"></script><script defer src="assets/recursos-3b.js"></script><script defer src="assets/recursos-3c-modelos.js"></script><script defer src="assets/recursos-3c.js"></script></body></html>

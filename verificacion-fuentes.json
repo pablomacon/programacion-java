@@ -1,0 +1,69 @@
+{
+  "unidades": [
+    {
+      "unidad": 1,
+      "sha256": "330926b02a175d3cfd305c87900f4bea71913e0bc79543e5b3b205da96ba1d10",
+      "marcadores": [
+        "u01-bidones-problema",
+        "u01-bidones-simulador",
+        "u01-programa-cpu-ram"
+      ]
+    },
+    {
+      "unidad": 2,
+      "sha256": "34e08b125c5cab2321566993746d31c5fc8d854eb2792bd83f45d28d6344d72e",
+      "marcadores": [
+        "u02-estructura-java",
+        "u02-variables-asignacion"
+      ]
+    },
+    {
+      "unidad": 3,
+      "sha256": "81fd1dc0e3284dc6bce06a10374969e0df8481914686781790e2aeca715fd435",
+      "marcadores": [
+        "u03-if-else",
+        "u03-else-if",
+        "u03-condiciones-compuestas",
+        "u03-switch"
+      ]
+    },
+    {
+      "unidad": 4,
+      "sha256": "99747395c243277bff5b97fffd64cc70d7fcc81dd475b9cf4351058ebcb43769",
+      "marcadores": [
+        "u04-while-trazado",
+        "u04-acumuladores-contadores",
+        "u04-for-esquema",
+        "u04-do-while-esquema"
+      ]
+    },
+    {
+      "unidad": 5,
+      "sha256": "75686428c11a88ca5ba51c899554b2c2367588e6a6884bcea09262827a5ad6a3",
+      "marcadores": [
+        "u05-arreglo-indices",
+        "u05-recorrido-arreglo",
+        "u05-busqueda-lineal",
+        "u05-string-vs-array"
+      ]
+    },
+    {
+      "unidad": 6,
+      "sha256": "17ba7a24a14502bf82c7d25a1d8cae2c0c45cab5e4e550d044d58544bcd369dc",
+      "marcadores": [
+        "u06-flujo-metodos",
+        "u06-parametros-retorno",
+        "u06-alcance-referencias"
+      ]
+    },
+    {
+      "unidad": 7,
+      "sha256": "d5ea8ba6cb0a01f510c7d67e0b62ef72cfa425bd70c4950fe5cddb8d0bc65e6a",
+      "marcadores": [
+        "u07-abstraccion-modelado",
+        "u07-clase-instancias",
+        "u07-encapsulamiento"
+      ]
+    }
+  ]
+}

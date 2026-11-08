@@ -1,0 +1,58 @@
+[
+  {
+    "elemento": "texto principal",
+    "primer_plano": "#202426",
+    "fondo": "#ffffff",
+    "relacion": 15.65,
+    "minimo": 4.5,
+    "cumple": true
+  },
+  {
+    "elemento": "texto secundario",
+    "primer_plano": "#505b5c",
+    "fondo": "#ffffff",
+    "relacion": 7.02,
+    "minimo": 4.5,
+    "cumple": true
+  },
+  {
+    "elemento": "enlaces y botones",
+    "primer_plano": "#006f69",
+    "fondo": "#ffffff",
+    "relacion": 6.04,
+    "minimo": 4.5,
+    "cumple": true
+  },
+  {
+    "elemento": "enlaces sobre recurso",
+    "primer_plano": "#006f69",
+    "fondo": "#f1f7f6",
+    "relacion": 5.57,
+    "minimo": 4.5,
+    "cumple": true
+  },
+  {
+    "elemento": "texto de código",
+    "primer_plano": "#f4f8f7",
+    "fondo": "#182123",
+    "relacion": 15.32,
+    "minimo": 4.5,
+    "cumple": true
+  },
+  {
+    "elemento": "foco sobre blanco",
+    "primer_plano": "#006f69",
+    "fondo": "#ffffff",
+    "relacion": 6.04,
+    "minimo": 3,
+    "cumple": true
+  },
+  {
+    "elemento": "borde de campo",
+    "primer_plano": "#758987",
+    "fondo": "#ffffff",
+    "relacion": 3.69,
+    "minimo": 3,
+    "cumple": true
+  }
+]

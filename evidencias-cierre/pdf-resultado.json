@@ -1,0 +1,47 @@
+[
+  {
+    "unidad": 1,
+    "paginas": 46,
+    "a4": true,
+    "paginas_con_poco_texto": [],
+    "fallback_impreso": 2,
+    "paginas_con_glifos_fuera_de_pagina": [],
+    "nota_interna_visible": false,
+    "u5_respuesta_impresa": null,
+    "paginas_renderizadas": [
+      1,
+      24,
+      46
+    ]
+  },
+  {
+    "unidad": 5,
+    "paginas": 48,
+    "a4": true,
+    "paginas_con_poco_texto": [],
+    "fallback_impreso": 4,
+    "paginas_con_glifos_fuera_de_pagina": [],
+    "nota_interna_visible": false,
+    "u5_respuesta_impresa": true,
+    "paginas_renderizadas": [
+      1,
+      25,
+      48
+    ]
+  },
+  {
+    "unidad": 7,
+    "paginas": 37,
+    "a4": true,
+    "paginas_con_poco_texto": [],
+    "fallback_impreso": 3,
+    "paginas_con_glifos_fuera_de_pagina": [],
+    "nota_interna_visible": false,
+    "u5_respuesta_impresa": null,
+    "paginas_renderizadas": [
+      1,
+      19,
+      37
+    ]
+  }
+]

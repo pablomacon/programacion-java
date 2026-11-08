@@ -1,0 +1,1632 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unidad 4 · Programación I</title><link rel="icon" href="assets/logo-PM-opcional.png"><link rel="stylesheet" href="assets/style.css"></head><body id="top"><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><img src="assets/logo-profe-macon.png" alt="Profe Macón"><span><strong>Programación I</strong><small>1.º BT Informática · DGETP / UTU</small></span></a><nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="index.html#unidades">Unidades</a><span class="current-unit" aria-current="page">Unidad 4</span></nav></div></header><main class="lesson" id="contenido"><a class="back" href="index.html#unidades">← Volver a las unidades</a><p class="eyebrow">Programación I · Unidad 04</p><details class="contents"><summary>Índice de la unidad</summary><nav aria-label="Apartados de la unidad"><ol><li><a href="#seccion-1-un-problema-nuevo-necesitamos-repetir-instrucciones">1. Un problema nuevo: necesitamos repetir instrucciones</a></li><li><a href="#seccion-2-que-es-una-estructura-iterativa">2. ¿Qué es una estructura iterativa?</a></li><li><a href="#seccion-3-el-ciclo-while-repetir-mientras-se-cumpla-una-condicion">3. El ciclo while: repetir mientras se cumpla una condición</a></li><li><a href="#seccion-4-disenar-un-ciclo-inicio-condicion-y-actualizacion">4. Diseñar un ciclo: inicio, condición y actualización</a></li><li><a href="#seccion-5-contadores-controlar-el-recorrido-y-contar-eventos">5. Contadores: controlar el recorrido y contar eventos</a></li><li><a href="#seccion-6-acumuladores-conservar-un-resultado-parcial">6. Acumuladores: conservar un resultado parcial</a></li><li><a href="#seccion-7-el-ciclo-for-organizar-juntos-los-elementos-de-control">7. El ciclo for: organizar juntos los elementos de control</a></li><li><a href="#seccion-8-cuando-no-sabemos-cuantas-repeticiones-habra">8. Cuando no sabemos cuántas repeticiones habrá</a></li><li><a href="#seccion-9-do-while-ejecutar-primero-y-comprobar-despues">9. do...while: ejecutar primero y comprobar después</a></li><li><a href="#seccion-10-elegir-entre-while-for-y-do-while">10. Elegir entre while, for y do...while</a></li><li><a href="#seccion-11-errores-frecuentes-y-depuracion-de-ciclos">11. Errores frecuentes y depuración de ciclos</a></li><li><a href="#seccion-12-problema-integrador-registro-de-calificaciones">12. Problema integrador: registro de calificaciones</a></li><li><a href="#seccion-13-preparacion-para-la-evaluacion-leer-predecir-corregir-y-construir">13. Preparación para la evaluación: leer, predecir, corregir y construir</a></li><li><a href="#seccion-lo-que-debemos-recordar">Lo que debemos recordar</a></li></ol></nav></details><article class="prose"><h1 id="seccion-unidad-4-estructuras-iterativas-repetir-instrucciones-de-manera-controlada"><span id="apartado-1" class="legacy-anchor" aria-hidden="true"></span>Unidad 4. Estructuras iterativas: repetir instrucciones de manera controlada</h1>
+<p><strong>Programación I — 2026</strong><br />
+<strong>1.º Bachillerato Tecnológico en Informática · DGETP / UTU</strong></p>
+<h2 id="seccion-que-aprenderemos-en-esta-unidad"><span id="apartado-2" class="legacy-anchor" aria-hidden="true"></span>¿Qué aprenderemos en esta unidad?</h2>
+<p>En las unidades anteriores aprendimos a analizar problemas, expresar algoritmos mediante pseudocódigo y escribir programas Java. Ya podemos recibir datos con <code>Scanner</code>, guardar valores en variables, realizar cálculos y utilizar <code>if</code>, <code>else</code> y <code>switch</code> para tomar decisiones. Pero todavía tenemos una dificultad: cuando necesitamos realizar la misma tarea muchas veces, terminamos copiando instrucciones.</p>
+<p>Imaginemos que tenemos que procesar las notas de treinta estudiantes. Sabemos leer una nota y decidir si es aprobatoria. ¿Debemos copiar treinta veces la lectura, la condición y el mensaje? ¿Y si mañana son cincuenta estudiantes? ¿Qué sucede si todavía no sabemos cuántos datos ingresarán?</p>
+<p>En esta unidad aprenderemos a construir <strong>estructuras iterativas</strong>: mecanismos que permiten repetir instrucciones de manera controlada. Estudiaremos <code>while</code>, <code>for</code> y <code>do...while</code>, contadores, acumuladores, valores centinela, banderas booleanas, menús repetitivos, trazados, límites y errores de finalización.</p>
+<p>La meta no es memorizar tres formas de escribir ciclos. <strong>Queremos poder determinar qué se repite, qué cambia en cada iteración y cómo sabemos que el programa debe terminar.</strong></p>
+<p>Nuestro recorrido será: <strong>comprender el problema → predecir → pseudocódigo → Java → trazado → pruebas → explicación</strong>.</p>
+<p><strong>Cómo utilizar este capítulo de forma autónoma.</strong> Cuando encuentres una pregunta de predicción, escribe o piensa tu respuesta <em>antes</em> de revelar la explicación. Si te bloqueas, identifica primero qué datos tienes y qué resultado necesitas; consulta una pista y vuelve a intentarlo. Si ya entendiste el ejemplo, compruébalo con otros datos y explica qué cambiaría. En los ejercicios con soluciones, la página debe mostrar las pistas antes de la resolución completa. Si estudias el Markdown directamente, oculta el párrafo de solución mientras realizas la predicción.</p>
+<hr />
+<h1 id="seccion-1-un-problema-nuevo-necesitamos-repetir-instrucciones"><span id="apartado-3" class="legacy-anchor" aria-hidden="true"></span>1. Un problema nuevo: necesitamos repetir instrucciones</h1>
+<h2 id="seccion-1-1-ya-sabemos-procesar-una-nota"><span id="apartado-4" class="legacy-anchor" aria-hidden="true"></span>1.1. Ya sabemos procesar una nota</h2>
+<p>En la Unidad 3 construimos decisiones como esta:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int nota = 8;
+
+if (nota &gt;= 6) {
+    System.out.println(&quot;Aprobado&quot;);
+} else {
+    System.out.println(&quot;No aprobado&quot;);
+}
+</code></pre>
+<p>La regla de este ejercicio es sencilla: las notas desde 6 se consideran aprobatorias. Con <code>nota = 8</code>, el programa muestra <code>Aprobado</code>.</p>
+<p>Ahora nos solicitan clasificar las notas de cinco estudiantes. Podríamos escribir <code>nota1</code>, <code>nota2</code>, <code>nota3</code>, <code>nota4</code> y <code>nota5</code>, con cinco condiciones semejantes. La solución sería extensa y, sobre todo, poco flexible. Si cambiáramos el requisito, tendríamos que revisar cada copia.</p>
+<h2 id="seccion-1-2-que-permanece-igual-y-que-cambia"><span id="apartado-5" class="legacy-anchor" aria-hidden="true"></span>1.2. ¿Qué permanece igual y qué cambia?</h2>
+<p>En cada estudiante realizamos exactamente estas operaciones:</p>
+<ol>
+<li>Solicitar una calificación.</li>
+<li>Comprobar si alcanza el valor 6.</li>
+<li>Mostrar el mensaje correspondiente.</li>
+</ol>
+<p>El procedimiento <strong>permanece igual</strong>. Lo que cambia es el valor de la nota y el número de estudiantes que ya procesamos.</p>
+<p>Esta observación permite descubrir una solución: escribir una vez el procedimiento y pedirle al programa que lo ejecute repetidamente.</p>
+<h2 id="seccion-1-3-no-alcanza-con-decir-repetir"><span id="apartado-6" class="legacy-anchor" aria-hidden="true"></span>1.3. No alcanza con decir «repetir»</h2>
+<p>Un algoritmo debe ser preciso. Si escribimos «repetir la lectura», quedan preguntas sin resolver: ¿cuántas veces?, ¿quién cuenta las notas?, ¿cómo avanzamos?, ¿en qué momento terminamos? Si no respondemos estas preguntas, la computadora no puede deducir nuestras intenciones.</p>
+<p>Cuando construyamos un ciclo tendremos que establecer <strong>qué instrucciones forman el cuerpo</strong> y <strong>qué condición controla su continuación</strong>. En los ejemplos con contadores también tendremos que definir el valor inicial y la actualización.</p>
+<h2 id="seccion-1-4-antes-de-usar-java"><span id="apartado-7" class="legacy-anchor" aria-hidden="true"></span>1.4. Antes de usar Java</h2>
+<p>Imagina que debes entregar cinco boletos numerados, del 1 al 5. Describe en palabras un procedimiento que no repita cinco veces una instrucción completa. Una posible idea es: «Comenzar por el boleto 1; mientras el número no supere 5, entregar ese boleto y pasar al número siguiente».</p>
+<p>Esa descripción ya contiene la estructura de un ciclo, aunque todavía no tiene sintaxis Java.</p>
+<hr />
+<h1 id="seccion-2-que-es-una-estructura-iterativa"><span id="apartado-8" class="legacy-anchor" aria-hidden="true"></span>2. ¿Qué es una estructura iterativa?</h1>
+<p>Una <strong>estructura iterativa</strong>, también llamada <em>ciclo</em> o <em>bucle</em>, permite ejecutar varias veces un bloque de instrucciones. Cada ejecución del cuerpo se denomina <strong>iteración</strong>.</p>
+<h2 id="seccion-2-1-repeticion-manual-y-repeticion-controlada"><span id="apartado-9" class="legacy-anchor" aria-hidden="true"></span>2.1. Repetición manual y repetición controlada</h2>
+<p>Podemos mostrar tres veces un texto escribiendo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola&quot;);
+System.out.println(&quot;Hola&quot;);
+System.out.println(&quot;Hola&quot;);
+</code></pre>
+<p>En cambio:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int contador = 1;
+
+while (contador &lt;= 3) {
+    System.out.println(&quot;Hola&quot;);
+    contador++;
+}
+</code></pre>
+<p>El segundo fragmento contiene un solo <code>println</code>, pero esa misma instrucción se ejecuta tres veces. No escribimos tres copias: controlamos tres ejecuciones.</p>
+<h2 id="seccion-2-2-cuatro-elementos-para-analizar"><span id="apartado-10" class="legacy-anchor" aria-hidden="true"></span>2.2. Cuatro elementos para analizar</h2>
+<p>En los ciclos sencillos con contador reconocemos:</p>
+<ul>
+<li><strong>Inicialización:</strong> el estado inicial, por ejemplo <code>contador = 1</code>.</li>
+<li><strong>Condición:</strong> la pregunta que permite continuar, por ejemplo <code>contador &lt;= 3</code>.</li>
+<li><strong>Cuerpo:</strong> las instrucciones que repetimos.</li>
+<li><strong>Actualización:</strong> lo que cambia para avanzar, por ejemplo <code>contador++</code>.</li>
+</ul>
+<p>La condición produce un valor booleano. Si es verdadera, el ciclo <code>while</code> realiza otra iteración. Si es falsa, continúa después del ciclo.</p>
+<p>Aunque estos cuatro elementos resultan muy útiles para estudiar recorridos con contador, no todos los ciclos funcionan mediante un contador. En otros ejemplos, la condición dependerá de un dato recibido del usuario o de una variable booleana.</p>
+<h2 id="seccion-2-3-que-cambia-entre-iteraciones"><span id="apartado-11" class="legacy-anchor" aria-hidden="true"></span>2.3. ¿Qué cambia entre iteraciones?</h2>
+<p>El programa no vuelve automáticamente al mismo estado inicial cada vez que ejecuta un bloque. Las variables conservan los valores que les dejan las asignaciones, siempre que sean las mismas variables y no se vuelvan a inicializar dentro del ciclo.</p>
+<p>Si <code>contador</code> comienza en 1 y luego ejecutamos <code>contador++</code>, en la siguiente comprobación valdrá 2. Esta relación entre <strong>estado actual → operación → nuevo estado</strong> es esencial para comprender los ciclos.</p>
+<h2 id="seccion-2-4-la-condicion-no-es-una-decoracion"><span id="apartado-12" class="legacy-anchor" aria-hidden="true"></span>2.4. La condición no es una decoración</h2>
+<p>En la Unidad 3 aprendimos que las condiciones seleccionan instrucciones. En esta unidad también determinan si un conjunto de instrucciones debe volver a ejecutarse. Por eso, un ciclo depende de los conceptos anteriores: variables, asignaciones y condiciones trabajan juntos.</p>
+<hr />
+<h1 id="seccion-3-el-ciclo-while-repetir-mientras-se-cumpla-una-condicion"><span id="apartado-13" class="legacy-anchor" aria-hidden="true"></span>3. El ciclo while: repetir mientras se cumpla una condición</h1>
+<p>La palabra inglesa <em>while</em> significa «mientras». En Java escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">while (condicion) {
+    // Instrucciones que se repiten
+}
+</code></pre>
+<p>Primero Java evalúa la condición. Si es verdadera, ejecuta el cuerpo y regresa a comprobarla. Si es falsa, salta el cuerpo y continúa con las instrucciones que siguen.</p>
+<h2 id="seccion-3-1-mostrar-los-numeros-del-1-al-3"><span id="apartado-14" class="legacy-anchor" aria-hidden="true"></span>3.1. Mostrar los números del 1 al 3</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 1;
+
+while (numero &lt;= 3) {
+    System.out.println(numero);
+    numero++;
+}
+</code></pre>
+<p><strong>Antes de continuar, predice:</strong> ¿qué números se mostrarán?, ¿qué valor tendrá <code>numero</code> al terminar?, ¿cuántas veces se comprobará la condición?</p>
+<details class="respuesta"><summary>Ver explicación</summary><p>La salida es:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">1
+2
+3
+</code></pre>
+<p>La inicialización establece <code>numero = 1</code>. La condición pregunta si <code>numero &lt;= 3</code>. El cuerpo muestra el valor e incrementa la variable. La actualización prepara la próxima comprobación.</p>
+</details><div class="respuesta-impresa" aria-hidden="true"><p>La salida es:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">1
+2
+3
+</code></pre>
+<p>La inicialización establece <code>numero = 1</code>. La condición pregunta si <code>numero &lt;= 3</code>. El cuerpo muestra el valor e incrementa la variable. La actualización prepara la próxima comprobación.</p>
+</div>
+<h2 id="seccion-3-2-trazado-completo"><span id="apartado-15" class="legacy-anchor" aria-hidden="true"></span>3.2. Trazado completo</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Evaluación</th>
+<th style="text-align:right"><code>numero</code> antes</th>
+<th><code>numero &lt;= 3</code></th>
+<th>¿Ejecuta el cuerpo?</th>
+<th style="text-align:right"><code>numero</code> después</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td>Verdadero</td>
+<td>Sí: muestra 1</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+<td>Verdadero</td>
+<td>Sí: muestra 2</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">3</td>
+<td>Verdadero</td>
+<td>Sí: muestra 3</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">4</td>
+<td>Falso</td>
+<td>No</td>
+<td style="text-align:right">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El cuerpo se ejecuta <strong>tres veces</strong>. La condición se comprueba <strong>cuatro veces</strong>. La última comprobación es falsa y permite salir.</p>
+<p>Una pregunta importante: <strong>¿el ciclo terminó cuando incrementamos <code>numero</code> a 4, o cuando Java comprobó que <code>4 &lt;= 3</code> era falso?</strong> La actualización dejó preparado el nuevo estado; la decisión de salir ocurrió al evaluar la condición y obtener falso.</p>
+<h2 id="seccion-3-3-que-significa-una-iteracion"><span id="apartado-16" class="legacy-anchor" aria-hidden="true"></span>3.3. Qué significa una iteración</h2>
+<p>Una iteración es la ejecución del cuerpo. La comprobación final falsa no es otra iteración: no entra al cuerpo. Conviene distinguir tres magnitudes: condiciones verdaderas, condiciones falsas e iteraciones. En este ejemplo tenemos tres condiciones verdaderas, una falsa y tres iteraciones.</p>
+<h2 id="seccion-3-4-simulador-del-recorrido"><span id="apartado-17" class="legacy-anchor" aria-hidden="true"></span>3.4. Simulador del recorrido</h2>
+<div id="u04-while-trazado" data-recurso="u04-while-trazado"><div data-componente-interactivo="u04-while-trazado"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Con numero = 1, while (numero &lt;= 3) muestra 1, 2 y 3. Al llegar a 4 se comprueba una cuarta vez la condición, que es falsa: tres iteraciones y cuatro evaluaciones.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Utiliza el simulador en modo manual. Antes de cada paso, responde: ¿cuál es el valor actual?, ¿qué se ejecutará ahora?, ¿habrá una nueva iteración? Después contrasta tu predicción.</p>
+<h2 id="seccion-3-5-un-while-puede-no-ejecutarse-nunca"><span id="apartado-18" class="legacy-anchor" aria-hidden="true"></span>3.5. Un while puede no ejecutarse nunca</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 5;
+
+while (numero &lt;= 3) {
+    System.out.println(numero);
+    numero++;
+}
+</code></pre>
+<p>La primera condición (<code>5 &lt;= 3</code>) es falsa. El cuerpo se ejecuta <strong>cero veces</strong>. El hecho de que las instrucciones estén escritas entre llaves no obliga a que se ejecuten.</p>
+<h2 id="seccion-3-6-el-programa-continua-despues-del-ciclo"><span id="apartado-19" class="legacy-anchor" aria-hidden="true"></span>3.6. El programa continúa después del ciclo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 1;
+
+while (numero &lt;= 3) {
+    System.out.println(numero);
+    numero++;
+}
+
+System.out.println(&quot;Terminado&quot;);
+</code></pre>
+<p>La salida es:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">1
+2
+3
+Terminado
+</code></pre>
+<p>«Terminado» aparece una sola vez porque está <strong>fuera</strong> del bloque <code>while</code>.</p>
+<h2 id="seccion-3-7-programa-completo-para-probar"><span id="apartado-20" class="legacy-anchor" aria-hidden="true"></span>3.7. Programa completo para probar</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        int numero = 1;
+
+        while (numero &lt;= 3) {
+            System.out.println(numero);
+            numero++;
+        }
+
+        System.out.println(&quot;Terminado&quot;);
+    }
+}
+</code></pre>
+<p>Antes de ejecutar, cambia mentalmente el valor inicial a 2 y a 4. Predice las salidas; después compruébalas en VS Code.</p>
+<hr />
+<h1 id="seccion-4-disenar-un-ciclo-inicio-condicion-y-actualizacion"><span id="apartado-21" class="legacy-anchor" aria-hidden="true"></span>4. Diseñar un ciclo: inicio, condición y actualización</h1>
+<p>Leer un ciclo ya escrito es importante, pero el objetivo es poder <strong>construirlo desde un problema nuevo</strong>. Para hacerlo, conviene determinar primero el recorrido esperado.</p>
+<h2 id="seccion-4-1-un-metodo-de-construccion-en-cinco-preguntas"><span id="apartado-22" class="legacy-anchor" aria-hidden="true"></span>4.1. Un método de construcción en cinco preguntas</h2>
+<p>Problema: mostrar los números pares desde 2 hasta 20 inclusive.</p>
+<p><strong>Primera pregunta: ¿qué valores queremos recorrer?</strong><br />
+<code>2, 4, 6, 8, 10, 12, 14, 16, 18, 20</code>.</p>
+<p><strong>Segunda: ¿desde dónde comenzamos?</strong><br />
+<code>numero = 2</code>.</p>
+<p><strong>Tercera: ¿hasta dónde continuamos?</strong><br />
+<code>numero &lt;= 20</code>.</p>
+<p><strong>Cuarta: ¿cómo avanzamos?</strong><br />
+<code>numero = numero + 2</code>.</p>
+<p><strong>Quinta: ¿qué hacemos con cada valor?</strong><br />
+Mostrar <code>numero</code>.</p>
+<p>El pseudocódigo queda así:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    numero ← 2
+    MIENTRAS numero &lt;= 20 HACER
+        MOSTRAR numero
+        numero ← numero + 2
+    FIN MIENTRAS
+FIN
+</code></pre>
+<p>Y su traducción:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 2;
+
+while (numero &lt;= 20) {
+    System.out.println(numero);
+    numero += 2;
+}
+</code></pre>
+<h2 id="seccion-4-2-cambiar-el-inicio"><span id="apartado-23" class="legacy-anchor" aria-hidden="true"></span>4.2. Cambiar el inicio</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 4;
+
+while (numero &lt;= 8) {
+    System.out.println(numero);
+    numero += 2;
+}
+</code></pre>
+<p>Ahora la salida es <code>4</code>, <code>6</code>, <code>8</code>. Hemos cambiado el recorrido sin cambiar su mecanismo.</p>
+<h2 id="seccion-4-3-cambiar-el-limite"><span id="apartado-24" class="legacy-anchor" aria-hidden="true"></span>4.3. Cambiar el límite</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 1;
+
+while (numero &lt; 3) {
+    System.out.println(numero);
+    numero++;
+}
+</code></pre>
+<p>Muestra 1 y 2. No muestra 3 porque <code>3 &lt; 3</code> es falso. Comprueba siempre si el límite está incluido en el enunciado: «hasta 3 inclusive» no significa lo mismo que «menor que 3».</p>
+<h2 id="seccion-4-4-cambiar-el-paso"><span id="apartado-25" class="legacy-anchor" aria-hidden="true"></span>4.4. Cambiar el paso</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 1;
+
+while (numero &lt;= 5) {
+    System.out.println(numero);
+    numero += 2;
+}
+</code></pre>
+<p>Muestra 1, 3 y 5. La actualización puede ser de una unidad, de dos, de cinco o incluso disminuir el contador, siempre que corresponda al recorrido previsto.</p>
+<h2 id="seccion-4-5-contar-hacia-atras"><span id="apartado-26" class="legacy-anchor" aria-hidden="true"></span>4.5. Contar hacia atrás</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 5;
+
+while (numero &gt;= 1) {
+    System.out.println(numero);
+    numero--;
+}
+</code></pre>
+<p>Muestra 5, 4, 3, 2 y 1. Como el recorrido desciende, el incremento sería una actualización equivocada.</p>
+<h2 id="seccion-4-6-detectar-una-repeticion-que-no-termina"><span id="apartado-27" class="legacy-anchor" aria-hidden="true"></span>4.6. Detectar una repetición que no termina</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 1;
+
+while (numero &lt;= 3) {
+    System.out.println(numero);
+}
+</code></pre>
+<p>No se modifica <code>numero</code>. La condición siempre se vuelve a evaluar con el mismo valor 1, de modo que el programa repite indefinidamente la impresión, salvo que se interrumpa externamente. Si ejecutas por error un programa así, utiliza el control de detener ejecución de VS Code o de la terminal.</p>
+<h2 id="seccion-4-7-una-actualizacion-que-se-aleja-del-objetivo"><span id="apartado-28" class="legacy-anchor" aria-hidden="true"></span>4.7. Una actualización que se aleja del objetivo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 5;
+
+while (numero &gt;= 1) {
+    System.out.println(numero);
+    numero++;
+}
+</code></pre>
+<p>La variable aumenta cuando el objetivo era acercarse a valores inferiores a 1. Por tanto, <strong>no finaliza como estaba previsto</strong> y puede realizar una cantidad enorme de iteraciones. Como <code>int</code> tiene un rango limitado, un incremento sostenido puede producir desbordamiento; no corresponde afirmar que este ciclo necesariamente permanecerá para siempre en valores positivos. Lo importante es que su actualización es incoherente con la condición para el recorrido esperado.</p>
+<h2 id="seccion-4-8-como-demostrar-que-un-ciclo-termina"><span id="apartado-29" class="legacy-anchor" aria-hidden="true"></span>4.8. Cómo demostrar que un ciclo termina</h2>
+<p>Para un contador que avanza hacia un límite, podemos explicar:</p>
+<ul>
+<li>Parte de un valor conocido.</li>
+<li>En cada iteración cambia en una dirección determinada.</li>
+<li>Ese cambio acerca el estado a una condición falsa.</li>
+<li>Al comprobar esa condición falsa, Java sale del ciclo.</li>
+</ul>
+<p>No basta con escribir «termina porque tiene <code>++</code>». Si el contador avanza en la dirección incorrecta, el incremento puede alejarlo del objetivo.</p>
+<p><strong>Actividad inmediata:</strong> diseña primero en papel un ciclo que muestre <code>10, 8, 6, 4, 2</code>. No copies un ejemplo: determina inicio, condición, actualización y cuerpo. Después tradúcelo a Java y prueba el valor final.</p>
+<hr />
+<h1 id="seccion-5-contadores-controlar-el-recorrido-y-contar-eventos"><span id="apartado-30" class="legacy-anchor" aria-hidden="true"></span>5. Contadores: controlar el recorrido y contar eventos</h1>
+<p>Ya utilizamos un contador para determinar cuántas iteraciones debe realizar el ciclo. Pero ahora necesitamos registrar <strong>cuántas veces se cumple un requisito</strong>.</p>
+<p>Supongamos que leemos cinco calificaciones y queremos contar cuántas son aprobatorias (<code>nota &gt;= 6</code>).</p>
+<h2 id="seccion-5-1-dos-responsabilidades-diferentes"><span id="apartado-31" class="legacy-anchor" aria-hidden="true"></span>5.1. Dos responsabilidades diferentes</h2>
+<p>Podemos declarar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int contador = 1;  // Controla qué nota vamos a leer.
+int aprobados = 0; // Cuenta notas que cumplen el requisito.
+</code></pre>
+<p>Aunque ambas variables sean <code>int</code> y puedan incrementarse con <code>++</code>, no significan lo mismo.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Responsabilidad</th>
+<th>Cuándo se modifica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contador</code></td>
+<td>Controlar qué nota corresponde leer</td>
+<td>En cada iteración</td>
+</tr>
+<tr>
+<td><code>aprobados</code></td>
+<td>Registrar notas aprobatorias</td>
+<td>Solo si <code>nota &gt;= 6</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-5-2-un-contador-de-eventos-comienza-en-cero"><span id="apartado-32" class="legacy-anchor" aria-hidden="true"></span>5.2. Un contador de eventos comienza en cero</h2>
+<p>Antes de leer ninguna nota, tenemos cero aprobados. Por eso escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int aprobados = 0;
+</code></pre>
+<p>Después:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">if (nota &gt;= 6) {
+    aprobados++;
+}
+</code></pre>
+<p>Si la nota es 5, no incrementamos. Si es 7, sí.</p>
+<h2 id="seccion-5-3-pseudocodigo-para-cinco-notas"><span id="apartado-33" class="legacy-anchor" aria-hidden="true"></span>5.3. Pseudocódigo para cinco notas</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    contador ← 1
+    aprobados ← 0
+
+    MIENTRAS contador &lt;= 5 HACER
+        LEER nota
+
+        SI nota &gt;= 6 ENTONCES
+            aprobados ← aprobados + 1
+        FIN SI
+
+        contador ← contador + 1
+    FIN MIENTRAS
+
+    MOSTRAR aprobados
+FIN
+</code></pre>
+<h2 id="seccion-5-4-programa-completo-en-java"><span id="apartado-34" class="legacy-anchor" aria-hidden="true"></span>5.4. Programa completo en Java</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int contador = 1;
+        int aprobados = 0;
+
+        while (contador &lt;= 5) {
+            System.out.print(&quot;Ingrese la nota &quot; + contador + &quot;: &quot;);
+            int nota = teclado.nextInt();
+
+            if (nota &gt;= 6) {
+                aprobados++;
+            }
+
+            contador++;
+        }
+
+        System.out.println(&quot;Aprobados: &quot; + aprobados);
+        teclado.close();
+    }
+}
+</code></pre>
+<h2 id="seccion-5-5-trazado-del-conteo"><span id="apartado-35" class="legacy-anchor" aria-hidden="true"></span>5.5. Trazado del conteo</h2>
+<p>Con las notas <code>7, 5, 8, 6, 9</code>:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Iteración</th>
+<th style="text-align:right">Nota</th>
+<th style="text-align:right"><code>contador</code> al entrar</th>
+<th>¿Aprueba?</th>
+<th style="text-align:right"><code>aprobados</code> después</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">1</td>
+<td>Sí</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">2</td>
+<td>No</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">3</td>
+<td>Sí</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">4</td>
+<td>Sí</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">5</td>
+<td>Sí</td>
+<td style="text-align:right">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El ciclo procesa cinco notas, pero <code>aprobados</code> aumenta cuatro veces. Al salir, el contador de control vale 6.</p>
+<p>A veces resulta útil mostrar otro contador conceptual: «notas ya procesadas», que comienza en cero. No debe confundirse con el ejemplo Java, cuyo <code>contador</code> comienza en 1 e identifica la próxima nota. Ambos modelos son válidos, siempre que se explique qué representa cada variable.</p>
+<h2 id="seccion-5-6-dos-categorias-en-una-misma-lectura"><span id="apartado-36" class="legacy-anchor" aria-hidden="true"></span>5.6. Dos categorías en una misma lectura</h2>
+<p>Podemos contar también los no aprobados:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">if (nota &gt;= 6) {
+    aprobados++;
+} else {
+    noAprobados++;
+}
+</code></pre>
+<p>Si antes del ciclo inicializamos ambos contadores en cero, al terminar cinco notas tendremos <code>aprobados + noAprobados == 5</code>. Esta relación sirve para verificar el resultado.</p>
+<h2 id="seccion-5-7-un-error-frecuente"><span id="apartado-37" class="legacy-anchor" aria-hidden="true"></span>5.7. Un error frecuente</h2>
+<p>Si escribimos <code>aprobados++</code> fuera del <code>if</code>, estaremos contando todas las notas. La posición de una instrucción determina <strong>cuándo</strong> se ejecuta. No alcanza con utilizar un nombre de variable adecuado.</p>
+<hr />
+<h1 id="seccion-6-acumuladores-conservar-un-resultado-parcial"><span id="apartado-38" class="legacy-anchor" aria-hidden="true"></span>6. Acumuladores: conservar un resultado parcial</h1>
+<p>El contador registra cuántos datos cumplen un criterio. Pero ahora queremos calcular la <strong>suma de todas las notas</strong> para obtener después un promedio.</p>
+<p>Con <code>7, 5, 8, 6, 9</code>, la suma debe ser 35.</p>
+<h2 id="seccion-6-1-el-problema-de-reemplazar-valores"><span id="apartado-39" class="legacy-anchor" aria-hidden="true"></span>6.1. El problema de reemplazar valores</h2>
+<p>Observa este fragmento:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int suma = 0;
+
+suma = 7;
+suma = 5;
+suma = 8;
+</code></pre>
+<p><strong>Predice el valor final antes de continuar.</strong> ¿Vale 20 porque ingresaron 7, 5 y 8?</p><details class="respuesta"><summary>Ver explicación</summary><p>No. Vale <strong>8</strong>. Cada asignación sustituye el valor anterior. La variable no recuerda las cifras que recibió antes.</p></details><div class="respuesta-impresa" aria-hidden="true"><p>No. Vale <strong>8</strong>. Cada asignación sustituye el valor anterior. La variable no recuerda las cifras que recibió antes.</p></div>
+<p>Ahora compara:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int suma = 0;
+
+suma = suma + 7;
+suma = suma + 5;
+suma = suma + 8;
+</code></pre>
+<p>Aquí el resultado final sí es 20. Cada asignación consulta el valor anterior, añade el nuevo dato y almacena el nuevo total.</p>
+<p><strong>Acumular significa combinar el valor que ya conservamos con un nuevo dato antes de reasignarlo.</strong> Esto recupera directamente lo aprendido sobre asignaciones en la Unidad 2.</p>
+<h2 id="seccion-6-2-construir-el-acumulador"><span id="apartado-40" class="legacy-anchor" aria-hidden="true"></span>6.2. Construir el acumulador</h2>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int suma = 0;
+</code></pre>
+<p>Y, después de leer cada nota:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">suma = suma + nota;
+</code></pre>
+<p>La suma comienza en cero porque es el elemento neutro de la adición: todavía no hemos agregado ningún dato.</p>
+<h2 id="seccion-6-3-trazado-con-cinco-notas"><span id="apartado-41" class="legacy-anchor" aria-hidden="true"></span>6.3. Trazado con cinco notas</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Iteración</th>
+<th style="text-align:right">Nota</th>
+<th style="text-align:right">Suma anterior</th>
+<th>Operación</th>
+<th style="text-align:right">Nueva suma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">Inicio</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>Inicializar</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">0</td>
+<td>0 + 7</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">7</td>
+<td>7 + 5</td>
+<td style="text-align:right">12</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">12</td>
+<td>12 + 8</td>
+<td style="text-align:right">20</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">20</td>
+<td>20 + 6</td>
+<td style="text-align:right">26</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">26</td>
+<td>26 + 9</td>
+<td style="text-align:right">35</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-6-4-pseudocodigo"><span id="apartado-42" class="legacy-anchor" aria-hidden="true"></span>6.4. Pseudocódigo</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    suma ← 0
+    contador ← 1
+
+    MIENTRAS contador &lt;= 5 HACER
+        LEER nota
+        suma ← suma + nota
+        contador ← contador + 1
+    FIN MIENTRAS
+
+    MOSTRAR suma
+FIN
+</code></pre>
+<h2 id="seccion-6-5-programa-completo"><span id="apartado-43" class="legacy-anchor" aria-hidden="true"></span>6.5. Programa completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int contador = 1;
+        int suma = 0;
+
+        while (contador &lt;= 5) {
+            System.out.print(&quot;Nota &quot; + contador + &quot;: &quot;);
+            int nota = teclado.nextInt();
+            suma = suma + nota;
+            contador++;
+        }
+
+        System.out.println(&quot;Suma: &quot; + suma);
+        teclado.close();
+    }
+}
+</code></pre>
+<h2 id="seccion-6-6-la-escritura-abreviada"><span id="apartado-44" class="legacy-anchor" aria-hidden="true"></span>6.6. La escritura abreviada</h2>
+<p><code>suma += nota;</code> permite realizar, en este ejemplo, la misma acumulación que <code>suma = suma + nota;</code>. Al principio conviene usar la forma desarrollada porque hace visible el valor anterior. Después podemos utilizar la abreviatura cuando comprendemos qué representa.</p>
+<h2 id="seccion-6-7-calcular-el-promedio-sin-perder-decimales"><span id="apartado-45" class="legacy-anchor" aria-hidden="true"></span>6.7. Calcular el promedio sin perder decimales</h2>
+<p>Después de cinco notas:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double promedio = suma * 1.0 / 5;
+</code></pre>
+<p>¿Por qué no escribimos siempre <code>double promedio = suma / 5;</code>? Porque si ambos operandos son enteros, Java realiza <strong>división entera</strong> antes de asignar el resultado a <code>double</code>. Con suma 17 y cantidad 2, <code>17 / 2</code> produce 8, que se almacena como 8.0; la expresión <code>17 * 1.0 / 2</code> produce 8.5.</p>
+<h2 id="seccion-6-8-contador-dato-actual-y-acumulador"><span id="apartado-46" class="legacy-anchor" aria-hidden="true"></span>6.8. Contador, dato actual y acumulador</h2>
+<p>Un programa puede necesitar simultáneamente:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contador</code></td>
+<td>Controlar las iteraciones</td>
+</tr>
+<tr>
+<td><code>nota</code></td>
+<td>Guardar la calificación actual</td>
+</tr>
+<tr>
+<td><code>suma</code></td>
+<td>Conservar la suma parcial</td>
+</tr>
+<tr>
+<td><code>aprobados</code></td>
+<td>Contar las notas que cumplen el requisito</td>
+</tr>
+<tr>
+<td><code>promedio</code></td>
+<td>Guardar el cálculo final</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La pregunta fundamental es: <strong>¿qué información necesito conservar entre una iteración y la siguiente?</strong> Debemos conservar <code>suma</code> y <code>aprobados</code>; en cambio, podemos reemplazar <code>nota</code> cuando leemos otro estudiante, porque todavía no necesitamos recuperar cada nota individualmente.</p>
+<h2 id="seccion-6-9-programa-integrado-con-un-solo-while"><span id="apartado-47" class="legacy-anchor" aria-hidden="true"></span>6.9. Programa integrado con un solo while</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int contador = 1;
+        int suma = 0;
+        int aprobados = 0;
+
+        while (contador &lt;= 5) {
+            System.out.print(&quot;Nota &quot; + contador + &quot;: &quot;);
+            int nota = teclado.nextInt();
+
+            suma += nota;
+            if (nota &gt;= 6) {
+                aprobados++;
+            }
+            contador++;
+        }
+
+        double promedio = suma * 1.0 / 5;
+        System.out.println(&quot;Suma: &quot; + suma);
+        System.out.println(&quot;Promedio: &quot; + promedio);
+        System.out.println(&quot;Aprobados: &quot; + aprobados);
+        teclado.close();
+    }
+}
+</code></pre>
+<p>Con <code>7, 5, 8, 6, 9</code>, obtenemos suma 35, promedio 7.0 y cuatro aprobados.</p>
+<h2 id="seccion-6-10-simulador-de-contadores-y-acumuladores"><span id="apartado-48" class="legacy-anchor" aria-hidden="true"></span>6.10. Simulador de contadores y acumuladores</h2>
+<div id="u04-acumuladores-contadores" data-recurso="u04-acumuladores-contadores"><div data-componente-interactivo="u04-acumuladores-contadores"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Con las notas 7, 5, 8, 6, 9, la suma pasa por 7, 12, 20, 26 y 35. Contar notas &gt;= 6 produce 1, 1, 2, 3 y 4 aprobados. Ambos comienzan en cero.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>Detén el simulador antes de cada actualización. Primero predice los nuevos valores; después comprueba tu respuesta.</p>
+<h2 id="seccion-6-11-un-error-reiniciar-la-suma-dentro-del-ciclo"><span id="apartado-49" class="legacy-anchor" aria-hidden="true"></span>6.11. Un error: reiniciar la suma dentro del ciclo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 1; i &lt;= 5; i++) {
+    int suma = 0;
+    // Leer nota y sumar.
+}
+</code></pre>
+<p>En cada iteración se crea e inicializa una nueva variable local <code>suma</code>. No conserva la suma anterior y además no está disponible fuera del bloque para mostrar el total. Debemos declararla e inicializarla <strong>antes</strong> del ciclo que la actualiza.</p>
+<hr />
+<h1 id="seccion-7-el-ciclo-for-organizar-juntos-los-elementos-de-control"><span id="apartado-50" class="legacy-anchor" aria-hidden="true"></span>7. El ciclo for: organizar juntos los elementos de control</h1>
+<p>Ya construimos un recorrido mediante:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int i = 1;
+
+while (i &lt;= 5) {
+    System.out.println(i);
+    i++;
+}
+</code></pre>
+<p>Podemos reconocer tres componentes de control distribuidos: inicio, condición y actualización. Java ofrece una escritura que los reúne en un mismo encabezado.</p>
+<h2 id="seccion-7-1-el-encabezado-de-for"><span id="apartado-51" class="legacy-anchor" aria-hidden="true"></span>7.1. El encabezado de for</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 1; i &lt;= 5; i++) {
+    System.out.println(i);
+}
+</code></pre>
+<p>La salida sigue siendo 1, 2, 3, 4, 5. <strong>No aprendimos una nueva forma de sumar o mostrar datos: reorganizamos el control del mismo recorrido.</strong></p>
+<h2 id="seccion-7-2-sus-tres-partes"><span id="apartado-52" class="legacy-anchor" aria-hidden="true"></span>7.2. Sus tres partes</h2>
+<p>En <code>for (int i = 1; i &lt;= 5; i++)</code>:</p>
+<ul>
+<li><code>int i = 1</code>: inicialización, se ejecuta una sola vez.</li>
+<li><code>i &lt;= 5</code>: condición, se comprueba antes de cada iteración.</li>
+<li><code>i++</code>: actualización, se ejecuta después del cuerpo en cada iteración normal.</li>
+</ul>
+<p>El orden es: inicializar → comprobar → ejecutar cuerpo → actualizar → volver a comprobar.</p>
+<h2 id="seccion-7-3-esquema-de-for"><span id="apartado-53" class="legacy-anchor" aria-hidden="true"></span>7.3. Esquema de for</h2>
+<div id="u04-for-esquema" data-recurso="u04-for-esquema"><div data-componente-interactivo="u04-for-esquema"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>for (int i = 1; i &lt;= 5; i++) inicializa una vez, evalúa, ejecuta el cuerpo y actualiza; al evaluar 6 &lt;= 5 termina sin ejecutar otra iteración.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>El esquema ayuda a comprender que la actualización no ocurre antes del cuerpo; ocurre después de cada iteración que continúa normalmente.</p>
+<h2 id="seccion-7-4-trazado-de-for"><span id="apartado-54" class="legacy-anchor" aria-hidden="true"></span>7.4. Trazado de for</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><code>i</code> al evaluar</th>
+<th><code>i &lt;= 5</code></th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td>Verdadero</td>
+<td>Mostrar 1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>Verdadero</td>
+<td>Mostrar 2</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>Verdadero</td>
+<td>Mostrar 3</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td>Verdadero</td>
+<td>Mostrar 4</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>Verdadero</td>
+<td>Mostrar 5</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td>Falso</td>
+<td>Salir</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Cinco iteraciones; seis comprobaciones.</p>
+<h2 id="seccion-7-5-cambiar-inicio-condicion-y-paso"><span id="apartado-55" class="legacy-anchor" aria-hidden="true"></span>7.5. Cambiar inicio, condición y paso</h2>
+<p><strong>Contar desde cero:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 0; i &lt; 5; i++) {
+    System.out.println(i);
+}
+</code></pre>
+<p>Muestra <code>0, 1, 2, 3, 4</code>: cinco iteraciones.</p>
+<p><strong>Incluir el cinco:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 0; i &lt;= 5; i++) {
+    System.out.println(i);
+}
+</code></pre>
+<p>Muestra seis valores: <code>0, 1, 2, 3, 4, 5</code>. La diferencia de un símbolo cambia el recorrido.</p>
+<p><strong>Contar hacia atrás:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 5; i &gt;= 1; i--) {
+    System.out.println(i);
+}
+</code></pre>
+<p><strong>Avanzar de dos en dos:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 2; i &lt;= 10; i += 2) {
+    System.out.println(i);
+}
+</code></pre>
+<p>Este último muestra <code>2, 4, 6, 8, 10</code>.</p>
+<h2 id="seccion-7-6-convertir-de-while-a-for"><span id="apartado-56" class="legacy-anchor" aria-hidden="true"></span>7.6. Convertir de while a for</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int i = 1;
+while (i &lt;= 4) {
+    System.out.println(i);
+    i++;
+}
+</code></pre>
+<p>Se transforma en:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 1; i &lt;= 4; i++) {
+    System.out.println(i);
+}
+</code></pre>
+<p>La cantidad de iteraciones y la salida son equivalentes en estos ejemplos; no estamos afirmando que toda transformación de ciclos sea automáticamente equivalente, ya que otros programas pueden depender del ámbito de las variables o de modificaciones adicionales.</p>
+<p><strong>Actividad de doble dirección:</strong> convierte <code>for (int i = 10; i &gt;= 2; i -= 2)</code> a <code>while</code>. Después convierte un <code>while</code> que muestra 3, 6, 9, 12 en un <code>for</code>. Verifica mediante trazado, no solamente leyendo los símbolos.</p>
+<h2 id="seccion-7-7-for-es-siempre-mejor-que-while"><span id="apartado-57" class="legacy-anchor" aria-hidden="true"></span>7.7. ¿for es siempre mejor que while?</h2>
+<p>No. Ambos pueden expresar recorridos semejantes. En estos ejercicios, la elección depende principalmente de cuál deja más claro el algoritmo. Cuando el inicio, el límite y el paso están definidos, <code>for</code> resulta cómodo. Cuando la finalización depende de datos que llegan durante la ejecución, <code>while</code> suele expresar de manera natural esa condición.</p>
+<h2 id="seccion-7-8-programa-completo-cinco-notas-con-for"><span id="apartado-58" class="legacy-anchor" aria-hidden="true"></span>7.8. Programa completo: cinco notas con for</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int suma = 0;
+        int aprobados = 0;
+
+        for (int i = 1; i &lt;= 5; i++) {
+            System.out.print(&quot;Nota &quot; + i + &quot;: &quot;);
+            int nota = teclado.nextInt();
+            suma += nota;
+            if (nota &gt;= 6) {
+                aprobados++;
+            }
+        }
+
+        double promedio = suma * 1.0 / 5;
+        System.out.println(&quot;Promedio: &quot; + promedio);
+        System.out.println(&quot;Aprobados: &quot; + aprobados);
+        teclado.close();
+    }
+}
+</code></pre>
+<hr />
+<h1 id="seccion-8-cuando-no-sabemos-cuantas-repeticiones-habra"><span id="apartado-59" class="legacy-anchor" aria-hidden="true"></span>8. Cuando no sabemos cuántas repeticiones habrá</h1>
+<p>Hasta ahora decidíamos procesar exactamente cinco notas. Pero algunos programas no pueden conocer anticipadamente cuántos datos ingresarán.</p>
+<h2 id="seccion-8-1-un-valor-especial-para-terminar-centinela"><span id="apartado-60" class="legacy-anchor" aria-hidden="true"></span>8.1. Un valor especial para terminar: centinela</h2>
+<p>Establezcamos esta regla: «Ingresar notas entre 1 y 10; escribir -1 para terminar». El valor -1 es un <strong>centinela</strong>: no representa una nota, sino una señal de finalización.</p>
+<p>Debe ser un valor reservado y diferente de los datos válidos. Si -1 pudiera ser una nota, no sabríamos si representa una calificación o la orden de salir.</p>
+<h2 id="seccion-8-2-por-que-necesitamos-leer-antes-de-while"><span id="apartado-61" class="legacy-anchor" aria-hidden="true"></span>8.2. ¿Por qué necesitamos leer antes de while?</h2>
+<p>Para evaluar <code>nota != -1</code>, Java necesita conocer <code>nota</code>. Debemos obtener su valor <strong>antes de la primera comprobación</strong>.</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">LEER nota
+
+MIENTRAS nota != -1 HACER
+    PROCESAR nota
+    LEER nota
+FIN MIENTRAS
+</code></pre>
+<p>La primera lectura suministra el valor inicial de la condición. La lectura dentro del ciclo permite que ese valor cambie y que eventualmente llegue el centinela.</p>
+<h2 id="seccion-8-3-trazado-del-centinela"><span id="apartado-62" class="legacy-anchor" aria-hidden="true"></span>8.3. Trazado del centinela</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Entrada</th>
+<th>¿Es -1?</th>
+<th>¿Se procesa?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">7</td>
+<td>No</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>No</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td style="text-align:right">-1</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Si la primera entrada es -1, el cuerpo realiza cero iteraciones, algo correcto porque no se ingresaron notas.</p>
+<h2 id="seccion-8-4-pseudocodigo-para-acumular-notas-validas"><span id="apartado-63" class="legacy-anchor" aria-hidden="true"></span>8.4. Pseudocódigo para acumular notas válidas</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    suma ← 0
+    cantidad ← 0
+    LEER nota
+
+    MIENTRAS nota != -1 HACER
+        SI nota &gt;= 1 Y nota &lt;= 10 ENTONCES
+            suma ← suma + nota
+            cantidad ← cantidad + 1
+        SINO
+            MOSTRAR &quot;Nota inválida&quot;
+        FIN SI
+        LEER nota
+    FIN MIENTRAS
+
+    MOSTRAR suma
+    MOSTRAR cantidad
+FIN
+</code></pre>
+<h2 id="seccion-8-5-programa-java-completo-con-centinela"><span id="apartado-64" class="legacy-anchor" aria-hidden="true"></span>8.5. Programa Java completo con centinela</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int suma = 0;
+        int cantidad = 0;
+
+        System.out.print(&quot;Nota (-1 para salir): &quot;);
+        int nota = teclado.nextInt();
+
+        while (nota != -1) {
+            if (nota &gt;= 1 &amp;&amp; nota &lt;= 10) {
+                suma += nota;
+                cantidad++;
+            } else {
+                System.out.println(&quot;Nota inválida&quot;);
+            }
+
+            System.out.print(&quot;Nota (-1 para salir): &quot;);
+            nota = teclado.nextInt();
+        }
+
+        System.out.println(&quot;Suma: &quot; + suma);
+        System.out.println(&quot;Cantidad: &quot; + cantidad);
+
+        if (cantidad &gt; 0) {
+            double promedio = suma * 1.0 / cantidad;
+            System.out.println(&quot;Promedio: &quot; + promedio);
+        } else {
+            System.out.println(&quot;No se ingresaron notas válidas&quot;);
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<h2 id="seccion-8-6-por-que-comprobamos-cantidad-0"><span id="apartado-65" class="legacy-anchor" aria-hidden="true"></span>8.6. ¿Por qué comprobamos cantidad &gt; 0?</h2>
+<p>Si el usuario escribe -1 inmediatamente, <code>cantidad</code> vale cero. No tiene sentido calcular el promedio de un conjunto vacío de notas. La condición evita realizar el cálculo cuando no existe ningún dato válido y proporciona un mensaje comprensible.</p>
+<h2 id="seccion-8-7-otra-forma-de-controlar-la-repeticion-bandera-booleana"><span id="apartado-66" class="legacy-anchor" aria-hidden="true"></span>8.7. Otra forma de controlar la repetición: bandera booleana</h2>
+<p>No todos los ciclos dependen de números. También podemos utilizar una variable <code>boolean</code> como <strong>bandera de control</strong>.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">boolean continuar = true;
+
+while (continuar) {
+    System.out.println(&quot;Procesando...&quot;);
+    continuar = false;
+}
+</code></pre>
+<p>Este ejemplo ejecuta el cuerpo una vez. Antes de la siguiente comprobación, la bandera pasa a <code>false</code>, de modo que el ciclo termina.</p>
+<p>En un programa real, la bandera puede cambiar a partir de una condición o de una decisión del usuario:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">boolean continuar = true;
+int opcion = 0;
+
+while (continuar) {
+    System.out.println(&quot;1. Continuar&quot;);
+    System.out.println(&quot;2. Salir&quot;);
+    opcion = teclado.nextInt();
+
+    if (opcion == 2) {
+        continuar = false;
+    }
+}
+</code></pre>
+<p>Este es un <strong>fragmento para analizar</strong>: supone que <code>teclado</code> fue creado como <code>Scanner</code>. La bandera controla la repetición; <code>opcion</code> conserva la decisión del usuario.</p>
+<p>Podemos reconocer tres mecanismos habituales: contador con límite, centinela y bandera booleana. No es necesario introducir ahora <code>break</code> o <code>continue</code> como recurso principal para terminar ciclos.</p>
+<hr />
+<h1 id="seccion-9-do-while-ejecutar-primero-y-comprobar-despues"><span id="apartado-67" class="legacy-anchor" aria-hidden="true"></span>9. do...while: ejecutar primero y comprobar después</h1>
+<p>Queremos crear un menú que aparezca al menos una vez y se repita hasta elegir «Salir». Ya sabemos utilizar <code>switch</code> para seleccionar una opción y <code>while</code> para repetir. Pero conviene examinar <strong>cuándo necesitamos comprobar la condición</strong>.</p>
+<h2 id="seccion-9-1-contrastar-dos-recorridos"><span id="apartado-68" class="legacy-anchor" aria-hidden="true"></span>9.1. Contrastar dos recorridos</h2>
+<p>Con <code>numero = 5</code>:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 5;
+
+while (numero &lt;= 3) {
+    System.out.println(numero);
+    numero++;
+}
+</code></pre>
+<p>La primera comprobación es falsa. No muestra nada.</p>
+<p>En cambio:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 5;
+
+do {
+    System.out.println(numero);
+    numero++;
+} while (numero &lt;= 3);
+</code></pre>
+<p>Muestra <strong>5</strong> y después termina. ¿Por qué? Porque <code>do...while</code> ejecuta primero el cuerpo y recién entonces comprueba la condición. El cuerpo se realiza al menos una vez cuando el programa llega normalmente a esa estructura.</p>
+<h2 id="seccion-9-2-sintaxis"><span id="apartado-69" class="legacy-anchor" aria-hidden="true"></span>9.2. Sintaxis</h2>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">do {
+    // Instrucciones
+} while (condicion);
+</code></pre>
+<p>Observa el punto y coma después de la condición. Forma parte de esta sintaxis.</p>
+<h2 id="seccion-9-3-esquema-del-recorrido"><span id="apartado-70" class="legacy-anchor" aria-hidden="true"></span>9.3. Esquema del recorrido</h2>
+<div id="u04-do-while-esquema" data-recurso="u04-do-while-esquema"><div data-componente-interactivo="u04-do-while-esquema"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Con numero = 5 y condicion numero &lt;= 3, while ejecuta el cuerpo cero veces; do...while lo ejecuta una vez antes de evaluar la condición falsa.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<h2 id="seccion-9-4-el-problema-del-menu"><span id="apartado-71" class="legacy-anchor" aria-hidden="true"></span>9.4. El problema del menú</h2>
+<p>Un menú debe mostrar las opciones, leer una y procesarla. Después decide si vuelve a mostrarse. Este orden se adapta naturalmente a <code>do...while</code>.</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    HACER
+        MOSTRAR &quot;1. Consultar saldo&quot;
+        MOSTRAR &quot;2. Mostrar información&quot;
+        MOSTRAR &quot;3. Salir&quot;
+        LEER opcion
+
+        SEGUN opcion HACER
+            1: MOSTRAR &quot;Consulta de saldo&quot;
+            2: MOSTRAR &quot;Información&quot;
+            3: MOSTRAR &quot;Saliendo&quot;
+            OTRO: MOSTRAR &quot;Opción inválida&quot;
+        FIN SEGUN
+
+    MIENTRAS opcion != 3
+FIN
+</code></pre>
+<h2 id="seccion-9-5-programa-completo-menu-con-switch-y-do-while"><span id="apartado-72" class="legacy-anchor" aria-hidden="true"></span>9.5. Programa completo: menú con switch y do...while</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        int opcion;
+
+        do {
+            System.out.println(&quot;1. Consultar saldo&quot;);
+            System.out.println(&quot;2. Mostrar información&quot;);
+            System.out.println(&quot;3. Salir&quot;);
+            System.out.print(&quot;Seleccione una opción: &quot;);
+            opcion = teclado.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println(&quot;Consulta de saldo&quot;);
+                    break;
+                case 2:
+                    System.out.println(&quot;Información del sistema&quot;);
+                    break;
+                case 3:
+                    System.out.println(&quot;Saliendo&quot;);
+                    break;
+                default:
+                    System.out.println(&quot;Opción inválida&quot;);
+            }
+        } while (opcion != 3);
+
+        teclado.close();
+    }
+}
+</code></pre>
+<p>El menú <strong>muestra mensajes</strong>, no consulta un saldo real ni realiza operaciones bancarias. Para ello necesitaríamos agregar otras instrucciones y datos.</p>
+<h2 id="seccion-9-6-trazado-de-las-opciones-1-2-y-3"><span id="apartado-73" class="legacy-anchor" aria-hidden="true"></span>9.6. Trazado de las opciones 1, 2 y 3</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Iteración</th>
+<th style="text-align:right">Opción</th>
+<th>Acción</th>
+<th>¿<code>opcion != 3</code>?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td>Consulta de saldo</td>
+<td>Verdadero, repite</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+<td>Información</td>
+<td>Verdadero, repite</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">3</td>
+<td>Saliendo</td>
+<td>Falso, termina</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>¿Qué sucede si la primera opción es 3? El menú aparece una vez y termina. Este comportamiento es coherente con nuestra necesidad.</p>
+<h2 id="seccion-9-7-los-menus-siempre-deben-utilizar-do-while"><span id="apartado-74" class="legacy-anchor" aria-hidden="true"></span>9.7. ¿Los menús siempre deben utilizar do...while?</h2>
+<p>No. Se pueden construir con <code>while</code> y una inicialización adecuada. <code>do...while</code> es conveniente aquí porque expresa directamente que primero debemos mostrar y procesar una opción, y después decidir si repetimos. No debemos memorizar «menú = do...while» como una regla absoluta.</p>
+<hr />
+<h1 id="seccion-10-elegir-entre-while-for-y-do-while"><span id="apartado-75" class="legacy-anchor" aria-hidden="true"></span>10. Elegir entre while, for y do...while</h1>
+<p>Las tres estructuras repiten instrucciones, pero organizan de manera diferente el control.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Estructura</th>
+<th>Momento de comprobar</th>
+<th>¿Puede realizar cero iteraciones?</th>
+<th>Situación habitual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>while</code></td>
+<td>Antes del cuerpo</td>
+<td>Sí</td>
+<td>Repetir mientras siga cumpliéndose una condición</td>
+</tr>
+<tr>
+<td><code>for</code></td>
+<td>Antes del cuerpo</td>
+<td>Sí</td>
+<td>Recorrido con inicio, límite y actualización claros</td>
+</tr>
+<tr>
+<td><code>do...while</code></td>
+<td>Después del cuerpo</td>
+<td>No, al alcanzar normalmente la estructura</td>
+<td>Procesos que requieren una ejecución inicial</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-10-1-tres-problemas-tres-razonamientos"><span id="apartado-76" class="legacy-anchor" aria-hidden="true"></span>10.1. Tres problemas, tres razonamientos</h2>
+<p><strong>Mostrar del 1 al 10.</strong> Tenemos un recorrido bien definido; <code>for</code> permite reunir inicio, condición y paso.</p>
+<p><strong>Leer enteros hasta recibir -1.</strong> No sabemos cuántas entradas habrá. <code>while</code> expresa claramente la condición de continuación.</p>
+<p><strong>Mostrar un menú hasta elegir salir.</strong> Necesitamos mostrarlo al menos una vez. <code>do...while</code> es una solución clara.</p>
+<h2 id="seccion-10-2-la-eleccion-no-se-hace-por-palabras-clave"><span id="apartado-77" class="legacy-anchor" aria-hidden="true"></span>10.2. La elección no se hace por palabras clave</h2>
+<p>Un <code>while</code> también puede mostrar del 1 al 10. Un <code>while</code> con una bandera puede controlar un menú. Elegimos según cómo se construye el algoritmo y qué estructura deja claro el mecanismo de finalización.</p>
+<p>Antes de elegir, pregunta: ¿qué se repite?, ¿conozco la cantidad de iteraciones?, ¿debo ejecutar el cuerpo inicialmente?, ¿qué dato cambia?, ¿qué hace terminar el proceso?</p>
+<h2 id="seccion-10-3-actividad-de-decision-sin-escribir-codigo"><span id="apartado-78" class="legacy-anchor" aria-hidden="true"></span>10.3. Actividad de decisión sin escribir código</h2>
+<p>Elige y justifica una estructura para cada caso:</p>
+<ul>
+<li>Mostrar múltiplos de 3 desde 3 hasta 30.</li>
+<li>Procesar una cantidad de notas indicada al inicio.</li>
+<li>Pedir un dato hasta que pertenezca al rango 1–10.</li>
+<li>Leer importes hasta que el usuario escriba 0.</li>
+<li>Mostrar un menú de acciones que debe aparecer por lo menos una vez.</li>
+</ul>
+<p>Puede haber más de una respuesta correcta, siempre que expliques cómo controlarías la repetición.</p>
+<hr />
+<h1 id="seccion-11-errores-frecuentes-y-depuracion-de-ciclos"><span id="apartado-79" class="legacy-anchor" aria-hidden="true"></span>11. Errores frecuentes y depuración de ciclos</h1>
+<p>No basta con que Java compile. Un ciclo puede tener sintaxis válida y ejecutarse un número incorrecto de veces, no terminar como esperábamos o calcular mal el resultado.</p>
+<h2 id="seccion-11-1-olvidar-actualizar-la-variable-de-control"><span id="apartado-80" class="legacy-anchor" aria-hidden="true"></span>11.1. Olvidar actualizar la variable de control</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int i = 1;
+while (i &lt;= 5) {
+    System.out.println(i);
+}
+</code></pre>
+<p>El valor de <code>i</code> no cambia. La condición sigue siendo verdadera y el ciclo no alcanza la finalización prevista.</p>
+<h2 id="seccion-11-2-actualizar-en-direccion-incorrecta"><span id="apartado-81" class="legacy-anchor" aria-hidden="true"></span>11.2. Actualizar en dirección incorrecta</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int i = 5;
+while (i &gt;= 1) {
+    System.out.println(i);
+    i++;
+}
+</code></pre>
+<p>Queríamos llegar a valores inferiores a 1, pero incrementamos. Se produce un recorrido incorrecto que puede mantenerse durante una cantidad enorme de iteraciones hasta un eventual desbordamiento de <code>int</code>. La corrección del algoritmo es <code>i--</code>.</p>
+<h2 id="seccion-11-3-excluir-o-incluir-mal-el-limite"><span id="apartado-82" class="legacy-anchor" aria-hidden="true"></span>11.3. Excluir o incluir mal el límite</h2>
+<p><code>for (int i = 1; i &lt; 5; i++)</code> produce cuatro iteraciones; <code>for (int i = 1; i &lt;= 5; i++)</code> produce cinco. Debemos decidir si 5 forma parte del recorrido.</p>
+<h2 id="seccion-11-4-confundir-iteracion-con-evaluacion"><span id="apartado-83" class="legacy-anchor" aria-hidden="true"></span>11.4. Confundir iteración con evaluación</h2>
+<p>En un <code>while</code> que muestra 1, 2 y 3, existen tres iteraciones y cuatro comprobaciones. La condición falsa final no ejecuta el cuerpo.</p>
+<h2 id="seccion-11-5-reemplazar-en-lugar-de-acumular"><span id="apartado-84" class="legacy-anchor" aria-hidden="true"></span>11.5. Reemplazar en lugar de acumular</h2>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">suma = nota;
+</code></pre>
+<p>Sustituye la suma por la nota actual. En cambio:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">suma = suma + nota;
+</code></pre>
+<p>Conserva el resultado anterior y le agrega el nuevo dato.</p>
+<h2 id="seccion-11-6-reiniciar-el-acumulador-dentro-del-cuerpo"><span id="apartado-85" class="legacy-anchor" aria-hidden="true"></span>11.6. Reiniciar el acumulador dentro del cuerpo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 1; i &lt;= 5; i++) {
+    int suma = 0;
+    // Procesamiento
+}
+</code></pre>
+<p>La variable vuelve a comenzar en cero cada vez. Debe inicializarse una sola vez antes del ciclo.</p>
+<h2 id="seccion-11-7-incrementar-el-contador-de-eventos-fuera-del-if"><span id="apartado-86" class="legacy-anchor" aria-hidden="true"></span>11.7. Incrementar el contador de eventos fuera del if</h2>
+<p>Si <code>aprobados++</code> aparece en cada iteración, estaremos contando todas las notas. Para contar aprobados debe ejecutarse solamente cuando <code>nota &gt;= 6</code>.</p>
+<h2 id="seccion-11-8-utilizar-una-variable-local-antes-de-asignarle-valor"><span id="apartado-87" class="legacy-anchor" aria-hidden="true"></span>11.8. Utilizar una variable local antes de asignarle valor</h2>
+<p>Este fragmento no compila:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int nota;
+while (nota != -1) {
+    // ...
+}
+</code></pre>
+<p>Java necesita que la variable local tenga un valor asignado antes de utilizarla en la condición.</p>
+<h2 id="seccion-11-9-no-volver-a-leer-el-dato-del-centinela"><span id="apartado-88" class="legacy-anchor" aria-hidden="true"></span>11.9. No volver a leer el dato del centinela</h2>
+<p>Si la condición es <code>nota != -1</code> pero nunca realizamos una nueva lectura dentro del ciclo, no podremos recibir la señal de finalización.</p>
+<h2 id="seccion-11-10-incorporar-el-centinela-en-los-calculos"><span id="apartado-89" class="legacy-anchor" aria-hidden="true"></span>11.10. Incorporar el centinela en los cálculos</h2>
+<p>El valor -1 es una señal, no una nota. Debemos reconocerlo <strong>antes</strong> de procesarlo para evitar que modifique suma y cantidad.</p>
+<h2 id="seccion-11-11-dividir-por-una-cantidad-igual-a-cero"><span id="apartado-90" class="legacy-anchor" aria-hidden="true"></span>11.11. Dividir por una cantidad igual a cero</h2>
+<p>Cuando calculamos un promedio de cantidad variable, primero comprobamos <code>cantidad &gt; 0</code>. Si no hay datos, informamos que no puede calcularse el promedio del conjunto vacío.</p>
+<h2 id="seccion-11-12-agregar-un-punto-y-coma-accidental-tras-while"><span id="apartado-91" class="legacy-anchor" aria-hidden="true"></span>11.12. Agregar un punto y coma accidental tras while</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">while (i &lt;= 5); {
+    System.out.println(i);
+    i++;
+}
+</code></pre>
+<p>Ese punto y coma es una sentencia vacía que queda como cuerpo del <code>while</code>; el bloque posterior ya no forma parte del ciclo. Si <code>i</code> comienza dentro del rango y no cambia durante la sentencia vacía, puede quedar repitiéndola indefinidamente.</p>
+<h2 id="seccion-11-13-incrementar-el-contador-en-dos-lugares"><span id="apartado-92" class="legacy-anchor" aria-hidden="true"></span>11.13. Incrementar el contador en dos lugares</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 1; i &lt;= 5; i++) {
+    System.out.println(i);
+    i++;
+}
+</code></pre>
+<p>Muestra <code>1, 3, 5</code> porque incrementamos dentro del cuerpo y otra vez en el encabezado.</p>
+<h2 id="seccion-11-14-suponer-que-todo-ciclo-se-ejecuta-una-vez"><span id="apartado-93" class="legacy-anchor" aria-hidden="true"></span>11.14. Suponer que todo ciclo se ejecuta una vez</h2>
+<p><code>while</code> y <code>for</code> pueden ejecutar cero veces el cuerpo. <code>do...while</code> ejecuta primero y comprueba después. No debemos confundirlos.</p>
+<h2 id="seccion-11-15-como-depurar-un-ciclo"><span id="apartado-94" class="legacy-anchor" aria-hidden="true"></span>11.15. Cómo depurar un ciclo</h2>
+<p>Para analizar un error, responde:</p>
+<ol>
+<li>¿Cuál es el estado inicial?</li>
+<li>¿Qué condición se comprueba exactamente?</li>
+<li>¿Qué instrucciones pertenecen al cuerpo?</li>
+<li>¿Qué variables cambian y en qué momento?</li>
+<li>¿La actualización acerca la ejecución a la salida?</li>
+<li>¿Qué sucede en el valor límite?</li>
+<li>¿Cuántas iteraciones esperamos y cuántas ocurren?</li>
+<li>¿La suma o el contador conservan el estado entre iteraciones?</li>
+</ol>
+<p>Un trazado de tres o cuatro iteraciones suele ser más útil que modificar código al azar.</p>
+<hr />
+<h2 id="seccion-11-16-taller-de-diseno-autonomo-elegir-el-ciclo-sin-recibir-su-encabezado"><span id="apartado-95" class="legacy-anchor" aria-hidden="true"></span>11.16. Taller de diseño autónomo: elegir el ciclo sin recibir su encabezado</h2>
+<p>Para cada situación completa la ficha <strong>dato inicial → condición de continuación → información que cambia → tarea repetida → prueba de finalización</strong>. No elijas <code>for</code>, <code>while</code> o <code>do...while</code> por su nombre: justifica primero qué controla las repeticiones.</p>
+<p><strong>Problema A.</strong> Mostrar los múltiplos de 3 comprendidos entre 3 y 21. Escribe antes la secuencia esperada y explica el valor que tendría la variable al finalizar.</p>
+<p><strong>Problema B.</strong> Pedir cantidades positivas hasta que el usuario ingrese -1. Calcular cuántas cantidades válidas se recibieron. No se conoce de antemano la cantidad de entradas. ¿Cómo evitas contar el centinela?</p>
+<p><strong>Problema C.</strong> Presentar un menú que debe mostrarse al menos una vez; continuar hasta que el usuario elija salir. ¿Cuándo se debe comprobar la opción?</p>
+<p><strong>Pista 1.</strong> Diferencia repetición de cantidad conocida, repetición controlada por dato y ejecución obligatoria inicial. <strong>Pista 2.</strong> Para el centinela comprueba los casos «-1 como primera entrada», «una cantidad y -1» y «varias cantidades y -1». Para el menú comprueba que elegir salir en el primer intento realmente termine el programa.</p>
+<p><strong>Contraste, después del intento:</strong> el problema A admite un <code>for (int numero = 3; numero &lt;= 21; numero += 3)</code>; para B es natural leer un primer dato y continuar <code>while (cantidad != -1)</code>, actualizando dentro del cuerpo; para C, un <code>do...while</code> permite mostrar una primera vez antes de comprobar. No son recetas exclusivas: importa justificar que cada solución cumple los requisitos y termina.</p>
+<p><strong>Error intencional:</strong> si en el problema B se suma 1 al contador <em>antes</em> de comprobar si el dato es -1, ¿qué sucede cuando -1 es la primera entrada? Traza la ejecución y corrige la condición de conteo.</p>
+<p><strong>Nota técnica sobre Scanner.</strong> El <code>teclado.close()</code> de los programas breves es seguro al final de <code>main</code>, porque allí termina el programa. Sin embargo, si el <code>Scanner</code> se creó con <code>System.in</code>, cerrarlo también cierra la entrada estándar durante esa ejecución. No crees y cierres múltiples <code>Scanner(System.in)</code> en métodos diferentes cuando deban continuar las lecturas; comparte uno y ciérralo solamente al terminar, si corresponde.</p>
+<h1 id="seccion-12-problema-integrador-registro-de-calificaciones"><span id="apartado-96" class="legacy-anchor" aria-hidden="true"></span>12. Problema integrador: registro de calificaciones</h1>
+<p>Vamos a resolver un problema completo en <strong>dos etapas</strong>. La primera representa el aprendizaje esencial. La segunda incorpora una ampliación con validación mediante ciclos anidados. Ambas son valiosas, pero no tienen la misma exigencia.</p>
+<h2 id="seccion-12-1-comprender-el-problema"><span id="apartado-97" class="legacy-anchor" aria-hidden="true"></span>12.1. Comprender el problema</h2>
+<p>Necesitamos solicitar una cantidad positiva de notas, leerlas, calcular la suma y el promedio, y contar cuántas cumplen el criterio de aprobación (<code>nota &gt;= 6</code>).</p>
+<p>Antes de programar, identifiquemos las variables:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Responsabilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cantidad</code></td>
+<td>Cantidad de notas solicitadas</td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>Controlar qué nota se procesa</td>
+</tr>
+<tr>
+<td><code>nota</code></td>
+<td>Guardar el dato actual</td>
+</tr>
+<tr>
+<td><code>suma</code></td>
+<td>Acumular las notas</td>
+</tr>
+<tr>
+<td><code>aprobados</code></td>
+<td>Contar notas desde 6</td>
+</tr>
+<tr>
+<td><code>promedio</code></td>
+<td>Guardar el resultado final</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-12-2-version-a-integrador-esencial"><span id="apartado-98" class="legacy-anchor" aria-hidden="true"></span>12.2. Versión A: integrador esencial</h2>
+<p><strong>Requisitos:</strong> pedir una cantidad mayor que cero; si es inválida, informar y terminar. Si es válida, procesar exactamente esa cantidad de notas mediante <strong>un solo ciclo</strong>. Para esta versión asumimos que las calificaciones ingresadas son enteros del 1 al 10. Calcular suma, promedio y cantidad de aprobados.</p>
+<p>No necesitamos todavía validar cada nota mediante un segundo ciclo. Queremos demostrar primero que comprendemos una repetición controlada, un acumulador y un contador condicional.</p>
+<h3 id="seccion-pseudocodigo-de-la-version-a"><span id="apartado-99" class="legacy-anchor" aria-hidden="true"></span>Pseudocódigo de la versión A</h3>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER cantidad
+    SI cantidad &lt;= 0 ENTONCES
+        MOSTRAR &quot;Cantidad inválida&quot;
+    SINO
+        suma ← 0
+        aprobados ← 0
+
+        PARA i DESDE 1 HASTA cantidad HACER
+            LEER nota
+            suma ← suma + nota
+            SI nota &gt;= 6 ENTONCES
+                aprobados ← aprobados + 1
+            FIN SI
+        FIN PARA
+
+        promedio ← suma * 1.0 / cantidad
+        MOSTRAR suma
+        MOSTRAR promedio
+        MOSTRAR aprobados
+    FIN SI
+FIN
+</code></pre>
+<h3 id="seccion-programa-completo-de-la-version-a"><span id="apartado-100" class="legacy-anchor" aria-hidden="true"></span>Programa completo de la versión A</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Cantidad de notas: &quot;);
+        int cantidad = teclado.nextInt();
+
+        if (cantidad &lt;= 0) {
+            System.out.println(&quot;Cantidad inválida&quot;);
+        } else {
+            int suma = 0;
+            int aprobados = 0;
+
+            for (int i = 1; i &lt;= cantidad; i++) {
+                System.out.print(&quot;Nota &quot; + i + &quot;: &quot;);
+                int nota = teclado.nextInt();
+                suma += nota;
+
+                if (nota &gt;= 6) {
+                    aprobados++;
+                }
+            }
+
+            double promedio = suma * 1.0 / cantidad;
+            System.out.println(&quot;Suma: &quot; + suma);
+            System.out.println(&quot;Promedio: &quot; + promedio);
+            System.out.println(&quot;Aprobados: &quot; + aprobados);
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<h3 id="seccion-pruebas-esenciales"><span id="apartado-101" class="legacy-anchor" aria-hidden="true"></span>Pruebas esenciales</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Cantidad</th>
+<th>Notas</th>
+<th style="text-align:right">Suma</th>
+<th style="text-align:right">Promedio</th>
+<th style="text-align:right">Aprobados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">5</td>
+<td>7, 5, 8, 6, 9</td>
+<td style="text-align:right">35</td>
+<td style="text-align:right">7.0</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>6, 6, 6</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">6.0</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>1, 2, 3</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">2.0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td>10</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">10.0</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">Cantidad inválida</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En parejas, antes de ejecutar, completen un trazado de tres notas: una aprobatoria, una no aprobatoria y otra aprobatoria. Cada estudiante deberá explicar qué variable controla el recorrido y cuál conserva la suma.</p>
+<h2 id="seccion-12-3-version-b-integrador-con-validacion-de-cada-nota"><span id="apartado-102" class="legacy-anchor" aria-hidden="true"></span>12.3. Versión B: integrador con validación de cada nota</h2>
+<p>Ahora agregamos una condición: solamente aceptaremos notas entre 1 y 10. Si un dato está fuera del rango, debemos volver a solicitar <strong>esa misma nota</strong>, sin avanzar al estudiante siguiente.</p>
+<p>Tenemos dos necesidades distintas:</p>
+<ol>
+<li>Procesar una cantidad conocida de notas válidas.</li>
+<li>Repetir la lectura de una nota hasta que sea válida.</li>
+</ol>
+<p>Esto justifica utilizar un ciclo dentro de otro. Se llama <strong>anidamiento de ciclos</strong>.</p>
+<h3 id="seccion-pseudocodigo-de-la-version-b"><span id="apartado-103" class="legacy-anchor" aria-hidden="true"></span>Pseudocódigo de la versión B</h3>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER cantidad
+    SI cantidad &lt;= 0 ENTONCES
+        MOSTRAR &quot;Cantidad inválida&quot;
+    SINO
+        suma ← 0
+        aprobados ← 0
+
+        PARA i DESDE 1 HASTA cantidad HACER
+            HACER
+                LEER nota
+                SI nota &lt; 1 O nota &gt; 10 ENTONCES
+                    MOSTRAR &quot;Nota inválida&quot;
+                FIN SI
+            MIENTRAS nota &lt; 1 O nota &gt; 10
+
+            suma ← suma + nota
+            SI nota &gt;= 6 ENTONCES
+                aprobados ← aprobados + 1
+            FIN SI
+        FIN PARA
+
+        promedio ← suma * 1.0 / cantidad
+        MOSTRAR promedio
+        MOSTRAR aprobados
+    FIN SI
+FIN
+</code></pre>
+<h3 id="seccion-programa-completo-de-la-version-b"><span id="apartado-104" class="legacy-anchor" aria-hidden="true"></span>Programa completo de la versión B</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Cantidad de notas: &quot;);
+        int cantidad = teclado.nextInt();
+
+        if (cantidad &lt;= 0) {
+            System.out.println(&quot;Cantidad inválida&quot;);
+        } else {
+            int suma = 0;
+            int aprobados = 0;
+
+            for (int i = 1; i &lt;= cantidad; i++) {
+                int nota;
+
+                do {
+                    System.out.print(&quot;Nota &quot; + i + &quot;: &quot;);
+                    nota = teclado.nextInt();
+
+                    if (nota &lt; 1 || nota &gt; 10) {
+                        System.out.println(&quot;Nota inválida&quot;);
+                    }
+                } while (nota &lt; 1 || nota &gt; 10);
+
+                suma += nota;
+                if (nota &gt;= 6) {
+                    aprobados++;
+                }
+            }
+
+            double promedio = suma * 1.0 / cantidad;
+            System.out.println(&quot;Suma: &quot; + suma);
+            System.out.println(&quot;Promedio: &quot; + promedio);
+            System.out.println(&quot;Aprobados: &quot; + aprobados);
+        }
+
+        teclado.close();
+    }
+}
+</code></pre>
+<h3 id="seccion-trazado-de-una-lectura-incorrecta"><span id="apartado-105" class="legacy-anchor" aria-hidden="true"></span>Trazado de una lectura incorrecta</h3>
+<p>Entrada:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Cantidad de notas: 3
+Nota 1: 7
+Nota 2: 15
+Nota inválida
+Nota 2: 5
+Nota 3: 8
+</code></pre>
+<p>La entrada 15 no se suma ni se cuenta, y el <code>for</code> todavía está procesando la segunda nota. La lectura se repite mediante el <code>do...while</code> interior. Al recibir 5, la nota es válida y recién entonces se avanza a la tercera.</p>
+<p>Las notas válidas son <code>7, 5, 8</code>. Suma 20, promedio <code>20 / 3.0</code> (aproximadamente 6.6667) y dos aprobados.</p>
+<h2 id="seccion-12-4-casos-de-prueba-para-las-dos-versiones"><span id="apartado-106" class="legacy-anchor" aria-hidden="true"></span>12.4. Casos de prueba para las dos versiones</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Versión A</th>
+<th>Versión B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cantidad 0</td>
+<td>Rechaza</td>
+<td>Rechaza</td>
+</tr>
+<tr>
+<td>Una nota 10</td>
+<td>Promedio 10; 1 aprobado</td>
+<td>Igual</td>
+</tr>
+<tr>
+<td>Tres notas 1, 2, 3</td>
+<td>Promedio 2; 0 aprobados</td>
+<td>Igual</td>
+</tr>
+<tr>
+<td>Dato 15 en una nota</td>
+<td>No se valida en esta versión</td>
+<td>Lo rechaza y solicita nuevamente</td>
+</tr>
+<tr>
+<td>Cantidad 2, notas 7 y 8</td>
+<td>Promedio 7.5; 2 aprobados</td>
+<td>Igual</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La versión A es la evidencia mínima que buscamos consolidar. La versión B añade la coordinación de dos ciclos con responsabilidades diferentes y constituye una extensión guiada.</p>
+<h2 id="seccion-12-5-un-limite-que-todavia-no-resolvemos"><span id="apartado-107" class="legacy-anchor" aria-hidden="true"></span>12.5. Un límite que todavía no resolvemos</h2>
+<p>El programa utiliza la variable <code>nota</code> para recibir valores sucesivos. Imaginemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int nota = 7;
+nota = 5;
+nota = 8;
+nota = 6;
+nota = 9;
+</code></pre>
+<p>Al terminar, <code>nota</code> vale 9. ¿Podemos recuperar la primera o la tercera nota simplemente consultando esa variable? No. Aunque el programa conservó la suma y el contador de aprobados, <strong>no guardó por separado todas las calificaciones originales</strong>.</p>
+<p>¿Qué sucedería si después de calcular el promedio el docente pidiera mostrar nuevamente la tercera nota? Necesitaríamos conservar varios valores individualmente. Esta necesidad abre la Unidad 5, en la que estudiaremos los <strong>arreglos</strong>.</p>
+<hr />
+<h1 id="seccion-13-preparacion-para-la-evaluacion-leer-predecir-corregir-y-construir"><span id="apartado-108" class="legacy-anchor" aria-hidden="true"></span>13. Preparación para la evaluación: leer, predecir, corregir y construir</h1>
+<p>Las actividades siguientes están organizadas en tres niveles. No se propone resolverlas todas como una única prueba larga. Algunas sirven para practicar de forma autónoma, otras para discutir en parejas y otras para demostrar aprendizaje de manera individual.</p>
+<h2 id="seccion-nivel-1-reconocer-y-comprender"><span id="apartado-109" class="legacy-anchor" aria-hidden="true"></span>Nivel 1. Reconocer y comprender</h2>
+<h3 id="seccion-actividad-a-identificar-partes-de-un-while"><span id="apartado-110" class="legacy-anchor" aria-hidden="true"></span>Actividad A. Identificar partes de un while</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int i = 1;
+while (i &lt;= 5) {
+    System.out.println(i);
+    i++;
+}
+</code></pre>
+<p>Señala inicialización, condición, cuerpo y actualización. Después explica por qué <code>i</code> vale 6 al finalizar. ¿Cuántas iteraciones hay? ¿Cuántas comprobaciones?</p>
+<h3 id="seccion-actividad-b-interpretar-un-for"><span id="apartado-111" class="legacy-anchor" aria-hidden="true"></span>Actividad B. Interpretar un for</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 2; i &lt;= 10; i += 2) {
+    System.out.println(i);
+}
+</code></pre>
+<p>Indica valor inicial, límite, actualización, salida y cantidad de iteraciones. Explica en palabras qué recorrido construye.</p>
+<h3 id="seccion-actividad-c-elegir-una-estructura"><span id="apartado-112" class="legacy-anchor" aria-hidden="true"></span>Actividad C. Elegir una estructura</h3>
+<p>Elige y justifica una estructura inicial para: mostrar del 1 al 20; leer números hasta -1; mostrar un menú al menos una vez; procesar diez notas; y repetir una lectura mientras sea inválida. La explicación del mecanismo es más importante que el nombre del ciclo.</p>
+<h2 id="seccion-nivel-2-interpretar-predecir-y-corregir"><span id="apartado-113" class="legacy-anchor" aria-hidden="true"></span>Nivel 2. Interpretar, predecir y corregir</h2>
+<h3 id="seccion-actividad-d-trazar-while"><span id="apartado-114" class="legacy-anchor" aria-hidden="true"></span>Actividad D. Trazar while</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 1;
+while (numero &lt;= 3) {
+    System.out.println(numero);
+    numero++;
+}
+</code></pre>
+<p>Haz una tabla con cada evaluación, valor actual, resultado verdadero/falso y salida. Indica la primera comprobación falsa.</p>
+<h3 id="seccion-actividad-e-detectar-un-ciclo-infinito"><span id="apartado-115" class="legacy-anchor" aria-hidden="true"></span>Actividad E. Detectar un ciclo infinito</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 1;
+while (numero &lt;= 5) {
+    System.out.println(numero);
+}
+</code></pre>
+<p>Explica qué variable debería cambiar, por qué no cambia y cómo corregirías el programa. No es necesario ejecutarlo para descubrir el problema.</p>
+<h3 id="seccion-actividad-f-corregir-un-limite"><span id="apartado-116" class="legacy-anchor" aria-hidden="true"></span>Actividad F. Corregir un límite</h3>
+<p>Un estudiante quiere mostrar del 1 al 5:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 1; i &lt; 5; i++) {
+    System.out.println(i);
+}
+</code></pre>
+<p>¿Qué muestra? ¿Qué falta? Corrige una sola parte y justifica la modificación.</p>
+<h3 id="seccion-actividad-g-seguir-un-acumulador"><span id="apartado-117" class="legacy-anchor" aria-hidden="true"></span>Actividad G. Seguir un acumulador</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int suma = 0;
+for (int i = 1; i &lt;= 4; i++) {
+    suma = suma + i;
+}
+System.out.println(suma);
+</code></pre>
+<p>Completa las sumas parciales: inicio 0; después de i=1, i=2, i=3 e i=4. Predice la salida.</p>
+<h3 id="seccion-actividad-h-contar-aprobados"><span id="apartado-118" class="legacy-anchor" aria-hidden="true"></span>Actividad H. Contar aprobados</h3>
+<p>Para <code>7, 5, 8, 6, 9</code>, construye un trazado del contador <code>aprobados</code> desde cero. Indica cuándo aumenta, cuándo conserva su valor y por qué.</p>
+<h3 id="seccion-actividad-i-detectar-acumulador-mal-ubicado"><span id="apartado-119" class="legacy-anchor" aria-hidden="true"></span>Actividad I. Detectar acumulador mal ubicado</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">for (int i = 1; i &lt;= 5; i++) {
+    int suma = 0;
+    suma += i;
+}
+</code></pre>
+<p>¿Qué ocurre con <code>suma</code> en cada iteración? ¿Dónde debería declararse? Corrige y agrega una salida final.</p>
+<h3 id="seccion-actividad-j-predecir-do-while"><span id="apartado-120" class="legacy-anchor" aria-hidden="true"></span>Actividad J. Predecir do...while</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int numero = 5;
+do {
+    System.out.println(numero);
+    numero++;
+} while (numero &lt;= 3);
+</code></pre>
+<p>Predice la salida y explica la diferencia con un <code>while</code> de la misma condición.</p>
+<h3 id="seccion-actividad-k-trazar-un-menu"><span id="apartado-121" class="legacy-anchor" aria-hidden="true"></span>Actividad K. Trazar un menú</h3>
+<p>Un <code>do...while</code> muestra un menú y termina con <code>opcion != 3</code>. El usuario ingresa 1, después 2 y finalmente 3. Indica cuántas veces se muestra el menú, cuál es la condición al final de cada iteración y cuándo sale.</p>
+<h2 id="seccion-nivel-3-construir-comprobar-y-justificar"><span id="apartado-122" class="legacy-anchor" aria-hidden="true"></span>Nivel 3. Construir, comprobar y justificar</h2>
+<h3 id="seccion-actividad-l-mostrar-una-secuencia"><span id="apartado-123" class="legacy-anchor" aria-hidden="true"></span>Actividad L. Mostrar una secuencia</h3>
+<p>Construye un programa que solicite un entero positivo <code>n</code> y muestre del 1 a <code>n</code>. Si <code>n &lt;= 0</code>, informa el error. Haz pseudocódigo antes de Java. Prueba n=1, 5, 10 y 0.</p>
+<h3 id="seccion-actividad-m-sumar-numeros"><span id="apartado-124" class="legacy-anchor" aria-hidden="true"></span>Actividad M. Sumar números</h3>
+<p>Solicita un entero positivo <code>n</code> y calcula <code>1 + 2 + ... + n</code>. Utiliza acumulador. Para n=5 el resultado es 15. Prueba 1, 3, 5 y 10. Explica por qué <code>suma</code> comienza en cero.</p>
+<h3 id="seccion-actividad-n-procesar-cinco-notas"><span id="apartado-125" class="legacy-anchor" aria-hidden="true"></span>Actividad N. Procesar cinco notas</h3>
+<p>Solicita cinco notas enteras (se supone entrada válida). Muestra suma, promedio y cantidad de aprobados (<code>&gt;= 6</code>). Prueba: <code>7,5,8,6,9</code> → suma 35, promedio 7, cuatro aprobados; <code>6,6,6,6,6</code> → suma 30, promedio 6, cinco aprobados; <code>1,2,3,4,5</code> → suma 15, promedio 3, cero aprobados.</p>
+<h3 id="seccion-actividad-o-leer-hasta-un-centinela"><span id="apartado-126" class="legacy-anchor" aria-hidden="true"></span>Actividad O. Leer hasta un centinela</h3>
+<p>Lee enteros hasta -1. No incluyas el centinela en suma ni cantidad. Prueba <code>5,3,-1</code>; <code>10,-1</code>; y <code>-1</code> inmediatamente. Explica por qué la primera lectura es necesaria antes de comprobar el <code>while</code>.</p>
+<h3 id="seccion-actividad-p-repetir-un-menu"><span id="apartado-127" class="legacy-anchor" aria-hidden="true"></span>Actividad P. Repetir un menú</h3>
+<p>Muestra: 1. Saludar; 2. Mostrar información; 3. Salir. Utiliza <code>do...while</code> y <code>switch</code> y repite hasta elegir 3. Prueba salir inmediatamente, saludar y salir, y una opción inválida seguida de salir.</p>
+<h3 id="seccion-actividad-q-registro-de-notas-con-validacion"><span id="apartado-128" class="legacy-anchor" aria-hidden="true"></span>Actividad Q. Registro de notas con validación</h3>
+<p>Implementa la <strong>versión B</strong> del integrador: solicita cantidad positiva, lee notas del 1 al 10, vuelve a solicitar una nota inválida, calcula promedio y cuenta aprobados. Primero escribe pseudocódigo. Prueba cantidad cero y una nota incorrecta entre dos válidas. Explica qué controla cada ciclo y por qué no avanza de estudiante cuando la nota es inválida.</p>
+<h2 id="seccion-13-18-dos-desafios-de-lectura-complementarios"><span id="apartado-129" class="legacy-anchor" aria-hidden="true"></span>13.18. Dos desafíos de lectura complementarios</h2>
+<p><strong>Desafío 1: reemplazar no es acumular.</strong> Predice el resultado de <code>suma = 0; suma = 7; suma = 5; suma = 8;</code>. Después modifica las asignaciones para que el resultado sea 20.</p>
+<p><strong>Desafío 2: transformar ciclos.</strong> Reescribe en <code>for</code> un <code>while</code> que muestra del 1 al 4, y en <code>while</code> un <code>for</code> que muestra <code>10, 8, 6, 4, 2</code>. Comprueba que cada transformación conserva los valores mostrados.</p>
+<h2 id="seccion-13-19-checkpoint-individual-tres-preguntas-de-salida"><span id="apartado-130" class="legacy-anchor" aria-hidden="true"></span>13.19. Checkpoint individual: tres preguntas de salida</h2>
+<ol>
+<li>En un <code>while</code> que muestra del 1 al 3 inclusive, ¿cuántas iteraciones realiza el cuerpo y cuántas veces se evalúa la condición? Explica la diferencia.</li>
+<li>Si <code>suma</code> vale 12 y la siguiente nota es 8, ¿qué asignación permite conservar lo anterior y obtener 20? ¿Por qué <code>suma = 8</code> no sirve?</li>
+<li>Si una condición <code>while</code> permanece verdadera y ninguna instrucción modifica el estado del que depende, ¿qué comportamiento esperas y cómo lo corregirías?</li>
+</ol>
+<p>Las respuestas deben justificarse sin ejecutar Java.</p>
+<h2 id="seccion-13-20-trabajo-en-parejas-y-defensa"><span id="apartado-131" class="legacy-anchor" aria-hidden="true"></span>13.20. Trabajo en parejas y defensa</h2>
+<p>Cuando se trabaje en parejas, una persona será <strong>conductor</strong> (escribe el código) y otra <strong>navegante</strong> (lee el algoritmo, anticipa resultados y comprueba pruebas). Cambien de rol cada 10–15 minutos. Entreguen un programa por pareja, pero cada integrante explicará individualmente al menos una variable, una condición de finalización y un caso de prueba.</p>
+<p>Lista rápida de trabajo en pareja: ¿intercambiaron roles?, ¿ambos explicaron el algoritmo?, ¿probaron más de un caso?, ¿corrigieron errores a partir de un trazado? Si hay una participación desigual, cada estudiante resolverá individualmente una predicción breve o completará una actualización faltante.</p>
+<h2 id="seccion-13-21-criterios-de-evaluacion"><span id="apartado-132" class="legacy-anchor" aria-hidden="true"></span>13.21. Criterios de evaluación</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Logrado</th>
+<th>En proceso</th>
+<th>Inicial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diseño del ciclo</td>
+<td>Inicio, condición y actualización coherentes</td>
+<td>Corrige parte del recorrido con ayuda</td>
+<td>No identifica cómo controlar la repetición</td>
+</tr>
+<tr>
+<td>Trazado</td>
+<td>Predice estados e iteraciones correctamente</td>
+<td>Algunos errores de seguimiento</td>
+<td>No puede seguir el cambio de valores</td>
+</tr>
+<tr>
+<td>Contadores y acumuladores</td>
+<td>Conserva y actualiza resultados adecuadamente</td>
+<td>Confunde alguna actualización</td>
+<td>No conserva la información necesaria</td>
+</tr>
+<tr>
+<td>Pruebas</td>
+<td>Comprueba límites y explica finalización</td>
+<td>Pruebas parciales</td>
+<td>Solo ejecuta sin contrastar resultados</td>
+</tr>
+<tr>
+<td>Explicación</td>
+<td>Justifica el algoritmo y sus variables</td>
+<td>Explica parcialmente</td>
+<td>No puede explicar las decisiones tomadas</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Autoevaluación y coevaluación:</strong> responde Sí/No: «Puedo explicar qué hace terminar mi ciclo» y «Probé al menos un valor límite». Después escribe una reflexión breve: «El error que encontré o que podría aparecer en mi programa es... y lo comprobaría mediante...».</p>
+<hr />
+<h1 id="seccion-lo-que-debemos-recordar"><span id="apartado-133" class="legacy-anchor" aria-hidden="true"></span>Lo que debemos recordar</h1>
+<p>Las estructuras iterativas permiten resolver problemas que requieren ejecutar instrucciones repetidamente. No es necesario copiar el mismo bloque muchas veces: construimos un mecanismo de control.</p>
+<p>Aprendimos que <code>while</code> comprueba la condición antes del cuerpo y puede ejecutar cero iteraciones. Distinguimos una <strong>iteración</strong> de una <strong>evaluación de la condición</strong> y descubrimos que la salida del ciclo sucede después de obtener una comprobación falsa.</p>
+<p>Aprendimos a diseñar recorridos mediante preguntas: qué valores queremos mostrar, desde dónde comenzamos, qué límite utilizamos, cómo avanzamos y qué hacemos en cada iteración. Esta estrategia nos permite <strong>crear ciclos</strong>, no solamente leer ejemplos existentes.</p>
+<p>Los <strong>contadores de control</strong> permiten seguir el recorrido; los <strong>contadores de eventos</strong> registran cuántos datos cumplen una condición. Los <strong>acumuladores</strong> combinan el valor anterior con el nuevo dato para conservar resultados parciales. Una asignación simple reemplaza el valor: no acumula por sí sola.</p>
+<p>Conocimos <code>for</code>, que reúne inicialización, condición y actualización, y practicamos su relación con un <code>while</code> equivalente. También estudiamos ciclos cuya finalización depende de un <strong>centinela</strong>, como -1, y de una <strong>bandera booleana</strong>.</p>
+<p>El ciclo <code>do...while</code> ejecuta primero el cuerpo y comprueba después. Resulta útil para menús que deben mostrarse inicialmente, aunque otros ciclos también pueden resolver ese problema cuando se diseñan correctamente.</p>
+<p>En el integrador construimos una solución esencial con un solo ciclo, un acumulador y un contador de aprobados. Después estudiamos una ampliación con <strong>ciclos anidados</strong>, que permite repetir la lectura de cada nota inválida sin avanzar al estudiante siguiente.</p>
+<p>El aprendizaje fundamental no es recordar <code>while</code>, <code>for</code> y <code>do...while</code> como tres recetas. <strong>Es comprender qué se repite, qué cambia, qué información se conserva y qué condición hará que el programa termine.</strong></p>
+<p>En la Unidad 5 recuperaremos una limitación deliberada: cuando leemos notas sucesivas sobre una misma variable, conservamos sumas y contadores, pero no todas las notas originales. Si necesitamos consultar la tercera nota, buscarlas o compararlas después, necesitaremos almacenarlas en una estructura adecuada. Allí aparecerán los <strong>arreglos</strong>.</p>
+<hr />
+</article><nav class="lesson-bottom" aria-label="Navegación entre unidades"><a rel="prev" href="unidad-03.html">← Unidad 3: Estructuras condicionales</a><a rel="next" href="unidad-05.html">Unidad 5: Arreglos y cadenas de caracteres →</a></nav><p class="return-top"><a href="#top">Volver arriba ↑</a></p></main><footer><div class="footer-inner"><img src="assets/logo-PM-opcional.png" alt=""><span><strong>Programación I · 2026</strong><br>Profe Macón · DGETP / UTU</span></div></footer><script defer src="assets/recursos-modelos.js"></script><script defer src="assets/recursos-interactivos.js"></script><script defer src="assets/recursos-3b-modelos.js"></script><script defer src="assets/recursos-3b.js"></script></body></html>

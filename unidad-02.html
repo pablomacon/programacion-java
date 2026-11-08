@@ -1,0 +1,2365 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unidad 2 · Programación I</title><link rel="icon" href="assets/logo-PM-opcional.png"><link rel="stylesheet" href="assets/style.css"></head><body id="top"><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><img src="assets/logo-profe-macon.png" alt="Profe Macón"><span><strong>Programación I</strong><small>1.º BT Informática · DGETP / UTU</small></span></a><nav aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="index.html#unidades">Unidades</a><span class="current-unit" aria-current="page">Unidad 2</span></nav></div></header><main class="lesson" id="contenido"><a class="back" href="index.html#unidades">← Volver a las unidades</a><p class="eyebrow">Programación I · Unidad 02</p><details class="contents"><summary>Índice de la unidad</summary><nav aria-label="Apartados de la unidad"><ol><li><a href="#seccion-1-del-algoritmo-al-programa-necesitamos-un-lenguaje">1. Del algoritmo al programa: necesitamos un lenguaje</a></li><li><a href="#seccion-2-la-estructura-de-un-programa-java">2. La estructura de un programa Java</a></li><li><a href="#seccion-3-nuestro-entorno-de-trabajo-visual-studio-code">3. Nuestro entorno de trabajo: Visual Studio Code</a></li><li><a href="#seccion-4-mostrar-informacion-mediante-java">4. Mostrar información mediante Java</a></li><li><a href="#seccion-5-los-datos-necesitan-un-lugar-introducir-variables">5. Los datos necesitan un lugar: introducir variables</a></li><li><a href="#seccion-6-tipos-de-datos-no-toda-la-informacion-es-igual">6. Tipos de datos: no toda la información es igual</a></li><li><a href="#seccion-7-asignacion-las-variables-cambian-durante-la-ejecucion">7. Asignación: las variables cambian durante la ejecución</a></li><li><a href="#seccion-8-asignar-un-valor-no-crea-una-relacion-automatica">8. Asignar un valor no crea una relación automática</a></li><li><a href="#seccion-9-operadores-aritmeticos-expresar-calculos">9. Operadores aritméticos: expresar cálculos</a></li><li><a href="#seccion-10-construir-nuestro-primer-programa-de-calculo">10. Construir nuestro primer programa de cálculo</a></li><li><a href="#seccion-11-entrada-de-datos-necesitamos-scanner">11. Entrada de datos: necesitamos Scanner</a></li><li><a href="#seccion-12-del-pseudocodigo-al-programa-completo-con-scanner">12. Del pseudocódigo al programa completo con Scanner</a></li><li><a href="#seccion-13-leer-cadenas-de-texto-y-distinguir-los-metodos-de-scanner">13. Leer cadenas de texto y distinguir los métodos de Scanner</a></li><li><a href="#seccion-14-errores-frecuentes-y-depuracion-de-nuestros-primeros-programas">14. Errores frecuentes y depuración de nuestros primeros programas</a></li><li><a href="#seccion-15-preparacion-para-la-evaluacion-leer-explicar-y-construir-programas">15. Preparación para la evaluación: leer, explicar y construir programas</a></li><li><a href="#seccion-lo-que-debemos-recordar">Lo que debemos recordar</a></li></ol></nav></details><article class="prose"><h1 id="seccion-unidad-2-nuestros-primeros-programas-en-java-de-los-algoritmos-al-codigo"><span id="apartado-1" class="legacy-anchor" aria-hidden="true"></span>Unidad 2. Nuestros primeros programas en Java: de los algoritmos al código</h1>
+<p><strong>Programación I — 2026</strong><br />
+<strong>1.º Bachillerato Tecnológico en Informática · DGETP / UTU</strong></p>
+<h2 id="seccion-que-aprenderemos-en-esta-unidad"><span id="apartado-2" class="legacy-anchor" aria-hidden="true"></span>¿Qué aprenderemos en esta unidad?</h2>
+<p>En la Unidad 1 aprendimos que programar no consiste solamente en escribir instrucciones.</p>
+<p>Primero debemos comprender un problema, identificar sus datos, reconocer qué resultado necesitamos obtener y construir un algoritmo que permita alcanzarlo.</p>
+<p>También aprendimos a representar nuestras soluciones mediante pseudocódigo.</p>
+<p>Por ejemplo, para calcular el importe de una compra escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER precio
+    LEER cantidad
+
+    total ← precio * cantidad
+
+    MOSTRAR total
+FIN
+</code></pre>
+<p>Este algoritmo es comprensible para nosotros.</p>
+<p>Sabemos que debemos obtener dos datos, multiplicarlos y mostrar el resultado.</p>
+<p>Pero aparece una nueva pregunta:</p>
+<p><strong>¿Cómo conseguimos que una computadora ejecute este procedimiento?</strong></p>
+<p>Para hacerlo necesitamos expresar nuestro algoritmo mediante un lenguaje de programación.</p>
+<p>Durante este curso utilizaremos Java.</p>
+<p>En esta unidad aprenderemos a:</p>
+<ul>
+<li>Reconocer la estructura básica de un programa Java.</li>
+<li>Crear y ejecutar un archivo <code>Main.java</code>.</li>
+<li>Comprender qué son las instrucciones y cómo se ejecutan.</li>
+<li>Mostrar información mediante <code>System.out.print</code> y <code>System.out.println</code>.</li>
+<li>Identificar los datos que necesita un programa.</li>
+<li>Declarar variables y asignarles valores.</li>
+<li>Diferenciar tipos de datos básicos.</li>
+<li>Realizar operaciones aritméticas.</li>
+<li>Comprender cómo cambian los valores de las variables.</li>
+<li>Leer información mediante <code>Scanner</code>.</li>
+<li>Traducir algoritmos expresados en pseudocódigo a Java.</li>
+<li>Realizar trazados para predecir resultados.</li>
+<li>Reconocer errores y comprobar el funcionamiento de los programas.</li>
+</ul>
+<p>No abandonaremos el pseudocódigo.</p>
+<p>Al contrario, seguiremos utilizándolo para comprender primero la solución y escribir después las instrucciones Java.</p>
+<p><strong>El objetivo no es memorizar una serie de palabras y símbolos. Queremos comprender qué hace cada instrucción y por qué la necesitamos.</strong></p>
+<p><strong>Cómo utilizar este capítulo de forma autónoma.</strong> Cuando encuentres una pregunta de predicción, escribe o piensa tu respuesta <em>antes</em> de revelar la explicación. Si te bloqueas, identifica primero qué datos tienes y qué resultado necesitas; consulta una pista y vuelve a intentarlo. Si ya entendiste el ejemplo, compruébalo con otros datos y explica qué cambiaría. En los ejercicios con soluciones, la página debe mostrar las pistas antes de la resolución completa. Si estudias el Markdown directamente, oculta el párrafo de solución mientras realizas la predicción.</p>
+<hr />
+<h1 id="seccion-1-del-algoritmo-al-programa-necesitamos-un-lenguaje"><span id="apartado-3" class="legacy-anchor" aria-hidden="true"></span>1. Del algoritmo al programa: necesitamos un lenguaje</h1>
+<p>Recordemos nuestro primer problema de compra.</p>
+<p>Una persona necesita calcular cuánto debe pagar por varios productos iguales.</p>
+<p>Sabemos que necesitamos:</p>
+<ul>
+<li>El precio de cada producto.</li>
+<li>La cantidad comprada.</li>
+</ul>
+<p>Y queremos obtener:</p>
+<ul>
+<li>El importe total.</li>
+</ul>
+<p>Nuestro algoritmo establece:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER precio
+    LEER cantidad
+
+    total ← precio * cantidad
+
+    MOSTRAR total
+FIN
+</code></pre>
+<p>Pero este pseudocódigo no puede entregarse directamente a Java para que lo ejecute como si fuera un programa válido.</p>
+<p>Las palabras <code>INICIO</code>, <code>LEER</code>, <code>MOSTRAR</code> y la flecha <code>←</code> pertenecen a la convención que elegimos para expresar el algoritmo.</p>
+<p>Java utiliza otras instrucciones y reglas.</p>
+<h2 id="seccion-1-1-el-algoritmo-y-el-lenguaje-no-son-lo-mismo"><span id="apartado-4" class="legacy-anchor" aria-hidden="true"></span>1.1. El algoritmo y el lenguaje no son lo mismo</h2>
+<p>Imaginemos que dos personas explican cómo resolver una operación matemática.</p>
+<p>Una lo hace en español y otra en inglés.</p>
+<p>Aunque utilicen palabras diferentes, pueden describir exactamente el mismo procedimiento.</p>
+<p>De manera semejante, un algoritmo puede expresarse utilizando diferentes lenguajes de programación.</p>
+<p>Lo fundamental es que las instrucciones expresen correctamente la solución.</p>
+<p>Por tanto, debemos distinguir dos problemas.</p>
+<p><strong>Problema algorítmico:</strong> determinar qué operaciones debemos realizar y en qué orden.</p>
+<p><strong>Problema de implementación:</strong> expresar esas operaciones mediante las instrucciones y reglas de un lenguaje de programación.</p>
+<p>Durante esta unidad trabajaremos especialmente en la segunda parte, sin olvidar la primera.</p>
+<h2 id="seccion-1-2-java-tiene-reglas-de-escritura"><span id="apartado-5" class="legacy-anchor" aria-hidden="true"></span>1.2. Java tiene reglas de escritura</h2>
+<p>En español podemos expresar una misma idea utilizando diferentes construcciones.</p>
+<p>Pero Java exige que determinadas instrucciones se escriban respetando una sintaxis.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola&quot;);
+</code></pre>
+<p>Es una instrucción válida para mostrar información.</p>
+<p>En cambio:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">mostrar(&quot;Hola&quot;)
+</code></pre>
+<p>No es una instrucción que podamos utilizar directamente en nuestros primeros programas Java sin haber definido previamente algo que permita hacerlo.</p>
+<p>No alcanza con que nosotros comprendamos qué significa.</p>
+<p>El programa debe respetar las reglas del lenguaje.</p>
+<h2 id="seccion-1-3-que-significa-aprender-la-sintaxis"><span id="apartado-6" class="legacy-anchor" aria-hidden="true"></span>1.3. ¿Qué significa aprender la sintaxis?</h2>
+<p>La <strong>sintaxis</strong> es el conjunto de reglas que determina cómo se escriben las construcciones válidas de un lenguaje.</p>
+<p>En Java tendremos que prestar atención a:</p>
+<ul>
+<li>Las palabras reservadas.</li>
+<li>Los nombres de las variables.</li>
+<li>Los paréntesis.</li>
+<li>Las llaves.</li>
+<li>Los puntos y comas.</li>
+<li>Los operadores.</li>
+<li>Las mayúsculas y minúsculas.</li>
+</ul>
+<p>Al principio algunos símbolos pueden parecernos innecesarios.</p>
+<p>Sin embargo, forman parte de las reglas mediante las cuales expresamos nuestras instrucciones.</p>
+<p>Con la práctica aprenderemos a reconocerlos y utilizarlos.</p>
+<p>Pero antes de escribir nuestro primer programa necesitamos conocer su estructura básica.</p>
+<hr />
+<h1 id="seccion-2-la-estructura-de-un-programa-java"><span id="apartado-7" class="legacy-anchor" aria-hidden="true"></span>2. La estructura de un programa Java</h1>
+<p>Comenzaremos con un programa muy sencillo.</p>
+<p>Su única tarea será mostrar un mensaje.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println(&quot;Hola, Java&quot;);
+
+    }
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Hola, Java
+</code></pre>
+<p>Este programa contiene pocos elementos, pero necesitamos comprender cómo se relacionan.</p>
+<p>No vamos a memorizarlo como una fórmula incomprensible.</p>
+<p>Examinaremos sus partes.</p>
+<h2 id="seccion-2-1-la-clase-main"><span id="apartado-8" class="legacy-anchor" aria-hidden="true"></span>2.1. La clase Main</h2>
+<p>La primera línea dice:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">public class Main {
+</code></pre>
+<p>Por ahora necesitamos saber que nuestros programas estarán organizados dentro de una clase llamada <code>Main</code>.</p>
+<p>En esta etapa no estudiaremos todavía qué significa crear objetos a partir de clases.</p>
+<p>Eso llegará en la Unidad 7.</p>
+<p>De momento utilizaremos una estructura que Java reconoce para contener nuestro programa.</p>
+<p>El nombre <code>Main</code> debe coincidir con el nombre del archivo <code>Main.java</code> cuando declaramos la clase como <code>public</code>.</p>
+<h2 id="seccion-2-2-el-metodo-main"><span id="apartado-9" class="legacy-anchor" aria-hidden="true"></span>2.2. El método main</h2>
+<p>Dentro de la clase encontramos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public static void main(String[] args) {
+</code></pre>
+<p>Esta declaración identifica el método desde el que comenzará la ejecución de nuestros programas.</p>
+<p>En esta unidad escribiremos nuestras instrucciones dentro de <code>main</code>.</p>
+<p>Más adelante aprenderemos a crear otros métodos y comprenderemos con mayor profundidad esta estructura.</p>
+<p>Por ahora debemos reconocer algo esencial:</p>
+<p><strong>Cuando ejecutamos nuestro programa, Java comienza por las instrucciones que colocamos dentro de <code>main</code>.</strong></p>
+<h2 id="seccion-2-3-las-llaves"><span id="apartado-10" class="legacy-anchor" aria-hidden="true"></span>2.3. Las llaves</h2>
+<p>Observa que aparecen símbolos como:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">{
+}
+</code></pre>
+<p>Las llaves delimitan bloques de código.</p>
+<p>La primera pareja corresponde al bloque de la clase.</p>
+<p>La segunda pareja corresponde al bloque del método <code>main</code>.</p>
+<p>Esto significa que tenemos un bloque dentro de otro.</p>
+<p>Podemos representarlo de forma simplificada:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">Clase Main
+    Método main
+        Instrucciones del programa
+    Fin del método
+Fin de la clase
+</code></pre>
+<p>La indentación ayuda a visualizar esta organización.</p>
+<h2 id="seccion-2-4-la-instruccion-que-muestra-el-mensaje"><span id="apartado-11" class="legacy-anchor" aria-hidden="true"></span>2.4. La instrucción que muestra el mensaje</h2>
+<p>Dentro de <code>main</code> escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola, Java&quot;);
+</code></pre>
+<p>Esta instrucción muestra el texto <code>Hola, Java</code> en la consola y después termina esa línea.</p>
+<p>La palabra <code>System</code>, las referencias <code>out</code> y <code>println</code>, los puntos y los paréntesis forman parte de la escritura de la instrucción.</p>
+<p>Por ahora aprenderemos a utilizarla correctamente.</p>
+<p>No necesitamos estudiar todavía todos los detalles de las clases y los objetos que intervienen en ella.</p>
+<h2 id="seccion-2-5-el-punto-y-coma"><span id="apartado-12" class="legacy-anchor" aria-hidden="true"></span>2.5. El punto y coma</h2>
+<p>Observa el símbolo final:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">;
+</code></pre>
+<p>En Java, muchas instrucciones terminan con un punto y coma.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola&quot;);
+</code></pre>
+<p>O:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 5;
+</code></pre>
+<p>El punto y coma forma parte de la sintaxis.</p>
+<p>Olvidarlo puede producir un error de compilación.</p>
+<h2 id="seccion-2-6-representacion-de-la-estructura"><span id="apartado-13" class="legacy-anchor" aria-hidden="true"></span>2.6. Representación de la estructura</h2>
+<div id="u02-estructura-java" data-recurso="u02-estructura-java"><div data-componente-interactivo="u02-estructura-java"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>En Main.java, la clase Main contiene el método main. La ejecución entra en main y sigue sus instrucciones. Las llaves delimitan cada bloque; println muestra información.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>En este recurso podremos distinguir visualmente las tres partes:</p>
+<ol>
+<li>La clase que contiene el programa.</li>
+<li>El método donde comienza la ejecución.</li>
+<li>Las instrucciones que realizamos.</li>
+</ol>
+<h2 id="seccion-2-7-donde-comienza-java-y-como-continua"><span id="apartado-14" class="legacy-anchor" aria-hidden="true"></span>2.7. ¿Dónde comienza Java y cómo continúa?</h2>
+<p>Hasta ahora sabemos dónde comienza la ejecución.</p>
+<p>Pero necesitamos comprender qué sucede cuando escribimos varias instrucciones dentro de <code>main</code>.</p>
+<p>Observa este programa completo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println(&quot;Primero&quot;);
+        System.out.println(&quot;Segundo&quot;);
+        System.out.println(&quot;Tercero&quot;);
+
+    }
+}
+</code></pre>
+<p>¿Cuál será la salida?</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Primero
+Segundo
+Tercero
+</code></pre>
+<p>Java comienza ejecutando <code>main</code>.</p>
+<p>Después encuentra la primera instrucción y muestra el mensaje «Primero».</p>
+<p>Continúa con la segunda y muestra «Segundo».</p>
+<p>Finalmente ejecuta la tercera y muestra «Tercero».</p>
+<p>Podemos seguir la ejecución:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Instrucción ejecutada</th>
+<th>Salida acumulada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mostrar «Primero»</td>
+<td>Primero</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mostrar «Segundo»</td>
+<td>Primero, Segundo</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mostrar «Tercero»</td>
+<td>Primero, Segundo, Tercero</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En estos primeros programas, las instrucciones se ejecutan secuencialmente, en el orden en que aparecen dentro de <code>main</code>.</p>
+<p>Cuando termina el método, termina la ejecución de nuestro programa sencillo.</p>
+<p>Más adelante aprenderemos estructuras que permiten tomar decisiones, repetir instrucciones y ejecutar otros métodos.</p>
+<p>Por ahora necesitamos dominar la secuencia.</p>
+<h2 id="seccion-2-8-las-llaves-se-ejecutan-como-instrucciones"><span id="apartado-15" class="legacy-anchor" aria-hidden="true"></span>2.8. ¿Las llaves se ejecutan como instrucciones?</h2>
+<p>No.</p>
+<p>Las llaves permiten delimitar bloques de código.</p>
+<p>No producen mensajes en la consola.</p>
+<p>Tampoco son operaciones que debamos contar como si fueran sumas o asignaciones.</p>
+<p>Forman parte de la estructura del programa.</p>
+<p>Esta distinción ayuda a comprender por qué podemos tener muchas líneas de código, pero solamente algunas corresponden a instrucciones que producen resultados visibles.</p>
+<h2 id="seccion-2-9-tenemos-que-memorizar-toda-la-estructura"><span id="apartado-16" class="legacy-anchor" aria-hidden="true"></span>2.9. ¿Tenemos que memorizar toda la estructura?</h2>
+<p>Necesitamos familiarizarnos con ella y aprender a escribirla.</p>
+<p>Pero no debemos confundir memorizar la estructura con comprender un programa.</p>
+<p>Por ejemplo, un estudiante podría copiar correctamente:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+    }
+}
+</code></pre>
+<p>Y no saber todavía cómo calcular el importe de una compra.</p>
+<p>La estructura nos proporciona el lugar donde escribir nuestras soluciones.</p>
+<p>El algoritmo sigue siendo lo que determina qué instrucciones necesitamos colocar allí.</p>
+<hr />
+<h1 id="seccion-3-nuestro-entorno-de-trabajo-visual-studio-code"><span id="apartado-17" class="legacy-anchor" aria-hidden="true"></span>3. Nuestro entorno de trabajo: Visual Studio Code</h1>
+<p>Para escribir nuestros programas utilizaremos Visual Studio Code.</p>
+<p>Es un editor que permite trabajar con archivos de código y, con las herramientas de Java adecuadas, compilar y ejecutar programas.</p>
+<p>Durante esta unidad utilizaremos proyectos muy sencillos.</p>
+<p>No necesitamos frameworks, bases de datos ni aplicaciones gráficas.</p>
+<p>Comenzaremos con programas de consola.</p>
+<h2 id="seccion-3-1-que-es-un-programa-de-consola"><span id="apartado-18" class="legacy-anchor" aria-hidden="true"></span>3.1. ¿Qué es un programa de consola?</h2>
+<p>Un programa de consola puede mostrar información textual y recibir datos mediante un entorno de entrada y salida.</p>
+<p>Por ejemplo, podría mostrar:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Ingrese el precio:
+</code></pre>
+<p>Después recibir:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">150
+</code></pre>
+<p>Y continuar realizando operaciones.</p>
+<p>La consola es suficiente para aprender los fundamentos de programación.</p>
+<p>No necesitamos crear botones ni ventanas para estudiar variables, operaciones y algoritmos.</p>
+<h2 id="seccion-3-2-crear-una-carpeta-para-el-programa"><span id="apartado-19" class="legacy-anchor" aria-hidden="true"></span>3.2. Crear una carpeta para el programa</h2>
+<p>Podemos comenzar creando una carpeta llamada:</p>
+<p><code>MiPrimerPrograma</code></p>
+<p>Dentro de ella guardaremos un archivo:</p>
+<p><code>Main.java</code></p>
+<p>La estructura será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">MiPrimerPrograma/
+    Main.java
+</code></pre>
+<p>Por ahora no necesitamos más archivos.</p>
+<h2 id="seccion-3-3-escribir-el-primer-programa"><span id="apartado-20" class="legacy-anchor" aria-hidden="true"></span>3.3. Escribir el primer programa</h2>
+<p>En <code>Main.java</code> escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println(&quot;Mi primer programa en Java&quot;);
+
+    }
+}
+</code></pre>
+<p>Guardamos el archivo.</p>
+<p>Después utilizamos las herramientas disponibles en Visual Studio Code para ejecutar el programa.</p>
+<p>Si tenemos instalado y configurado un JDK y las herramientas de Java correspondientes, el editor puede ofrecer una opción para ejecutar <code>main</code>.</p>
+<p>La salida esperada será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">Mi primer programa en Java
+</code></pre>
+<h2 id="seccion-3-4-compilar-y-ejecutar"><span id="apartado-21" class="legacy-anchor" aria-hidden="true"></span>3.4. Compilar y ejecutar</h2>
+<p>Cuando trabajamos con Java debemos distinguir dos ideas.</p>
+<p><strong>Compilar:</strong> procesar el código fuente para comprobar sus reglas y generar el bytecode correspondiente cuando el programa es válido.</p>
+<p><strong>Ejecutar:</strong> poner en funcionamiento el programa mediante el entorno de Java.</p>
+<p>Si tenemos instalado y configurado un JDK, también podemos utilizar la terminal.</p>
+<p>Desde la carpeta donde está <code>Main.java</code>:</p>
+<pre class="codigo-bloque" data-etiqueta="Consola"><code class="language-bash">javac Main.java
+</code></pre>
+<p>Si la compilación termina correctamente, se genera <code>Main.class</code>.</p>
+<p>Después podemos ejecutar:</p>
+<pre class="codigo-bloque" data-etiqueta="Consola"><code class="language-bash">java Main
+</code></pre>
+<p>Observa que en el segundo comando no escribimos <code>.java</code>.</p>
+<p>También existen formas de ejecutar archivos fuente directamente con herramientas modernas de Java, pero aprender a distinguir compilación y ejecución nos ayuda a comprender el proceso.</p>
+<h2 id="seccion-3-5-que-sucede-si-el-programa-no-compila"><span id="apartado-22" class="legacy-anchor" aria-hidden="true"></span>3.5. ¿Qué sucede si el programa no compila?</h2>
+<p>Imaginemos que escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola&quot;)
+</code></pre>
+<p>Y olvidamos el punto y coma.</p>
+<p>El compilador puede señalar que existe un problema de sintaxis.</p>
+<p>Eso no significa necesariamente que nuestro algoritmo sea incorrecto.</p>
+<p>Significa que no hemos expresado alguna instrucción respetando las reglas de Java.</p>
+<p>A lo largo del curso aprenderemos a distinguir estos errores.</p>
+<h2 id="seccion-3-6-guardar-ejecutar-y-comprobar"><span id="apartado-23" class="legacy-anchor" aria-hidden="true"></span>3.6. Guardar, ejecutar y comprobar</h2>
+<p>Conviene adquirir una rutina de trabajo:</p>
+<ol>
+<li>Comprender qué debe hacer el programa.</li>
+<li>Escribir el algoritmo.</li>
+<li>Traducirlo a Java.</li>
+<li>Guardar el archivo.</li>
+<li>Compilar y ejecutar.</li>
+<li>Comparar la salida con el resultado esperado.</li>
+<li>Corregir los errores que aparezcan.</li>
+</ol>
+<p><strong>Ejecutar un programa no demuestra automáticamente que sea correcto. Debemos comprobar qué resultado produce.</strong></p>
+<hr />
+<h1 id="seccion-4-mostrar-informacion-mediante-java"><span id="apartado-24" class="legacy-anchor" aria-hidden="true"></span>4. Mostrar información mediante Java</h1>
+<p>Vamos a comenzar con instrucciones que muestran información en la consola.</p>
+<p>Esto nos permitirá observar cómo se ejecutan nuestros programas antes de incorporar cálculos y entradas de datos.</p>
+<h2 id="seccion-4-1-utilizar-println"><span id="apartado-25" class="legacy-anchor" aria-hidden="true"></span>4.1. Utilizar println</h2>
+<p>La instrucción:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola&quot;);
+</code></pre>
+<p>Muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Hola
+</code></pre>
+<p>La palabra <code>println</code> indica que, después de mostrar el contenido, la siguiente salida comenzará en una línea nueva.</p>
+<h2 id="seccion-4-2-mostrar-varios-mensajes"><span id="apartado-26" class="legacy-anchor" aria-hidden="true"></span>4.2. Mostrar varios mensajes</h2>
+<p>Considera este programa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println(&quot;Primera línea&quot;);
+        System.out.println(&quot;Segunda línea&quot;);
+        System.out.println(&quot;Tercera línea&quot;);
+
+    }
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Primera línea
+Segunda línea
+Tercera línea
+</code></pre>
+<p>El orden de los mensajes coincide con el orden de ejecución de las instrucciones.</p>
+<p>Aquí recuperamos un concepto de la Unidad 1: <strong>la secuencia de acciones forma parte del algoritmo</strong>.</p>
+<h2 id="seccion-4-3-diferencia-entre-print-y-println"><span id="apartado-27" class="legacy-anchor" aria-hidden="true"></span>4.3. Diferencia entre print y println</h2>
+<p>Java también permite utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">System.out.print(&quot;Hola&quot;);
+</code></pre>
+<p>La diferencia es que <code>print</code> no agrega automáticamente un salto de línea al finalizar.</p>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.print(&quot;Hola&quot;);
+System.out.print(&quot; mundo&quot;);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Hola mundo
+</code></pre>
+<p>En cambio:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola&quot;);
+System.out.println(&quot;mundo&quot;);
+</code></pre>
+<p>Mostrará:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Hola
+mundo
+</code></pre>
+<h2 id="seccion-4-4-por-que-importa-esta-diferencia"><span id="apartado-28" class="legacy-anchor" aria-hidden="true"></span>4.4. ¿Por qué importa esta diferencia?</h2>
+<p>Porque la forma de mostrar información puede afectar la comprensión del programa por parte del usuario.</p>
+<p>Por ejemplo, cuando necesitemos solicitar un dato, podremos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.print(&quot;Ingrese su edad: &quot;);
+</code></pre>
+<p>Y permitir que la persona introduzca el valor a continuación del mensaje.</p>
+<p>Más adelante utilizaremos esta posibilidad junto con <code>Scanner</code>.</p>
+<h2 id="seccion-4-5-mostrar-texto-y-mostrar-numeros"><span id="apartado-29" class="legacy-anchor" aria-hidden="true"></span>4.5. Mostrar texto y mostrar números</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;150&quot;);
+</code></pre>
+<p>Y:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">System.out.println(150);
+</code></pre>
+<p>Ambas instrucciones pueden producir una salida visual semejante:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">150
+</code></pre>
+<p>Pero no estamos utilizando el mismo tipo de dato.</p>
+<p>En el primer caso, <code>150</code> aparece entre comillas y se interpreta como texto.</p>
+<p>En el segundo, utilizamos un valor numérico entero.</p>
+<p>La diferencia será importante cuando queramos realizar operaciones matemáticas.</p>
+<hr />
+<h1 id="seccion-5-los-datos-necesitan-un-lugar-introducir-variables"><span id="apartado-30" class="legacy-anchor" aria-hidden="true"></span>5. Los datos necesitan un lugar: introducir variables</h1>
+<p>Hasta ahora nuestros programas muestran información previamente escrita en el código.</p>
+<p>Pero queremos comenzar a realizar cálculos.</p>
+<p>Imaginemos que necesitamos calcular el importe de una compra.</p>
+<p>Sabemos que una persona compra tres cuadernos de $150 cada uno.</p>
+<p>Podríamos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(150 * 3);
+</code></pre>
+<p>La salida sería:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">450
+</code></pre>
+<p>Esta instrucción funciona.</p>
+<p>Pero presenta una dificultad.</p>
+<p>¿Qué sucede si el precio cambia?</p>
+<p>¿O si necesitamos utilizar ese mismo precio en varias operaciones?</p>
+<h2 id="seccion-5-1-un-programa-que-repite-informacion"><span id="apartado-31" class="legacy-anchor" aria-hidden="true"></span>5.1. Un programa que repite información</h2>
+<p>Imaginemos el siguiente programa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println(&quot;Precio: 150&quot;);
+        System.out.println(&quot;Cantidad: 3&quot;);
+        System.out.println(&quot;Total: &quot; + (150 * 3));
+
+    }
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Precio: 150
+Cantidad: 3
+Total: 450
+</code></pre>
+<p>Hasta aquí funciona.</p>
+<p>Pero ahora imaginemos que el precio cambió a $200.</p>
+<p>Debemos modificar el precio que aparece en el mensaje.</p>
+<p>También debemos modificar el precio que utilizamos en la multiplicación.</p>
+<p>¿Qué sucede si cambiamos solamente el primero?</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Precio: 200&quot;);
+System.out.println(&quot;Cantidad: 3&quot;);
+System.out.println(&quot;Total: &quot; + (150 * 3));
+</code></pre>
+<p>El programa mostrará:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Precio: 200
+Cantidad: 3
+Total: 450
+</code></pre>
+<p>Los datos son contradictorios.</p>
+<p>El programa informa que el precio es 200, pero calcula el total utilizando 150.</p>
+<p>El problema apareció porque repetimos un mismo dato en lugares diferentes.</p>
+<h2 id="seccion-5-2-podemos-guardar-el-precio-una-sola-vez"><span id="apartado-32" class="legacy-anchor" aria-hidden="true"></span>5.2. ¿Podemos guardar el precio una sola vez?</h2>
+<p>Necesitamos conservar el precio bajo un nombre que podamos reutilizar.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 200;
+int cantidad = 3;
+</code></pre>
+<p>Ahora podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Precio: &quot; + precio);
+System.out.println(&quot;Cantidad: &quot; + cantidad);
+System.out.println(&quot;Total: &quot; + (precio * cantidad));
+</code></pre>
+<p>Todas las instrucciones utilizan los valores almacenados en las variables.</p>
+<p>Si cambiamos el precio inicial, las instrucciones que lo consultan utilizarán ese nuevo valor cuando se ejecuten.</p>
+<p>Esto nos permite evitar parte de la repetición y expresar con mayor claridad el significado de los datos.</p>
+<p><strong>Aquí aparece la necesidad de las variables: conservar información mediante nombres para poder consultarla y utilizarla durante el programa.</strong></p>
+<h2 id="seccion-5-3-que-es-una-variable"><span id="apartado-33" class="legacy-anchor" aria-hidden="true"></span>5.3. ¿Qué es una variable?</h2>
+<p>Una variable es un elemento de nuestro programa que permite almacenar un valor de un tipo determinado y utilizarlo durante la ejecución.</p>
+<p>En Java debemos declarar una variable indicando su tipo y su nombre.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int cantidad = 3;
+</code></pre>
+<p>Esta instrucción declara una variable llamada <code>cantidad</code>, de tipo <code>int</code>, y le asigna el valor 3.</p>
+<p>Podemos utilizarla después:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(cantidad);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">3
+</code></pre>
+<h2 id="seccion-5-4-declarar-una-variable"><span id="apartado-34" class="legacy-anchor" aria-hidden="true"></span>5.4. Declarar una variable</h2>
+<p>La declaración:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio;
+</code></pre>
+<p>Establece que utilizaremos una variable llamada <code>precio</code> capaz de almacenar un entero.</p>
+<p>Pero todavía no le asignamos un valor.</p>
+<p>Para utilizar una variable local en una expresión debemos asegurarnos de que tenga un valor asignado previamente.</p>
+<p>Por ejemplo, esto no compila:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio;
+
+System.out.println(precio);
+</code></pre>
+<p>Porque intentamos utilizar una variable local que todavía no fue inicializada.</p>
+<h2 id="seccion-5-5-asignar-e-inicializar"><span id="apartado-35" class="legacy-anchor" aria-hidden="true"></span>5.5. Asignar e inicializar</h2>
+<p>Podemos asignar un valor mediante:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">precio = 150;
+</code></pre>
+<p>Ahora la variable contiene 150.</p>
+<p>También podemos declarar e inicializar en una misma instrucción:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+</code></pre>
+<p>Ambas formas son válidas cuando se utilizan correctamente.</p>
+<h2 id="seccion-5-6-declaracion-inicializacion-y-reasignacion"><span id="apartado-36" class="legacy-anchor" aria-hidden="true"></span>5.6. Declaración, inicialización y reasignación</h2>
+<p>Es importante distinguir tres situaciones.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Qué sucede</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int precio;</code></td>
+<td>Declara una variable</td>
+</tr>
+<tr>
+<td><code>precio = 150;</code></td>
+<td>Asigna su primer valor</td>
+</tr>
+<tr>
+<td><code>int cantidad = 3;</code></td>
+<td>Declara e inicializa en una instrucción</td>
+</tr>
+<tr>
+<td><code>precio = 200;</code></td>
+<td>Asigna otro valor a la misma variable</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+
+precio = 200;
+</code></pre>
+<p>Aquí tenemos una sola variable llamada <code>precio</code>.</p>
+<p>Primero contiene 150.</p>
+<p>Después contiene 200.</p>
+<p>No hemos creado una segunda variable.</p>
+<h2 id="seccion-5-7-un-error-frecuente-volver-a-declarar-la-misma-variable"><span id="apartado-37" class="legacy-anchor" aria-hidden="true"></span>5.7. Un error frecuente: volver a declarar la misma variable</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+
+int precio = 200;
+</code></pre>
+<p>Este fragmento no compila cuando ambas declaraciones pertenecen al mismo bloque local.</p>
+<p>¿Por qué?</p>
+<p>Porque intentamos declarar dos veces una variable local con el mismo nombre en un ámbito donde no está permitido.</p>
+<p>Si queremos modificar el precio, no debemos repetir <code>int</code>.</p>
+<p>La forma correcta es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+
+precio = 200;
+</code></pre>
+<p>La primera instrucción declara e inicializa.</p>
+<p>La segunda reasigna.</p>
+<p>Esta diferencia será importante durante todo el curso.</p>
+<hr />
+<h1 id="seccion-6-tipos-de-datos-no-toda-la-informacion-es-igual"><span id="apartado-38" class="legacy-anchor" aria-hidden="true"></span>6. Tipos de datos: no toda la información es igual</h1>
+<p>En Java, las variables tienen tipos.</p>
+<p>El tipo indica qué clase de valores puede almacenar una variable y qué operaciones pueden realizarse con ellos.</p>
+<p>No es lo mismo representar una cantidad entera de productos que un precio con decimales.</p>
+<p>Tampoco es lo mismo representar un número que un texto.</p>
+<p>Vamos a conocer algunos tipos básicos.</p>
+<p>Durante esta unidad utilizaremos especialmente <code>int</code>, <code>double</code> y <code>String</code>.</p>
+<p>También presentaremos <code>boolean</code> y <code>char</code>, que profundizaremos cuando aparezcan nuevas necesidades.</p>
+<h2 id="seccion-6-1-int-numeros-enteros"><span id="apartado-39" class="legacy-anchor" aria-hidden="true"></span>6.1. int: números enteros</h2>
+<p>Utilizamos <code>int</code> para valores enteros.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int edad = 16;
+int cantidad = 3;
+int stock = 25;
+</code></pre>
+<p>Los valores no contienen una parte decimal.</p>
+<p>Este tipo resulta útil para representar cantidades enteras, contadores y otros datos que no requieren decimales.</p>
+<h2 id="seccion-6-2-double-numeros-con-parte-decimal"><span id="apartado-40" class="legacy-anchor" aria-hidden="true"></span>6.2. double: números con parte decimal</h2>
+<p>Podemos utilizar <code>double</code> para representar números con parte decimal.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">double precio = 125.50;
+double altura = 1.72;
+double promedio = 7.5;
+</code></pre>
+<p>En Java escribimos el punto como separador decimal en el código fuente.</p>
+<p>Por eso utilizamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">double precio = 125.50;
+</code></pre>
+<p>Y no:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">double precio = 125,50;
+</code></pre>
+<p>La segunda forma no es una asignación válida de un único valor decimal en Java.</p>
+<p>Debemos recordar que los valores <code>double</code> se representan mediante números de punto flotante.</p>
+<p>No todos los valores decimales pueden almacenarse exactamente.</p>
+<p>Por eso pueden aparecer pequeñas diferencias de precisión en determinados cálculos.</p>
+<p>Para aprender operaciones básicas utilizaremos <code>double</code>. En aplicaciones financieras reales se emplean técnicas específicas para controlar la precisión.</p>
+<h2 id="seccion-6-3-string-cadenas-de-caracteres"><span id="apartado-41" class="legacy-anchor" aria-hidden="true"></span>6.3. String: cadenas de caracteres</h2>
+<p>Para representar texto utilizaremos <code>String</code>.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">String nombre = &quot;Ana&quot;;
+String producto = &quot;Cuaderno&quot;;
+</code></pre>
+<p>Las cadenas se escriben entre comillas dobles.</p>
+<p>Aunque se utiliza de manera semejante al declarar variables, <code>String</code> no es un tipo primitivo: es una clase de Java.</p>
+<p>Más adelante estudiaremos algunas de sus operaciones.</p>
+<h2 id="seccion-6-4-boolean-verdadero-o-falso"><span id="apartado-42" class="legacy-anchor" aria-hidden="true"></span>6.4. boolean: verdadero o falso</h2>
+<p>El tipo <code>boolean</code> permite representar dos valores:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">true
+false
+</code></pre>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">boolean aprobado = true;
+</code></pre>
+<p>O:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">boolean disponible = false;
+</code></pre>
+<p>Este tipo será especialmente importante cuando estudiemos condiciones.</p>
+<p>Por ahora necesitamos reconocer que representa valores lógicos, no textos.</p>
+<h2 id="seccion-6-5-char-un-caracter"><span id="apartado-43" class="legacy-anchor" aria-hidden="true"></span>6.5. char: un carácter</h2>
+<p>El tipo <code>char</code> permite representar un carácter.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">char grupo = &#x27;A&#x27;;
+</code></pre>
+<p>Observa que utilizamos comillas simples.</p>
+<p>No es lo mismo que una cadena de texto.</p>
+<h2 id="seccion-6-6-elegir-tipos-adecuados"><span id="apartado-44" class="legacy-anchor" aria-hidden="true"></span>6.6. Elegir tipos adecuados</h2>
+<p>Consideremos un programa que registra información de una compra.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Ejemplo</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cantidad</td>
+<td>3</td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td>Precio</td>
+<td>125.50</td>
+<td><code>double</code></td>
+</tr>
+<tr>
+<td>Producto</td>
+<td>&quot;Cuaderno&quot;</td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td>Disponible</td>
+<td>true</td>
+<td><code>boolean</code></td>
+</tr>
+<tr>
+<td>Grupo</td>
+<td>'A'</td>
+<td><code>char</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>No todos los datos requieren el mismo tipo.</p>
+<p>Elegir correctamente ayuda a representar el problema y evita determinadas operaciones incompatibles.</p>
+<h2 id="seccion-6-7-un-error-frecuente-confundir-texto-con-numero"><span id="apartado-45" class="legacy-anchor" aria-hidden="true"></span>6.7. Un error frecuente: confundir texto con número</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">String edad = &quot;16&quot;;
+</code></pre>
+<p>Y:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int edad = 16;
+</code></pre>
+<p>Estas son declaraciones alternativas: no debemos escribirlas juntas con el mismo nombre dentro de un mismo bloque.</p>
+<p>Ambas pueden representar información que visualmente parece semejante.</p>
+<p>Pero sus tipos son diferentes.</p>
+<p>En la primera, guardamos una cadena de caracteres.</p>
+<p>En la segunda, guardamos un entero con el que podemos realizar operaciones aritméticas.</p>
+<p>Cuando necesitemos calcular, debemos prestar atención al tipo de información que estamos utilizando.</p>
+<hr />
+<h1 id="seccion-7-asignacion-las-variables-cambian-durante-la-ejecucion"><span id="apartado-46" class="legacy-anchor" aria-hidden="true"></span>7. Asignación: las variables cambian durante la ejecución</h1>
+<p>Uno de los conceptos más importantes de esta unidad es comprender qué sucede cuando asignamos un valor a una variable.</p>
+<p>Recordemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 4;
+</code></pre>
+<p>La variable <code>numero</code> comienza almacenando 4.</p>
+<p>Ahora ejecutamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">numero = 7;
+</code></pre>
+<p>La variable pasa a contener 7.</p>
+<p>El valor anterior es reemplazado.</p>
+<h2 id="seccion-7-1-el-signo-igual-en-java"><span id="apartado-47" class="legacy-anchor" aria-hidden="true"></span>7.1. El signo igual en Java</h2>
+<p>En matemáticas, el símbolo <code>=</code> suele expresar una igualdad.</p>
+<p>Pero en una asignación de Java tiene otro significado.</p>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">numero = numero + 3;
+</code></pre>
+<p>Desde el punto de vista de una igualdad matemática, esta expresión podría parecernos extraña.</p>
+<p>¿Cómo puede un número ser igual a sí mismo más tres?</p>
+<p>La respuesta es que no estamos escribiendo una ecuación.</p>
+<p>Estamos dando una instrucción de asignación.</p>
+<p>Java:</p>
+<ol>
+<li>Obtiene el valor actual de <code>numero</code>.</li>
+<li>Le suma 3.</li>
+<li>Guarda el resultado nuevamente en <code>numero</code>.</li>
+</ol>
+<h2 id="seccion-7-2-seguir-una-asignacion"><span id="apartado-48" class="legacy-anchor" aria-hidden="true"></span>7.2. Seguir una asignación</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 4;
+
+numero = numero + 3;
+</code></pre>
+<p>Primero <code>numero</code> vale 4.</p>
+<p>Después se calcula:</p>
+<p><code>4 + 3 = 7</code></p>
+<p>Y el resultado reemplaza el valor anterior.</p>
+<p>Ahora <code>numero</code> vale 7.</p>
+<h2 id="seccion-7-3-varias-asignaciones-consecutivas"><span id="apartado-49" class="legacy-anchor" aria-hidden="true"></span>7.3. Varias asignaciones consecutivas</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 4;
+
+numero = numero + 3;
+
+numero = numero * 2;
+
+numero = numero - 5;
+</code></pre>
+<p>Antes de ejecutar el programa, debemos poder anticipar el resultado.</p>
+<p>Realicemos un trazado.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Instrucción</th>
+<th style="text-align:right">Valor de <code>numero</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>int numero = 4;</code></td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>numero = numero + 3;</code></td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>numero = numero * 2;</code></td>
+<td style="text-align:right">14</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>numero = numero - 5;</code></td>
+<td style="text-align:right">9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El valor final es 9.</p>
+<p>Cada instrucción utiliza el estado que dejaron las anteriores.</p>
+<h2 id="seccion-7-4-importa-el-orden"><span id="apartado-50" class="legacy-anchor" aria-hidden="true"></span>7.4. ¿Importa el orden?</h2>
+<p>Sí.</p>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 4;
+
+numero = numero + 3;
+
+numero = numero * 2;
+</code></pre>
+<p>El resultado es 14.</p>
+<p>Pero si cambiamos el orden:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 4;
+
+numero = numero * 2;
+
+numero = numero + 3;
+</code></pre>
+<p>El resultado es 11.</p>
+<p>Las operaciones son semejantes, pero el orden cambia la solución.</p>
+<p>Aquí recuperamos una idea central de la Unidad 1: <strong>las instrucciones de un algoritmo no pueden reorganizarse arbitrariamente</strong>.</p>
+<h2 id="seccion-7-5-las-variables-no-recuerdan-todos-sus-valores-anteriores"><span id="apartado-51" class="legacy-anchor" aria-hidden="true"></span>7.5. Las variables no recuerdan todos sus valores anteriores</h2>
+<p>Cuando escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 4;
+
+numero = 7;
+</code></pre>
+<p>La variable <code>numero</code> pasa a contener 7.</p>
+<p>No podemos recuperar automáticamente el valor 4 consultando la misma variable.</p>
+<p>Si necesitamos conservar el valor anterior, tendremos que almacenarlo de alguna manera.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int numero = 4;
+
+int anterior = numero;
+
+numero = 7;
+</code></pre>
+<p>Ahora tenemos:</p>
+<p><code>numero = 7</code></p>
+<p><code>anterior = 4</code></p>
+<p>Son dos variables distintas.</p>
+<p>Este ejemplo nos prepara para comprender cómo se copian valores entre variables.</p>
+<h2 id="seccion-7-6-una-variable-no-cambia-por-el-simple-paso-del-tiempo"><span id="apartado-52" class="legacy-anchor" aria-hidden="true"></span>7.6. Una variable no cambia por el simple paso del tiempo</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int cantidad = 3;
+</code></pre>
+<p>Mientras no ejecutemos una instrucción que modifique <code>cantidad</code>, seguirá conservando el mismo valor.</p>
+<p>No cambia automáticamente porque otra variable haya cambiado.</p>
+<p>Esta idea será especialmente importante en el apartado siguiente.</p>
+<hr />
+<h1 id="seccion-8-asignar-un-valor-no-crea-una-relacion-automatica"><span id="apartado-53" class="legacy-anchor" aria-hidden="true"></span>8. Asignar un valor no crea una relación automática</h1>
+<p>Este apartado merece especial atención.</p>
+<p>Es frecuente que, al comenzar a programar, interpretemos las variables como si estuvieran relacionadas permanentemente mediante las operaciones que realizamos.</p>
+<p>Pero eso no es lo que sucede.</p>
+<p>Consideremos un programa que calcula el total de una compra.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio = 150;
+int cantidad = 3;
+
+int total = precio * cantidad;
+</code></pre>
+<p>El resultado será:</p>
+<p><code>total = 450</code></p>
+<p>Hasta aquí no hay ninguna dificultad.</p>
+<p>Pero ahora cambiamos el precio:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">precio = 200;
+</code></pre>
+<p>¿Qué sucede con <code>total</code>?</p>
+<p>Podríamos pensar que cambia automáticamente a 600 porque inicialmente lo calculamos multiplicando precio por cantidad.</p>
+<p>Sin embargo, <strong>eso no sucede</strong>.</p>
+<h2 id="seccion-8-1-por-que-total-no-cambia"><span id="apartado-54" class="legacy-anchor" aria-hidden="true"></span>8.1. ¿Por qué total no cambia?</h2>
+<p>Porque esta instrucción:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int total = precio * cantidad;
+</code></pre>
+<p>Se ejecutó una vez.</p>
+<p>En ese momento Java calculó:</p>
+<p><code>150 × 3 = 450</code></p>
+<p>Y guardó 450 en <code>total</code>.</p>
+<p>Después, cuando modificamos <code>precio</code>, solamente cambió la variable <code>precio</code>.</p>
+<p>La instrucción que calculaba el total no se volvió a ejecutar.</p>
+<p>Por tanto, <code>total</code> continúa valiendo 450.</p>
+<h2 id="seccion-8-2-trazado-completo"><span id="apartado-55" class="legacy-anchor" aria-hidden="true"></span>8.2. Trazado completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio = 150;
+int cantidad = 3;
+
+int total = precio * cantidad;
+
+precio = 200;
+
+total = precio * cantidad;
+</code></pre>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Instrucción ejecutada</th>
+<th style="text-align:right">Precio</th>
+<th style="text-align:right">Cantidad</th>
+<th style="text-align:right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Antes de comenzar</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Declarar e inicializar <code>precio</code></td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Declarar e inicializar <code>cantidad</code></td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Calcular <code>total</code></td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">450</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Cambiar <code>precio</code></td>
+<td style="text-align:right">200</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">450</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Recalcular <code>total</code></td>
+<td style="text-align:right">200</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">600</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Observa especialmente la fila 4.</p>
+<p>El precio ya cambió.</p>
+<p>Pero el total conserva el valor anterior.</p>
+<p>El símbolo <code>—</code> indica que todavía no disponemos de un valor para esa variable en el momento del trazado. No es un valor que Java almacene.</p>
+<h2 id="seccion-8-3-como-actualizamos-el-total"><span id="apartado-56" class="legacy-anchor" aria-hidden="true"></span>8.3. ¿Cómo actualizamos el total?</h2>
+<p>Debemos ejecutar nuevamente el cálculo.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">total = precio * cantidad;
+</code></pre>
+<p>Ahora Java utiliza los valores actuales:</p>
+<p><code>200 × 3 = 600</code></p>
+<p>Y guarda 600 en <code>total</code>.</p>
+<p>El nuevo estado será:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Precio</th>
+<th style="text-align:right">Cantidad</th>
+<th style="text-align:right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">200</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">600</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="seccion-8-4-antes-de-continuar-predice"><span id="apartado-57" class="legacy-anchor" aria-hidden="true"></span>8.4. Antes de continuar: predice</h2>
+<p>Imaginemos que el programa ya ejecutó:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio = 150;
+int cantidad = 3;
+
+int total = precio * cantidad;
+</code></pre>
+<p>Ahora encuentra:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">precio = 200;
+</code></pre>
+<p>Antes de avanzar, responde:</p>
+<ul>
+<li>¿Qué variable se modifica?</li>
+<li>¿Qué valor tenía antes?</li>
+<li>¿Qué valor tendrá después?</li>
+<li>¿Se ejecutó otra vez la multiplicación?</li>
+<li>¿Qué valor conserva <code>total</code>?</li>
+</ul>
+<p>Si respondiste que el total continúa valiendo 450, comprendiste la diferencia entre calcular un valor y actualizarlo.</p>
+<h2 id="seccion-8-5-simulador-de-asignaciones"><span id="apartado-58" class="legacy-anchor" aria-hidden="true"></span>8.5. Simulador de asignaciones</h2>
+<div id="u02-variables-asignacion" data-recurso="u02-variables-asignacion"><div data-componente-interactivo="u02-variables-asignacion"><div data-montaje></div><aside data-alternativa class="recurso-alternativo"><p>Traza: precio 150, cantidad 3, total 450; después precio cambia a 200 y total permanece en 450 hasta volver a calcularlo, cuando pasa a 600. En una copia de primitivos, cambiar b no cambia a.</p><p>Predice el resultado y contrástalo con los ejemplos del capítulo.</p></aside></div></div>
+<p>En el simulador podrás avanzar instrucción por instrucción.</p>
+<p>Antes de cada paso, intenta anticipar qué variable cambiará.</p>
+<p>Presta especial atención al momento en que modificamos <code>precio</code>.</p>
+<p>El objetivo es comprobar que <strong>las variables cambian cuando se ejecutan instrucciones que modifican sus valores, no porque recordemos una relación matemática anterior</strong>.</p>
+<h2 id="seccion-8-6-comprender-valores-independientes"><span id="apartado-59" class="legacy-anchor" aria-hidden="true"></span>8.6. Comprender valores independientes</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int a = 5;
+
+int b = a;
+
+a = 10;
+</code></pre>
+<p>¿Qué valor tendrá <code>b</code> al terminar?</p>
+<p>La respuesta es 5.</p>
+<p>Cuando ejecutamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int b = a;
+</code></pre>
+<p>Java copia el valor actual de <code>a</code>.</p>
+<p>En ese momento <code>a</code> vale 5.</p>
+<p>Después modificamos <code>a</code>, pero no modificamos <code>b</code>.</p>
+<p>Este ejemplo utiliza el mismo principio que acabamos de estudiar.</p>
+<h2 id="seccion-8-7-pregunta-de-control"><span id="apartado-60" class="legacy-anchor" aria-hidden="true"></span>8.7. Pregunta de control</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int a = 8;
+int b = 3;
+
+int resultado = a + b;
+
+a = 10;
+
+System.out.println(resultado);
+</code></pre>
+<p>Antes de ejecutarlo, responde:</p>
+<ol>
+<li>¿Qué valor se muestra?</li>
+<li>¿Por qué cambiar <code>a</code> no actualiza <code>resultado</code>?</li>
+<li>¿Qué instrucción agregarías para calcular nuevamente la suma?</li>
+</ol>
+<p>La salida es 11.</p>
+<p>El valor de <code>resultado</code> no cambia cuando modificamos <code>a</code>.</p>
+<p>Para actualizarlo tendríamos que ejecutar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">resultado = a + b;
+</code></pre>
+<p>Ahora recibiría 13.</p>
+<hr />
+<h1 id="seccion-9-operadores-aritmeticos-expresar-calculos"><span id="apartado-61" class="legacy-anchor" aria-hidden="true"></span>9. Operadores aritméticos: expresar cálculos</h1>
+<p>Hasta ahora utilizamos sumas y multiplicaciones.</p>
+<p>Pero Java permite realizar otras operaciones aritméticas.</p>
+<p>Conoceremos los operadores básicos.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Operación</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Suma</td>
+<td><code>5 + 3</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Resta</td>
+<td><code>5 - 3</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Multiplicación</td>
+<td><code>5 * 3</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>División</td>
+<td><code>6 / 2</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Resto de división</td>
+<td><code>7 % 3</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Debemos aprender a utilizarlos correctamente y comprender cómo influye el tipo de los operandos.</p>
+<h2 id="seccion-9-1-suma"><span id="apartado-62" class="legacy-anchor" aria-hidden="true"></span>9.1. Suma</h2>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int resultado = 5 + 3;
+</code></pre>
+<p>La variable <code>resultado</code> recibe 8.</p>
+<p>También podemos sumar variables:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int a = 5;
+int b = 3;
+
+int suma = a + b;
+</code></pre>
+<h2 id="seccion-9-2-resta"><span id="apartado-63" class="legacy-anchor" aria-hidden="true"></span>9.2. Resta</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int saldo = 800;
+int gasto = 250;
+
+int restante = saldo - gasto;
+</code></pre>
+<p>El resultado es 550.</p>
+<h2 id="seccion-9-3-multiplicacion"><span id="apartado-64" class="legacy-anchor" aria-hidden="true"></span>9.3. Multiplicación</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio = 150;
+int cantidad = 3;
+
+int total = precio * cantidad;
+</code></pre>
+<p>El resultado es 450.</p>
+<h2 id="seccion-9-4-division"><span id="apartado-65" class="legacy-anchor" aria-hidden="true"></span>9.4. División</h2>
+<p>La división requiere especial atención.</p>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int resultado = 7 / 2;
+</code></pre>
+<p>¿Qué valor recibe <code>resultado</code>?</p>
+<p>Podríamos pensar que recibe 3,5.</p>
+<p>Pero ambos operandos son enteros.</p>
+<p>En Java, la división entre enteros produce un resultado entero y descarta la parte fraccionaria.</p>
+<p>Por tanto:</p>
+<p><code>7 / 2 = 3</code></p>
+<p>Este comportamiento no depende solamente del tipo de la variable que recibe el resultado.</p>
+<p>Depende de los operandos que intervienen en la división.</p>
+<h2 id="seccion-9-5-obtener-un-resultado-decimal"><span id="apartado-66" class="legacy-anchor" aria-hidden="true"></span>9.5. Obtener un resultado decimal</h2>
+<p>Si queremos realizar una división con resultado decimal, podemos utilizar un operando de tipo <code>double</code>.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double resultado = 7.0 / 2;
+</code></pre>
+<p>Ahora el resultado será:</p>
+<p><code>3.5</code></p>
+<p>También:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double resultado = 7 / 2.0;
+</code></pre>
+<p>Produce 3.5.</p>
+<h2 id="seccion-9-6-cuidado-con-asignar-una-division-entera-a-double"><span id="apartado-67" class="legacy-anchor" aria-hidden="true"></span>9.6. Cuidado con asignar una división entera a double</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">double resultado = 7 / 2;
+</code></pre>
+<p>Aunque <code>resultado</code> sea <code>double</code>, la división se realiza entre dos enteros.</p>
+<p>Primero se obtiene 3.</p>
+<p>Después ese valor se guarda como 3.0.</p>
+<p>Por tanto, el resultado será:</p>
+<p><code>3.0</code></p>
+<p>No 3.5.</p>
+<p>Este es un error frecuente al calcular promedios.</p>
+<h2 id="seccion-9-7-comparar-distintas-divisiones"><span id="apartado-68" class="legacy-anchor" aria-hidden="true"></span>9.7. Comparar distintas divisiones</h2>
+<p>Observa las siguientes instrucciones como ejemplos independientes:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Instrucción</th>
+<th style="text-align:right">Resultado almacenado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int a = 7 / 2;</code></td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td><code>double b = 7 / 2;</code></td>
+<td style="text-align:right">3.0</td>
+</tr>
+<tr>
+<td><code>double c = 7.0 / 2;</code></td>
+<td style="text-align:right">3.5</td>
+</tr>
+<tr>
+<td><code>double d = 7 / 2.0;</code></td>
+<td style="text-align:right">3.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La diferencia no aparece solamente por el tipo de la variable donde guardamos el resultado.</p>
+<p>La operación se evalúa antes de asignar el valor.</p>
+<p>Por eso necesitamos observar <strong>qué tipos intervienen en la división</strong>.</p>
+<h2 id="seccion-9-8-la-division-y-el-promedio"><span id="apartado-69" class="legacy-anchor" aria-hidden="true"></span>9.8. La división y el promedio</h2>
+<p>Imaginemos que tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int suma = 17;
+int cantidad = 2;
+</code></pre>
+<p>Y calculamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double promedio = suma / cantidad;
+</code></pre>
+<p>El resultado será 8.0.</p>
+<p>Pero el promedio matemático de 17 y 2 es 8.5.</p>
+<p>Podemos corregirlo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double promedio = suma * 1.0 / cantidad;
+</code></pre>
+<p>Ahora uno de los operandos de la división es decimal, porque la multiplicación anterior produce un valor <code>double</code>.</p>
+<p>El resultado será 8.5.</p>
+<p>También podríamos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double promedio = suma / 2.0;
+</code></pre>
+<p>Pero eso solamente sería conveniente si la cantidad fuera siempre dos.</p>
+<p>En un programa general necesitaremos utilizar el valor que representa la cantidad real de datos.</p>
+<h2 id="seccion-9-9-que-sucede-al-dividir-entre-cero"><span id="apartado-70" class="legacy-anchor" aria-hidden="true"></span>9.9. ¿Qué sucede al dividir entre cero?</h2>
+<p>La división entre cero merece una precaución.</p>
+<p>Si realizamos una división entera entre cero, el programa produce un error durante la ejecución.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int resultado = 10 / 0;
+</code></pre>
+<p>Esta operación no puede completarse normalmente como una división entera.</p>
+<p>Las divisiones con valores de punto flotante siguen otras reglas, que no estudiaremos todavía en detalle.</p>
+<p>Por ahora debemos recordar que, antes de dividir, necesitamos asegurarnos de que el divisor sea adecuado para la operación que queremos realizar.</p>
+<p>Más adelante aprenderemos a comprobar condiciones antes de ejecutar determinados cálculos.</p>
+<h2 id="seccion-9-10-el-operador-resto"><span id="apartado-71" class="legacy-anchor" aria-hidden="true"></span>9.10. El operador resto</h2>
+<p>El operador <code>%</code> obtiene el resto de una división entera.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int resto = 7 % 3;
+</code></pre>
+<p>Como 7 dividido entre 3 deja resto 1:</p>
+<p><code>resto = 1</code></p>
+<p>Otro ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int resto = 10 % 2;
+</code></pre>
+<p>El resultado es 0.</p>
+<p>Más adelante utilizaremos esta operación para resolver problemas como determinar si un número es par.</p>
+<h2 id="seccion-9-11-prioridad-de-las-operaciones"><span id="apartado-72" class="legacy-anchor" aria-hidden="true"></span>9.11. Prioridad de las operaciones</h2>
+<p>Java no realiza necesariamente todas las operaciones de izquierda a derecha sin considerar su significado.</p>
+<p>Existen reglas de precedencia.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int resultado = 2 + 3 * 4;
+</code></pre>
+<p>La multiplicación se realiza antes que la suma.</p>
+<p>Por tanto:</p>
+<p><code>2 + 12 = 14</code></p>
+<p>Si queremos modificar el orden, utilizamos paréntesis:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int resultado = (2 + 3) * 4;
+</code></pre>
+<p>Ahora:</p>
+<p><code>5 * 4 = 20</code></p>
+<h2 id="seccion-9-12-los-parentesis-ayudan-a-expresar-la-intencion"><span id="apartado-73" class="legacy-anchor" aria-hidden="true"></span>9.12. Los paréntesis ayudan a expresar la intención</h2>
+<p>Aunque podamos confiar en las reglas de precedencia, los paréntesis también pueden mejorar la claridad.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double promedio = (nota1 + nota2 + nota3) / 3.0;
+</code></pre>
+<p>La agrupación permite comprender que primero sumamos las calificaciones y después dividimos.</p>
+<p>Esto también reduce la posibilidad de cometer errores de interpretación.</p>
+<hr />
+<h1 id="seccion-10-construir-nuestro-primer-programa-de-calculo"><span id="apartado-74" class="legacy-anchor" aria-hidden="true"></span>10. Construir nuestro primer programa de cálculo</h1>
+<p>Ahora reuniremos varios conceptos.</p>
+<p>Queremos construir un programa que calcule el total de una compra.</p>
+<p>Por el momento utilizaremos valores previamente definidos.</p>
+<p>Más adelante aprenderemos a solicitarlos al usuario.</p>
+<h2 id="seccion-10-1-comprender-el-problema"><span id="apartado-75" class="legacy-anchor" aria-hidden="true"></span>10.1. Comprender el problema</h2>
+<p>Una persona compra tres cuadernos de $150.</p>
+<p>Necesitamos calcular cuánto paga.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Precio: 150.</li>
+<li>Cantidad: 3.</li>
+</ul>
+<p><strong>Resultado:</strong></p>
+<ul>
+<li>Importe total.</li>
+</ul>
+<p><strong>Operación:</strong></p>
+<ul>
+<li>Multiplicar precio por cantidad.</li>
+</ul>
+<h2 id="seccion-10-2-pseudocodigo"><span id="apartado-76" class="legacy-anchor" aria-hidden="true"></span>10.2. Pseudocódigo</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    precio ← 150
+    cantidad ← 3
+
+    total ← precio * cantidad
+
+    MOSTRAR total
+FIN
+</code></pre>
+<p>Aquí expresamos la solución sin preocuparnos por los detalles de Java.</p>
+<p>Primero establecemos los datos.</p>
+<p>Después calculamos el total.</p>
+<p>Finalmente mostramos el resultado.</p>
+<h2 id="seccion-10-3-traduccion-paso-a-paso"><span id="apartado-77" class="legacy-anchor" aria-hidden="true"></span>10.3. Traducción paso a paso</h2>
+<p>En pseudocódigo tenemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">precio ← 150
+</code></pre>
+<p>En Java podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+</code></pre>
+<p>Para la cantidad:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">cantidad ← 3
+</code></pre>
+<p>Escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int cantidad = 3;
+</code></pre>
+<p>Después:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">total ← precio * cantidad
+</code></pre>
+<p>En Java:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int total = precio * cantidad;
+</code></pre>
+<p>Y para mostrar:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">MOSTRAR total
+</code></pre>
+<p>Utilizamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(total);
+</code></pre>
+<p>El algoritmo es el mismo.</p>
+<p>Lo que cambió es la manera de expresar sus instrucciones.</p>
+<h2 id="seccion-10-4-programa-completo-para-probar-en-vs-code"><span id="apartado-78" class="legacy-anchor" aria-hidden="true"></span>10.4. Programa completo para probar en VS Code</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        int precio = 150;
+        int cantidad = 3;
+
+        int total = precio * cantidad;
+
+        System.out.println(total);
+
+    }
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">450
+</code></pre>
+<h2 id="seccion-10-5-mostrar-un-mensaje-mas-comprensible"><span id="apartado-79" class="legacy-anchor" aria-hidden="true"></span>10.5. Mostrar un mensaje más comprensible</h2>
+<p>Podemos mejorar la presentación:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Importe total: &quot; + total);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Importe total: 450
+</code></pre>
+<p>Observa que utilizamos <code>+</code> para combinar texto y el valor de una variable.</p>
+<h2 id="seccion-10-6-el-signo-tambien-puede-unir-cadenas"><span id="apartado-80" class="legacy-anchor" aria-hidden="true"></span>10.6. El signo + también puede unir cadenas</h2>
+<p>Cuando utilizamos números:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(5 + 3);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">8
+</code></pre>
+<p>Pero cuando utilizamos cadenas:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Hola&quot; + &quot; mundo&quot;);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Hola mundo
+</code></pre>
+<p>En este segundo caso, <code>+</code> concatena cadenas.</p>
+<p>Es decir, construye una cadena a partir de otras.</p>
+<h2 id="seccion-10-7-un-error-frecuente-con-la-concatenacion"><span id="apartado-81" class="legacy-anchor" aria-hidden="true"></span>10.7. Un error frecuente con la concatenación</h2>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Total: &quot; + 5 + 3);
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Total: 53
+</code></pre>
+<p>¿Por qué?</p>
+<p>Porque la expresión comienza con una cadena y las operaciones se evalúan de izquierda a derecha para estos operadores.</p>
+<p>Primero se concatena <code>&quot;Total: &quot;</code> con 5.</p>
+<p>Después se concatena 3.</p>
+<p>Si queremos sumar los números, podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Total: &quot; + (5 + 3));
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Total: 8
+</code></pre>
+<p>Los paréntesis indican que debemos realizar primero la suma.</p>
+<h2 id="seccion-10-8-programa-completo-con-salida-descriptiva"><span id="apartado-82" class="legacy-anchor" aria-hidden="true"></span>10.8. Programa completo con salida descriptiva</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        int precio = 150;
+        int cantidad = 3;
+
+        int total = precio * cantidad;
+
+        System.out.println(&quot;Precio unitario: $&quot; + precio);
+        System.out.println(&quot;Cantidad: &quot; + cantidad);
+        System.out.println(&quot;Importe total: $&quot; + total);
+
+    }
+}
+</code></pre>
+<p>La salida será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Precio unitario: $150
+Cantidad: 3
+Importe total: $450
+</code></pre>
+<p>Este programa resuelve correctamente el caso planteado.</p>
+<p>Pero todavía tenemos una limitación.</p>
+<p>Cada vez que queremos utilizar otro precio o cantidad debemos modificar el código.</p>
+<p>¿Podemos conseguir que el programa pregunte esos datos cuando se ejecuta?</p>
+<hr />
+<h1 id="seccion-11-entrada-de-datos-necesitamos-scanner"><span id="apartado-83" class="legacy-anchor" aria-hidden="true"></span>11. Entrada de datos: necesitamos Scanner</h1>
+<p>Hasta ahora asignamos valores dentro del programa.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+int cantidad = 3;
+</code></pre>
+<p>Esto puede servir para experimentar y comprobar algoritmos.</p>
+<p>Sin embargo, muchos programas necesitan recibir información cuando se ejecutan.</p>
+<p>Imaginemos que queremos utilizar nuestro programa de compras con diferentes precios y cantidades.</p>
+<p>No sería práctico modificar <code>Main.java</code> cada vez.</p>
+<p>Necesitamos una manera de introducir los datos desde la consola.</p>
+<p>En Java podemos utilizar la clase <strong>Scanner</strong>.</p>
+<p>Vamos a incorporarla progresivamente.</p>
+<p>Primero leeremos un entero.</p>
+<p>Después combinaremos varias entradas con cálculos.</p>
+<p>Finalmente analizaremos algunas dificultades frecuentes al recibir información.</p>
+<h2 id="seccion-11-1-que-es-scanner"><span id="apartado-84" class="legacy-anchor" aria-hidden="true"></span>11.1. ¿Qué es Scanner?</h2>
+<p><code>Scanner</code> es una clase de Java que proporciona herramientas para leer y analizar datos de distintas fuentes.</p>
+<p>En nuestros primeros programas la utilizaremos principalmente para recibir información introducida mediante la consola.</p>
+<p>Por ejemplo, podremos leer números enteros, valores decimales y cadenas de texto.</p>
+<p>No necesitamos comprender todavía todos los aspectos de las clases y los objetos.</p>
+<p>Aprenderemos esas ideas con mayor profundidad en la Unidad 7.</p>
+<p>Por ahora necesitamos utilizar correctamente una herramienta que Java proporciona.</p>
+<h2 id="seccion-11-2-primera-etapa-leer-un-unico-entero"><span id="apartado-85" class="legacy-anchor" aria-hidden="true"></span>11.2. Primera etapa: leer un único entero</h2>
+<p>Hasta ahora podíamos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int edad = 16;
+</code></pre>
+<p>Pero si queremos que la persona introduzca su edad durante la ejecución, podemos utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int edad = teclado.nextInt();
+</code></pre>
+<p>Observa que la variable sigue siendo de tipo <code>int</code>.</p>
+<p>Lo que cambia es de dónde proviene el valor.</p>
+<p>Antes lo escribíamos directamente en el código.</p>
+<p>Ahora lo obtenemos mediante una lectura.</p>
+<h2 id="seccion-11-3-importar-scanner"><span id="apartado-86" class="legacy-anchor" aria-hidden="true"></span>11.3. Importar Scanner</h2>
+<p>Antes de declarar la clase <code>Main</code>, escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">import java.util.Scanner;
+</code></pre>
+<p>Esto permite referirnos a la clase <code>Scanner</code> por su nombre simple dentro del archivo.</p>
+<h2 id="seccion-11-4-crear-el-lector"><span id="apartado-87" class="legacy-anchor" aria-hidden="true"></span>11.4. Crear el lector</h2>
+<p>Dentro de <code>main</code> escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Scanner teclado = new Scanner(System.in);
+</code></pre>
+<p>Esta instrucción crea un objeto <code>Scanner</code> que utilizará la entrada estándar del programa.</p>
+<p>El nombre <code>teclado</code> es una variable que nos permite utilizarlo.</p>
+<p>Podríamos elegir otro nombre válido, pero <code>teclado</code> resulta comprensible para nuestros primeros ejercicios.</p>
+<h2 id="seccion-11-5-solicitar-un-numero-entero"><span id="apartado-88" class="legacy-anchor" aria-hidden="true"></span>11.5. Solicitar un número entero</h2>
+<p>Podemos escribir:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.print(&quot;Ingrese su edad: &quot;);
+
+int edad = teclado.nextInt();
+</code></pre>
+<p>Primero mostramos un mensaje.</p>
+<p>Después <code>nextInt()</code> intenta leer un número entero de la entrada.</p>
+<p>El valor leído se asigna a <code>edad</code>.</p>
+<h2 id="seccion-11-6-primer-programa-completo-con-scanner"><span id="apartado-89" class="legacy-anchor" aria-hidden="true"></span>11.6. Primer programa completo con Scanner</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese su edad: &quot;);
+
+        int edad = teclado.nextInt();
+
+        System.out.println(&quot;Su edad es: &quot; + edad);
+
+        teclado.close();
+
+    }
+}
+</code></pre>
+<p>Una posible ejecución será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Ingrese su edad: 16
+Su edad es: 16
+</code></pre>
+<p>El número 16 fue introducido por la persona que ejecutó el programa.</p>
+<p>No estaba escrito previamente como valor fijo de la variable <code>edad</code>.</p>
+<h2 id="seccion-11-7-por-que-cerramos-scanner"><span id="apartado-90" class="legacy-anchor" aria-hidden="true"></span>11.7. ¿Por qué cerramos Scanner?</h2>
+<p>Al finalizar el ejemplo escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">teclado.close();
+</code></pre>
+<p>Esto cierra el lector y los recursos asociados.</p>
+<p>Como el <code>Scanner</code> está utilizando <code>System.in</code>, cerrarlo también cierra esa entrada estándar para el programa.</p>
+<p>Por eso, en estos ejemplos lo hacemos al terminar todas las lecturas, no antes.</p>
+<p>Durante esta unidad utilizaremos normalmente un único <code>Scanner</code> para recibir los datos del programa.</p>
+<h2 id="seccion-11-8-segunda-etapa-leer-dos-datos"><span id="apartado-91" class="legacy-anchor" aria-hidden="true"></span>11.8. Segunda etapa: leer dos datos</h2>
+<p>Ahora podemos solicitar dos números enteros.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.print(&quot;Ingrese el precio: &quot;);
+int precio = teclado.nextInt();
+
+System.out.print(&quot;Ingrese la cantidad: &quot;);
+int cantidad = teclado.nextInt();
+</code></pre>
+<p>Después podemos calcular:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int total = precio * cantidad;
+</code></pre>
+<p>Observa que recuperamos el algoritmo de compra que ya conocemos.</p>
+<p>La novedad es que los valores se obtienen durante la ejecución.</p>
+<h2 id="seccion-11-9-tercera-etapa-leer-numeros-con-decimales"><span id="apartado-92" class="legacy-anchor" aria-hidden="true"></span>11.9. Tercera etapa: leer números con decimales</h2>
+<p>Para leer un número decimal podemos utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double precio = teclado.nextDouble();
+</code></pre>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.print(&quot;Ingrese el precio: &quot;);
+
+double precio = teclado.nextDouble();
+</code></pre>
+<p>Debemos prestar atención a la configuración regional de la entrada.</p>
+<p>Según la configuración utilizada por <code>Scanner</code>, el separador decimal esperado puede variar.</p>
+<p>En los ejemplos escritos de Java utilizaremos el punto decimal, como <code>125.50</code>.</p>
+<p>Pero al leer mediante <code>Scanner</code>, el formato aceptado depende de su configuración regional.</p>
+<p>Si el programa no reconoce el número introducido, debemos comprobar esa configuración y el separador utilizado.</p>
+<h2 id="seccion-11-10-que-sucede-si-introducimos-un-dato-incorrecto"><span id="apartado-93" class="legacy-anchor" aria-hidden="true"></span>11.10. ¿Qué sucede si introducimos un dato incorrecto?</h2>
+<p>Imaginemos que el programa espera un entero:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int edad = teclado.nextInt();
+</code></pre>
+<p>Pero el usuario escribe:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">dieciséis
+</code></pre>
+<p>Esa entrada no tiene el formato numérico que <code>nextInt()</code> espera.</p>
+<p>El programa puede producir una excepción de entrada.</p>
+<p>Por ahora, nuestros primeros ejercicios supondrán que la persona introduce datos del tipo solicitado.</p>
+<p>Más adelante aprenderemos a controlar y validar información de manera más completa.</p>
+<p>Sin embargo, debemos reconocer desde el comienzo que <strong>un programa puede fallar si recibe datos que no cumplen sus requisitos</strong>.</p>
+<p>No necesitamos incorporar todavía <code>try/catch</code> ni mecanismos complejos de tratamiento de excepciones.</p>
+<p>Primero debemos comprender las operaciones básicas de lectura.</p>
+<hr />
+<h1 id="seccion-12-del-pseudocodigo-al-programa-completo-con-scanner"><span id="apartado-94" class="legacy-anchor" aria-hidden="true"></span>12. Del pseudocódigo al programa completo con Scanner</h1>
+<p>Ahora sí podemos resolver nuestro problema de compra utilizando información introducida durante la ejecución.</p>
+<p>Ya conocemos las herramientas necesarias:</p>
+<ul>
+<li><code>Scanner</code> para recibir datos.</li>
+<li>Variables para almacenarlos.</li>
+<li>Operadores aritméticos para calcular.</li>
+<li><code>System.out.println</code> para mostrar resultados.</li>
+</ul>
+<p>Veamos cómo se relacionan.</p>
+<h2 id="seccion-12-1-enunciado"><span id="apartado-95" class="legacy-anchor" aria-hidden="true"></span>12.1. Enunciado</h2>
+<p>Una papelería necesita un programa que calcule cuánto debe pagar un cliente por una cantidad determinada de productos iguales.</p>
+<p>El programa debe solicitar:</p>
+<ul>
+<li>El precio unitario.</li>
+<li>La cantidad comprada.</li>
+</ul>
+<p>Después debe calcular y mostrar el importe total.</p>
+<h2 id="seccion-12-2-analisis-del-problema"><span id="apartado-96" class="legacy-anchor" aria-hidden="true"></span>12.2. Análisis del problema</h2>
+<p><strong>Entrada:</strong></p>
+<ul>
+<li>Precio unitario.</li>
+<li>Cantidad.</li>
+</ul>
+<p><strong>Proceso:</strong></p>
+<ul>
+<li>Multiplicar el precio por la cantidad.</li>
+</ul>
+<p><strong>Salida:</strong></p>
+<ul>
+<li>Importe total.</li>
+</ul>
+<h2 id="seccion-12-3-pseudocodigo"><span id="apartado-97" class="legacy-anchor" aria-hidden="true"></span>12.3. Pseudocódigo</h2>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER precio
+    LEER cantidad
+
+    total ← precio * cantidad
+
+    MOSTRAR total
+FIN
+</code></pre>
+<p>Observa que no incluimos instrucciones específicas de Java.</p>
+<p>Estamos expresando el procedimiento.</p>
+<h2 id="seccion-12-4-codigo-java-programa-completo"><span id="apartado-98" class="legacy-anchor" aria-hidden="true"></span>12.4. Código Java: programa completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese el precio unitario: &quot;);
+        double precio = teclado.nextDouble();
+
+        System.out.print(&quot;Ingrese la cantidad: &quot;);
+        int cantidad = teclado.nextInt();
+
+        double total = precio * cantidad;
+
+        System.out.println(&quot;Importe total: $&quot; + total);
+
+        teclado.close();
+
+    }
+}
+</code></pre>
+<p>Este programa ya puede trabajar con diferentes precios y cantidades sin modificar el código.</p>
+<h2 id="seccion-12-5-seguir-su-ejecucion"><span id="apartado-99" class="legacy-anchor" aria-hidden="true"></span>12.5. Seguir su ejecución</h2>
+<p>Supongamos que introducimos:</p>
+<p><code>precio = 125.50</code></p>
+<p><code>cantidad = 4</code></p>
+<p>La ejecución será:</p>
+<ol>
+<li>Se crea el lector <code>Scanner</code>.</li>
+<li>Se solicita el precio.</li>
+<li>El valor leído se guarda en <code>precio</code>.</li>
+<li>Se solicita la cantidad.</li>
+<li>El valor leído se guarda en <code>cantidad</code>.</li>
+<li>Se calcula <code>precio * cantidad</code>.</li>
+<li>El resultado se asigna a <code>total</code>.</li>
+<li>Se muestra el importe.</li>
+<li>Se cierra el lector.</li>
+</ol>
+<p>El resultado esperado es:</p>
+<p><code>502.0</code></p>
+<p>El ejemplo supone que la configuración de lectura acepta el separador decimal que utilizamos.</p>
+<h2 id="seccion-12-6-casos-de-prueba"><span id="apartado-100" class="legacy-anchor" aria-hidden="true"></span>12.6. Casos de prueba</h2>
+<p>No debemos comprobar el programa solamente con un ejemplo.</p>
+<p>Podemos utilizar:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Precio</th>
+<th style="text-align:right">Cantidad</th>
+<th style="text-align:right">Total esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150.00</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">450.0</td>
+</tr>
+<tr>
+<td>125.50</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">502.0</td>
+</tr>
+<tr>
+<td>85.00</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">170.0</td>
+</tr>
+<tr>
+<td>40.00</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">200.0</td>
+</tr>
+<tr>
+<td>199.99</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">199.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Los casos suponen precios no negativos y cantidades enteras no negativas.</p>
+<p>La forma exacta en que se muestran algunos resultados <code>double</code> depende de su representación y del formato de salida. En esta primera etapa nos concentraremos en el cálculo correcto.</p>
+<h2 id="seccion-12-7-que-pasa-si-la-cantidad-es-cero"><span id="apartado-101" class="legacy-anchor" aria-hidden="true"></span>12.7. ¿Qué pasa si la cantidad es cero?</h2>
+<p>Si introducimos:</p>
+<p><code>cantidad = 0</code></p>
+<p>El cálculo será:</p>
+<p><code>precio × 0 = 0</code></p>
+<p>El programa mostrará un total de cero.</p>
+<p>Esto es coherente con la operación matemática.</p>
+<p>Pero debemos preguntarnos si el problema permite compras de cero unidades.</p>
+<p>Esa decisión depende de los requisitos.</p>
+<p>Más adelante podremos agregar condiciones para aceptar o rechazar determinados valores.</p>
+<h2 id="seccion-12-8-y-si-el-precio-es-negativo"><span id="apartado-102" class="legacy-anchor" aria-hidden="true"></span>12.8. ¿Y si el precio es negativo?</h2>
+<p>Matemáticamente, Java puede multiplicar un número negativo por una cantidad positiva.</p>
+<p>Pero un precio negativo puede no tener sentido en el sistema que queremos construir.</p>
+<p>Nuestro programa actual no comprueba esa situación.</p>
+<p>Esto no significa que la multiplicación esté mal implementada.</p>
+<p>Significa que todavía no incorporamos una regla del problema.</p>
+<p>En la Unidad 3 aprenderemos a utilizar condiciones para controlar estas situaciones.</p>
+<hr />
+<h1 id="seccion-13-leer-cadenas-de-texto-y-distinguir-los-metodos-de-scanner"><span id="apartado-103" class="legacy-anchor" aria-hidden="true"></span>13. Leer cadenas de texto y distinguir los métodos de Scanner</h1>
+<p>Hasta ahora utilizamos <code>Scanner</code> para leer números.</p>
+<p>Pero también puede resultar necesario leer texto.</p>
+<p>Imaginemos un programa que pregunta el nombre de una persona.</p>
+<p>Vamos a comenzar leyendo solamente texto, antes de combinar diferentes tipos de entrada.</p>
+<h2 id="seccion-13-1-leer-una-linea-completa"><span id="apartado-104" class="legacy-anchor" aria-hidden="true"></span>13.1. Leer una línea completa</h2>
+<p>Para leer una línea de texto podemos utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">String nombre = teclado.nextLine();
+</code></pre>
+<p>Este método permite recibir una línea completa, incluidos los espacios.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Ana María
+</code></pre>
+<p>La variable puede conservar esa cadena completa.</p>
+<h2 id="seccion-13-2-programa-completo-leer-un-nombre"><span id="apartado-105" class="legacy-anchor" aria-hidden="true"></span>13.2. Programa completo: leer un nombre</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese su nombre completo: &quot;);
+
+        String nombre = teclado.nextLine();
+
+        System.out.println(&quot;Hola, &quot; + nombre);
+
+        teclado.close();
+
+    }
+}
+</code></pre>
+<p>Una posible ejecución será:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">Ingrese su nombre completo: Ana María
+Hola, Ana María
+</code></pre>
+<p>Aquí no aparece ningún problema relacionado con otros métodos de lectura.</p>
+<p>Solamente solicitamos una línea de texto y la mostramos.</p>
+<h2 id="seccion-13-3-leer-una-palabra"><span id="apartado-106" class="legacy-anchor" aria-hidden="true"></span>13.3. Leer una palabra</h2>
+<p>También podemos utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">String nombre = teclado.next();
+</code></pre>
+<p>Este método lee el siguiente elemento de entrada delimitado por espacios u otros separadores reconocidos.</p>
+<p>Si introducimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Ana
+</code></pre>
+<p>La variable recibe <code>&quot;Ana&quot;</code>.</p>
+<p>Pero si introducimos un nombre completo como:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Ana María
+</code></pre>
+<p><code>next()</code> leerá solamente <code>Ana</code> en esa invocación.</p>
+<h2 id="seccion-13-4-cuando-utilizar-cada-metodo"><span id="apartado-107" class="legacy-anchor" aria-hidden="true"></span>13.4. ¿Cuándo utilizar cada método?</h2>
+<p>Si necesitamos leer una palabra sin espacios, <code>next()</code> puede resultar suficiente.</p>
+<p>Si queremos leer una línea completa, incluidos los espacios, podemos utilizar <code>nextLine()</code>.</p>
+<p>Debemos elegir según las necesidades del programa.</p>
+<p>Pero ahora surge una dificultad nueva.</p>
+<p>¿Qué sucede si combinamos la lectura de un número con la lectura de una línea?</p>
+<h2 id="seccion-13-5-un-problema-frecuente-al-combinar-nextint-y-nextline"><span id="apartado-108" class="legacy-anchor" aria-hidden="true"></span>13.5. Un problema frecuente al combinar nextInt y nextLine</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int edad = teclado.nextInt();
+
+String nombre = teclado.nextLine();
+</code></pre>
+<p>Podríamos esperar que el programa primero lea la edad y después permita escribir el nombre.</p>
+<p>Pero aparece un problema frecuente.</p>
+<p>Cuando introducimos la edad y pulsamos Enter, <code>nextInt()</code> lee el número, pero deja pendiente el separador de fin de línea.</p>
+<p>Después, <code>nextLine()</code> puede leer el resto vacío de esa línea.</p>
+<p>Como consecuencia, parece que el programa no nos permitió escribir el nombre.</p>
+<h2 id="seccion-13-6-comprender-que-ocurrio"><span id="apartado-109" class="legacy-anchor" aria-hidden="true"></span>13.6. Comprender qué ocurrió</h2>
+<p>Imaginemos que introducimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">16
+</code></pre>
+<p>Y pulsamos Enter.</p>
+<p><code>nextInt()</code> reconoce el entero 16.</p>
+<p>Pero el fin de línea permanece pendiente en la entrada.</p>
+<p>Cuando ejecutamos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">teclado.nextLine();
+</code></pre>
+<p>El método puede consumir ese resto de línea.</p>
+<p>No espera necesariamente que escribamos una nueva línea con el nombre.</p>
+<p>El problema aparece porque los métodos procesan la entrada de maneras diferentes.</p>
+<h2 id="seccion-13-7-una-manera-de-resolverlo"><span id="apartado-110" class="legacy-anchor" aria-hidden="true"></span>13.7. Una manera de resolverlo</h2>
+<p>Podemos consumir primero el resto de la línea.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int edad = teclado.nextInt();
+
+teclado.nextLine();
+
+String nombre = teclado.nextLine();
+</code></pre>
+<p>La primera llamada a <code>nextLine()</code> después del entero consume el resto de la línea pendiente.</p>
+<p>La siguiente permite leer la línea que introducimos como nombre.</p>
+<p>Este comportamiento merece atención porque no depende de un error en el algoritmo principal.</p>
+<p>Se relaciona con la manera en que los métodos de lectura procesan la entrada.</p>
+<h2 id="seccion-13-8-programa-completo"><span id="apartado-111" class="legacy-anchor" aria-hidden="true"></span>13.8. Programa completo</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(&quot;Ingrese su edad: &quot;);
+        int edad = teclado.nextInt();
+
+        teclado.nextLine();
+
+        System.out.print(&quot;Ingrese su nombre completo: &quot;);
+        String nombre = teclado.nextLine();
+
+        System.out.println(&quot;Nombre: &quot; + nombre);
+        System.out.println(&quot;Edad: &quot; + edad);
+
+        teclado.close();
+
+    }
+}
+</code></pre>
+<p>Una posible ejecución:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">Ingrese su edad: 16
+Ingrese su nombre completo: Ana María
+Nombre: Ana María
+Edad: 16
+</code></pre>
+<h2 id="seccion-13-9-debemos-usar-siempre-nextline"><span id="apartado-112" class="legacy-anchor" aria-hidden="true"></span>13.9. ¿Debemos usar siempre nextLine?</h2>
+<p>No necesariamente.</p>
+<p>Depende de los datos que queremos leer.</p>
+<p>Podemos utilizar:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Qué intenta leer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nextInt()</code></td>
+<td>Un entero</td>
+</tr>
+<tr>
+<td><code>nextDouble()</code></td>
+<td>Un número decimal</td>
+</tr>
+<tr>
+<td><code>next()</code></td>
+<td>El siguiente elemento delimitado</td>
+</tr>
+<tr>
+<td><code>nextLine()</code></td>
+<td>Una línea completa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Necesitamos seleccionar el método adecuado.</p>
+<p>Cuando combinamos lecturas de números y líneas de texto debemos prestar atención a los separadores pendientes.</p>
+<hr />
+<h2 id="seccion-13-10-nota-tecnica-cerrar-scanner-cuando-utiliza-system-in"><span id="apartado-113" class="legacy-anchor" aria-hidden="true"></span><span id="seccion-13-8-nota-tecnica-cerrar-scanner-cuando-utiliza-system-in" class="legacy-anchor" aria-hidden="true"></span>13.10. Nota técnica: cerrar Scanner cuando utiliza System.in</h2>
+<p>En muchos programas de esta unidad aparece <code>teclado.close()</code> al final de <code>main</code>. <strong>En esos ejemplos es seguro porque el programa termina inmediatamente después.</strong> Pero debemos conocer qué ocurre: si <code>teclado</code> se creó con <code>new Scanner(System.in)</code>, al cerrar ese <code>Scanner</code> también se cierra el flujo de entrada estándar <code>System.in</code> de la máquina virtual. Otro método que intente volver a leer desde ese flujo durante la misma ejecución puede fallar, por ejemplo, con <code>NoSuchElementException</code>.</p>
+<p><strong>Regla para nuestros programas de consola:</strong> utiliza, cuando sea posible, un solo <code>Scanner</code> asociado a <code>System.in</code>; si varios métodos necesitan leer, envíales ese mismo objeto como argumento en lugar de crear y cerrar varios. No cierres la entrada estándar a mitad de un programa que seguirá leyendo. En los ejemplos cortos donde <code>main</code> acaba tras la lectura, mantendremos <code>teclado.close()</code> y comprenderemos por qué no causa problemas allí.</p>
+<p><strong>Predicción:</strong> después de cerrar un <code>Scanner(System.in)</code>, ¿podemos garantizar que otro <code>Scanner(System.in)</code> leerá nuevas entradas normalmente? No. ¿Sería igual cerrar un <code>Scanner</code> que lee un archivo independiente? No: cerrar el lector de un archivo afecta el recurso que utiliza, no implica necesariamente cerrar <code>System.in</code>.</p>
+<h2 id="seccion-13-11-ruta-de-recuperacion-del-error-a-la-causa"><span id="apartado-114" class="legacy-anchor" aria-hidden="true"></span><span id="seccion-13-9-ruta-de-recuperacion-del-error-a-la-causa" class="legacy-anchor" aria-hidden="true"></span>13.11. Ruta de recuperación: del error a la causa</h2>
+<p><strong>Situación A: no compila.</strong> Lee la primera línea del mensaje de compilación, busca el archivo y número de línea; comprueba llaves, comillas, punto y coma, tipo y nombre. Corrige una cosa y vuelve a compilar.</p>
+<p><strong>Situación B: compila, pero el valor no cambia.</strong> Traza las asignaciones en orden. ¿Reasignaste una variable o solamente mostraste otra expresión? ¿Cambiaste una copia o el dato original?</p>
+<p><strong>Situación C: pide un número y falla al introducir texto.</strong> <code>nextInt()</code> y <code>nextDouble()</code> esperan entradas compatibles; el problema es el dato que recibe el programa, no necesariamente el algoritmo aritmético. Para la práctica esencial utiliza los datos del contrato y luego estudia cómo validar entradas.</p>
+<p><strong>Situación D: funciona con un ejemplo, pero no con otro.</strong> Elige un caso distinto, calcula antes el resultado en papel, compara la traza y señala la primera instrucción donde el valor real deja de coincidir con el esperado.</p>
+<p><strong>Transferencia breve:</strong> un programa muestra el precio 200 pero calcula la compra usando 150. ¿Es un error de compilación, de ejecución o de lógica? ¿Qué dato está duplicado y qué variable permitiría corregir la causa?</p>
+<h1 id="seccion-14-errores-frecuentes-y-depuracion-de-nuestros-primeros-programas"><span id="apartado-115" class="legacy-anchor" aria-hidden="true"></span>14. Errores frecuentes y depuración de nuestros primeros programas</h1>
+<p>Ya conocemos varias instrucciones Java.</p>
+<p>También podemos comenzar a cometer errores diferentes.</p>
+<p>Lo importante no es evitar equivocarnos por completo.</p>
+<p>Lo importante es aprender a reconocer qué está sucediendo y cómo corregirlo.</p>
+<h2 id="seccion-14-1-olvidar-un-punto-y-coma"><span id="apartado-116" class="legacy-anchor" aria-hidden="true"></span>14.1. Olvidar un punto y coma</h2>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int cantidad = 3
+</code></pre>
+<p>La instrucción está incompleta.</p>
+<p>La versión correcta es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int cantidad = 3;
+</code></pre>
+<h2 id="seccion-14-2-utilizar-una-variable-sin-declararla"><span id="apartado-117" class="legacy-anchor" aria-hidden="true"></span>14.2. Utilizar una variable sin declararla</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">total = precio * cantidad;
+</code></pre>
+<p>Si no declaramos previamente las variables correspondientes, Java no podrá resolver esos nombres.</p>
+<p>Debemos comprobar qué variables existen y dónde fueron declaradas.</p>
+<h2 id="seccion-14-3-utilizar-una-variable-local-sin-inicializar"><span id="apartado-118" class="legacy-anchor" aria-hidden="true"></span>14.3. Utilizar una variable local sin inicializar</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio;
+
+System.out.println(precio);
+</code></pre>
+<p>El compilador detectará que estamos utilizando una variable local que no tiene un valor asignado.</p>
+<p>Podemos corregirlo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio = 150;
+
+System.out.println(precio);
+</code></pre>
+<h2 id="seccion-14-4-declarar-dos-veces-una-variable-local"><span id="apartado-119" class="legacy-anchor" aria-hidden="true"></span>14.4. Declarar dos veces una variable local</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+
+int precio = 200;
+</code></pre>
+<p>El programa no compila si ambas declaraciones pertenecen al mismo bloque local.</p>
+<p>No debemos volver a escribir el tipo para cambiar el valor de una variable existente.</p>
+<p>La forma correcta es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+
+precio = 200;
+</code></pre>
+<h2 id="seccion-14-5-confundir-mayusculas-y-minusculas"><span id="apartado-120" class="legacy-anchor" aria-hidden="true"></span>14.5. Confundir mayúsculas y minúsculas</h2>
+<p>Java diferencia las mayúsculas de las minúsculas.</p>
+<p>Por ejemplo:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int precio = 150;
+</code></pre>
+<p>No declara una variable llamada <code>Precio</code>.</p>
+<p>Por tanto:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(Precio);
+</code></pre>
+<p>No encuentra la variable <code>precio</code> por tener una mayúscula distinta.</p>
+<p>Debemos escribir los nombres de manera consistente.</p>
+<h2 id="seccion-14-6-utilizar-un-tipo-incompatible"><span id="apartado-121" class="legacy-anchor" aria-hidden="true"></span>14.6. Utilizar un tipo incompatible</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int edad = &quot;16&quot;;
+</code></pre>
+<p>La cadena <code>&quot;16&quot;</code> no puede asignarse directamente como si fuera un valor <code>int</code>.</p>
+<p>Debemos distinguir entre números y texto.</p>
+<p>La forma correcta, si queremos almacenar un entero, es:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int edad = 16;
+</code></pre>
+<h2 id="seccion-14-7-olvidar-importar-scanner"><span id="apartado-122" class="legacy-anchor" aria-hidden="true"></span>14.7. Olvidar importar Scanner</h2>
+<p>Si queremos utilizar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">Scanner teclado = new Scanner(System.in);
+</code></pre>
+<p>Debemos tener disponible la clase <code>Scanner</code>.</p>
+<p>En nuestros programas escribiremos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">import java.util.Scanner;
+</code></pre>
+<p>Al comienzo del archivo.</p>
+<h2 id="seccion-14-8-leer-un-tipo-de-dato-incorrecto"><span id="apartado-123" class="legacy-anchor" aria-hidden="true"></span>14.8. Leer un tipo de dato incorrecto</h2>
+<p>Si escribimos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int cantidad = teclado.nextInt();
+</code></pre>
+<p>El programa espera recibir un entero.</p>
+<p>Si introducimos texto que no representa un entero válido, la lectura puede fallar.</p>
+<p>No debemos confundir este error con una operación matemática incorrecta.</p>
+<p>El problema está en el dato recibido.</p>
+<h2 id="seccion-14-9-realizar-una-division-entera-sin-advertirlo"><span id="apartado-124" class="legacy-anchor" aria-hidden="true"></span>14.9. Realizar una división entera sin advertirlo</h2>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int suma = 17;
+int cantidad = 2;
+
+double promedio = suma / cantidad;
+</code></pre>
+<p>El resultado será 8.0.</p>
+<p>¿Por qué?</p>
+<p>Porque la división se realiza entre dos enteros.</p>
+<p>Primero se obtiene 8.</p>
+<p>Después se convierte a <code>double</code> al asignarlo.</p>
+<p>Si queremos un resultado decimal:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">double promedio = suma * 1.0 / cantidad;
+</code></pre>
+<p>Ahora el resultado será 8.5.</p>
+<h2 id="seccion-14-10-creer-que-las-variables-se-actualizan-automaticamente"><span id="apartado-125" class="legacy-anchor" aria-hidden="true"></span>14.10. Creer que las variables se actualizan automáticamente</h2>
+<p>Recordemos:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio = 150;
+int cantidad = 3;
+
+int total = precio * cantidad;
+
+precio = 200;
+</code></pre>
+<p><code>total</code> sigue valiendo 450.</p>
+<p>Si queremos actualizarlo, debemos ejecutar otra asignación:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">total = precio * cantidad;
+</code></pre>
+<p>Este error es especialmente importante porque puede producir programas que compilan y se ejecutan, pero calculan resultados desactualizados.</p>
+<h2 id="seccion-14-11-confundir-concatenacion-y-suma"><span id="apartado-126" class="legacy-anchor" aria-hidden="true"></span>14.11. Confundir concatenación y suma</h2>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Total: &quot; + 5 + 3);
+</code></pre>
+<p>Muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Total: 53
+</code></pre>
+<p>Si queremos sumar:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(&quot;Total: &quot; + (5 + 3));
+</code></pre>
+<p>Muestra:</p>
+<pre class="codigo-bloque" data-etiqueta="Texto"><code class="language-text">Total: 8
+</code></pre>
+<h2 id="seccion-14-12-un-ejemplo-error-de-sintaxis-o-error-logico"><span id="apartado-127" class="legacy-anchor" aria-hidden="true"></span>14.12. Un ejemplo: error de sintaxis o error lógico</h2>
+<p>Considera este programa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        int precio = 150
+        int cantidad = 3;
+
+        int total = precio * cantidad;
+
+        System.out.println(&quot;Total: &quot; + total);
+
+    }
+}
+</code></pre>
+<p>El problema es que falta un punto y coma.</p>
+<p>El programa no compila correctamente.</p>
+<p>Pero si corregimos esa instrucción, el cálculo será adecuado.</p>
+<p>En cambio, considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int total = precio + cantidad;
+</code></pre>
+<p>Esta instrucción tiene una sintaxis válida.</p>
+<p>Sin embargo, si queremos calcular el importe de una compra multiplicando precio por cantidad, el algoritmo será incorrecto.</p>
+<p>Por tanto, debemos distinguir:</p>
+<p><strong>Error de sintaxis:</strong> incumplimos una regla de escritura de Java.</p>
+<p><strong>Error lógico:</strong> las instrucciones pueden ejecutarse, pero no producen el resultado que necesitamos.</p>
+<h2 id="seccion-14-13-como-investigamos-un-error"><span id="apartado-128" class="legacy-anchor" aria-hidden="true"></span>14.13. ¿Cómo investigamos un error?</h2>
+<p>Podemos seguir un procedimiento:</p>
+<ol>
+<li>Leer el mensaje que muestra el editor o el compilador.</li>
+<li>Identificar la instrucción relacionada.</li>
+<li>Comprobar si existe un problema de sintaxis.</li>
+<li>Revisar los tipos y nombres de las variables.</li>
+<li>Si el programa se ejecuta, realizar un trazado de sus valores.</li>
+<li>Comparar la salida con el resultado esperado.</li>
+<li>Corregir la causa y ejecutar otra prueba.</li>
+</ol>
+<p>No necesitamos cambiar muchas instrucciones simultáneamente.</p>
+<p>Es preferible identificar un problema concreto, corregirlo y comprobar qué ocurrió.</p>
+<p><strong>La depuración es una actividad de razonamiento, no una sucesión de cambios al azar.</strong></p>
+<hr />
+<h1 id="seccion-15-preparacion-para-la-evaluacion-leer-explicar-y-construir-programas"><span id="apartado-129" class="legacy-anchor" aria-hidden="true"></span>15. Preparación para la evaluación: leer, explicar y construir programas</h1>
+<p>Al finalizar esta unidad debemos poder escribir programas sencillos, pero también leer y explicar código.</p>
+<p>No queremos limitarnos a copiar una estructura Java o ejecutar instrucciones sin comprenderlas.</p>
+<p>Organizaremos la preparación en tres niveles.</p>
+<hr />
+<h2 id="seccion-nivel-1-reconocer-y-comprender"><span id="apartado-130" class="legacy-anchor" aria-hidden="true"></span>Nivel 1. Reconocer y comprender</h2>
+<h3 id="seccion-15-1-conceptos-fundamentales"><span id="apartado-131" class="legacy-anchor" aria-hidden="true"></span>15.1. Conceptos fundamentales</h3>
+<p>Debes poder explicar:</p>
+<ul>
+<li>Qué diferencia existe entre un algoritmo y un programa.</li>
+<li>Qué es la sintaxis de Java.</li>
+<li>Qué función cumple la clase <code>Main</code>.</li>
+<li>Desde dónde comienza la ejecución.</li>
+<li>Qué significa <code>System.out.println</code>.</li>
+<li>Qué diferencia existe entre <code>print</code> y <code>println</code>.</li>
+<li>Qué es una variable.</li>
+<li>Qué significa declarar una variable.</li>
+<li>Qué significa inicializarla.</li>
+<li>Qué significa reasignarle un valor.</li>
+<li>Qué es un tipo de dato.</li>
+<li>Cuándo utilizar <code>int</code> y cuándo <code>double</code>.</li>
+<li>Qué diferencia existe entre un número y una cadena.</li>
+<li>Para qué utilizamos <code>Scanner</code>.</li>
+<li>Qué significa realizar un trazado.</li>
+<li>Por qué ejecutar un programa no demuestra automáticamente que sea correcto.</li>
+</ul>
+<h3 id="seccion-15-2-actividad-a-reconocer-partes-de-un-programa"><span id="apartado-132" class="legacy-anchor" aria-hidden="true"></span>15.2. Actividad A: reconocer partes de un programa</h3>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println(&quot;Hola&quot;);
+
+    }
+}
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Cómo se llama la clase?</li>
+<li>¿Cómo se llama el método donde comienza la ejecución?</li>
+<li>¿Cuál es la instrucción que muestra información?</li>
+<li>¿Qué texto aparece en la consola?</li>
+<li>¿Qué símbolos delimitan los bloques?</li>
+<li>¿Qué símbolo termina la instrucción <code>println</code>?</li>
+</ol>
+<h3 id="seccion-15-3-actividad-b-identificar-tipos-de-datos"><span id="apartado-133" class="legacy-anchor" aria-hidden="true"></span>15.3. Actividad B: identificar tipos de datos</h3>
+<p>Indica qué tipo utilizarías para representar:</p>
+<ol>
+<li>Una edad en años enteros.</li>
+<li>Un precio con decimales.</li>
+<li>El nombre de un estudiante.</li>
+<li>Un estado de verdadero o falso.</li>
+<li>Una letra que identifica un grupo.</li>
+</ol>
+<p>Explica brevemente por qué.</p>
+<hr />
+<h2 id="seccion-nivel-2-interpretar-predecir-y-corregir"><span id="apartado-134" class="legacy-anchor" aria-hidden="true"></span>Nivel 2. Interpretar, predecir y corregir</h2>
+<h3 id="seccion-15-4-actividad-c-predecir-la-salida"><span id="apartado-135" class="legacy-anchor" aria-hidden="true"></span>15.4. Actividad C: predecir la salida</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        int numero = 5;
+
+        numero = numero + 3;
+
+        numero = numero * 2;
+
+        System.out.println(numero);
+
+    }
+}
+</code></pre>
+<p>Antes de ejecutarlo:</p>
+<ol>
+<li>Realiza un trazado.</li>
+<li>Predice el valor mostrado.</li>
+<li>Explica cada asignación.</li>
+<li>Indica qué sucedería si intercambiáramos las dos últimas operaciones matemáticas.</li>
+</ol>
+<h3 id="seccion-15-5-actividad-d-comprender-valores-independientes"><span id="apartado-136" class="legacy-anchor" aria-hidden="true"></span>15.5. Actividad D: comprender valores independientes</h3>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int a = 5;
+
+int b = a;
+
+a = 10;
+
+System.out.println(a);
+System.out.println(b);
+</code></pre>
+<p>Responde:</p>
+<ul>
+<li>¿Cuánto vale <code>a</code> al finalizar?</li>
+<li>¿Cuánto vale <code>b</code>?</li>
+<li>¿Por qué <code>b</code> no cambia automáticamente cuando modificamos <code>a</code>?</li>
+<li>¿Qué instrucción necesitaríamos para asignar nuevamente a <code>b</code> el valor actual de <code>a</code>?</li>
+</ul>
+<h3 id="seccion-15-6-actividad-e-comprobar-una-operacion"><span id="apartado-137" class="legacy-anchor" aria-hidden="true"></span>15.6. Actividad E: comprobar una operación</h3>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int precio = 150;
+int cantidad = 3;
+
+int total = precio * cantidad;
+
+precio = 200;
+
+System.out.println(total);
+</code></pre>
+<p>¿Qué muestra el programa?</p>
+<p>Explica por qué.</p>
+<p>Después agrega una instrucción que actualice el total utilizando el nuevo precio.</p>
+<h3 id="seccion-15-7-actividad-f-detectar-errores"><span id="apartado-138" class="legacy-anchor" aria-hidden="true"></span>15.7. Actividad F: detectar errores</h3>
+<p>Considera:</p>
+<pre class="codigo-bloque" data-etiqueta="Java"><code class="language-java">int edad = &quot;16&quot;;
+
+System.out.println(Edad);
+</code></pre>
+<p>Identifica los errores.</p>
+<p>Explica qué regla de Java incumple cada instrucción.</p>
+<p>Escribe una versión corregida.</p>
+<h3 id="seccion-15-8-actividad-g-division-entera"><span id="apartado-139" class="legacy-anchor" aria-hidden="true"></span>15.8. Actividad G: división entera</h3>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">int suma = 15;
+int cantidad = 2;
+
+double promedio = suma / cantidad;
+
+System.out.println(promedio);
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Qué valor muestra?</li>
+<li>¿Por qué no muestra 7.5?</li>
+<li>¿Qué cambio realizarías para obtener un resultado decimal?</li>
+<li>¿Por qué no alcanza con declarar <code>promedio</code> como <code>double</code>?</li>
+</ol>
+<h3 id="seccion-15-9-actividad-h-concatenacion"><span id="apartado-140" class="legacy-anchor" aria-hidden="true"></span>15.9. Actividad H: concatenación</h3>
+<p>Predice la salida de cada instrucción.</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">System.out.println(5 + 3);
+
+System.out.println(&quot;5&quot; + &quot;3&quot;);
+
+System.out.println(&quot;Total: &quot; + 5 + 3);
+
+System.out.println(&quot;Total: &quot; + (5 + 3));
+</code></pre>
+<p>Explica por qué los resultados no son todos iguales.</p>
+<h3 id="seccion-15-10-actividad-adicional-encontrar-un-error-de-compilacion"><span id="apartado-141" class="legacy-anchor" aria-hidden="true"></span>15.10. Actividad adicional: encontrar un error de compilación</h3>
+<p>Observa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        int precio = 150
+        int cantidad = 3;
+
+        int total = precio * cantidad;
+
+        System.out.println(&quot;Total: &quot; + total);
+
+    }
+}
+</code></pre>
+<p>Responde:</p>
+<ol>
+<li>¿Dónde está el error?</li>
+<li>¿Qué regla de Java no se está cumpliendo?</li>
+<li>¿Cuál es la corrección?</li>
+<li>¿Qué salida tendrá el programa después de corregirlo?</li>
+<li>¿Se trataba de un error de sintaxis o de un error lógico?</li>
+</ol>
+<hr />
+<h2 id="seccion-nivel-3-construir-comprobar-y-justificar"><span id="apartado-142" class="legacy-anchor" aria-hidden="true"></span>Nivel 3. Construir, comprobar y justificar</h2>
+<h3 id="seccion-15-11-actividad-i-calcular-una-compra"><span id="apartado-143" class="legacy-anchor" aria-hidden="true"></span>15.11. Actividad I: calcular una compra</h3>
+<p>Una papelería necesita calcular el importe total de una compra.</p>
+<p>El programa debe:</p>
+<ol>
+<li>Solicitar el precio unitario.</li>
+<li>Solicitar la cantidad.</li>
+<li>Calcular el importe total.</li>
+<li>Mostrar el resultado.</li>
+</ol>
+<p>Antes de escribir Java, desarrolla el pseudocódigo.</p>
+<p>Después construye el programa completo utilizando <code>Scanner</code>.</p>
+<p>Comprueba su funcionamiento con al menos tres casos de prueba.</p>
+<h3 id="seccion-15-12-actividad-j-calcular-un-saldo-restante"><span id="apartado-144" class="legacy-anchor" aria-hidden="true"></span>15.12. Actividad J: calcular un saldo restante</h3>
+<p>Una persona quiere saber cuánto dinero le queda después de realizar un gasto.</p>
+<p>El programa debe solicitar:</p>
+<ul>
+<li>Saldo inicial.</li>
+<li>Importe del gasto.</li>
+</ul>
+<p>Después debe mostrar el saldo restante.</p>
+<p><strong>Pseudocódigo modelo:</strong></p>
+<pre class="codigo-bloque" data-etiqueta="Texto" role="region" tabindex="0" aria-label="Texto: bloque de código desplazable"><code class="language-text">INICIO
+    LEER saldo
+    LEER gasto
+
+    restante ← saldo - gasto
+
+    MOSTRAR restante
+FIN
+</code></pre>
+<p>Construye el programa Java.</p>
+<p>Utiliza tipos adecuados para representar importes con decimales.</p>
+<p>Prueba la solución con:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Saldo</th>
+<th style="text-align:right">Gasto</th>
+<th style="text-align:right">Restante esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>800</td>
+<td style="text-align:right">250</td>
+<td style="text-align:right">550</td>
+</tr>
+<tr>
+<td>1000</td>
+<td style="text-align:right">375</td>
+<td style="text-align:right">625</td>
+</tr>
+<tr>
+<td>500</td>
+<td style="text-align:right">125.50</td>
+<td style="text-align:right">374.50</td>
+</tr>
+<tr>
+<td>250</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">250</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Después explica qué sucedería si el gasto fuera mayor que el saldo.</p>
+<p>En esta unidad el programa podrá realizar igualmente la resta.</p>
+<p>En la siguiente aprenderemos a utilizar condiciones para establecer si debemos permitir o rechazar determinados casos.</p>
+<h3 id="seccion-15-13-actividad-k-calcular-un-promedio"><span id="apartado-145" class="legacy-anchor" aria-hidden="true"></span>15.13. Actividad K: calcular un promedio</h3>
+<p>Un programa debe solicitar tres calificaciones y calcular su promedio.</p>
+<p>Antes de escribir Java:</p>
+<ol>
+<li>Identifica los datos.</li>
+<li>Escribe el pseudocódigo.</li>
+<li>Determina el tipo de las calificaciones.</li>
+<li>Decide qué tipo utilizarás para el promedio.</li>
+<li>Explica cómo evitarás perder la parte decimal.</li>
+</ol>
+<p>Después construye el programa.</p>
+<p>Prueba con:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+<thead>
+<tr>
+<th>Nota 1</th>
+<th style="text-align:right">Nota 2</th>
+<th style="text-align:right">Nota 3</th>
+<th style="text-align:right">Promedio esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">7.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">6.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">8.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">5.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">6.333...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El último caso permite comprobar que el promedio no siempre es entero.</p>
+<h3 id="seccion-15-14-actividad-l-programa-completo-con-texto-y-numeros"><span id="apartado-146" class="legacy-anchor" aria-hidden="true"></span>15.14. Actividad L: programa completo con texto y números</h3>
+<p>Construye un programa que solicite:</p>
+<ul>
+<li>Nombre del estudiante.</li>
+<li>Edad.</li>
+<li>Cantidad de materias cursadas.</li>
+</ul>
+<p>Después debe mostrar un mensaje con los tres datos.</p>
+<p>Utiliza <code>Scanner</code>.</p>
+<p>El nombre puede contener espacios.</p>
+<p>Por tanto, debes seleccionar el método de lectura adecuado y prestar atención a la combinación de entradas de texto y números.</p>
+<p>Antes de escribir código, explica qué variables necesitarás y de qué tipos serán.</p>
+<h3 id="seccion-15-15-actividad-m-interpretar-antes-de-ejecutar"><span id="apartado-147" class="legacy-anchor" aria-hidden="true"></span>15.15. Actividad M: interpretar antes de ejecutar</h3>
+<p>Tenemos este programa:</p>
+<pre class="codigo-bloque" data-etiqueta="Java" role="region" tabindex="0" aria-label="Java: bloque de código desplazable"><code class="language-java">public class Main {
+
+    public static void main(String[] args) {
+
+        int numero1 = 8;
+        int numero2 = 3;
+
+        int resultado = numero1 + numero2;
+
+        numero1 = 10;
+
+        resultado = resultado * 2;
+
+        System.out.println(numero1);
+        System.out.println(numero2);
+        System.out.println(resultado);
+
+    }
+}
+</code></pre>
+<p>Realiza un trazado completo.</p>
+<p>Después responde:</p>
+<ol>
+<li>¿Qué valor tiene <code>resultado</code> cuando se calcula por primera vez?</li>
+<li>¿Qué sucede cuando cambia <code>numero1</code>?</li>
+<li>¿Por qué el resultado no se recalcula automáticamente?</li>
+<li>¿Qué operación realiza la última asignación?</li>
+<li>¿Cuál es la salida completa del programa?</li>
+<li>¿Qué cambiaría si agregáramos <code>resultado = numero1 + numero2;</code> antes de multiplicar por dos?</li>
+</ol>
+<p>No ejecutes el programa hasta completar la predicción.</p>
+<hr />
+<h1 id="seccion-lo-que-debemos-recordar"><span id="apartado-148" class="legacy-anchor" aria-hidden="true"></span>Lo que debemos recordar</h1>
+<p>En esta unidad aprendimos a transformar nuestros primeros algoritmos en programas Java.</p>
+<p>Comenzamos reconociendo la estructura de una clase <code>Main</code> y el método desde el que se ejecutan nuestras instrucciones.</p>
+<p>Aprendimos a mostrar información mediante <code>System.out.print</code> y <code>System.out.println</code>.</p>
+<p>Después descubrimos la necesidad de las variables: conservar datos para utilizarlos en distintas operaciones sin repetir los mismos valores dentro del programa.</p>
+<p>Estudiamos tipos básicos como <code>int</code>, <code>double</code>, <code>boolean</code> y <code>char</code>, y comenzamos a utilizar <code>String</code> para representar texto.</p>
+<p>Aprendimos a distinguir declaración, inicialización y reasignación.</p>
+<p>También estudiamos cómo cambian los valores de las variables durante la ejecución.</p>
+<p>Descubrimos algo especialmente importante:</p>
+<p><strong>Una asignación calcula y guarda un valor en ese momento; no crea una relación que se actualiza automáticamente cuando cambian otras variables.</strong></p>
+<p>Incorporamos operadores aritméticos y aprendimos a distinguir entre división entera y división con resultado decimal.</p>
+<p>Después utilizamos <code>Scanner</code> para recibir datos introducidos durante la ejecución.</p>
+<p>Esto permitió transformar nuestros primeros programas de valores fijos en soluciones capaces de trabajar con diferentes entradas.</p>
+<p>También aprendimos a leer cadenas de texto y a reconocer algunas dificultades que aparecen cuando combinamos métodos de entrada.</p>
+<p>Finalmente, recuperamos las herramientas de la Unidad 1: pseudocódigo, trazados, predicción de salidas, casos de prueba y depuración.</p>
+<p>Todos estos conocimientos están relacionados.</p>
+<p>Un programa necesita datos.</p>
+<p>Los datos se conservan mediante variables.</p>
+<p>Las instrucciones utilizan y modifican esos valores.</p>
+<p>Y nosotros necesitamos comprender el algoritmo para determinar si los resultados son correctos.</p>
+<p>En la siguiente unidad descubriremos una limitación de nuestros programas actuales.</p>
+<p>Hasta ahora ejecutamos instrucciones en secuencia, pero necesitamos que algunas operaciones se realicen solamente cuando se cumplen determinadas condiciones.</p>
+<p>Por ejemplo, queremos comprobar si una persona tiene saldo suficiente antes de autorizar una compra.</p>
+<p>Para resolverlo aprenderemos a utilizar <strong>estructuras condicionales</strong>.</p>
+<p><strong>Programar no consiste en conseguir que Java acepte nuestras instrucciones. Consiste en construir una solución correcta, expresarla mediante Java y comprobar que funciona como esperamos.</strong></p>
+</article><nav class="lesson-bottom" aria-label="Navegación entre unidades"><a rel="prev" href="unidad-01.html">← Unidad 1: Pensar como programadores</a><a rel="next" href="unidad-03.html">Unidad 3: Estructuras condicionales →</a></nav><p class="return-top"><a href="#top">Volver arriba ↑</a></p></main><footer><div class="footer-inner"><img src="assets/logo-PM-opcional.png" alt=""><span><strong>Programación I · 2026</strong><br>Profe Macón · DGETP / UTU</span></div></footer><script defer src="assets/recursos-modelos.js"></script><script defer src="assets/recursos-interactivos.js"></script></body></html>
